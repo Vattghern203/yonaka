@@ -1,0 +1,93 @@
+*,
+*::after,
+*::before {
+
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    color-scheme: dark light;
+}
+
+:root {
+    /* BASE */
+
+    /* Font */
+    --font-family: system-ui;
+
+    /* Spacing */
+    --p-xs: .8rem; 
+    --p-sm: 2rem;
+    --p-md: 4rem;
+    --p-lg: 8rem;
+
+    --bg: black;
+}
+
+/* UTILS */
+
+.grid {
+    display: grid;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* SEMANTIC TAGS */
+
+body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+
+    font-family: var(--font-family);
+}
+
+/* HEADER */
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: self-start;
+}
+
+nav {
+    width: clamp(10vmin, 200px, 30%);
+
+    & ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+main {
+    width: 80%;
+    display: flex;
+    gap: 20vmin;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+footer {
+    width: 100%;
+    align-self: flex-end;
+    text-align: center;
+}
