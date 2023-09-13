@@ -1,0 +1,36 @@
+:root {
+    // COLOR PALETTE
+
+    --text: #e8e8ed;
+    --background: #09090c;
+    --primary: #47465d;
+    --secondary: #16161d;
+    --accent: #6f6e91;
+
+    // SPACING BASE
+
+    --spacing: .4rem;
+    --jump: 4;
+
+    // SPACING VARS
+
+    --xs: var(--spacing);
+    --sm: calc(var(--spacing) * 2);
+    --md: calc(var(--spacing) * 3);
+    --lg: calc(var(--spacing) * 4);
+    --hg: calc(var(--spacing) * 5);
+
+
+    // BASE VARS
+
+    --roundness: 50%;
+
+    // TYPOGRAPHY
+
+    --font-family: system-ui, 'Inter', 'Roboto';
+    --font-weight: 400;
+
+    // ANIMATION
+
+    --transition: .4s ease;
+}

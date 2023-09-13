@@ -1,0 +1,71 @@
+@import "node_modules/normalize.css/normalize.css";
+body {
+  font-size: 1.6rem;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+}
+
+:root {
+  --text: #e8e8ed;
+  --background: #09090c;
+  --primary: #47465d;
+  --secondary: #16161d;
+  --accent: #6f6e91;
+  --spacing: .4rem;
+  --jump: 4;
+  --xs: var(--spacing);
+  --sm: calc(var(--spacing) * 2);
+  --md: calc(var(--spacing) * 3);
+  --lg: calc(var(--spacing) * 4);
+  --hg: calc(var(--spacing) * 5);
+  --roundness: 50%;
+  --font-family: system-ui, "Inter", "Roboto";
+  --font-weight: 400;
+  --transition: .4s ease;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.15;
+}
+
+body {
+  box-sizing: border-box;
+  font-size: 1.6rem;
+}
+
+img,
+video,
+svg {
+  width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  min-width: 100vmin;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*# sourceMappingURL=yonaka.temps.css.map */
