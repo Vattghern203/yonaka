@@ -1,0 +1,9 @@
+html {
+    color-scheme: dark light;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: whitesmoke;
+    }
+}

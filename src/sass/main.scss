@@ -12,7 +12,14 @@
 
 // LAYOUT
 
+@import "layout/footer";
 @import "layout/header";
+@import "layout/main";
+@import "layout/nav";
+
+// UTILS
+
+@import "utils/text";
 
 
 // VENDORS

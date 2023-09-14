@@ -1,7 +1,23 @@
 body {
+    --bg: var(--background);
+
     display: grid;
     place-items: center;
-    justify-content: space-between;
     align-items: center;
+    //justify-content: center;
     min-height: 100vh;
+    gap: var(--hg);
+
+    background-color: var(--bg);
+
+    & * {
+        --bg: var(--secondary);
+        --txt: var(--text);
+        color: var(--txt);
+    }
+}
+
+a:link,
+a:visited {
+    color: var(--accent);
 }

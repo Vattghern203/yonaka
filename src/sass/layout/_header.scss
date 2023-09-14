@@ -1,5 +1,8 @@
 header {
-    min-width: 100vmin;
+    min-width: 100%;
+    height: 10vmin;
+    align-items: center;
     display: flex;
     justify-content: space-between;
+    align-self: self-start;
 }

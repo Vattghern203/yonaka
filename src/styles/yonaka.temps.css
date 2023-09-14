@@ -1,8 +1,8 @@
 @import "node_modules/normalize.css/normalize.css";
 body {
-  font-size: 1.6rem;
   font-family: var(--font-family);
   font-weight: var(--font-weight);
+  line-height: var(--line-height);
 }
 
 :root {
@@ -11,6 +11,10 @@ body {
   --primary: #47465d;
   --secondary: #16161d;
   --accent: #6f6e91;
+  --bp-sm: 40em;
+  --bp-md: 48em;
+  --bp-lg: 64em;
+  --bp-hg: 80em;
   --spacing: .4rem;
   --jump: 4;
   --xs: var(--spacing);
@@ -18,18 +22,35 @@ body {
   --md: calc(var(--spacing) * 3);
   --lg: calc(var(--spacing) * 4);
   --hg: calc(var(--spacing) * 5);
-  --roundness: 50%;
+  --padding: var(--lg);
+  --roundness: var(--xs);
   --font-family: system-ui, "Inter", "Roboto";
   --font-weight: 400;
+  --font-size: 1.6rem;
+  --line-height: 1.15;
   --transition: .4s ease;
+  --bg: inherit;
+  --txt: inherit;
 }
 
 body {
+  --bg: var(--background);
   display: grid;
   place-items: center;
-  justify-content: space-between;
   align-items: center;
   min-height: 100vh;
+  gap: var(--hg);
+  background-color: var(--bg);
+}
+body * {
+  --bg: var(--secondary);
+  --txt: var(--text);
+  color: var(--txt);
+}
+
+a:link,
+a:visited {
+  color: var(--accent);
 }
 
 *,
@@ -48,7 +69,7 @@ html {
 
 body {
   box-sizing: border-box;
-  font-size: 1.6rem;
+  font-size: var(--font-size);
 }
 
 img,
@@ -62,10 +83,82 @@ a {
   text-decoration: none;
 }
 
+ul,
+ol {
+  list-style: none;
+}
+
+footer {
+  align-self: flex-end;
+  display: grid;
+  place-items: center;
+}
+footer ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer ul a {
+  --txt: var(--secondary);
+  color: var(--txt);
+}
+
 header {
-  min-width: 100vmin;
+  min-width: 100%;
+  height: 10vmin;
+  align-items: center;
   display: flex;
   justify-content: space-between;
+  align-self: self-start;
+}
+
+main {
+  width: 90%;
+  height: 100%;
+}
+
+nav {
+  width: clamp(30vmin, 40rem, 45%);
+}
+nav * {
+  transition: opacity var(--transition);
+}
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+nav ul li {
+  width: fit-content;
+  height: fit-content;
+}
+nav ul li:hover a {
+  opacity: 0.8;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-justify {
+  text-align: justify;
+}
+
+.text-align-end {
+  text-align: end;
+}
+
+.text-align-start {
+  text-align: start;
 }
 
 /*# sourceMappingURL=yonaka.temps.css.map */

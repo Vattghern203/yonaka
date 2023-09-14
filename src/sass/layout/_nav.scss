@@ -1,0 +1,23 @@
+nav {
+    width: clamp(30vmin, 40rem, 45%);
+
+    & * {
+        transition: opacity var(--transition);
+    }
+    
+    & ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        & li {
+            width: fit-content;
+            height: fit-content;
+
+            &:hover a {
+                opacity: .8;
+            }
+        }
+    }
+}
