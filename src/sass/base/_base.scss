@@ -1,14 +1,19 @@
 body {
     --bg: var(--background);
+    --spacing: var(--hg);
 
     display: grid;
     place-items: center;
     align-items: center;
-    //justify-content: center;
     min-height: 100vh;
-    gap: var(--hg);
+    gap: var(--spacing);
 
     background-color: var(--bg);
+
+    & :where(nav, header, footer, section, div, main) {
+        --bg: var(--secondary);
+        background-color: var(--bg);
+    }
 
     & * {
         --bg: var(--secondary);

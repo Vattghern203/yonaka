@@ -6,6 +6,8 @@ body {
 }
 
 :root {
+  --roundness: auto;
+  --spacing: auto;
   --text: #e8e8ed;
   --background: #09090c;
   --primary: #47465d;
@@ -18,11 +20,11 @@ body {
   --spacing: .4rem;
   --jump: 4;
   --xs: var(--spacing);
-  --sm: calc(var(--spacing) * 2);
-  --md: calc(var(--spacing) * 3);
-  --lg: calc(var(--spacing) * 4);
-  --hg: calc(var(--spacing) * 5);
-  --padding: var(--lg);
+  --sm: .8rem;
+  --md: 1.2rem;
+  --lg: 1.6rem;
+  --hg: 2rem;
+  --padding: var(--sm);
   --roundness: var(--xs);
   --font-family: system-ui, "Inter", "Roboto";
   --font-weight: 400;
@@ -30,16 +32,21 @@ body {
   --line-height: 1.15;
   --transition: .4s ease;
   --bg: inherit;
-  --txt: inherit;
+  --txt-color: inherit;
 }
 
 body {
   --bg: var(--background);
+  --spacing: var(--hg);
   display: grid;
   place-items: center;
   align-items: center;
   min-height: 100vh;
-  gap: var(--hg);
+  gap: var(--spacing);
+  background-color: var(--bg);
+}
+body :where(nav, header, footer, section, div, main) {
+  --bg: var(--secondary);
   background-color: var(--bg);
 }
 body * {
@@ -92,6 +99,7 @@ footer {
   align-self: flex-end;
   display: grid;
   place-items: center;
+  width: 100%;
 }
 footer ul {
   display: flex;
@@ -115,9 +123,13 @@ header {
 main {
   width: 90%;
   height: 100%;
+  padding: var(--md) var(--hg);
+  border-radius: var(--roundness);
 }
 
 nav {
+  --bg: auto;
+  background-color: var(--bg);
   width: clamp(30vmin, 40rem, 45%);
 }
 nav * {

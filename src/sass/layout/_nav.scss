@@ -1,4 +1,6 @@
 nav {
+    --bg: auto;
+    background-color: var(--bg);
     width: clamp(30vmin, 40rem, 45%);
 
     & * {

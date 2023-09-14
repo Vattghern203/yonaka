@@ -1,4 +1,10 @@
 :root {
+    // GLOBAL SCOPED VARS
+
+    --roundness: auto; // The border-radius to everything
+    --spacing: auto; // the spacing between elements
+
+
     // COLOR PALETTE ---------------------------------
 
     --text: #e8e8ed;
@@ -22,14 +28,14 @@
     // SPACING VARS ---------------------------------
 
     --xs: var(--spacing);
-    --sm: calc(var(--spacing) * 2);
-    --md: calc(var(--spacing) * 3);
-    --lg: calc(var(--spacing) * 4);
-    --hg: calc(var(--spacing) * 5);
+    --sm: .8rem;
+    --md: 1.2rem;
+    --lg: 1.6rem;
+    --hg: 2rem;
 
     // Padding
 
-    --padding: var(--lg);
+    --padding: var(--sm);
 
 
     // BASE VARS ---------------------------------
@@ -50,5 +56,5 @@
     // GENERAL -----------------------------------
 
     --bg: inherit;
-    --txt: inherit;
+    --txt-color: inherit;
 }
