@@ -10,13 +10,18 @@ body {
 
     background-color: var(--bg);
 
-    & :where(nav, header, footer, section, div, main) {
+    & :where(nav, header, footer, main) {
         --bg: var(--secondary);
         background-color: var(--bg);
     }
 
+    & :where(section, div) {
+        --bg: var(--primary);
+        background-color: var(--bg);
+    }
+
     & * {
-        --bg: var(--secondary);
+        //--bg: var(--secondary);
         --txt: var(--text);
         color: var(--txt);
     }
