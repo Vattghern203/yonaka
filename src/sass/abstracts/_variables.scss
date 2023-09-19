@@ -3,7 +3,20 @@
 
     --roundness: auto; // The border-radius to everything
     --spacing: auto; // the spacing between elements
+    --spacing-y: auto;
+    --spacing-x: auto;
+    --jump: .4rem; // the jump value between elements
+    --theme: dark; // the actual theme in the page
+    --width: unset; // the witdth of an element
+    --height: unset; // the height of each element
 
+    // SPACING VARS ---------------------------------
+
+    --xs: var(--spacing); // 1 
+    --sm: .8rem; // 2
+    --md: 1.6rem; // 4
+    --lg: 2.4rem; // 6
+    --hg: 3.8rem; // 8
 
     // COLOR PALETTE ---------------------------------
 
@@ -12,6 +25,9 @@
     --primary: #47465d;
     --secondary: #16161d;
     --accent: #6f6e91;
+
+    --muted-text: color-mix(in oklab, var(--text), black) // Foreground Text
+    --muted-secondary: color-mix(in oklab, var(--secondary), pink)
 
     // BREAKPOINTS
 
@@ -23,15 +39,13 @@
     // SPACING BASE ---------------------------------
 
     --spacing: .4rem;
-    --jump: 4;
 
-    // SPACING VARS ---------------------------------
+    // GRID -----------------------------------------
 
-    --xs: var(--spacing);
-    --sm: .8rem;
-    --md: 1.2rem;
-    --lg: 1.6rem;
-    --hg: 2rem;
+    --grid-cols: auto-fill;
+    --grid-rows: auto;
+    --grid-item-width: 10rem;
+    --grid-justify-items: start;
 
     // Padding
 
@@ -57,4 +71,6 @@
 
     --bg: inherit;
     --txt-color: inherit;
+
+    // FAMILY VARS
 }

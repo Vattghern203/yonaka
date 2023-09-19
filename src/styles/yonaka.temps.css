@@ -5,25 +5,42 @@ body {
   line-height: var(--line-height);
 }
 
+h1, h2, h3,
+h4, h5, h6 {
+  margin-bottom: var(--spacing);
+}
+
 :root {
   --roundness: auto;
   --spacing: auto;
+  --spacing-y: auto;
+  --spacing-x: auto;
+  --jump: .4rem;
+  --theme: dark;
+  --width: unset;
+  --height: unset;
+  --xs: var(--spacing);
+  --sm: .8rem;
+  --md: 1.6rem;
+  --lg: 2.4rem;
+  --hg: 3.8rem;
   --text: #e8e8ed;
   --background: #09090c;
   --primary: #47465d;
   --secondary: #16161d;
   --accent: #6f6e91;
+  --muted-text: color-mix(in oklab, var(--text), black) // Foreground Text
+  --muted-secondary: color-mix(in oklab, var(--secondary), pink)
+  // BREAKPOINTS
   --bp-sm: 40em;
   --bp-md: 48em;
   --bp-lg: 64em;
   --bp-hg: 80em;
   --spacing: .4rem;
-  --jump: 4;
-  --xs: var(--spacing);
-  --sm: .8rem;
-  --md: 1.2rem;
-  --lg: 1.6rem;
-  --hg: 2rem;
+  --grid-cols: auto-fill;
+  --grid-rows: auto;
+  --grid-item-width: 10rem;
+  --grid-justify-items: start;
   --padding: var(--sm);
   --roundness: var(--xs);
   --font-family: system-ui, "Inter", "Roboto";
@@ -52,15 +69,22 @@ body :where(nav, header, footer, main) {
 body :where(section, div) {
   --bg: var(--primary);
   background-color: var(--bg);
+  margin: var(--spacing);
+  padding: var(--spacing);
 }
 body * {
   --txt: var(--text);
   color: var(--txt);
+  border-radius: var(--roundness);
 }
 
-a:link,
-a:visited {
-  color: var(--accent);
+a:not([role=img]) {
+  --txt-color: var(--accent);
+  width: fit-content;
+  height: fit-content;
+}
+a:not([role=img]):visited, a:not([role=img]):link {
+  color: var(--txt-color);
 }
 
 *,
@@ -98,11 +122,45 @@ ol {
   list-style: none;
 }
 
+dl {
+  --bg: var(--secondary);
+  --spacing: var(--hg);
+  --width: 100%;
+  --height: fit-content;
+  --font-size: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: var(--width);
+  height: var(--height);
+  gap: var(--spacing);
+  font-size: var(--font-size);
+}
+dl dt, dl dd {
+  padding: var(--spacing);
+  background-color: var(--bg);
+  width: var(--width);
+}
+
+.logo {
+  --roundness: .4vmin;
+  border-radius: var(--roundness);
+  width: 8vmin;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+  margin: var(--spacing);
+}
+
 footer {
+  --width: 100%;
+  --height: 35vmin;
   align-self: flex-end;
   display: grid;
   place-items: center;
-  width: 100%;
+  width: var(--width);
+  height: var(--height);
 }
 footer ul {
   display: flex;
@@ -124,10 +182,13 @@ header {
 }
 
 main {
-  width: 90%;
-  height: 100%;
-  padding: var(--md) var(--hg);
+  --width: 90%;
+  --height: 100%;
+  width: var(--width);
+  height: var(--height);
+  padding: var(--hg) var(--lg);
   border-radius: var(--roundness);
+  margin-block: var(--hg);
 }
 
 nav {

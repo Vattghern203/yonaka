@@ -1,0 +1,25 @@
+// ACCORDION
+
+dl {
+
+    --bg: var(--secondary);
+    --spacing: var(--hg);
+    --width: 100%;
+    --height: fit-content;
+    --font-size: 1.75rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: var(--width);
+    height: var(--height);
+    gap: var(--spacing);
+    font-size: var(--font-size);
+
+    dt, dd {
+        padding: var(--spacing);
+        background-color: var(--bg);
+        width: var(--width);
+    }
+}

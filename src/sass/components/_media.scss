@@ -1,0 +1,10 @@
+.logo {
+    --roundness: .4vmin;
+    
+    border-radius: var(--roundness);
+    width: 8vmin;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+    margin: var(--spacing);
+}

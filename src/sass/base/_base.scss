@@ -18,16 +18,26 @@ body {
     & :where(section, div) {
         --bg: var(--primary);
         background-color: var(--bg);
+        margin: var(--spacing);
+        padding: var(--spacing);
     }
 
     & * {
         //--bg: var(--secondary);
         --txt: var(--text);
         color: var(--txt);
+        border-radius: var(--roundness);
     }
 }
 
-a:link,
-a:visited {
-    color: var(--accent);
+a:not([role="img"]) {
+
+    --txt-color: var(--accent);
+    width: fit-content;
+    height: fit-content;
+
+    &:visited,
+    &:link {
+        color: var(--txt-color);
+    }
 }

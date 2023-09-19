@@ -1,8 +1,12 @@
 footer {
+    --width: 100%;
+    --height: 35vmin;
+
     align-self: flex-end;
     display: grid;
     place-items: center;
-    width: 100%;
+    width: var(--width);
+    height: var(--height);
 
     & ul {
         display: flex;

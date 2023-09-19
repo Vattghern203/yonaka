@@ -1,6 +1,10 @@
 main {
-    width: 90%;
-    height: 100%;
-    padding: var(--md) var(--hg);
+    --width: 90%;
+    --height: 100%;
+
+    width: var(--width);
+    height: var(--height);
+    padding: var(--hg) var(--lg);
     border-radius: var(--roundness);
+    margin-block: var(--hg);
 }
