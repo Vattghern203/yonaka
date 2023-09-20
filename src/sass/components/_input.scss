@@ -1,0 +1,19 @@
+label {
+    cursor: pointer;
+    
+
+    --spacing: var(--lg)
+}
+
+input[type="file"] {
+    visibility: hidden;
+}
+
+label:has( > input[type="file"]) {
+
+    
+    border: .1rem dashed var(--text);
+    width: 100%;
+    height: fit-content;
+    padding: var(--spacing);
+}

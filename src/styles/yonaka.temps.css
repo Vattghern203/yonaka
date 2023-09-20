@@ -143,6 +143,22 @@ dl dt, dl dd {
   width: var(--width);
 }
 
+label {
+  cursor: pointer;
+  --spacing: var(--lg) ;
+}
+
+input[type=file] {
+  visibility: hidden;
+}
+
+label:has(> input[type=file]) {
+  border: 0.1rem dashed var(--text);
+  width: 100%;
+  height: fit-content;
+  padding: var(--spacing);
+}
+
 .logo {
   --roundness: .4vmin;
   border-radius: var(--roundness);
