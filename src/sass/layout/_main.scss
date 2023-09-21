@@ -1,10 +1,11 @@
 main {
     --width: 90%;
-    --height: 100%;
+    --height: auto;
+    --spacing: var(--lg);
 
     width: var(--width);
     height: var(--height);
-    padding: var(--hg) var(--lg);
+    padding: var(--md) var(--lg);
     border-radius: var(--roundness);
-    margin-block: var(--hg);
+    margin-block: var(--spacing);
 }

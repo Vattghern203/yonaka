@@ -1,0 +1,27 @@
+button {
+
+    --spacing: var(--md) var(--hg);
+    --roundness: .6vmin;
+
+    width: 100%;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: none;
+    padding: var(--spacing);
+    border-radius: var(--roundness);
+    transition: background-color var(--transition);
+
+    &.cta {
+        --bg: var(--accent);
+
+        background-color: var(--bg);
+
+        &:hover {
+            background-color: color-mix(in oklab, var(--bg), white 20%);
+        }
+
+        &:active {
+            background-color: color-mix(in oklab, var(--bg), white 10%);
+        }
+    }
+}

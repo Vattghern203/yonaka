@@ -5,6 +5,11 @@ body {
   line-height: var(--line-height);
 }
 
+h1 {
+  --text-color: var(--accent);
+  color: var(--text-color);
+}
+
 h1, h2, h3,
 h4, h5, h6 {
   margin-bottom: var(--spacing);
@@ -12,25 +17,26 @@ h4, h5, h6 {
 
 :root {
   --roundness: auto;
-  --spacing: auto;
+  --spacing: .8rem;
   --spacing-y: auto;
   --spacing-x: auto;
   --jump: .4rem;
   --theme: dark;
   --width: unset;
   --height: unset;
-  --xs: var(--spacing);
+  --xs: .4rem;
   --sm: .8rem;
   --md: 1.6rem;
-  --lg: 2.4rem;
-  --hg: 3.8rem;
+  --lg: 3.2rem;
+  --xl: 6.4rem;
+  --hg: 12.8rem;
   --text: #e8e8ed;
   --background: #09090c;
   --primary: #47465d;
   --secondary: #16161d;
   --accent: #6f6e91;
-  --muted-text: color-mix(in oklab, var(--text), black) // Foreground Text
-  --muted-secondary: color-mix(in oklab, var(--secondary), pink)
+  --muted-text: color-mix(in oklab, var(--text), black 70%) // Foreground Text
+  --muted-secondary: color-mix(in oklab, var(--secondary), black 70%)
   // BREAKPOINTS
   --bp-sm: 40em;
   --bp-md: 48em;
@@ -54,15 +60,15 @@ h4, h5, h6 {
 
 body {
   --bg: var(--background);
-  --spacing: var(--hg);
+  --spacing: var(--md);
   display: grid;
   place-items: center;
   align-items: center;
   min-height: 100vh;
-  gap: var(--spacing);
+  gap: var(--lg);
   background-color: var(--bg);
 }
-body :where(nav, header, footer, main) {
+body :where(nav, header, footer) {
   --bg: var(--secondary);
   background-color: var(--bg);
 }
@@ -72,7 +78,7 @@ body :where(section, div) {
   margin: var(--spacing);
   padding: var(--spacing);
 }
-body * {
+body * :not(h1) {
   --txt: var(--text);
   color: var(--txt);
   border-radius: var(--roundness);
@@ -122,9 +128,31 @@ ol {
   list-style: none;
 }
 
+button {
+  --spacing: var(--md) var(--hg);
+  --roundness: .6vmin;
+  width: 100%;
+  cursor: pointer;
+  text-transform: uppercase;
+  border: none;
+  padding: var(--spacing);
+  border-radius: var(--roundness);
+  transition: background-color var(--transition);
+}
+button.cta {
+  --bg: var(--accent);
+  background-color: var(--bg);
+}
+button.cta:hover {
+  background-color: color-mix(in oklab, var(--bg), white 20%);
+}
+button.cta:active {
+  background-color: color-mix(in oklab, var(--bg), white 10%);
+}
+
 dl {
   --bg: var(--secondary);
-  --spacing: var(--hg);
+  --spacing: var(--lg);
   --width: 100%;
   --height: fit-content;
   --font-size: 1.75rem;
@@ -143,20 +171,32 @@ dl dt, dl dd {
   width: var(--width);
 }
 
-label {
-  cursor: pointer;
-  --spacing: var(--lg) ;
+input, label {
+  transition: background-color var(--transition);
 }
 
-input[type=file] {
-  visibility: hidden;
+label {
+  cursor: pointer;
+  --spacing-y: var(--xs);
+  --spacing-x: var(--md);
 }
 
 label:has(> input[type=file]) {
+  display: flex;
   border: 0.1rem dashed var(--text);
   width: 100%;
-  height: fit-content;
-  padding: var(--spacing);
+  height: 20vh;
+  padding: var(--spacing-y) var(--spacing-x);
+  text-align: center;
+}
+label:has(> input[type=file]):hover {
+  background-color: var(--accent);
+}
+
+input:where([type=date], [type=file], [type=""]) input[type=file] {
+  visibility: hidden;
+  width: 0;
+  height: 0;
 }
 
 .logo {
@@ -189,22 +229,26 @@ footer ul a {
 }
 
 header {
-  min-width: 100%;
+  --widht: 100%;
+  --height: 10vmin;
+  min-width: var(--widht);
   height: 10vmin;
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: var(--spacing);
   align-self: self-start;
 }
 
 main {
   --width: 90%;
-  --height: 100%;
+  --height: auto;
+  --spacing: var(--lg);
   width: var(--width);
   height: var(--height);
-  padding: var(--hg) var(--lg);
+  padding: var(--md) var(--lg);
   border-radius: var(--roundness);
-  margin-block: var(--hg);
+  margin-block: var(--spacing);
 }
 
 nav {
@@ -229,6 +273,38 @@ nav ul li:hover a {
   opacity: 0.8;
 }
 
+:root {
+  --grid-cols: auto-fill;
+  --grid-rows: fit-content;
+  --grid-item-width: 10rem;
+  --grid-justify-items: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), minmax(var(--grid-item-width), 1fr));
+  grid-auto-rows: var(--grid-rows);
+  justify-content: space-between;
+  justify-items: var(--grid-justify-items);
+  place-content: var(--grid-justify-items);
+  gap: var(--spacing);
+}
+.grid > * {
+  background-color: black;
+  align-self: stretch;
+  width: 100%;
+}
+
 .text-align-center {
   text-align: center;
 }
@@ -251,30 +327,6 @@ nav ul li:hover a {
 
 .text-align-start {
   text-align: start;
-}
-
-:root {
-  --grid-cols: auto-fill;
-  --grid-rows: auto;
-  --grid-item-width: 10rem;
-  --grid-justify-items: start;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.col {
-  display: flex;
-  flex-direction: column;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(var(--grid-cols), minmax(var(--grid-item-width), 1fr));
-  grid-auto-rows: var(--grid-rows);
-  justify-items: var(--grid-justify-items);
 }
 
 /*# sourceMappingURL=yonaka.temps.css.map */

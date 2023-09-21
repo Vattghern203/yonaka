@@ -1,4 +1,6 @@
-section.grid {
+section {
+
+    height: auto;
 
     & > * {
         background-color: var(--background);

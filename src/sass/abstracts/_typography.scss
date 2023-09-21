@@ -4,6 +4,12 @@ body {
     line-height: var(--line-height);
 }
 
+h1 {
+    --text-color: var(--accent);
+   
+    color: var(--text-color);
+}
+
 h1, h2, h3,
 h4, h5, h6 {
     margin-bottom: var(--spacing);

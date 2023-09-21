@@ -1,19 +1,40 @@
-label {
-    cursor: pointer;
-    
+input, label {
 
-    --spacing: var(--lg)
+    transition: background-color var(--transition);
 }
 
-input[type="file"] {
-    visibility: hidden;
+
+label {
+    cursor: pointer;
+
+    --spacing-y: var(--xs);
+    --spacing-x: var(--md);
 }
 
 label:has( > input[type="file"]) {
 
-    
+    display: flex;
     border: .1rem dashed var(--text);
     width: 100%;
-    height: fit-content;
-    padding: var(--spacing);
+    height: 20vh;
+    padding: var(--spacing-y) var(--spacing-x);
+    text-align: center;
+
+    &:hover {
+        background-color: var(--accent);
+    }
 }
+
+input {
+
+    &:where([type="date"], [type="file"], [type=""])
+
+    &[type="file"] {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+}
+
+
+

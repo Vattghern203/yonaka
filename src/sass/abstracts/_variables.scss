@@ -2,7 +2,7 @@
     // GLOBAL SCOPED VARS
 
     --roundness: auto; // The border-radius to everything
-    --spacing: auto; // the spacing between elements
+    --spacing: .8rem; // the spacing between elements
     --spacing-y: auto;
     --spacing-x: auto;
     --jump: .4rem; // the jump value between elements
@@ -12,11 +12,12 @@
 
     // SPACING VARS ---------------------------------
 
-    --xs: var(--spacing); // 1 
-    --sm: .8rem; // 2
-    --md: 1.6rem; // 4
-    --lg: 2.4rem; // 6
-    --hg: 3.8rem; // 8
+    --xs: .4rem;   //  1 
+    --sm: .8rem;   //  2
+    --md: 1.6rem;  //  4
+    --lg: 3.2rem;  //  6
+    --xl: 6.4rem;  //  8
+    --hg: 12.8rem; //  10
 
     // COLOR PALETTE ---------------------------------
 
@@ -26,8 +27,8 @@
     --secondary: #16161d;
     --accent: #6f6e91;
 
-    --muted-text: color-mix(in oklab, var(--text), black) // Foreground Text
-    --muted-secondary: color-mix(in oklab, var(--secondary), pink)
+    --muted-text: color-mix(in oklab, var(--text), black 70%) // Foreground Text
+    --muted-secondary: color-mix(in oklab, var(--secondary), black 70%)
 
     // BREAKPOINTS
 

@@ -1,16 +1,16 @@
 body {
     --bg: var(--background);
-    --spacing: var(--hg);
+    --spacing: var(--md);
 
     display: grid;
     place-items: center;
     align-items: center;
     min-height: 100vh;
-    gap: var(--spacing);
+    gap: var(--lg);
 
     background-color: var(--bg);
 
-    & :where(nav, header, footer, main) {
+    & :where(nav, header, footer) {
         --bg: var(--secondary);
         background-color: var(--bg);
     }
@@ -22,7 +22,7 @@ body {
         padding: var(--spacing);
     }
 
-    & * {
+    & * :not(h1){
         //--bg: var(--secondary);
         --txt: var(--text);
         color: var(--txt);

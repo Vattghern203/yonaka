@@ -1,8 +1,8 @@
 :root {
     --grid-cols: auto-fill;
-    --grid-rows: auto;
+    --grid-rows: fit-content;
     --grid-item-width: 10rem;
-    --grid-justify-items: start;
+    --grid-justify-items: center;
 }
 
 .row {
@@ -21,5 +21,14 @@
     display: grid;
     grid-template-columns: repeat(var(--grid-cols), minmax(var(--grid-item-width), 1fr));
     grid-auto-rows: var(--grid-rows);
+    justify-content: space-between;
     justify-items: var(--grid-justify-items);
+    place-content: var(--grid-justify-items);
+    gap: var(--spacing);
+
+    & > * {
+        background-color: black;
+        align-self: stretch;
+        width: 100%;
+    }
 }
