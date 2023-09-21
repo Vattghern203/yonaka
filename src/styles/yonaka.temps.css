@@ -1,4 +1,25 @@
 @import "node_modules/normalize.css/normalize.css";
+html {
+  color-scheme: dark light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: #030217;
+    --background: #e9e8fd;
+    --primary: #47465d;
+    --secondary: #16161d;
+    --accent: #6e6e91;
+  }
+}
+[data-theme=light] {
+  --text: #030217;
+  --background: #e9e8fd;
+  --primary: #47465d;
+  --secondary: #16161d;
+  --accent: #6e6e91;
+}
+
 body {
   font-family: var(--font-family);
   font-weight: var(--font-weight);
@@ -63,9 +84,8 @@ body {
   --spacing: var(--md);
   display: grid;
   place-items: center;
-  align-items: center;
   min-height: 100vh;
-  gap: var(--lg);
+  gap: var(--xs);
   background-color: var(--bg);
 }
 body :where(nav, header, footer) {
@@ -73,9 +93,9 @@ body :where(nav, header, footer) {
   background-color: var(--bg);
 }
 body :where(section, div) {
-  --bg: var(--primary);
+  --bg: var(--secondary);
   background-color: var(--bg);
-  margin: var(--spacing);
+  margin-block: var(--spacing);
   padding: var(--spacing);
 }
 body * :not(h1) {
@@ -105,6 +125,7 @@ a:not([role=img]):visited, a:not([role=img]):link {
 html {
   font-size: 62.5%;
   line-height: 1.15;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -129,15 +150,17 @@ ol {
 }
 
 button {
+  --width: 16em;
   --spacing: var(--md) var(--hg);
   --roundness: .6vmin;
-  width: 100%;
+  text-align: center;
+  width: var(--width);
   cursor: pointer;
   text-transform: uppercase;
   border: none;
   padding: var(--spacing);
   border-radius: var(--roundness);
-  transition: background-color var(--transition);
+  transition: background-color, transform var(--transition);
 }
 button.cta {
   --bg: var(--accent);
@@ -145,13 +168,15 @@ button.cta {
 }
 button.cta:hover {
   background-color: color-mix(in oklab, var(--bg), white 20%);
+  transform: translateY(2%);
 }
 button.cta:active {
   background-color: color-mix(in oklab, var(--bg), white 10%);
+  transform: translateY(8%);
 }
 
 dl {
-  --bg: var(--secondary);
+  --bg: var(--primary);
   --spacing: var(--lg);
   --width: 100%;
   --height: fit-content;
@@ -159,7 +184,7 @@ dl {
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: center;
+  justify-content: space-between;
   width: var(--width);
   height: var(--height);
   gap: var(--spacing);
@@ -169,6 +194,13 @@ dl dt, dl dd {
   padding: var(--spacing);
   background-color: var(--bg);
   width: var(--width);
+}
+dl dt:not([open]) + dd {
+  visibility: hidden;
+  display: none;
+}
+dl dt:active, dl dt:focus {
+  background-color: red;
 }
 
 input, label {
@@ -193,7 +225,7 @@ label:has(> input[type=file]):hover {
   background-color: var(--accent);
 }
 
-input:where([type=date], [type=file], [type=""]) input[type=file] {
+input[type=file] {
   visibility: hidden;
   width: 0;
   height: 0;
@@ -212,6 +244,7 @@ input:where([type=date], [type=file], [type=""]) input[type=file] {
 footer {
   --width: 100%;
   --height: 35vmin;
+  color: color-mix(in oklab, var(--text-color) 90%, black 10%);
   align-self: flex-end;
   display: grid;
   place-items: center;
@@ -225,14 +258,13 @@ footer ul {
 }
 footer ul a {
   --txt: var(--secondary);
-  color: var(--txt);
 }
 
 header {
   --widht: 100%;
   --height: 10vmin;
   min-width: var(--widht);
-  height: 10vmin;
+  height: var(--height);
   align-items: center;
   display: flex;
   justify-content: space-around;
@@ -244,7 +276,7 @@ main {
   --width: 90%;
   --height: auto;
   --spacing: var(--lg);
-  width: var(--width);
+  width: clamp(60%, 75%, var(--width));
   height: var(--height);
   padding: var(--md) var(--lg);
   border-radius: var(--roundness);
@@ -252,6 +284,7 @@ main {
 }
 
 nav {
+  --font-size: 1.75rem;
   --bg: auto;
   background-color: var(--bg);
   width: clamp(30vmin, 40rem, 45%);
@@ -269,15 +302,14 @@ nav ul li {
   width: fit-content;
   height: fit-content;
 }
+nav ul li a {
+  font-size: var(--font-size);
+}
 nav ul li:hover a {
   opacity: 0.8;
 }
-
-:root {
-  --grid-cols: auto-fill;
-  --grid-rows: fit-content;
-  --grid-item-width: 10rem;
-  --grid-justify-items: center;
+nav ul li:active {
+  opacity: 0.6;
 }
 
 .row {
@@ -291,6 +323,10 @@ nav ul li:hover a {
 }
 
 .grid {
+  --grid-cols: auto-fill;
+  --grid-rows: fit-content;
+  --grid-item-width: 10rem;
+  --grid-justify-items: center;
   display: grid;
   grid-template-columns: repeat(var(--grid-cols), minmax(var(--grid-item-width), 1fr));
   grid-auto-rows: var(--grid-rows);

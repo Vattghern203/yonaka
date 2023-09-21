@@ -27,8 +27,6 @@ label:has( > input[type="file"]) {
 
 input {
 
-    &:where([type="date"], [type="file"], [type=""])
-
     &[type="file"] {
         visibility: hidden;
         width: 0;

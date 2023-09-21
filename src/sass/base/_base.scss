@@ -4,9 +4,8 @@ body {
 
     display: grid;
     place-items: center;
-    align-items: center;
     min-height: 100vh;
-    gap: var(--lg);
+    gap: var(--xs);
 
     background-color: var(--bg);
 
@@ -16,9 +15,9 @@ body {
     }
 
     & :where(section, div) {
-        --bg: var(--primary);
+        --bg: var(--secondary);
         background-color: var(--bg);
-        margin: var(--spacing);
+        margin-block: var(--spacing);
         padding: var(--spacing);
     }
 

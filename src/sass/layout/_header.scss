@@ -4,7 +4,7 @@ header {
     --height: 10vmin;
 
     min-width: var(--widht);
-    height: 10vmin;
+    height: var(--height);
     align-items: center;
     display: flex;
     justify-content: space-around;

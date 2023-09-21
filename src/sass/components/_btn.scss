@@ -1,15 +1,17 @@
 button {
 
+    --width: 16em;
     --spacing: var(--md) var(--hg);
     --roundness: .6vmin;
+    text-align: center;
 
-    width: 100%;
+    width: var(--width);
     cursor: pointer;
     text-transform: uppercase;
     border: none;
     padding: var(--spacing);
     border-radius: var(--roundness);
-    transition: background-color var(--transition);
+    transition: background-color, transform var(--transition);
 
     &.cta {
         --bg: var(--accent);
@@ -18,10 +20,14 @@ button {
 
         &:hover {
             background-color: color-mix(in oklab, var(--bg), white 20%);
+
+            transform: translateY(2%);
         }
 
         &:active {
             background-color: color-mix(in oklab, var(--bg), white 10%);
+
+            transform: translateY(8%);
         }
     }
 }

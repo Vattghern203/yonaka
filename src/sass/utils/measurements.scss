@@ -1,0 +1,23 @@
+@function generate-width-classes($prefix, $steps, $unit) {
+    $classes: ();
+    
+    @for $i from 1 through $steps {
+      $width: $i * 0.4rem; 
+      $class-name: #{$prefix}-#{$i};
+      $classes: append($classes, (
+        #{$class-name}: (
+          width: $width,
+        )
+      ));
+    }
+    
+    @return $classes;
+  }
+  
+  $width-classes: generate-width-classes('w', 20, 'rem');
+  
+  @each $class, $props in $width-classes {
+    .#{$class} {
+      width: $props['width'];
+    }
+}

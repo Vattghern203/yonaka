@@ -1,4 +1,5 @@
 nav {
+    --font-size: 1.75rem;
     --bg: auto;
     background-color: var(--bg);
     width: clamp(30vmin, 40rem, 45%);
@@ -17,8 +18,16 @@ nav {
             width: fit-content;
             height: fit-content;
 
+            a {
+                font-size: var(--font-size);
+            }
+
             &:hover a {
                 opacity: .8;
+            }
+
+            &:active {
+                opacity: .6;
             }
         }
     }

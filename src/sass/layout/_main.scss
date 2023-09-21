@@ -3,7 +3,7 @@ main {
     --height: auto;
     --spacing: var(--lg);
 
-    width: var(--width);
+    width: clamp(60%, 75%, var(--width));
     height: var(--height);
     padding: var(--md) var(--lg);
     border-radius: var(--roundness);
