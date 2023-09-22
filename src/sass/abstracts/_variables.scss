@@ -21,14 +21,17 @@
 
     // COLOR PALETTE ---------------------------------
 
-    --text: #e8e8ed;
-    --background: #09090c;
-    --primary: #47465d;
-    --secondary: #16161d;
-    --accent: #6f6e91;
 
-    --content-text: color-mix(in oklab, var(--text), #000 90%);
-    --muted-text: color-mix(in oklab, var(--text), #000 30%);
+    --text: #fdfdfc;
+    --background: #0a0905;
+    --primary: #374568;
+    --secondary: #14110b;
+    --accent: #51679a;
+
+    
+
+    --content-text: color-mix(in oklab, var(--text), #000 20%);
+    --muted-text: color-mix(in oklab, var(--text), #000 40%);
     --muted-secondary: color-mix(in oklab, var(--secondary), #FFF 30%);
 
     // BREAKPOINTS

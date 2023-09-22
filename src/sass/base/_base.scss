@@ -9,19 +9,19 @@ body {
 
     background-color: var(--bg);
 
-    & :where(nav, header, footer) {
+    & :where(nav, header, footer):not(.hero) {
         --bg: var(--secondary);
         background-color: var(--bg);
     }
 
-    & :where(section, div) {
+    & :where(main > section, div):not(.hero) {
         --bg: var(--secondary);
         background-color: var(--bg);
         margin-block: var(--spacing);
         padding: var(--spacing);
     }
 
-    & * :where(:not(h1)){
+    & * :where(:not(h1, p)){
         //--bg: var(--secondary);
         --txt: var(--text);
         color: var(--txt);

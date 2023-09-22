@@ -5,11 +5,11 @@ button {
     --roundness: .6vmin;
     text-align: center;
 
-    width: var(--width);
+    //width: var(--width);
     cursor: pointer;
     text-transform: uppercase;
     border: none;
-    padding: var(--spacing);
+    padding: var(--md) var(--hg);
     border-radius: var(--roundness);
     transition: background-color, transform var(--transition);
 
@@ -17,6 +17,7 @@ button {
         --bg: var(--accent);
 
         background-color: var(--bg);
+        border: .2rem var(--accent) solid;
 
         &:hover {
             background-color: color-mix(in oklab, var(--bg), white 20%);
@@ -28,6 +29,19 @@ button {
             background-color: color-mix(in oklab, var(--bg), white 10%);
 
             transform: translateY(8%);
+        }
+    }
+
+    &.ghost {
+        --bg: transparent;
+
+        background-color: var(--bg);
+        border: .2rem solid var(--accent);
+
+        transition: all .4s ease;
+
+        &:hover {
+            backdrop-filter: blur(.4rem);
         }
     }
 }
