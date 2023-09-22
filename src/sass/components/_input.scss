@@ -1,37 +1,128 @@
 input, label {
 
+    cursor: pointer;
     transition: background-color var(--transition);
 }
 
+// Label
 
 label {
-    cursor: pointer;
 
     --spacing-y: var(--xs);
     --spacing-x: var(--md);
-}
 
-label:has( > input[type="file"]) {
+    width: fit-content;
 
-    display: flex;
-    border: .1rem dashed var(--text);
-    width: 100%;
-    height: 20vh;
-    padding: var(--spacing-y) var(--spacing-x);
-    text-align: center;
+    &:has( > input[type="file"]) {
+    
+        font-weight: 600;
+        vertical-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: .1rem dashed var(--text);
+        width: 100%;
+        height: 20vh;
+        padding: var(--spacing-y) var(--spacing-x);
+        text-align: center;
+        transition: background-color .4s ease-in;
+    
+        &:hover {
+            background-color: var(--accent);
+        }
+    }
 
-    &:hover {
-        background-color: var(--accent);
+    &:has( > input[type="color"]) {
+        display: flex;
+        align-items: center;
     }
 }
 
+
 input {
+
+    --roundness: .24vmin;
+
+    &[type="color"],
+    &[type="date"] {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+
+    // File Input
 
     &[type="file"] {
         visibility: hidden;
         width: 0;
         height: 0;
     }
+
+    // Color Input
+
+    &[type="color"] {
+
+        --width: 2.4rem;
+
+        border: none;
+        width: var(--width);
+
+        border-radius: var(--roundness);
+        background-color: transparent;
+        overflow: hidden;
+        
+        &::-webkit-color-swatch {
+            border-radius: var(--roundness);
+            overflow: hidden;
+            border: none;
+        }
+
+        &:active::-webkit-color-swatch,  
+        &:focus::-webkit-color-swatch {
+            border: .1rem var(--text) solid;
+        }
+    }
+
+    // Date Input
+
+    &[type="date"] {
+        --bg: var(--primary);
+        --text-color: var(--text);
+
+        display: inline-flex;
+        align-items: center;
+        //justify-content: space-around;
+
+        text-align: center;
+        vertical-align: center;
+
+        background-color: var(--bg);
+        color: var(--text-color);
+
+        border: none;
+        padding: .8vmin;
+        border-radius: var(--roundness);
+
+        font-family: var(--font-family);
+        font-weight: 500;
+        letter-spacing: .2ch;
+
+        &::-webkit-calendar-picker-indicator {
+            background-color: var(--secondary);
+            padding: .6vmin .8vmin;
+            border-radius: var(--roundness);
+            align-self: center;
+            margin-top: 2.4%;
+            cursor: pointer;
+        }
+    }
+
+    &[type="radio"] {
+
+        scroll-padding-inline: round($number: 10);
+    }
+
 }
 
 

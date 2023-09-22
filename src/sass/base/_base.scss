@@ -21,7 +21,7 @@ body {
         padding: var(--spacing);
     }
 
-    & * :not(h1){
+    & * :where(:not(h1)){
         //--bg: var(--secondary);
         --txt: var(--text);
         color: var(--txt);

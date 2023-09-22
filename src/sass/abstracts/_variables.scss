@@ -27,8 +27,9 @@
     --secondary: #16161d;
     --accent: #6f6e91;
 
-    --muted-text: color-mix(in oklab, var(--text), black 70%) // Foreground Text
-    --muted-secondary: color-mix(in oklab, var(--secondary), black 70%)
+    --content-text: color-mix(in oklab, var(--text), #000 90%);
+    --muted-text: color-mix(in oklab, var(--text), #000 30%);
+    --muted-secondary: color-mix(in oklab, var(--secondary), #FFF 30%);
 
     // BREAKPOINTS
 

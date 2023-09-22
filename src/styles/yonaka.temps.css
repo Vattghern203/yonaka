@@ -12,14 +12,14 @@ html {
     --accent: #6e6e91;
   }
 }
-[data-theme=light] {
-  --text: #030217;
-  --background: #e9e8fd;
-  --primary: #47465d;
-  --secondary: #16161d;
-  --accent: #6e6e91;
-}
+/* [data-theme="light"] {
 
+    --text: #030217;
+    --background: #e9e8fd;
+    --primary: #47465d;
+    --secondary: #16161d;
+    --accent: #6e6e91;
+} */
 body {
   font-family: var(--font-family);
   font-weight: var(--font-weight);
@@ -56,9 +56,9 @@ h4, h5, h6 {
   --primary: #47465d;
   --secondary: #16161d;
   --accent: #6f6e91;
-  --muted-text: color-mix(in oklab, var(--text), black 70%) // Foreground Text
-  --muted-secondary: color-mix(in oklab, var(--secondary), black 70%)
-  // BREAKPOINTS
+  --content-text: color-mix(in oklab, var(--text), #000 90%);
+  --muted-text: color-mix(in oklab, var(--text), #000 30%);
+  --muted-secondary: color-mix(in oklab, var(--secondary), #FFF 30%);
   --bp-sm: 40em;
   --bp-md: 48em;
   --bp-lg: 64em;
@@ -98,7 +98,7 @@ body :where(section, div) {
   margin-block: var(--spacing);
   padding: var(--spacing);
 }
-body * :not(h1) {
+body * :where(:not(h1)) {
   --txt: var(--text);
   color: var(--txt);
   border-radius: var(--roundness);
@@ -204,31 +204,91 @@ dl dt:active, dl dt:focus {
 }
 
 input, label {
+  cursor: pointer;
   transition: background-color var(--transition);
 }
 
 label {
-  cursor: pointer;
   --spacing-y: var(--xs);
   --spacing-x: var(--md);
+  width: fit-content;
 }
-
 label:has(> input[type=file]) {
+  font-weight: 600;
+  vertical-align: center;
   display: flex;
+  align-items: center;
+  justify-content: center;
   border: 0.1rem dashed var(--text);
   width: 100%;
   height: 20vh;
   padding: var(--spacing-y) var(--spacing-x);
   text-align: center;
+  transition: background-color 0.4s ease-in;
 }
 label:has(> input[type=file]):hover {
   background-color: var(--accent);
 }
+label:has(> input[type=color]) {
+  display: flex;
+  align-items: center;
+}
 
+input {
+  --roundness: .24vmin;
+}
+input[type=color], input[type=date] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
 input[type=file] {
   visibility: hidden;
   width: 0;
   height: 0;
+}
+input[type=color] {
+  --width: 2.4rem;
+  border: none;
+  width: var(--width);
+  border-radius: var(--roundness);
+  background-color: transparent;
+  overflow: hidden;
+}
+input[type=color]::-webkit-color-swatch {
+  border-radius: var(--roundness);
+  overflow: hidden;
+  border: none;
+}
+input[type=color]:active::-webkit-color-swatch, input[type=color]:focus::-webkit-color-swatch {
+  border: 0.1rem var(--text) solid;
+}
+input[type=date] {
+  --bg: var(--primary);
+  --text-color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  vertical-align: center;
+  background-color: var(--bg);
+  color: var(--text-color);
+  border: none;
+  padding: 0.8vmin;
+  border-radius: var(--roundness);
+  font-family: var(--font-family);
+  font-weight: 500;
+  letter-spacing: 0.2ch;
+}
+input[type=date]::-webkit-calendar-picker-indicator {
+  background-color: var(--secondary);
+  padding: 0.6vmin 0.8vmin;
+  border-radius: var(--roundness);
+  align-self: center;
+  margin-top: 2.4%;
+  cursor: pointer;
+}
+input[type=radio] {
+  scroll-padding-inline: 10;
 }
 
 .logo {
@@ -304,6 +364,7 @@ nav ul li {
 }
 nav ul li a {
   font-size: var(--font-size);
+  font-weight: 600;
 }
 nav ul li:hover a {
   opacity: 0.8;
