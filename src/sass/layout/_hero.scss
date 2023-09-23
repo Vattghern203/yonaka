@@ -1,28 +1,33 @@
 .hero {
-
-    --width: 100%
-    --height: 100vh;
+    --bg-img-url: url(https://images.unsplash.com/photo-1528353518104-dbd48bee7bc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80);
+    --bg-img-size: cover;
+    --bg-img-repeat: no-repeat;
+    --bg-img-pos: center;
 
     display: grid;
     place-items: center;
     align-content: center;
-    width: 100%;
-    height: 100vh;
+    width: var(--w-full);
+    height: var(--h-screen);
     background-color: var(--background);
-    background-image: url(https://images.unsplash.com/photo-1682685797769-481b48222adf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: var(--bg-img-url);
+    background-size: var(--bg-img-size);
+    background-repeat: var(--bg-img-repeat);
+    background-position: var(--bg-img-pos);
     text-align: center;
-    margin: 0;
+
+    & h1, & p {
+
+        --font-size: 11.44rem;
+    }
 
     & h1 {
-        font-size: 11.44rem;
+        font-size: var(--font-size);
         color: var(--accent);
     }
 
     & p {
-        font-size: calc(12rem / 5);
+        font-size: calc(var(--font-size) / 5);
     }
 
     & button {

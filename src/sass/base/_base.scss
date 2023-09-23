@@ -1,4 +1,4 @@
-body {
+:where(body) {
     --bg: var(--background);
     --spacing: var(--md);
 
@@ -29,7 +29,7 @@ body {
     }
 }
 
-a:not([role="img"]) {
+:where(a:not([role="img"])) {
 
     --txt-color: var(--accent);
     width: fit-content;

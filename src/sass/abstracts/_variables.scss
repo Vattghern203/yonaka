@@ -1,4 +1,4 @@
-:root {
+:root, :where(html) {
     // GLOBAL SCOPED VARS
 
     --roundness: auto; // The border-radius to everything
@@ -43,7 +43,25 @@
 
     // SPACING BASE ---------------------------------
 
-    --spacing: .4rem;
+    --h-full: 100%;
+    --h-half: 50%;
+    --h-third: 33.3333%
+    --h-quarter: 25%;
+
+    --h-screen: 100vh;
+    --h-half-screen: 50vh;
+    --h-third-screen: 33.3333vh;
+    --h-quarter-screen: 25vh;
+
+    --w-full: 100%;
+    --w-half: 50%;
+    --w-third: 33.3333%
+    --w-quarter: 25%;
+
+    --w-screen: 100vw;
+    --w-half-screen: 50vw;
+    --w-third-screen: 33.3333vw;
+    --w-quarter-screen: 25vw;
 
     // GRID -----------------------------------------
 

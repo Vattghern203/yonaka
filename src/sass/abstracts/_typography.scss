@@ -1,10 +1,17 @@
-body {
+:where(body) {
+
+    --font-size: var(--md);
+
+    font-size: var(--font-size);
     font-family: var(--font-family);
     font-weight: var(--font-weight);
     line-height: var(--line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
 }
 
-h1 {
+:where(h1) {
     --text-color: var(--accent);
    
     color: var(--text-color);
@@ -20,4 +27,8 @@ p {
     --font-weight: 500;
     color: var(--text-color);
     font-weight: var(--font-weight);
+
+    &:not(:last-child) {
+        margin-bottom: var(--sm);
+    }
 }

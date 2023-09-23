@@ -36,6 +36,40 @@ label {
         display: flex;
         align-items: center;
     }
+
+    &:has(input[type="checkbox"][role="switch"]) {
+        width: 4.4em;
+        height: 2.4em;
+        border-radius: 100vmax;
+        background-color: var(--secondary);
+        border: .2rem solid var(--accent);
+        position: relative;
+    }
+    
+    input[type="checkbox"][role="switch"] {
+        visibility: hidden;
+    
+        &:checked::after { /* Added :checked pseudo-class */
+            transform: translateX(94%);
+        }
+
+        &:hover::after {
+            opacity: .8;
+        }
+    
+        &::after {
+            visibility: visible;
+            content: "";
+            display: block;
+            background-color: var(--muted-text);
+            aspect-ratio: 1 / 1;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+        }
+    }
+    
 }
 
 
@@ -118,10 +152,15 @@ input {
         }
     }
 
+    // Radio
+
     &[type="radio"] {
 
         scroll-padding-inline: round($number: 10);
     }
+
+    // Switch
+    
 
 }
 
