@@ -4,9 +4,20 @@ header {
 
     min-width: var(--widht);
     height: var(--height);
-    align-items: center;
+
     display: flex;
+    align-items: center;
     justify-content: space-around;
     gap: var(--spacing);
-    align-self: self-start;
+    align-self: flex-start;
+
+    a[role="img"], a:has(img.logo) {
+        display: flex;
+        align-items: center;
+    
+        & :is(img, svg) {
+            box-sizing: content-box;
+            border: var(--primary) .4rem solid;
+        }
+    }
 }

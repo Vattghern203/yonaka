@@ -36,63 +36,6 @@ label {
         display: flex;
         align-items: center;
     }
-
-    
-    // SWITCH -------------------------------------------------
-    
-    &:has(input[type="checkbox"][role="switch"]) {
-        width: 4.4em;
-        height: 2.4em;
-        border-radius: 100vmax;
-        border: .2rem solid var(--text);
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        transition: background-color 2s ease;
-    }
-    
-    &:has(input[role="switch"][type="checkbox"]:checked){
-        background-color: var(--primary);
-    }
-
-    input[type="checkbox"][role="switch"] {
-        visibility: hidden;
-    
-        &:checked::after {
-            transform: translateX(120%);
-            background-color: var(--accent);
-        }
-
-        &:hover::after {
-            opacity: .8;
-        }
-
-        &:disabled {
-            opacity: .6;
-            pointer-events: none;
-        }
-    
-        &::after {
-            content: "";
-            visibility: visible;
-            display: block;
-            background-color: var(--text);
-            aspect-ratio: 1 / 1;
-            height: 80%;
-            position: absolute;
-            top: 10%;
-            left: 5%;
-            border-radius: 50%;
-            transition: transform .24s ease-in, opacity .4s ease-out, background-color 2s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-    }
-
-    
-    input[type="checkbox"][role="switch"].squished {
-        hyphens: auto;
-    }
 }
 
 

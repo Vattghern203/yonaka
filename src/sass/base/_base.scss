@@ -1,10 +1,11 @@
-:where(body) {
+body {
     --bg: var(--background);
     --spacing: var(--md);
 
     display: grid;
     place-items: center;
     min-height: 100vh;
+    min-width: 750px;
     gap: var(--xs);
 
     background-color: var(--bg);

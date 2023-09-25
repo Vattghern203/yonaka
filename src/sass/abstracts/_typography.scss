@@ -1,5 +1,6 @@
-:where(body) {
+// DEFINE ALL FONT REALTED STUFF
 
+body {
     --font-size: var(--md);
 
     font-size: var(--font-size);
@@ -25,6 +26,7 @@ h4, h5, h6 {
 p {
     --text-color: var(--content-text);
     --font-weight: 500;
+
     color: var(--text-color);
     font-weight: var(--font-weight);
 

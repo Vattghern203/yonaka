@@ -20,7 +20,7 @@ html {
     --secondary: #16161d;
     --accent: #6e6e91;
 } */
-:where(body) {
+body {
   --font-size: var(--md);
   font-size: var(--font-size);
   font-family: var(--font-family);
@@ -109,26 +109,27 @@ p:not(:last-child) {
   --txt-color: inherit;
 }
 
-:where(body) {
+body {
   --bg: var(--background);
   --spacing: var(--md);
   display: grid;
   place-items: center;
   min-height: 100vh;
+  min-width: 750px;
   gap: var(--xs);
   background-color: var(--bg);
 }
-:where(body) :where(nav, header, footer):not(.hero) {
+body :where(nav, header, footer):not(.hero) {
   --bg: var(--secondary);
   background-color: var(--bg);
 }
-:where(body) :where(main > section, div):not(.hero) {
+body :where(main > section, div):not(.hero) {
   --bg: var(--secondary);
   background-color: var(--bg);
   margin-block: var(--spacing);
   padding: var(--spacing);
 }
-:where(body) * :where(:not(h1, p)) {
+body * :where(:not(h1, p)) {
   --txt: var(--text);
   color: var(--txt);
   border-radius: var(--roundness);
@@ -271,50 +272,6 @@ label:has(> input[type=color]) {
   display: flex;
   align-items: center;
 }
-label:has(input[type=checkbox][role=switch]) {
-  width: 4.4em;
-  height: 2.4em;
-  border-radius: 100vmax;
-  border: 0.2rem solid var(--text);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 2s ease;
-}
-label:has(input[role=switch][type=checkbox]:checked) {
-  background-color: var(--primary);
-}
-label input[type=checkbox][role=switch] {
-  visibility: hidden;
-}
-label input[type=checkbox][role=switch]:checked::after {
-  transform: translateX(120%);
-  background-color: var(--accent);
-}
-label input[type=checkbox][role=switch]:hover::after {
-  opacity: 0.8;
-}
-label input[type=checkbox][role=switch]:disabled {
-  opacity: 0.6;
-  pointer-events: none;
-}
-label input[type=checkbox][role=switch]::after {
-  content: "";
-  visibility: visible;
-  display: block;
-  background-color: var(--text);
-  aspect-ratio: 1/1;
-  height: 80%;
-  position: absolute;
-  top: 10%;
-  left: 5%;
-  border-radius: 50%;
-  transition: transform 0.24s ease-in, opacity 0.4s ease-out, background-color 2s cubic-bezier(0.19, 1, 0.22, 1);
-}
-label input[type=checkbox][role=switch].squished {
-  hyphens: auto;
-}
 
 input {
   --roundness: .24vmin;
@@ -374,13 +331,109 @@ input[type=radio] {
 }
 
 .logo {
-  --roundness: .4vmin;
+  --roundness: 50%;
   border-radius: var(--roundness);
   width: 8vmin;
   aspect-ratio: 1/1;
   object-fit: cover;
   object-position: center;
+}
+
+/* SWITCH COMPONENT */
+/* Default Styling */
+label:has(input[type=checkbox][role=switch], input[type=checkbox][role=switch]) {
+  --switch-w: 4.4em;
+  --switch-h: 2.4em;
+  --switch-round: 100vmax;
+  --switch-default-bg: var(--muted-secondary);
+  --switch-focus-outline: var();
+  --switch-color: var(--muted-secondary);
+  /* GLOBAL */
+  --spacing: var(--md);
   margin: var(--spacing);
+}
+
+/* Hiding it to achieve the toggle effect */
+input[type=checkbox][role=switch] {
+  opacity: 0;
+}
+
+/* Common styling between switches */
+label:has(input[type=checkbox][role=switch]) {
+  width: var(--switch-w);
+}
+
+/* Default Switch */
+label:has(input[type=checkbox][role=switch]:not(:is(.squished, .squared))) {
+  width: var(--switch-w);
+  height: var(--switch-h);
+  border-radius: var(--switch-round);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--muted-secondary);
+  transition: background-color 0.8s ease-in-out;
+}
+label:has(input[type=checkbox][role=switch]:not(:is(.squished, .squared)))::after {
+  content: "";
+  background-color: var(--text);
+  aspect-ratio: 1/1;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  border-radius: 50%;
+  transition: transform 0.24s ease-in, opacity 0.4s ease-out, background-color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+label:has(input[type=checkbox][role=switch]:focus) {
+  outline: var(--accent) 0.2rem solid;
+  outline-offset: 0.18rem;
+}
+
+/* Change Switch background when checked */
+label:has(input[role=switch][type=checkbox]:checked:not(:is(.squished, .squared))) {
+  background-color: var(--primary);
+}
+label:has(input[role=switch][type=checkbox]:checked:not(:is(.squished, .squared)))::after {
+  transform: translateX(100%);
+}
+
+/* SWITCH VARIATIONS */
+/* Squished Variation */
+label:has(input[type=checkbox][role=switch].squished) {
+  --switch-h: 1em;
+  height: var(--switch-h);
+  width: var(--switch-w);
+  border-radius: var(--switch-round);
+  background-color: var(--muted-secondary);
+  position: relative;
+}
+label:has(input[type=checkbox][role=switch].squished)::after {
+  content: "";
+  background-color: var(--text);
+  height: 160%;
+  aspect-ratio: 1/1;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  border-radius: inherit;
+  transition: transform 0.24s ease-in, opacity 0.4s ease-out, background-color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Change Switch background when checked */
+label:has(input[role=switch][type=checkbox].squished:checked) {
+  background-color: var(--primary);
+}
+label:has(input[role=switch][type=checkbox].squished:checked)::after {
+  transform: translate(175%, -50%);
+}
+
+/* Squared Variation */
+label:has(input[type=checkbox][role=switch].squared) {
+  /* Add specific styles for squared variation if needed */
 }
 
 footer {
@@ -407,11 +460,19 @@ header {
   --height: 10vmin;
   min-width: var(--widht);
   height: var(--height);
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: space-around;
   gap: var(--spacing);
-  align-self: self-start;
+  align-self: flex-start;
+}
+header a[role=img], header a:has(img.logo) {
+  display: flex;
+  align-items: center;
+}
+header a[role=img] :is(img, svg), header a:has(img.logo) :is(img, svg) {
+  box-sizing: content-box;
+  border: var(--primary) 0.4rem solid;
 }
 
 .hero {
