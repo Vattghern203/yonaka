@@ -109,5 +109,35 @@ label:has(input[role="switch"][type="checkbox"].squished:checked) {
 
 /* Squared Variation */
 label:has(input[type="checkbox"][role="switch"].squared) {
-    /* Add specific styles for squared variation if needed */
+    /* Add specific styles for squared variation */
+    width: var(--switch-w);
+    height: var(--switch-h);
+    border-radius: 0;
+    background-color: var(--muted-secondary);
+    position: relative;
+    //border: 0.2rem solid var(--text);
+
+    &::after {
+        content: "";
+        background-color: var(--text);
+        aspect-ratio: 1 / 1;
+        height: 80%;
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        border-radius: 0;
+        transition:
+            transform 0.24s ease-in,
+            opacity 0.4s ease-out,
+            background-color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+}
+
+/* Change Switch background when checked */
+label:has(input[role="switch"][type="checkbox"].squared:checked) {
+    background-color: var(--primary);
+
+    &::after {
+        transform: translateX(105%);
+    }
 }
