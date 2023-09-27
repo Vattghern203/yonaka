@@ -1,7 +1,7 @@
 {
   "name": "yonaka",
   "description": "A easy customizable css framework",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "dist/yonaka.css",
   "devDependencies": {
     "anymatch": "^3.1.3",
