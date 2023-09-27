@@ -38,7 +38,7 @@ button {
         background-color: var(--bg);
         border: .2rem solid var(--accent);
 
-        transition: all .4s ease;
+        transition: backdrop-filter .02s ease-in;
 
         &:hover {
             backdrop-filter: blur(.4rem);

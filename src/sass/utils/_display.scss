@@ -1,25 +1,32 @@
+.row, .col {
+    --spacing: var(--md);
+    --spacing-y: var(--sm);
+    --spacing-x: var(--md);
+}
+
 .row {
     display: flex;
     flex-direction: row;
+    gap: var(--spacing);
 }
 
 .col {
     display: flex;
     flex-direction: column;
+    gap: var(--spacing);
 }
 
 // GRID
 
-.grid {
-
-    //--spacing: 10rem;
+:where(.grid-dynamic, .grid-fixed) {
 
     --grid-cols: auto-fill;
-    --grid-rows: fit-content;
-    --grid-item-width: 10rem;
+    --grid-rows: min-content;
+    --grid-item-width: 24rem;
     --grid-justify-items: center;
+}
 
-
+.grid-dynamic {
     display: grid;
     grid-template-columns: repeat(var(--grid-cols), minmax(var(--grid-item-width), 1fr));
     grid-auto-rows: var(--grid-rows);
@@ -27,10 +34,39 @@
     justify-items: var(--grid-justify-items);
     place-content: var(--grid-justify-items);
     gap: var(--spacing);
+    height: auto;
+    width: 100%;
 
     & > * {
-        background-color: black;
+        --bg: var(--foreground-secondary);
+
+        background-color: var(--bg);
         align-self: stretch;
         width: 100%;
     }
+}
+
+.grid-fixed {
+
+    --grid-cols: 2;
+    --grid-rows: auto;
+
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols), minmax(var(--grid-item-width), 1fr));
+    grid-template-rows: var(--grid-rows);
+    place-items: center;
+    justify-items: center;
+    justify-content: space-between;
+    gap: var(--spacing);
+
+    & > * {
+        width: 100%;
+    }
+}
+
+// Wrapper
+
+:where(.wrapper) {
+    width: auto;
+    height: auto;
 }

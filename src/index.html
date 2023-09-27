@@ -55,17 +55,17 @@
             <p>A framework, I think LoL</p>
         </section>
 
-        <section class="grid">
-            <div>item 1</div>
-            <div>item 2</div>
-            <div>item 3</div>
-            <div>item 4</div>
-            <div>item 5</div>
-            <div>item 6</div>
-            <div>item 7</div>
-            <div>item 8</div>
-            <div>item 9</div>
-            <div>item 10</div>
+        <section class="grid-fixed">
+            <div style="--bg: var(--primary)">item 1</div>
+            <div style="--bg: var(--primary)">item 2</div>
+            <div style="--bg: var(--primary)">item 3</div>
+            <div style="--bg: var(--primary)">item 4</div>
+            <div style="--bg: var(--primary)">item 5</div>
+            <div style="--bg: var(--primary)">item 6</div>
+            <div style="--bg: var(--primary)">item 7</div>
+            <div style="--bg: var(--primary)">item 8</div>
+            <div style="--bg: var(--primary)">item 9</div>
+            <div style="--bg: var(--primary)">item 10</div>
         </section>
 
         <section id="components__section">
@@ -113,11 +113,21 @@
         <section class="col" id="forms">
             <h2>Forms</h2>
 
+            <input type="text" name="" id="">
+
+            <input type="number">
+
+            <input type="email" name="" id="">
+
+            <h3>File</h3>
+
             <label for="input__file">
                 Drag & Drop a file here
                 
                 <input type="file" name="" id="input__file">
             </label>
+
+            <h3>Color</h3>
 
             <label for="input__color">
 
@@ -171,12 +181,72 @@
 
         </section>
 
-        <section class="cl">
+        <section id="buttons">
+            <h2>Buttons</h2>
 
-            <button class="cta">teste</button>
+            <div class="col">
+                <button class="cta">Call to Action</button>
+                <button class="ghost">Ghost</button>
+            </div>
         </section>
 
-        <p>MUTED TEXT</p>
+        <section id="colors">
+
+            <h2>Cards</h2>
+
+            <div class="wrapper grid-dynamic">
+                <article style="--bg: var(--primary)">
+                    primary
+                </article>
+                <article style="--bg: var(--secondary); border: .2rem var(--accent) solid;">secondary </article>
+                <article style="--bg: var(--accent)">accent</article>
+                <article style="--bg: var(--text); color: black">text</article>
+                <article style="--bg: var(--foreground-text); color: black">foreground text</article>
+                <article style="--bg: var(--foreground-secondary)">foreground secondary </article>
+                <article style="--bg: var(--background)">background</article>
+                <article style="--bg: var(--foreground-accent)">foreground accent</article>
+            </div>
+        </section>
+
+        <section id="utilities">
+
+            <h2>Hierarquy</h2>
+
+            <div 
+                class="parent first-child-only"
+                style="--bg: var(--primary)"    
+            >
+
+                <h3>Parent</h3>
+
+                <div>
+
+                    <h4>First Son</h4>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quaerat, blanditiis quis officiis rem maiores itaque temporibus totam quisquam veritatis distinctio alias quod, laborum numquam deserunt harum eum tenetur hic!</p>
+
+                    <div class="bastard">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium architecto dolorum dolores animi amet quae adipisci perferendis exercitationem quia, vel quam, iure expedita libero velit esse nam laudantium, minus repudiandae!</p>
+                    </div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium architecto dolorum dolores animi amet quae adipisci perferendis exercitationem quia, vel quam, iure expedita libero velit esse nam laudantium, minus repudiandae!</p>
+                    </div>
+                    <div>
+                        <div>
+                            <h5>Grand Son</h5>
+
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eos, quam sapiente temporibus excepturi nemo architecto! Repellat vitae deserunt consectetur quisquam ea voluptate beatae doloribus amet sit recusandae, debitis voluptates!</p>
+
+                            <div>
+                                <h6>Grand Grand Son</h6>
+
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam repudiandae ut magnam officiis eum dolore quo dolor tenetur eos praesentium omnis, assumenda hic debitis modi quas. Aperiam voluptatibus voluptates tempora.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
@@ -185,7 +255,7 @@
     <footer>
         <nav>
             <ul>
-                <li><a href=""></a></li>
+                <li><a href="">github</a></li>
             </ul>
         </nav>
     </footer>

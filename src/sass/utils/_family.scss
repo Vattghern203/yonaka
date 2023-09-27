@@ -1,3 +1,52 @@
-.father {
-    
+// This code simulates a family hierarquy, where the father/parent shares his attributes accross the family tree
+
+// It aims to be a more flexible way to work with inheritance
+
+.parent {
+
+    --bg: currentColor;
+    --text-color: currentColor;
+    --spacing: var(--md);
+
+    background-color: --bg;
+
+    // All childs, no matter the nesting level
+
+    &.all-childs *:not(.bastard) {
+
+        background-color: inherit;
+    }
+
+    // All childs, but only the direct ones
+
+    &.direct-childs > *:not(.bastard) {
+
+        background-color: inherit;
+    }
+
+    // Only the first direct child
+
+    &.first-child-only > :first-child:not(.bastard) {
+
+        background-color: inherit;
+    }
+
+    // All the first childs, no matter the nesting level
+
+    &.all-first-childs :first-child:not(.bastard) {
+
+        background-color: inherit;
+    }
+
+    // All the last childs, no matter the nesting level
+
+    &.all-last-childs :last-child:not(.bastard) {
+
+        background-color: inherit;
+    }
+
+    &.last-child-only > :last-child:not(.bastard) {
+
+        background-color: inherit;
+    }
 }

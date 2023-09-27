@@ -16,7 +16,7 @@
     background-position: var(--bg-img-pos);
     text-align: center;
 
-    & h1, & p {
+    & :is(h1, p) {
 
         --font-size: 11.44rem;
     }

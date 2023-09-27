@@ -23,7 +23,7 @@ nav {
                 font-weight: 600;
             }
 
-            &:hover a {
+            &:is(:hover, :focus) a {
                 opacity: .8;
             }
 

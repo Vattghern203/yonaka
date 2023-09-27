@@ -5,21 +5,28 @@ body {
     display: grid;
     place-items: center;
     min-height: 100vh;
-    min-width: 750px;
+    //min-width: 750px;
     gap: var(--xs);
 
     background-color: var(--bg);
 
     & :where(nav, header, footer):not(.hero) {
-        --bg: var(--secondary);
+        --bg: var(--background);
         background-color: var(--bg);
     }
 
-    & :where(main > section, div):not(.hero) {
+    & :where(main > section, div):not(.hero, .wrapper) {
         --bg: var(--secondary);
         background-color: var(--bg);
         margin-block: var(--spacing);
         padding: var(--spacing);
+    }
+
+    & :where(main > section > div):not(.hero, .wrapper) {
+
+        --spacing: var(--md);
+
+        margin-block: var(--spacing);
     }
 
     & * :where(:not(h1, p)){

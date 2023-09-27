@@ -4,19 +4,18 @@ html {
 
 @media (prefers-color-scheme: light) {
     :root {
-        --text: #030217;
-        --background: #e9e8fd;
-        --primary: #47465d;
-        --secondary: #16161d;
-        --accent: #6e6e91;
+        --text: #060514; /* Changed to a dark color for better contrast with white */
+        --background: #ffffff; /* Changed to white */
+        --primary: #413e9f;
+        --secondary: #928fdb;
+        --accent: #716ed8;
     }
 }
 
-/* [data-theme="light"] {
-
-    --text: #030217;
-    --background: #e9e8fd;
-    --primary: #47465d;
-    --secondary: #16161d;
-    --accent: #6e6e91;
-} */
+:where([data-theme="light"]) {
+    --text: #060514; /* Changed to a dark color for better contrast with white */
+    --background: #ffffff; /* Changed to white */
+    --primary: #413e9f;
+    --secondary: #12103c;
+    --accent: #4f4bce;
+}

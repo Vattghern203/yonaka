@@ -8,6 +8,7 @@ footer {
     place-items: center;
     width: var(--width);
     height: var(--height);
+    border-top: .1rem solid var(--foreground-accent);
 
     & ul {
         display: flex;

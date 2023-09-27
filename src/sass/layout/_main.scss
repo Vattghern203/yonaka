@@ -2,10 +2,12 @@ main {
     --width: 90%;
     --height: auto;
     --spacing: var(--lg);
+    --bg: inherit;
 
     width: clamp(60%, 75%, var(--width));
     height: var(--height);
     padding: var(--md) var(--lg);
     border-radius: var(--roundness);
     margin-block: var(--spacing);
+    background-color: var(--bg);
 }

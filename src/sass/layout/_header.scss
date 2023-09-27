@@ -15,7 +15,7 @@ header {
         display: flex;
         align-items: center;
     
-        & :is(img, svg) {
+        & :is(img, svg, em) {
             box-sizing: content-box;
             border: var(--primary) .4rem solid;
         }

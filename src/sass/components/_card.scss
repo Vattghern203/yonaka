@@ -1,0 +1,24 @@
+// CARD Component
+
+article {
+
+    --aspect: 1.5 / 1.85;
+
+    --bg: var(--primary);
+
+    background-color: var(--bg);
+    
+    width: calc(2vmin + 15vw);
+    aspect-ratio: var(--aspect);
+    text-align: center;
+
+    display: grid;
+    place-items: center;
+
+    * > img:first-child {
+        align-self: self-start;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+    }
+}

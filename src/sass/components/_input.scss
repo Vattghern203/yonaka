@@ -40,14 +40,25 @@ label {
 
 
 input {
-
     --roundness: .24vmin;
+    --bg: var(--primary);
 
-    &[type="color"],
-    &[type="date"] {
+    border: .2rem solid var(--accent);
+    background-color: var(--bg);
+    border-radius: var(--roundness);
+    padding: var(--spacing);
+
+
+    & :is([type="color"], [type="date"], [type="radio"]) {
         -moz-appearance: none;
         -webkit-appearance: none;
         appearance: none;
+    }
+
+    // Radio Input
+
+    &[type="radio"] {
+        accent-color: var(--accent);
     }
 
 

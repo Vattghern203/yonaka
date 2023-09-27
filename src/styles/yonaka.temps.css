@@ -5,21 +5,21 @@ html {
 
 @media (prefers-color-scheme: light) {
   :root {
-    --text: #030217;
-    --background: #e9e8fd;
-    --primary: #47465d;
-    --secondary: #16161d;
-    --accent: #6e6e91;
+    --text: #060514; /* Changed to a dark color for better contrast with white */
+    --background: #ffffff; /* Changed to white */
+    --primary: #413e9f;
+    --secondary: #928fdb;
+    --accent: #716ed8;
   }
 }
-/* [data-theme="light"] {
+:where([data-theme=light]) {
+  --text: #060514; /* Changed to a dark color for better contrast with white */
+  --background: #ffffff; /* Changed to white */
+  --primary: #413e9f;
+  --secondary: #12103c;
+  --accent: #4f4bce;
+}
 
-    --text: #030217;
-    --background: #e9e8fd;
-    --primary: #47465d;
-    --secondary: #16161d;
-    --accent: #6e6e91;
-} */
 body {
   --font-size: var(--md);
   font-size: var(--font-size);
@@ -38,6 +38,7 @@ body {
 
 h1, h2, h3,
 h4, h5, h6 {
+  --spacing: var(--md);
   margin-bottom: var(--spacing);
 }
 
@@ -51,7 +52,7 @@ p:not(:last-child) {
   margin-bottom: var(--sm);
 }
 
-:root, :where(html) {
+:where(:root) {
   --roundness: auto;
   --spacing: .8rem;
   --spacing-y: auto;
@@ -66,14 +67,15 @@ p:not(:last-child) {
   --lg: 3.2rem;
   --xl: 6.4rem;
   --hg: 12.8rem;
-  --text: #fdfdfc;
-  --background: #0a0905;
-  --primary: #374568;
-  --secondary: #14110b;
-  --accent: #51679a;
+  --text: #e4e3f7;
+  --background: #060514;
+  --primary: #413E9F;
+  --secondary: #12103c;
+  --accent: #4f4bce;
   --content-text: color-mix(in oklab, var(--text), #000 20%);
-  --muted-text: color-mix(in oklab, var(--text), #000 40%);
-  --muted-secondary: color-mix(in oklab, var(--secondary), #FFF 30%);
+  --foreground-text: color-mix(in oklab, var(--text), #000 20%);
+  --foreground-secondary: color-mix(in oklab, var(--secondary), #FFF 30%);
+  --foreground-accent: color-mix(in oklab, var(--accent), #000 30%);
   --bp-sm: 40em;
   --bp-md: 48em;
   --bp-lg: 64em;
@@ -115,19 +117,22 @@ body {
   display: grid;
   place-items: center;
   min-height: 100vh;
-  min-width: 750px;
   gap: var(--xs);
   background-color: var(--bg);
 }
 body :where(nav, header, footer):not(.hero) {
-  --bg: var(--secondary);
+  --bg: var(--background);
   background-color: var(--bg);
 }
-body :where(main > section, div):not(.hero) {
+body :where(main > section, div):not(.hero, .wrapper) {
   --bg: var(--secondary);
   background-color: var(--bg);
   margin-block: var(--spacing);
   padding: var(--spacing);
+}
+body :where(main > section > div):not(.hero, .wrapper) {
+  --spacing: var(--md);
+  margin-block: var(--spacing);
 }
 body * :where(:not(h1, p)) {
   --txt: var(--text);
@@ -208,10 +213,27 @@ button.ghost {
   --bg: transparent;
   background-color: var(--bg);
   border: 0.2rem solid var(--accent);
-  transition: all 0.4s ease;
+  transition: backdrop-filter 0.02s ease-in;
 }
 button.ghost:hover {
   backdrop-filter: blur(0.4rem);
+}
+
+article {
+  --aspect: 1.5 / 1.85;
+  --bg: var(--primary);
+  background-color: var(--bg);
+  width: calc(2vmin + 15vw);
+  aspect-ratio: var(--aspect);
+  text-align: center;
+  display: grid;
+  place-items: center;
+}
+article * > img:first-child {
+  align-self: self-start;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 
 dl {
@@ -275,11 +297,19 @@ label:has(> input[type=color]) {
 
 input {
   --roundness: .24vmin;
+  --bg: var(--primary);
+  border: 0.2rem solid var(--accent);
+  background-color: var(--bg);
+  border-radius: var(--roundness);
+  padding: var(--spacing);
 }
-input[type=color], input[type=date] {
+input :is([type=color], [type=date], [type=radio]) {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+}
+input[type=radio] {
+  accent-color: var(--accent);
 }
 input[type=file] {
   visibility: hidden;
@@ -339,9 +369,14 @@ input[type=radio] {
   object-position: center;
 }
 
+video {
+  aspect-ratio: 16/9;
+}
+
 /* SWITCH COMPONENT */
 /* Default Styling */
-label:has(input[type=checkbox][role=switch], input[type=checkbox][role=switch]) {
+label:has(input[type=checkbox][role=switch],
+input[type=checkbox][role=switch]) {
   --switch-w: 4.4em;
   --switch-h: 2.4em;
   --switch-round: 100vmax;
@@ -372,7 +407,7 @@ label:has(input[type=checkbox][role=switch]:not(:is(.squished, .squared))) {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--muted-secondary);
+  background-color: var(--foreground-secondary);
   transition: background-color 0.8s ease-in-out;
 }
 label:has(input[type=checkbox][role=switch]:not(:is(.squished, .squared)))::after {
@@ -407,7 +442,7 @@ label:has(input[type=checkbox][role=switch].squished) {
   height: var(--switch-h);
   width: var(--switch-w);
   border-radius: var(--switch-round);
-  background-color: var(--muted-secondary);
+  background-color: var(--foreground-secondary);
   position: relative;
 }
 label:has(input[type=checkbox][role=switch].squished)::after {
@@ -437,7 +472,7 @@ label:has(input[type=checkbox][role=switch].squared) {
   width: var(--switch-w);
   height: var(--switch-h);
   border-radius: 0;
-  background-color: var(--muted-secondary);
+  background-color: var(--foreground-secondary);
   position: relative;
 }
 label:has(input[type=checkbox][role=switch].squared)::after {
@@ -469,6 +504,7 @@ footer {
   place-items: center;
   width: var(--width);
   height: var(--height);
+  border-top: 0.1rem solid var(--foreground-accent);
 }
 footer ul {
   display: flex;
@@ -494,7 +530,7 @@ header a[role=img], header a:has(img.logo) {
   display: flex;
   align-items: center;
 }
-header a[role=img] :is(img, svg), header a:has(img.logo) :is(img, svg) {
+header a[role=img] :is(img, svg, em), header a:has(img.logo) :is(img, svg, em) {
   box-sizing: content-box;
   border: var(--primary) 0.4rem solid;
 }
@@ -516,7 +552,7 @@ header a[role=img] :is(img, svg), header a:has(img.logo) :is(img, svg) {
   background-position: var(--bg-img-pos);
   text-align: center;
 }
-.hero h1, .hero p {
+.hero :is(h1, p) {
   --font-size: 11.44rem;
 }
 .hero h1 {
@@ -530,11 +566,13 @@ main {
   --width: 90%;
   --height: auto;
   --spacing: var(--lg);
+  --bg: inherit;
   width: clamp(60%, 75%, var(--width));
   height: var(--height);
   padding: var(--md) var(--lg);
   border-radius: var(--roundness);
   margin-block: var(--spacing);
+  background-color: var(--bg);
 }
 
 nav {
@@ -560,7 +598,7 @@ nav ul li a {
   font-size: var(--font-size);
   font-weight: 600;
 }
-nav ul li:hover a {
+nav ul li:is(:hover, :focus) a {
   opacity: 0.8;
 }
 nav ul li:active {
@@ -572,21 +610,32 @@ nav ul li:active {
  --primary: #47465d;
  --secondary: #16161d;
  --accent: #6f6e91; */
+.row, .col {
+  --spacing: var(--md);
+  --spacing-y: var(--sm);
+  --spacing-x: var(--md);
+}
+
 .row {
   display: flex;
   flex-direction: row;
+  gap: var(--spacing);
 }
 
 .col {
   display: flex;
   flex-direction: column;
+  gap: var(--spacing);
 }
 
-.grid {
+:where(.grid-dynamic, .grid-fixed) {
   --grid-cols: auto-fill;
-  --grid-rows: fit-content;
-  --grid-item-width: 10rem;
+  --grid-rows: min-content;
+  --grid-item-width: 24rem;
   --grid-justify-items: center;
+}
+
+.grid-dynamic {
   display: grid;
   grid-template-columns: repeat(var(--grid-cols), minmax(var(--grid-item-width), 1fr));
   grid-auto-rows: var(--grid-rows);
@@ -594,11 +643,59 @@ nav ul li:active {
   justify-items: var(--grid-justify-items);
   place-content: var(--grid-justify-items);
   gap: var(--spacing);
+  height: auto;
+  width: 100%;
 }
-.grid > * {
-  background-color: black;
+.grid-dynamic > * {
+  --bg: var(--foreground-secondary);
+  background-color: var(--bg);
   align-self: stretch;
   width: 100%;
+}
+
+.grid-fixed {
+  --grid-cols: 2;
+  --grid-rows: auto;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), minmax(var(--grid-item-width), 1fr));
+  grid-template-rows: var(--grid-rows);
+  place-items: center;
+  justify-items: center;
+  justify-content: space-between;
+  gap: var(--spacing);
+}
+.grid-fixed > * {
+  width: 100%;
+}
+
+:where(.wrapper) {
+  width: auto;
+  height: auto;
+}
+
+.parent {
+  --bg: currentColor;
+  --text-color: currentColor;
+  --spacing: var(--md);
+  background-color: --bg;
+}
+.parent.all-childs *:not(.bastard) {
+  background-color: inherit;
+}
+.parent.direct-childs > *:not(.bastard) {
+  background-color: inherit;
+}
+.parent.first-child-only > :first-child:not(.bastard) {
+  background-color: inherit;
+}
+.parent.all-first-childs :first-child:not(.bastard) {
+  background-color: inherit;
+}
+.parent.all-last-childs :last-child:not(.bastard) {
+  background-color: inherit;
+}
+.parent.last-child-only > :last-child:not(.bastard) {
+  background-color: inherit;
 }
 
 .text-align-center {

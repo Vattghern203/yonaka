@@ -1,4 +1,4 @@
-:root, :where(html) {
+:where(:root) {
     // GLOBAL SCOPED VARS
 
     --roundness: auto; // The border-radius to everything
@@ -21,18 +21,21 @@
 
     // COLOR PALETTE ---------------------------------
 
+    --text: #e4e3f7;
+    --background: #060514;
+    --primary: #413E9F;
+    --secondary: #12103c;
+    --accent: #4f4bce;
 
-    --text: #fdfdfc;
-    --background: #0a0905;
-    --primary: #374568;
-    --secondary: #14110b;
-    --accent: #51679a;
+    // Color created with the palette
 
     --content-text: color-mix(in oklab, var(--text), #000 20%);
-    --muted-text: color-mix(in oklab, var(--text), #000 40%);
-    --muted-secondary: color-mix(in oklab, var(--secondary), #FFF 30%);
 
-    // BREAKPOINTS
+    --foreground-text: color-mix(in oklab, var(--text), #000 20%);
+    --foreground-secondary: color-mix(in oklab, var(--secondary), #FFF 30%);
+    --foreground-accent: color-mix(in oklab, var(--accent), #000 30%);
+
+    // BREAKPOINTS ---------------------------------
 
     --bp-sm: 40em;
     --bp-md: 48em;
