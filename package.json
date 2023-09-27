@@ -31,7 +31,12 @@
   "scripts": {
     "build:css": "sass src/sass/main.scss dist/yonaka.css --style=compressed && postcss dist/yonaka.css --use autoprefixer -d dist",
     "watch:sass": "sass src/sass/main.scss src/styles/yonaka.temps.css -w",
-    "help": "sass --help"
+    "help": "sass --help",
+    "publish": "npm publish",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major",
+    "publish:patch": "npm run version:patch && publish"
   },
   "repository": {
     "type": "git",
