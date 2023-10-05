@@ -1,0 +1,22 @@
+// ACCORDION
+
+details {
+
+    --spacing: var(--md)
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing);
+
+    & summary {
+        width: 100%;
+
+        &::marker {
+            appearance: none;
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+        }
+    }
+}

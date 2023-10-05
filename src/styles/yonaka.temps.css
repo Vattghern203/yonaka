@@ -192,6 +192,23 @@ ol {
   list-style: none;
 }
 
+details {
+  --spacing: var(--md)
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing);
+}
+details summary {
+  width: 100%;
+}
+details summary::marker {
+  appearance: none;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
 button {
   --width: 16em;
   --spacing: var(--md) var(--lg);
@@ -252,34 +269,6 @@ article * > img:first-child {
   width: 100%;
   object-fit: cover;
   object-position: top;
-}
-
-dl {
-  --bg: var(--primary);
-  --spacing: var(--lg);
-  --width: 100%;
-  --height: fit-content;
-  --font-size: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: space-between;
-  width: var(--width);
-  height: var(--height);
-  gap: var(--spacing);
-  font-size: var(--font-size);
-}
-dl dt, dl dd {
-  padding: var(--spacing);
-  background-color: var(--bg);
-  width: var(--width);
-}
-dl dt:not([open]) + dd {
-  visibility: hidden;
-  display: none;
-}
-dl dt:active, dl dt:focus {
-  background-color: red;
 }
 
 input, label {

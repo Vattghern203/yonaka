@@ -30,9 +30,7 @@ button {
         border: .2rem var(--accent) solid;
 
         &:hover {
-            background-color: color-mix(in oklab, var(--bg), white 20%);
-
-            
+            background-color: color-mix(in oklab, var(--bg), white 20%); 
         }
 
         &:active {
