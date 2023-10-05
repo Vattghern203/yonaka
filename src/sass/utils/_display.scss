@@ -22,13 +22,18 @@
 
     --grid-cols: auto-fill;
     --grid-rows: min-content;
-    --grid-item-width: 24rem;
+    --grid-item-width: 12rem;
     --grid-justify-items: center;
+
+    --grid-min-cols: 1;
 }
 
 .grid-dynamic {
     display: grid;
-    grid-template-columns: repeat(var(--grid-cols), minmax(var(--grid-item-width), 1fr));
+    grid-template-columns: repeat(
+        var(--grid-cols), 
+        minmax(var(--grid-item-width), 1fr)
+    );
     grid-auto-rows: var(--grid-rows);
     justify-content: space-between;
     justify-items: var(--grid-justify-items);
@@ -52,16 +57,12 @@
     --grid-rows: auto;
 
     display: grid;
-    grid-template-columns: repeat(var(--grid-cols), minmax(var(--grid-item-width), 1fr));
+    grid-template-columns: repeat(
+        var(--grid-cols), minmax(var(--grid-item-width), 1fr)
+    );
     grid-template-rows: var(--grid-rows);
-    place-items: center;
-    justify-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: var(--spacing);
-
-    & > * {
-        width: 100%;
-    }
 }
 
 // Wrapper

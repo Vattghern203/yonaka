@@ -1,7 +1,7 @@
 button {
 
     --width: 16em;
-    --spacing: var(--md) var(--hg);
+    --spacing: var(--md) var(--lg);
     --roundness: .6vmin;
     text-align: center;
 
@@ -9,7 +9,7 @@ button {
     cursor: pointer;
     text-transform: uppercase;
     border: none;
-    padding: var(--md) var(--hg);
+    padding: var(--md) var(--lg);
     border-radius: var(--roundness);
     transition: background-color, transform var(--transition);
 

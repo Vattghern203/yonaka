@@ -38,7 +38,7 @@ body {
 
 h1, h2, h3,
 h4, h5, h6 {
-  --spacing: var(--md);
+  --spacing: var(--lg);
   margin-bottom: var(--spacing);
 }
 
@@ -49,7 +49,14 @@ p {
   font-weight: var(--font-weight);
 }
 p:not(:last-child) {
-  margin-bottom: var(--sm);
+  margin-bottom: var(--lg);
+}
+
+code {
+  --font-family: monospace;
+  --bg: var(--foreground-secondary)
+  font-family: var(--font-family);
+  background-color: var(--bg);
 }
 
 :where(:root) {
@@ -187,13 +194,13 @@ ol {
 
 button {
   --width: 16em;
-  --spacing: var(--md) var(--hg);
+  --spacing: var(--md) var(--lg);
   --roundness: .6vmin;
   text-align: center;
   cursor: pointer;
   text-transform: uppercase;
   border: none;
-  padding: var(--md) var(--hg);
+  padding: var(--md) var(--lg);
   border-radius: var(--roundness);
   transition: background-color, transform var(--transition);
 }
@@ -642,8 +649,9 @@ nav ul li:active {
 :where(.grid-dynamic, .grid-fixed) {
   --grid-cols: auto-fill;
   --grid-rows: min-content;
-  --grid-item-width: 24rem;
+  --grid-item-width: 12rem;
   --grid-justify-items: center;
+  --grid-min-cols: 1;
 }
 
 .grid-dynamic {
@@ -670,13 +678,8 @@ nav ul li:active {
   display: grid;
   grid-template-columns: repeat(var(--grid-cols), minmax(var(--grid-item-width), 1fr));
   grid-template-rows: var(--grid-rows);
-  place-items: center;
-  justify-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: var(--spacing);
-}
-.grid-fixed > * {
-  width: 100%;
 }
 
 :where(.wrapper) {

@@ -10,19 +10,24 @@
         background-color: var(--bg);
 
 
-    // Heritage variants
+    // Heritage Variants -----------------------------------------------------------
+
+    // Inherit colors
 
     &.colors {
         --bg: currentColor;
         --text-color: currentColor;
     }
 
+    // Inherit the the spacing vars
+
     &.sizes {
         --spacing: var(--spacing);
     }
 
-    &.font {
+    // Inherit the font variables
 
+    &.font {
         --font-size: var(--font-size);
         --text-color: var(--text-color);
     }
