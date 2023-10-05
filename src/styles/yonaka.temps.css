@@ -686,10 +686,11 @@ nav ul li:active {
 
 /* This code simulates a family hierarchy, where the father/parent shares his attributes across the family tree.
    It aims to be a more flexible way to work with inheritance. */
-.parent {
+:where(.parent) {
   --bg: currentColor;
   --text-color: currentColor;
   --spacing: var(--md);
+  --font-size: var(--font-size);
   background-color: var(--bg);
   /* All children, no matter the nesting level */
   /* All children, but only the direct ones */
@@ -700,28 +701,39 @@ nav ul li:active {
   /* Odd children */
   /* Even children */
 }
-.parent.all-childs *:not(.bastard) {
+:where(.parent).colors {
+  --bg: currentColor;
+  --text-color: currentColor;
+}
+:where(.parent).sizes {
+  --spacing: var(--spacing);
+}
+:where(.parent).font {
+  --font-size: var(--font-size);
+  --text-color: var(--text-color);
+}
+:where(.parent).all-childs *:not(.bastard) {
   background-color: inherit;
 }
-.parent.direct-childs > *:not(.bastard) {
+:where(.parent).direct-childs > *:not(.bastard) {
   background-color: inherit;
 }
-.parent.first-child-only > :first-child:not(.bastard) {
+:where(.parent).first-child-only > :first-child:not(.bastard) {
   background-color: inherit;
 }
-.parent.all-first-childs :first-child:not(.bastard) {
+:where(.parent).all-first-childs :first-child:not(.bastard) {
   background-color: inherit;
 }
-.parent.all-last-childs :last-child:not(.bastard) {
+:where(.parent).all-last-childs :last-child:not(.bastard) {
   background-color: inherit;
 }
-.parent.last-child-only > :last-child:not(.bastard) {
+:where(.parent).last-child-only > :last-child:not(.bastard) {
   background-color: inherit;
 }
-.parent.odd-children > *:nth-child(odd):not(.bastard) {
+:where(.parent).odd-children > *:nth-child(odd):not(.bastard) {
   background-color: inherit;
 }
-.parent.even-children > *:nth-child(even):not(.bastard) {
+:where(.parent).even-children > *:nth-child(even):not(.bastard) {
   background-color: inherit;
 }
 

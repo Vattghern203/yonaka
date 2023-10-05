@@ -1,16 +1,31 @@
 /* This code simulates a family hierarchy, where the father/parent shares his attributes across the family tree.
    It aims to be a more flexible way to work with inheritance. */
 
-   .parent {
+    :where(.parent) {
         --bg: currentColor;
         --text-color: currentColor;
         --spacing: var(--md);
+        --font-size: var(--font-size);
 
         background-color: var(--bg);
 
 
-    // Heritage
+    // Heritage variants
 
+    &.colors {
+        --bg: currentColor;
+        --text-color: currentColor;
+    }
+
+    &.sizes {
+        --spacing: var(--spacing);
+    }
+
+    &.font {
+
+        --font-size: var(--font-size);
+        --text-color: var(--text-color);
+    }
 
     /* All children, no matter the nesting level */
     &.all-childs *:not(.bastard) {
