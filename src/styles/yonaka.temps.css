@@ -72,6 +72,7 @@ p:not(:last-child) {
   --primary: #413E9F;
   --secondary: #12103c;
   --accent: #4f4bce;
+  --destructive: #772626;
   --content-text: color-mix(in oklab, var(--text), #000 20%);
   --foreground-text: color-mix(in oklab, var(--text), #000 20%);
   --foreground-secondary: color-mix(in oklab, var(--secondary), #FFF 30%);
@@ -196,6 +197,13 @@ button {
   border-radius: var(--roundness);
   transition: background-color, transform var(--transition);
 }
+button:hover:not(.disabled) {
+  transform: translateY(2%);
+}
+button:active:not(.disabled) {
+  transform: translateY(6%);
+  filter: brightness(115%);
+}
 button.cta {
   --bg: var(--accent);
   background-color: var(--bg);
@@ -203,20 +211,23 @@ button.cta {
 }
 button.cta:hover {
   background-color: color-mix(in oklab, var(--bg), white 20%);
-  transform: translateY(2%);
 }
 button.cta:active {
   background-color: color-mix(in oklab, var(--bg), white 10%);
-  transform: translateY(8%);
 }
 button.ghost {
   --bg: transparent;
   background-color: var(--bg);
   border: 0.2rem solid var(--accent);
-  transition: backdrop-filter 0.02s ease-in;
+  transition: transform var(--transition);
 }
-button.ghost:hover {
-  backdrop-filter: blur(0.4rem);
+button.destructive {
+  --bg: var(--destructive);
+  background-color: var(--bg);
+}
+button.disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
 }
 
 article {
@@ -673,11 +684,21 @@ nav ul li:active {
   height: auto;
 }
 
+/* This code simulates a family hierarchy, where the father/parent shares his attributes across the family tree.
+   It aims to be a more flexible way to work with inheritance. */
 .parent {
   --bg: currentColor;
   --text-color: currentColor;
   --spacing: var(--md);
-  background-color: --bg;
+  background-color: var(--bg);
+  /* All children, no matter the nesting level */
+  /* All children, but only the direct ones */
+  /* Only the first direct child */
+  /* All the first children, no matter the nesting level */
+  /* All the last children, no matter the nesting level */
+  /* Only the last direct child */
+  /* Odd children */
+  /* Even children */
 }
 .parent.all-childs *:not(.bastard) {
   background-color: inherit;
@@ -695,6 +716,12 @@ nav ul li:active {
   background-color: inherit;
 }
 .parent.last-child-only > :last-child:not(.bastard) {
+  background-color: inherit;
+}
+.parent.odd-children > *:nth-child(odd):not(.bastard) {
+  background-color: inherit;
+}
+.parent.even-children > *:nth-child(even):not(.bastard) {
   background-color: inherit;
 }
 

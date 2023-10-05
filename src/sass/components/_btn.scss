@@ -13,6 +13,16 @@ button {
     border-radius: var(--roundness);
     transition: background-color, transform var(--transition);
 
+    &:hover:not(.disabled) {
+        transform: translateY(2%);
+    }
+
+    &:active:not(.disabled) {
+        transform: translateY(6%);
+
+        filter: brightness(115%);
+    }
+
     &.cta {
         --bg: var(--accent);
 
@@ -22,13 +32,11 @@ button {
         &:hover {
             background-color: color-mix(in oklab, var(--bg), white 20%);
 
-            transform: translateY(2%);
+            
         }
 
         &:active {
             background-color: color-mix(in oklab, var(--bg), white 10%);
-
-            transform: translateY(8%);
         }
     }
 
@@ -38,10 +46,18 @@ button {
         background-color: var(--bg);
         border: .2rem solid var(--accent);
 
-        transition: backdrop-filter .02s ease-in;
+        transition: transform var(--transition);
+    }
 
-        &:hover {
-            backdrop-filter: blur(.4rem);
-        }
+    &.destructive {
+        --bg: var(--destructive);
+        
+        background-color: var(--bg);
+    }
+
+    &.disabled {
+        //pointer-events: none;
+        cursor: not-allowed;
+        opacity: .8;
     }
 }

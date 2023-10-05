@@ -29,6 +29,8 @@
 
     // Color created with the palette
 
+    --destructive: #772626;
+
     --content-text: color-mix(in oklab, var(--text), #000 20%);
 
     --foreground-text: color-mix(in oklab, var(--text), #000 20%);

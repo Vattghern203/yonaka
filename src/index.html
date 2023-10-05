@@ -1,264 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/yonaka.temps.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/yonaka.temps.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <header>
+      <a href="#" role="img" aria-label="">
+        <img
+          src="https://i.pinimg.com/474x/a5/66/b8/a566b87e4bcc24b33eda8bd41513f1a8.jpg"
+          alt="logo"
+          class="logo"
+        />
+      </a>
 
-        <a href="#" role="img" aria-label="">
-
-            <img 
-                src="https://i.pinimg.com/474x/a5/66/b8/a566b87e4bcc24b33eda8bd41513f1a8.jpg" 
-                alt="logo" 
-                class="logo"
-            >
-        </a>
-
-        <nav role="navigation">
-            <ul>
-                <li>
-                    <a href="#components__section">components</a>
-                </li>
-                <li>
-                    <a href="#">Examples</a>
-                </li>
-                <li>
-                    <a href="#">about</a>
-                </li>
-            </ul>
-        </nav>
+      <nav role="navigation">
+        <ul>
+          <li>
+            <a href="#components__section">components</a>
+          </li>
+          <li>
+            <a href="#">Examples</a>
+          </li>
+          <li>
+            <a href="#">about</a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
-    <div class="hero"> 
-        <h1>Yokana</h1>
-        <p>the best framework in the world</p>
+    <div class="hero">
+      <h1>Yokana</h1>
+      <p>the best framework in the world</p>
 
-        <section>
-            <button class="cta">Get Started</button>
-            <button class="ghost">Fuck me</button>
-        </section>
+      <section>
+        <button class="cta">Get Started</button>
+        <button class="ghost">Fuck me</button>
+      </section>
     </div>
 
     <main>
-        <h1>Welcome to Yokana</h1>
+      <h1>Welcome to Yokana</h1>
 
-        <section>
-            <h2>What is it?</h2>
+      <section>
+        <h2>What is it?</h2>
 
-            <p>A framework, I think LoL</p>
-        </section>
+        <p>A framework, I think LoL</p>
+      </section>
 
-        <section class="grid-fixed">
-            <div style="--bg: var(--primary)">item 1</div>
-            <div style="--bg: var(--primary)">item 2</div>
-            <div style="--bg: var(--primary)">item 3</div>
-            <div style="--bg: var(--primary)">item 4</div>
-            <div style="--bg: var(--primary)">item 5</div>
-            <div style="--bg: var(--primary)">item 6</div>
-            <div style="--bg: var(--primary)">item 7</div>
-            <div style="--bg: var(--primary)">item 8</div>
-            <div style="--bg: var(--primary)">item 9</div>
-            <div style="--bg: var(--primary)">item 10</div>
-        </section>
+      <section class="grid-fixed">
+        <div style="--bg: var(--primary)">item 1</div>
+        <div style="--bg: var(--primary)">item 2</div>
+        <div style="--bg: var(--primary)">item 3</div>
+        <div style="--bg: var(--primary)">item 4</div>
+        <div style="--bg: var(--primary)">item 5</div>
+        <div style="--bg: var(--primary)">item 6</div>
+        <div style="--bg: var(--primary)">item 7</div>
+        <div style="--bg: var(--primary)">item 8</div>
+        <div style="--bg: var(--primary)">item 9</div>
+        <div style="--bg: var(--primary)">item 10</div>
+      </section>
 
-        <section id="components__section">
-            <h2>Components</h2>
+      <section id="components__section">
+        <h2>Components</h2>
 
-            
-            <div style="display: flex;">
-                <details>
+        <div style="display: flex">
+          <details>
+            <summary>TEXT ONE</summary>
 
-                    <summary>TEXT ONE</summary>
-    
-                    <p>DEFINITION ONE</p>
+            <p>DEFINITION ONE</p>
+          </details>
 
-                </details>
+          <details>
+            <summary>TEXT ONE</summary>
 
-                <details>
+            <p>DEFINITION ONE</p>
+          </details>
+        </div>
 
-                    <summary>TEXT ONE</summary>
-    
-                    <p>DEFINITION ONE</p>
+        <dl>
+          <details role="" tabindex="0">
+            <summary>Name of</summary>
 
-                </details>
+            <dd>sex</dd>
+
+            <summary>oooo</summary>
+
+            <dd>dadada</dd>
+          </details>
+
+          <dt>Term 2</dt>
+          <dd>Definition 2</dd>
+
+          <dt>Term 3</dt>
+          <dd>Definition 3</dd>
+        </dl>
+      </section>
+
+      <section class="col" id="forms">
+        <h2>Forms</h2>
+
+        <input type="text" name="" id="" />
+
+        <input type="number" />
+
+        <input type="email" name="" id="" />
+
+        <h3>File</h3>
+
+        <label for="input__file">
+          Drag & Drop a file here
+
+          <input type="file" name="" id="input__file" />
+        </label>
+
+        <h3>Color</h3>
+
+        <label for="input__color">
+          Select a color
+
+          <input type="color" name="" id="input__color" value="white" />
+        </label>
+
+        <label for="input__color">
+          Select a date
+
+          <input type="date" name="" id="input__color" />
+        </label>
+
+        <label for="input__radio">
+          Pão?
+
+          <input type="radio" name="" id="" />
+        </label>
+
+        <label for="input__switch">
+          <input
+            type="checkbox"
+            id="input__switch"
+            role="switch"
+            aria-checked="false"
+          />
+        </label>
+
+        <label for="input__switch--squished">
+          <input
+            id="input__switch--squished"
+            class="squished"
+            type="checkbox"
+            role="switch"
+            aria-checked="false"
+          />
+        </label>
+
+        <label for="input__switch--squared">
+          <input
+            id="input__switch--squared"
+            class="squared"
+            type="checkbox"
+            role="switch"
+            aria-checked="false"
+          />
+        </label>
+      </section>
+
+      <section id="buttons">
+        <h2>Buttons</h2>
+
+        <div class="col">
+          <button class="cta">Call to Action</button>
+          <button class="ghost">Ghost</button>
+          <button class="disabled">Disabled</button>
+          <button class="destructive">Destructive</button>
+        </div>
+      </section>
+
+      <section id="colors">
+        <h2>Cards</h2>
+
+        <div class="wrapper grid-dynamic">
+          <article style="--bg: var(--primary)">primary</article>
+          <article
+            style="--bg: var(--secondary); border: 0.2rem var(--accent) solid"
+          >
+            secondary
+          </article>
+          <article style="--bg: var(--accent)">accent</article>
+          <article style="--bg: var(--text); color: black">text</article>
+          <article style="--bg: var(--foreground-text); color: black">
+            foreground text
+          </article>
+          <article style="--bg: var(--foreground-secondary)">
+            foreground secondary
+          </article>
+          <article style="--bg: var(--background)">background</article>
+          <article style="--bg: var(--foreground-accent)">
+            foreground accent
+          </article>
+        </div>
+      </section>
+
+      <section id="utilities">
+        <h2>Hierarquy</h2>
+
+        <div class="parent first-child-only" style="--bg: var(--primary)">
+          <h3>Parent</h3>
+
+          <div>
+            <h4>First Son</h4>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
+              quaerat, blanditiis quis officiis rem maiores itaque temporibus
+              totam quisquam veritatis distinctio alias quod, laborum numquam
+              deserunt harum eum tenetur hic!
+            </p>
+
+            <div class="bastard">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusantium architecto dolorum dolores animi amet quae adipisci
+                perferendis exercitationem quia, vel quam, iure expedita libero
+                velit esse nam laudantium, minus repudiandae!
+              </p>
             </div>
-
-            <dl>
-                <details role="" tabindex="0">
-                    <summary>Name of</summary>
-
-                    <dd>sex</dd>
-
-                    <summary>oooo</summary>
-
-                    <dd>dadada</dd>
-                </details>
-
-                <dt>Term 2</dt>
-                <dd>Definition 2</dd>
-
-                <dt>Term 3</dt>
-                <dd>Definition 3</dd>
-            </dl>
-            
-        </section>
-
-        <section class="col" id="forms">
-            <h2>Forms</h2>
-
-            <input type="text" name="" id="">
-
-            <input type="number">
-
-            <input type="email" name="" id="">
-
-            <h3>File</h3>
-
-            <label for="input__file">
-                Drag & Drop a file here
-                
-                <input type="file" name="" id="input__file">
-            </label>
-
-            <h3>Color</h3>
-
-            <label for="input__color">
-
-                Select a color
-
-                <input type="color" name="" id="input__color" value="white">
-            </label>
-
-            <label for="input__color">
-
-                Select a date
-
-                <input type="date" name="" id="input__color">
-            </label>
-
-            <label for="input__radio">
-
-                Pão?
-
-                <input type="radio" name="" id="">
-            </label>
-
-            <label for="input__switch">
-                <input 
-                    type="checkbox" 
-                    id="input__switch" 
-                    role="switch"
-                    aria-checked="false"
-                >
-            </label>
-
-            <label for="input__switch--squished">
-                <input 
-                    id="input__switch--squished" 
-                    class="squished" 
-                    type="checkbox"
-                    role="switch"
-                    aria-checked="false"
-                >
-            </label>
-
-            <label for="input__switch--squared">
-                <input 
-                    id="input__switch--squared" 
-                    class="squared" 
-                    type="checkbox"
-                    role="switch"
-                    aria-checked="false"
-                >
-            </label>
-
-        </section>
-
-        <section id="buttons">
-            <h2>Buttons</h2>
-
-            <div class="col">
-                <button class="cta">Call to Action</button>
-                <button class="ghost">Ghost</button>
+            <div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusantium architecto dolorum dolores animi amet quae adipisci
+                perferendis exercitationem quia, vel quam, iure expedita libero
+                velit esse nam laudantium, minus repudiandae!
+              </p>
             </div>
-        </section>
+            <div>
+              <div>
+                <h5>Grand Son</h5>
 
-        <section id="colors">
-
-            <h2>Cards</h2>
-
-            <div class="wrapper grid-dynamic">
-                <article style="--bg: var(--primary)">
-                    primary
-                </article>
-                <article style="--bg: var(--secondary); border: .2rem var(--accent) solid;">secondary </article>
-                <article style="--bg: var(--accent)">accent</article>
-                <article style="--bg: var(--text); color: black">text</article>
-                <article style="--bg: var(--foreground-text); color: black">foreground text</article>
-                <article style="--bg: var(--foreground-secondary)">foreground secondary </article>
-                <article style="--bg: var(--background)">background</article>
-                <article style="--bg: var(--foreground-accent)">foreground accent</article>
-            </div>
-        </section>
-
-        <section id="utilities">
-
-            <h2>Hierarquy</h2>
-
-            <div 
-                class="parent first-child-only"
-                style="--bg: var(--primary)"    
-            >
-
-                <h3>Parent</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Tenetur eos, quam sapiente temporibus excepturi nemo
+                  architecto! Repellat vitae deserunt consectetur quisquam ea
+                  voluptate beatae doloribus amet sit recusandae, debitis
+                  voluptates!
+                </p>
 
                 <div>
+                  <h6>Grand Grand Son</h6>
 
-                    <h4>First Son</h4>
-
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quaerat, blanditiis quis officiis rem maiores itaque temporibus totam quisquam veritatis distinctio alias quod, laborum numquam deserunt harum eum tenetur hic!</p>
-
-                    <div class="bastard">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium architecto dolorum dolores animi amet quae adipisci perferendis exercitationem quia, vel quam, iure expedita libero velit esse nam laudantium, minus repudiandae!</p>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium architecto dolorum dolores animi amet quae adipisci perferendis exercitationem quia, vel quam, iure expedita libero velit esse nam laudantium, minus repudiandae!</p>
-                    </div>
-                    <div>
-                        <div>
-                            <h5>Grand Son</h5>
-
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eos, quam sapiente temporibus excepturi nemo architecto! Repellat vitae deserunt consectetur quisquam ea voluptate beatae doloribus amet sit recusandae, debitis voluptates!</p>
-
-                            <div>
-                                <h6>Grand Grand Son</h6>
-
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam repudiandae ut magnam officiis eum dolore quo dolor tenetur eos praesentium omnis, assumenda hic debitis modi quas. Aperiam voluptatibus voluptates tempora.
-                            </div>
-                        </div>
-                    </div>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Veniam repudiandae ut magnam officiis eum dolore quo dolor
+                  tenetur eos praesentium omnis, assumenda hic debitis modi
+                  quas. Aperiam voluptatibus voluptates tempora.
                 </div>
+              </div>
             </div>
-        </section>
-
+          </div>
+        </div>
+      </section>
     </main>
 
-    <div test ></div>
+    <div test></div>
 
     <footer>
-        <nav>
-            <ul>
-                <li><a href="">github</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li><a href="https://github.com/Vattghern203/yonaka">github</a></li>
+        </ul>
+      </nav>
     </footer>
-</body>
-
+  </body>
 </html>
