@@ -81,7 +81,10 @@ code {
   --accent: #4f4bce;
   --destructive: #772626;
   --content-text: color-mix(in oklab, var(--text), #000 20%);
-  --foreground-text: color-mix(in oklab, var(--text), #000 20%);
+  --muted-text: color-mix(in oklab, var(--text), #000 35%);
+  --foreground-text: color-mix(in oklab, var(--text), #000 30%);
+  --foreground-primary: color-mix(in oklab, var(--primary), #000 25%);
+  --foreground-background: color-mix(in oklab, var(--background), #FFF 15%);
   --foreground-secondary: color-mix(in oklab, var(--secondary), #FFF 30%);
   --foreground-accent: color-mix(in oklab, var(--accent), #000 30%);
   --bp-sm: 40em;
@@ -199,6 +202,9 @@ details {
   align-items: center;
   gap: var(--spacing);
 }
+details::marker {
+  display: none;
+}
 details summary {
   width: 100%;
 }
@@ -207,6 +213,13 @@ details summary::marker {
   display: none;
   visibility: hidden;
   opacity: 0;
+}
+
+::marker {
+  appearance: none;
+  display: none;
+  visibility: hidden;
+  list-style-type: none;
 }
 
 button {

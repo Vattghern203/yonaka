@@ -9,6 +9,10 @@ details {
     align-items: center;
     gap: var(--spacing);
 
+    &::marker {
+        display: none;
+    }
+
     & summary {
         width: 100%;
 
@@ -19,4 +23,11 @@ details {
             opacity: 0;
         }
     }
+}
+
+::marker {
+    appearance: none;
+    display: none;
+    visibility: hidden;
+    list-style-type: none;
 }
