@@ -1,3 +1,10 @@
+// Form Related
+
+form:invalid button[type="submit"] {
+    pointer-events: none;
+    opacity: 60%;
+}
+
 input, label {
 
     cursor: pointer;
@@ -41,12 +48,20 @@ label {
 
 input {
     --roundness: .24vmin;
-    --bg: var(--primary);
+    --bg: var(--foreground-primary);
+    --font-size: 1.50rem;
 
+    font-size: var(--font-size);
     border: .2rem solid var(--accent);
     background-color: var(--bg);
     border-radius: var(--roundness);
     padding: var(--spacing);
+
+    &::placeholder {
+        --text-color: var(--muted-text);
+
+        color: var(--text-color);
+    }
 
 
     & :is([type="color"], [type="date"], [type="radio"]) {

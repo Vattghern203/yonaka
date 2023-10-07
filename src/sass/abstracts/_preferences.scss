@@ -9,13 +9,21 @@ html {
         --primary: #413e9f;
         --secondary: #928fdb;
         --accent: #716ed8;
+
+        --blend-text-color: #FFF;
+        --blend-back-color: #000;
+        --blend-highlight-color: #000;
     }
 }
 
-:where([data-theme="light"]) {
+[data-theme="light"] {
     --text: #060514; /* Changed to a dark color for better contrast with white */
     --background: #ffffff; /* Changed to white */
     --primary: #413e9f;
     --secondary: #12103c;
     --accent: #4f4bce;
+
+    --blend-text-color: #FFF;
+    --blend-back-color: #000;
+    --blend-highlight-color: #000;
 }

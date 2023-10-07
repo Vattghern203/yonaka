@@ -10,14 +10,20 @@ html {
     --primary: #413e9f;
     --secondary: #928fdb;
     --accent: #716ed8;
+    --blend-text-color: #FFF;
+    --blend-back-color: #000;
+    --blend-highlight-color: #000;
   }
 }
-:where([data-theme=light]) {
+[data-theme=light] {
   --text: #060514; /* Changed to a dark color for better contrast with white */
   --background: #ffffff; /* Changed to white */
   --primary: #413e9f;
   --secondary: #12103c;
   --accent: #4f4bce;
+  --blend-text-color: #FFF;
+  --blend-back-color: #000;
+  --blend-highlight-color: #000;
 }
 
 body {
@@ -59,6 +65,13 @@ code {
   background-color: var(--bg);
 }
 
+:is(h1, h2, h3, h4, h5, h6, p).muted {
+  color: var(--muted-text);
+}
+:is(h1, h2, h3, h4, h5, h6, p).foreground {
+  color: var(--foreground-text);
+}
+
 :where(:root) {
   --roundness: auto;
   --spacing: .8rem;
@@ -80,13 +93,17 @@ code {
   --secondary: #12103c;
   --accent: #4f4bce;
   --destructive: #772626;
-  --content-text: color-mix(in oklab, var(--text), #000 20%);
-  --muted-text: color-mix(in oklab, var(--text), #000 35%);
-  --foreground-text: color-mix(in oklab, var(--text), #000 30%);
-  --foreground-primary: color-mix(in oklab, var(--primary), #000 25%);
-  --foreground-background: color-mix(in oklab, var(--background), #FFF 15%);
-  --foreground-secondary: color-mix(in oklab, var(--secondary), #FFF 30%);
-  --foreground-accent: color-mix(in oklab, var(--accent), #000 30%);
+  --blend-text-color: #000;
+  --blend-back-color: #FFF;
+  --blend-highlight-color: #FFF;
+  --content-text: color-mix(in oklab, var(--text), var(--blend-text-color) 20%);
+  --muted-text: color-mix(in oklab, var(--text), var(--blend-text-color) 35%);
+  --foreground-text: color-mix(in oklab, var(--text), var(--blend-text-color) 35%);
+  --foreground-primary: color-mix(in oklab, var(--primary), var(--blend-text-color) 35%);
+  --foreground-background: color-mix(in oklab, var(--background), var(--blend-back-color) 15%);
+  --foreground-secondary: color-mix(in oklab, var(--secondary), var(--blend-back-color) 30%);
+  --foreground-accent: color-mix(in oklab, var(--accent), var(--blend-text-color) 35%);
+  --foreground-destructive: color-mix(in oklab, var(--destructive), var(--blend-back-color) 15%);
   --bp-sm: 40em;
   --bp-md: 48em;
   --bp-lg: 64em;
@@ -284,6 +301,11 @@ article * > img:first-child {
   object-position: top;
 }
 
+form:invalid button[type=submit] {
+  pointer-events: none;
+  opacity: 60%;
+}
+
 input, label {
   cursor: pointer;
   transition: background-color var(--transition);
@@ -317,11 +339,17 @@ label:has(> input[type=color]) {
 
 input {
   --roundness: .24vmin;
-  --bg: var(--primary);
+  --bg: var(--foreground-primary);
+  --font-size: 1.50rem;
+  font-size: var(--font-size);
   border: 0.2rem solid var(--accent);
   background-color: var(--bg);
   border-radius: var(--roundness);
   padding: var(--spacing);
+}
+input::placeholder {
+  --text-color: var(--muted-text);
+  color: var(--text-color);
 }
 input :is([type=color], [type=date], [type=radio]) {
   -moz-appearance: none;

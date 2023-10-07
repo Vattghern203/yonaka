@@ -33,21 +33,29 @@
 
     // Blend Colors
 
-    --content-text: color-mix(in oklab, var(--text), #000 20%);
+    --blend-text-color: #000;
+    --blend-back-color: #FFF;
+    --blend-highlight-color: #FFF;
+
+    // Content
+
+    --content-text: color-mix(in oklab, var(--text), var(--blend-text-color) 20%);
 
     // Foregrounds
 
-    --muted-text: color-mix(in oklab, var(--text), #000 35%);
+    --muted-text: color-mix(in oklab, var(--text), var(--blend-text-color) 35%);
 
-    --foreground-text: color-mix(in oklab, var(--text), #000 30%);
+    --foreground-text: color-mix(in oklab, var(--text), var(--blend-text-color) 35%);
 
-    --foreground-primary: color-mix(in oklab, var(--primary), #000 25%);
+    --foreground-primary: color-mix(in oklab, var(--primary), var(--blend-text-color) 35%);
 
-    --foreground-background: color-mix(in oklab, var(--background), #FFF 15%);
+    --foreground-background: color-mix(in oklab, var(--background), var(--blend-back-color) 15%);
 
-    --foreground-secondary: color-mix(in oklab, var(--secondary), #FFF 30%);
+    --foreground-secondary: color-mix(in oklab, var(--secondary), var(--blend-back-color) 30%);
 
-    --foreground-accent: color-mix(in oklab, var(--accent), #000 30%);
+    --foreground-accent: color-mix(in oklab, var(--accent), var(--blend-text-color) 35%);
+
+    --foreground-destructive: color-mix(in oklab, var(--destructive), var(--blend-back-color) 15%);
 
     // BREAKPOINTS ---------------------------------
 
