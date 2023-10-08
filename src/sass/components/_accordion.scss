@@ -2,32 +2,47 @@
 
 details {
 
-    --spacing: var(--md)
+    --bg: var(--primary);
+    --roundness: var(--xs);
+    --spacing: var(--md);
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: var(--spacing);
 
-    &::marker {
-        display: none;
+    summary {
+        background-color: var(--bg);
+        border-radius: var(--roundness);
+        padding: var(--spacing);
+
+        margin-bottom: var(--spacing);
+
+        &:is(:focus, :active) {
+
+            filter: brightness(150%);
+        }
+
+        transition: all .4s ease;
     }
 
-    & summary {
-        width: 100%;
-
-        &::marker {
-            appearance: none;
-            display: none;
-            visibility: hidden;
-            opacity: 0;
-        }
+    p {
+        --bg: var(--foreground-accent);
+        background-color: var(--bg);
+        padding: var(--spacing);
+        border-radius: var(--roundness);
     }
 }
 
-::marker {
-    appearance: none;
-    display: none;
-    visibility: hidden;
-    list-style-type: none;
+@keyframes margin-transition {
+    0% {
+
+        margin-bottom: 0;
+    }
+
+    100% {
+
+        margin-bottom: var(--spacing);
+    }
 }
