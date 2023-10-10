@@ -229,15 +229,18 @@ details summary {
   border-radius: var(--roundness);
   padding: var(--spacing);
   margin-bottom: var(--spacing);
-  transition: all 0.4s ease;
+  transition: all 0.4s ease, filter 0.145s ease-out;
 }
-details summary:is(:focus, :active, :hover) {
-  filter: brightness(150%);
+details summary:is(:focus, :hover) {
+  filter: brightness(125%);
   cursor: pointer;
 }
-details summary:is(:focus, :active) {
+details summary:focus {
   outline-offset: 0.15rem;
   outline: 0.2rem solid var(--accent);
+}
+details summary:active {
+  filter: brightness(150%);
 }
 details p {
   --bg: var(--foreground-accent);
@@ -317,26 +320,33 @@ article * > img:first-child {
   object-position: top;
 }
 
-form:invalid button[type=submit] {
+form.invalid button[type=submit] {
   pointer-events: none;
   opacity: 60%;
+}
+form.invalid input {
+  border: 0.2rem var(--destructive) solid;
 }
 
 input, label {
   cursor: pointer;
-  transition: background-color var(--transition);
+  transition: background-color var(--transition), filter var(--transition);
 }
 
 label {
   --spacing-y: var(--sm);
   --spacing-x: var(--md);
   width: fit-content;
+  display: flex;
+  gap: var(--spacing-y);
+  align-items: center;
 }
 label:has(> input[type=file]) {
   font-weight: 600;
   vertical-align: center;
   display: flex;
   align-items: center;
+  word-wrap: break-word;
   justify-content: center;
   border: 0.1rem dashed var(--text);
   width: 50%;
@@ -347,6 +357,9 @@ label:has(> input[type=file]) {
 }
 label:has(> input[type=file]):hover {
   background-color: var(--accent);
+}
+label:has(> input[type=file]):active {
+  filter: brightness(150%);
 }
 label:has(> input[type=color]) {
   display: flex;
@@ -413,11 +426,17 @@ input[type=date] {
   background-color: var(--bg);
   color: var(--text-color);
   border: none;
-  padding: 0.8vmin;
+  padding: 0.4vmin 0.8vmin;
   border-radius: var(--roundness);
   font-family: var(--font-family);
   font-weight: var(--font-weight);
   letter-spacing: 0.2ch;
+}
+input[type=date]:hover {
+  --bg: var(--accent);
+}
+input[type=date]:active {
+  filter: brightness(125%);
 }
 input[type=date]::-webkit-calendar-picker-indicator {
   background-color: var(--secondary);

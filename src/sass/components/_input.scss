@@ -1,8 +1,16 @@
 // Form Related -------------------------------------
 
-form:invalid button[type="submit"] {
-    pointer-events: none;
-    opacity: 60%;
+form.invalid {
+
+    button[type="submit"] {
+
+        pointer-events: none;
+        opacity: 60%;
+    }
+
+    input {
+        border: .2rem var(--destructive) solid;
+    }
 }
 
 // Input and Labels ----------------------------------
@@ -10,7 +18,7 @@ form:invalid button[type="submit"] {
 // Sets the default behavior
 input, label {
     cursor: pointer;
-    transition: background-color var(--transition);
+    transition: background-color var(--transition), filter var(--transition);
 }
 
 // Label -----------------------------------------------
@@ -22,6 +30,10 @@ label {
 
     width: fit-content;
 
+    display: flex;
+    gap: var(--spacing-y);
+    align-items: center;
+
     // Styles the label that has a input file as child
     &:has( > input[type="file"]) {
 
@@ -29,6 +41,7 @@ label {
         vertical-align: center;
         display: flex;
         align-items: center;
+        word-wrap: break-word;
         justify-content: center;
         border: .1rem dashed var(--text);
         width: 50%;
@@ -39,6 +52,10 @@ label {
     
         &:hover {
             background-color: var(--accent);
+        }
+
+        &:active {
+            filter: brightness(150%);
         }
     }
 
@@ -136,12 +153,20 @@ input {
         background-color: var(--bg);
         color: var(--text-color);
         border: none;
-        padding: .8vmin;
+        padding: .4vmin .8vmin;
         border-radius: var(--roundness);
 
         font-family: var(--font-family);
         font-weight: var(--font-weight);
         letter-spacing: .2ch;
+
+        &:hover {
+            --bg: var(--accent);
+        }
+
+        &:active {
+            filter: brightness(125%);
+        }
 
         &::-webkit-calendar-picker-indicator {
             background-color: var(--secondary);
@@ -161,6 +186,3 @@ input {
     }
 
 }
-
-
-

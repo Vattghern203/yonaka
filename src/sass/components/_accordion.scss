@@ -20,19 +20,23 @@ details {
 
         margin-bottom: var(--spacing);
 
-        &:is(:focus, :active, :hover) {
+        &:is(:focus, :hover) {
 
-            filter: brightness(150%);
+            filter: brightness(125%);
             cursor: pointer;
         }
 
-        &:is(:focus, :active) {
+        &:focus {
 
             outline-offset: .150rem;
             outline: .2rem solid var(--accent);
         }
 
-        transition: all .4s ease;
+        &:active {
+            filter: brightness(150%);
+        }
+
+        transition: all .4s ease, filter .145s ease-out;
     }
 
     p {
