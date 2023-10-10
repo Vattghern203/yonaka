@@ -9,6 +9,7 @@ input[type="checkbox"][role="switch"]) {
     --switch-default-bg: var(--muted-secondary);
     --switch-focus-outline: var();
     --switch-color: var(--muted-secondary);
+    --switch-slider-color: whitesmoke;
 
     /* GLOBAL */
     --spacing: var(--md);
@@ -41,7 +42,7 @@ label:has(input[type="checkbox"][role="switch"]:not(:is(.squished, .squared))) {
 
     &::after {
         content: "";
-        background-color: var(--text);
+        background-color: var(--switch-slider-color);
         aspect-ratio: 1 / 1;
         height: 80%;
         position: absolute;
@@ -84,7 +85,7 @@ label:has(input[type="checkbox"][role="switch"].squished) {
 
     &::after {
         content: "";
-        background-color: var(--text);
+        background-color: var(--switch-slider-color);
         height: 160%;
         aspect-ratio: 1 / 1;
         position: absolute;
@@ -120,7 +121,7 @@ label:has(input[type="checkbox"][role="switch"].squared) {
 
     &::after {
         content: "";
-        background-color: var(--text);
+        background-color: var(--switch-slider-color);
         aspect-ratio: 1 / 1;
         height: 80%;
         position: absolute;

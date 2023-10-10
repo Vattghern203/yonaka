@@ -139,30 +139,30 @@ code {
   --txt-color: inherit;
 }
 
-body {
+body, .app {
   --bg: var(--background);
   --spacing: var(--md);
   display: grid;
   place-items: center;
   min-height: 100vh;
-  gap: var(--xs);
+  gap: var(--md);
   background-color: var(--bg);
 }
-body :where(nav, header, footer):not(.hero) {
+body :where(nav, header, footer):not(.hero), .app :where(nav, header, footer):not(.hero) {
   --bg: var(--background);
   background-color: var(--bg);
 }
-body :where(main > section, div):not(.hero, .wrapper) {
+body :where(main > section, div):not(.hero, .wrapper), .app :where(main > section, div):not(.hero, .wrapper) {
   --bg: var(--secondary);
   background-color: var(--bg);
   margin-block: var(--spacing);
   padding: var(--spacing);
 }
-body :where(main > section > div):not(.hero, .wrapper) {
+body :where(main > section > div):not(.hero, .wrapper), .app :where(main > section > div):not(.hero, .wrapper) {
   --spacing: var(--md);
   margin-block: var(--spacing);
 }
-body * :where(:not(h1, p)) {
+body * :where(:not(h1, p)), .app * :where(:not(h1, p)) {
   --txt: var(--text);
   color: var(--txt);
   border-radius: var(--roundness);
@@ -173,7 +173,7 @@ body * :where(:not(h1, p)) {
   width: fit-content;
   height: fit-content;
 }
-:where(a:not([role=img])):visited, :where(a:not([role=img])):link {
+:where(a:not([role=img])):is(:visited, :link) {
   color: var(--txt-color);
 }
 
@@ -229,8 +229,13 @@ details summary {
   margin-bottom: var(--spacing);
   transition: all 0.4s ease;
 }
-details summary:is(:focus, :active) {
+details summary:is(:focus, :active, :hover) {
   filter: brightness(150%);
+  cursor: pointer;
+}
+details summary:is(:focus, :active) {
+  outline-offset: 0.15rem;
+  outline: 0.2rem solid var(--accent);
 }
 details p {
   --bg: var(--foreground-accent);
@@ -252,6 +257,7 @@ button {
   --spacing: var(--md) var(--lg);
   --roundness: .6vmin;
   text-align: center;
+  min-width: var(--widht);
   cursor: pointer;
   text-transform: uppercase;
   border: none;
@@ -346,9 +352,11 @@ label:has(> input[type=color]) {
 }
 
 input {
+  --spacing: var(--md);
   --roundness: .24vmin;
   --bg: var(--foreground-primary);
   --font-size: 1.50rem;
+  font-weight: 500;
   font-size: var(--font-size);
   border: 0.2rem solid var(--accent);
   background-color: var(--bg);
@@ -439,6 +447,7 @@ input[type=checkbox][role=switch]) {
   --switch-default-bg: var(--muted-secondary);
   --switch-focus-outline: var();
   --switch-color: var(--muted-secondary);
+  --switch-slider-color: whitesmoke;
   /* GLOBAL */
   --spacing: var(--md);
   margin: var(--spacing);
@@ -468,7 +477,7 @@ label:has(input[type=checkbox][role=switch]:not(:is(.squished, .squared))) {
 }
 label:has(input[type=checkbox][role=switch]:not(:is(.squished, .squared)))::after {
   content: "";
-  background-color: var(--text);
+  background-color: var(--switch-slider-color);
   aspect-ratio: 1/1;
   height: 80%;
   position: absolute;
@@ -503,7 +512,7 @@ label:has(input[type=checkbox][role=switch].squished) {
 }
 label:has(input[type=checkbox][role=switch].squished)::after {
   content: "";
-  background-color: var(--text);
+  background-color: var(--switch-slider-color);
   height: 160%;
   aspect-ratio: 1/1;
   position: absolute;
@@ -533,7 +542,7 @@ label:has(input[type=checkbox][role=switch].squared) {
 }
 label:has(input[type=checkbox][role=switch].squared)::after {
   content: "";
-  background-color: var(--text);
+  background-color: var(--switch-slider-color);
   aspect-ratio: 1/1;
   height: 80%;
   position: absolute;
@@ -666,12 +675,6 @@ nav ul li:active {
  --primary: #47465d;
  --secondary: #16161d;
  --accent: #6f6e91; */
-.row, .col {
-  --spacing: var(--md);
-  --spacing-y: var(--sm);
-  --spacing-x: var(--md);
-}
-
 .row {
   display: flex;
   flex-direction: row;

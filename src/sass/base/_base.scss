@@ -1,4 +1,4 @@
-body {
+body, .app {
     --bg: var(--background);
     --spacing: var(--md);
 
@@ -6,7 +6,7 @@ body {
     place-items: center;
     min-height: 100vh;
     //min-width: 750px;
-    gap: var(--xs);
+    gap: var(--md);
 
     background-color: var(--bg);
 
@@ -43,8 +43,7 @@ body {
     width: fit-content;
     height: fit-content;
 
-    &:visited,
-    &:link {
+    &:is(:visited, :link) {
         color: var(--txt-color);
     }
 }

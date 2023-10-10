@@ -6,7 +6,6 @@ form:invalid button[type="submit"] {
 }
 
 input, label {
-
     cursor: pointer;
     transition: background-color var(--transition);
 }
@@ -21,6 +20,7 @@ label {
     width: fit-content;
 
     &:has( > input[type="file"]) {
+
     
         font-weight: 600;
         vertical-align: center;
@@ -47,9 +47,12 @@ label {
 
 
 input {
+    --spacing: var(--md);
     --roundness: .24vmin;
     --bg: var(--foreground-primary);
     --font-size: 1.50rem;
+
+    font-weight: 500;
 
     font-size: var(--font-size);
     border: .2rem solid var(--accent);

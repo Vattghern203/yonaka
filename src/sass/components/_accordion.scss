@@ -13,15 +13,23 @@ details {
     gap: var(--spacing);
 
     summary {
+        
         background-color: var(--bg);
         border-radius: var(--roundness);
         padding: var(--spacing);
 
         margin-bottom: var(--spacing);
 
-        &:is(:focus, :active) {
+        &:is(:focus, :active, :hover) {
 
             filter: brightness(150%);
+            cursor: pointer;
+        }
+
+        &:is(:focus, :active) {
+
+            outline-offset: .150rem;
+            outline: .2rem solid var(--accent);
         }
 
         transition: all .4s ease;

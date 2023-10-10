@@ -5,7 +5,7 @@ button {
     --roundness: .6vmin;
     text-align: center;
 
-    //width: var(--width);
+    min-width: var(--widht);
     cursor: pointer;
     text-transform: uppercase;
     border: none;
