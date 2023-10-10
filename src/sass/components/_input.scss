@@ -1,35 +1,38 @@
-// Form Related
+// Form Related -------------------------------------
 
 form:invalid button[type="submit"] {
     pointer-events: none;
     opacity: 60%;
 }
 
+// Input and Labels ----------------------------------
+
+// Sets the default behavior
 input, label {
     cursor: pointer;
     transition: background-color var(--transition);
 }
 
-// Label
+// Label -----------------------------------------------
 
 label {
 
-    --spacing-y: var(--xs);
+    --spacing-y: var(--sm);
     --spacing-x: var(--md);
 
     width: fit-content;
 
+    // Styles the label that has a input file as child
     &:has( > input[type="file"]) {
 
-    
         font-weight: 600;
         vertical-align: center;
         display: flex;
         align-items: center;
         justify-content: center;
         border: .1rem dashed var(--text);
-        width: 100%;
-        height: 20vh;
+        width: 50%;
+        height: 20vmin;
         padding: var(--spacing-y) var(--spacing-x);
         text-align: center;
         transition: background-color .4s ease-in;
@@ -39,13 +42,14 @@ label {
         }
     }
 
+    // Styles a label that has a input color
     &:has( > input[type="color"]) {
         display: flex;
         align-items: center;
     }
 }
 
-
+// Styles the input itself
 input {
     --spacing: var(--md);
     --roundness: .24vmin;
@@ -59,6 +63,7 @@ input {
     background-color: var(--bg);
     border-radius: var(--roundness);
     padding: var(--spacing);
+    outline: none;
 
     &::placeholder {
         --text-color: var(--muted-text);
@@ -66,6 +71,7 @@ input {
         color: var(--text-color);
     }
 
+    // Removing Style from Selected Types
 
     & :is([type="color"], [type="date"], [type="radio"]) {
         -moz-appearance: none;
@@ -73,14 +79,13 @@ input {
         appearance: none;
     }
 
-    // Radio Input
+    // Radio Input -----------------------------------------------------
 
     &[type="radio"] {
         accent-color: var(--accent);
     }
 
-
-    // File Input
+    // File Input --------------------------------------------------------
 
     &[type="file"] {
         visibility: hidden;
@@ -88,29 +93,33 @@ input {
         height: 0;
     }
 
-    // Color Input
+    // Color Input --------------------------------------------------------
 
     &[type="color"] {
 
-        --width: 2.4rem;
+        --width: 2.4vmin;
 
+        padding: 0;
+        margin: 0;
         border: none;
+        overflow: hidden;
+        
+        aspect-ratio: 1 / 1;
+        
         width: var(--width);
-
         border-radius: var(--roundness);
         background-color: transparent;
-        overflow: hidden;
         
         &::-webkit-color-swatch {
             border-radius: var(--roundness);
-            overflow: hidden;
-            border: none;
+            border: .1rem var(--blend-back-color) solid;
         }
 
-        &:active::-webkit-color-swatch,  
-        &:focus::-webkit-color-swatch {
-            border: .1rem var(--text) solid;
+        &:is(:active, :focus)::-webkit-color-swatch {
+            border: .2rem var(--text) solid;
         }
+
+        transition: border .2s ease;
     }
 
     // Date Input
@@ -118,23 +127,20 @@ input {
     &[type="date"] {
         --bg: var(--primary);
         --text-color: var(--text);
+        --font-weight: 500;
 
         display: inline-flex;
         align-items: center;
-        //justify-content: space-around;
-
         text-align: center;
         vertical-align: center;
-
         background-color: var(--bg);
         color: var(--text-color);
-
         border: none;
         padding: .8vmin;
         border-radius: var(--roundness);
 
         font-family: var(--font-family);
-        font-weight: 500;
+        font-weight: var(--font-weight);
         letter-spacing: .2ch;
 
         &::-webkit-calendar-picker-indicator {
@@ -151,11 +157,8 @@ input {
 
     &[type="radio"] {
 
-        scroll-padding-inline: round($number: 10);
+        width: 200%;
     }
-
-    // Switch
-    
 
 }
 

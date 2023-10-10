@@ -16,7 +16,7 @@ html {
   }
 }
 [data-theme=light] {
-  --text: #060514; /* Changed to a dark color for better contrast with white */
+  --text: #302f35; /* Changed to a dark color for better contrast with white */
   --background: #ffffff; /* Changed to white */
   --primary: #413e9f;
   --secondary: #12103c;
@@ -130,6 +130,8 @@ code {
   --grid-justify-items: start;
   --padding: var(--sm);
   --roundness: var(--xs);
+  --round-full: 100%;
+  --round-peal: 100vmax;
   --font-family: system-ui, "Inter", "Roboto";
   --font-weight: 400;
   --font-size: 1.6rem;
@@ -326,7 +328,7 @@ input, label {
 }
 
 label {
-  --spacing-y: var(--xs);
+  --spacing-y: var(--sm);
   --spacing-x: var(--md);
   width: fit-content;
 }
@@ -337,8 +339,8 @@ label:has(> input[type=file]) {
   align-items: center;
   justify-content: center;
   border: 0.1rem dashed var(--text);
-  width: 100%;
-  height: 20vh;
+  width: 50%;
+  height: 20vmin;
   padding: var(--spacing-y) var(--spacing-x);
   text-align: center;
   transition: background-color 0.4s ease-in;
@@ -362,6 +364,7 @@ input {
   background-color: var(--bg);
   border-radius: var(--roundness);
   padding: var(--spacing);
+  outline: none;
 }
 input::placeholder {
   --text-color: var(--muted-text);
@@ -381,24 +384,28 @@ input[type=file] {
   height: 0;
 }
 input[type=color] {
-  --width: 2.4rem;
+  --width: 2.4vmin;
+  padding: 0;
+  margin: 0;
   border: none;
+  overflow: hidden;
+  aspect-ratio: 1/1;
   width: var(--width);
   border-radius: var(--roundness);
   background-color: transparent;
-  overflow: hidden;
+  transition: border 0.2s ease;
 }
 input[type=color]::-webkit-color-swatch {
   border-radius: var(--roundness);
-  overflow: hidden;
-  border: none;
+  border: 0.1rem var(--blend-back-color) solid;
 }
-input[type=color]:active::-webkit-color-swatch, input[type=color]:focus::-webkit-color-swatch {
-  border: 0.1rem var(--text) solid;
+input[type=color]:is(:active, :focus)::-webkit-color-swatch {
+  border: 0.2rem var(--text) solid;
 }
 input[type=date] {
   --bg: var(--primary);
   --text-color: var(--text);
+  --font-weight: 500;
   display: inline-flex;
   align-items: center;
   text-align: center;
@@ -409,7 +416,7 @@ input[type=date] {
   padding: 0.8vmin;
   border-radius: var(--roundness);
   font-family: var(--font-family);
-  font-weight: 500;
+  font-weight: var(--font-weight);
   letter-spacing: 0.2ch;
 }
 input[type=date]::-webkit-calendar-picker-indicator {
@@ -421,7 +428,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 input[type=radio] {
-  scroll-padding-inline: 10;
+  width: 200%;
 }
 
 .logo {
