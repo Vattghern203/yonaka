@@ -27,3 +27,13 @@ html {
     --blend-back-color: #000;
     --blend-highlight-color: #000;
 }
+
+[data-style="sharp"] {
+
+    --roundness: 0;
+}
+
+[data-style="modern"] {
+
+    --spacing: var(--lg);
+}

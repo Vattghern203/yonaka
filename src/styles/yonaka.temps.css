@@ -26,6 +26,14 @@ html {
   --blend-highlight-color: #000;
 }
 
+[data-style=sharp] {
+  --roundness: 0;
+}
+
+[data-style=modern] {
+  --spacing: var(--lg);
+}
+
 body {
   --font-size: var(--md);
   font-size: var(--font-size);
@@ -395,6 +403,7 @@ input[type=file] {
   visibility: hidden;
   width: 0;
   height: 0;
+  display: none;
 }
 input[type=color] {
   --width: 2.4vmin;
