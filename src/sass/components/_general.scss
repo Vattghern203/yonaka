@@ -1,4 +1,7 @@
 a.scroll-to-top {
+    display: grid;
+    place-items: center;
+    text-align: center;
     position: sticky;
     padding: var(--spacing);
     bottom: 0;
@@ -9,4 +12,26 @@ a.scroll-to-top {
     background-color: red;
     behavior: smooth;
     transform: translateY(200%);
+}
+
+div.hamburguer-icon {
+
+    width: 8vmin;
+    border-radius: 100vmax;
+    padding: .4vmin;
+    background-color: rebeccapurple;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    gap: .6vmin;
+    align-items: center;
+    justify-content: center;
+
+    span {
+        background-color: var(--background);
+        display: block;
+        width: 80%;
+        height: .6rem;
+        backface-visibility: hidden;
+    }
 }

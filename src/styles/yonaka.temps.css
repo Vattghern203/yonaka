@@ -174,17 +174,17 @@ body :where(nav, header, footer):not(.hero), .app :where(nav, header, footer):no
   --bg: var(--background);
   background-color: var(--bg);
 }
-body :where(main > section, div):not(.hero, .wrapper), .app :where(main > section, div):not(.hero, .wrapper) {
+body :where(main > section, div):not(.hero, .wrapper, .hamburguer-icon), .app :where(main > section, div):not(.hero, .wrapper, .hamburguer-icon) {
   --bg: var(--secondary);
   background-color: var(--bg);
   margin-block: var(--spacing);
   padding: var(--spacing);
 }
-body :where(main > section > div):not(.hero, .wrapper), .app :where(main > section > div):not(.hero, .wrapper) {
+body :where(main > section > div):not(.hero, .wrapper, .hamburguer-icon), .app :where(main > section > div):not(.hero, .wrapper, .hamburguer-icon) {
   --spacing: var(--md);
   margin-block: var(--spacing);
 }
-body * :where(:not(h1, p)), .app * :where(:not(h1, p)) {
+body * :where(:not(h1, p, span)), .app * :where(:not(h1, p, span)) {
   --txt: var(--text);
   color: var(--txt);
   border-radius: var(--roundness);
@@ -341,6 +341,9 @@ article * > img:first-child {
 }
 
 a.scroll-to-top {
+  display: grid;
+  place-items: center;
+  text-align: center;
   position: sticky;
   padding: var(--spacing);
   bottom: 0;
@@ -351,6 +354,26 @@ a.scroll-to-top {
   background-color: red;
   behavior: smooth;
   transform: translateY(200%);
+}
+
+div.hamburguer-icon {
+  width: 8vmin;
+  border-radius: 100vmax;
+  padding: 0.4vmin;
+  background-color: rebeccapurple;
+  aspect-ratio: 1/1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6vmin;
+  align-items: center;
+  justify-content: center;
+}
+div.hamburguer-icon span {
+  background-color: var(--background);
+  display: block;
+  width: 80%;
+  height: 0.6rem;
+  backface-visibility: hidden;
 }
 
 form.invalid button[type=submit] {

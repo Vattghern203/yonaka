@@ -15,21 +15,21 @@ body, .app {
         background-color: var(--bg);
     }
 
-    & :where(main > section, div):not(.hero, .wrapper) {
+    & :where(main > section, div):not(.hero, .wrapper, .hamburguer-icon) {
         --bg: var(--secondary);
         background-color: var(--bg);
         margin-block: var(--spacing);
         padding: var(--spacing);
     }
 
-    & :where(main > section > div):not(.hero, .wrapper) {
+    & :where(main > section > div):not(.hero, .wrapper, .hamburguer-icon) {
 
         --spacing: var(--md);
 
         margin-block: var(--spacing);
     }
 
-    & * :where(:not(h1, p)){
+    & * :where(:not(h1, p, span)){
         //--bg: var(--secondary);
         --txt: var(--text);
         color: var(--txt);
