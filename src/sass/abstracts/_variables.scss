@@ -113,7 +113,11 @@
 
     // ANIMATION ---------------------------------
 
-    --transition: .4s ease;
+    --transition: var(--transition--duration, .2s) var(--transition--timing, ease-in);
+
+    --transition--duration: .4s;
+    --transition--timing: ease;
+    --transition--props: all;
 
     // GENERAL -----------------------------------
 
@@ -121,4 +125,18 @@
     --txt-color: inherit;
 
     // FAMILY VARS
+}
+
+// GRADIENTS ----------------------------------------
+
+.gradient {
+    --gradient-from: var(--secondary);
+    --gradient-to: var(--accent);
+    --from-percentage: 0%;
+    --to-percentage: 0%;
+    --gradient-direction: to left;
+
+    background-image: linear-gradient(
+        var(--gradient-direction), var(--gradient-from) var(--gradient-to)
+    );
 }

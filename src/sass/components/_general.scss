@@ -1,0 +1,12 @@
+a.scroll-to-top {
+    position: sticky;
+    padding: var(--spacing);
+    bottom: 0;
+    left: 90%;
+    width: 5%;
+    z-index: 20;
+    aspect-ratio: 1 / 1;
+    background-color: red;
+    behavior: smooth;
+    transform: translateY(200%);
+}
