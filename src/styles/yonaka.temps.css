@@ -199,6 +199,13 @@ body * :where(:not(h1, p, span)), .app * :where(:not(h1, p, span)) {
   color: var(--txt-color);
 }
 
+:where(form) {
+  display: grid;
+  place-items: center;
+  justify-items: stretch;
+  gap: var(--spacing);
+}
+
 *,
 *::before,
 *::after {
@@ -376,12 +383,13 @@ div.hamburguer-icon span {
   backface-visibility: hidden;
 }
 
-form.invalid button[type=submit] {
+form:invalid button[type=submit] {
   pointer-events: none;
   opacity: 60%;
 }
-form.invalid input {
+form:invalid input:invalid {
   border: 0.2rem var(--destructive) solid;
+  transition: border-color var(--transition);
 }
 
 input, label {
@@ -429,11 +437,15 @@ input {
   --font-size: 1.50rem;
   font-weight: 500;
   font-size: var(--font-size);
-  border: 0.2rem solid var(--accent);
+  border: 0.2rem solid var(--foreground-accent);
   background-color: var(--bg);
   border-radius: var(--roundness);
   padding: var(--spacing);
   outline: none;
+  transition: all var(--transition);
+}
+input:focus {
+  border-color: var(--accent);
 }
 input::placeholder {
   --text-color: var(--muted-text);
@@ -765,16 +777,18 @@ nav ul li:active {
  --primary: #47465d;
  --secondary: #16161d;
  --accent: #6f6e91; */
-.row {
+:where(.row, .col) {
+  --flex-spacing: 0;
   display: flex;
+  gap: var(--flex-spacing);
+}
+
+.row {
   flex-direction: row;
-  gap: var(--spacing);
 }
 
 .col {
-  display: flex;
   flex-direction: column;
-  gap: var(--spacing);
 }
 
 :where(.grid-dynamic, .grid-fixed) {

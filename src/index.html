@@ -1,95 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/yonaka.temps.css" />
-    <title>Akatsuki V2</title>
-  </head>
 
-  <body>
-    <header class="header-sticky">
-      <a href="#" role="img" aria-label="">
-        <img
-          src="https://i.pinimg.com/474x/a5/66/b8/a566b87e4bcc24b33eda8bd41513f1a8.jpg"
-          alt="logo"
-          class="logo"
-        />
-      </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/yonaka.temps.css" />
+  <title>Akatsuki V2</title>
+</head>
 
-      <nav role="navigation">
-        <ul>
-          <li>
-            <a href="#components__section">components</a>
-          </li>
-          <li>
-            <a href="#">Examples</a>
-          </li>
-          <li>
-            <a href="#">about</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+<body>
+  <header class="header-sticky">
+    <a href="#" role="img" aria-label="">
+      <img src="https://i.pinimg.com/474x/a5/66/b8/a566b87e4bcc24b33eda8bd41513f1a8.jpg" alt="logo" class="logo" />
+    </a>
 
-    <div class="hero">
-      <h1>Yokana</h1>
-      <p>the best framework in the world</p>
+    <nav role="navigation">
+      <ul>
+        <li>
+          <a href="#components__section">components</a>
+        </li>
+        <li>
+          <a href="#">Examples</a>
+        </li>
+        <li>
+          <a href="#">about</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-      <section>
-        <button class="cta">Get Started</button>
-        <button class="ghost">Fuck me</button>
-      </section>
-    </div>
+  <div class="hero">
+    <h1>Yokana</h1>
+    <p>the best framework in the world</p>
 
-    <main>
-      <h1>Welcome to Yokana</h1>
+    <section>
+      <button class="cta">Get Started</button>
+      <button class="ghost">Fuck me</button>
+    </section>
+  </div>
 
-      <section>
-        <h2>What is it?</h2>
+  <main>
+    <h1>Welcome to Yokana</h1>
 
-        <p>A framework, I think LoL</p>
-      </section>
+    <section>
+      <h2>What is it?</h2>
 
-      <section class="grid-fixed">
-        <div style="--bg: var(--primary)">item 1</div>
-        <div style="--bg: var(--primary)">item 2</div>
-        <div style="--bg: var(--primary)">item 3</div>
-        <div style="--bg: var(--primary)">item 4</div>
-        <div style="--bg: var(--primary)">item 5</div>
-        <div style="--bg: var(--primary)">item 6</div>
-        <div style="--bg: var(--primary)">item 7</div>
-        <div style="--bg: var(--primary)">item 8</div>
-        <div style="--bg: var(--primary)">item 9</div>
-        <div style="--bg: var(--primary)">item 10</div>
-      </section>
+      <p>A framework, I think LoL</p>
+    </section>
 
-      <section id="components__section">
-        <h2>Components</h2>
+    <section class="grid-fixed">
+      <div style="--bg: var(--primary)">item 1</div>
+      <div style="--bg: var(--primary)">item 2</div>
+      <div style="--bg: var(--primary)">item 3</div>
+      <div style="--bg: var(--primary)">item 4</div>
+      <div style="--bg: var(--primary)">item 5</div>
+      <div style="--bg: var(--primary)">item 6</div>
+      <div style="--bg: var(--primary)">item 7</div>
+      <div style="--bg: var(--primary)">item 8</div>
+      <div style="--bg: var(--primary)">item 9</div>
+      <div style="--bg: var(--primary)">item 10</div>
+    </section>
 
-        <p>I've built some components, the structure must follow as you can see below. They use semantic tags, ARIA and some classes to stylinhg</p>
+    <section id="components__section">
+      <h2>Components</h2>
 
-          <details role="" tabindex="0">
-            <summary role="button">Name of</summary>
+      <p>I've built some components, the structure must follow as you can see below. They use semantic tags, ARIA and
+        some classes to stylinhg</p>
 
-            <p>test</p>
-          </details> x
-      </section>
+      <details role="" tabindex="0">
+        <summary role="button">Name of</summary>
 
-      <section class="col" id="forms">
-        <h2>Forms</h2>
+        <p>test</p>
+      </details> x
+    </section>
 
-        <input type="text" name="" id="" placeholder="Text..." />
+    <section class="col" id="forms">
+      <h2>Forms</h2>
 
-        <input type="number"  placeholder="Number..."/>
+      <p>In the forms section, the form has 2 states: valid or invalid. With that in mind, I developed a "return to user" with the colors, being the destructive a signal of something is wrong.</p>
 
-        <input type="email" name="" id="" placeholder="Email..."/>
+      <p>To achieve this, you only need to create a input inside the <code>form</code> tag and put some <code>required</code> or any demand on it.</p>
+
+      <p>As you can see below, everything that is not ok will be red bordered and the submit button is gonna look like is disabled.</p>
+
+      <form action="#">
+        <input type="text" name="" id="" placeholder="Text..." required />
+
+        <input type="number" placeholder="Number..." />
+
+        <input type="email" name="" id="" placeholder="Email..." />
 
         <h3>File</h3>
 
         <label for="input__file">
           Drag & Drop a file here
-
           <input type="file" name="" id="input__file" />
         </label>
 
@@ -97,196 +101,183 @@
 
         <label for="input__color">
           Select a color
-
           <input type="color" name="" id="input__color" value="white" />
         </label>
 
         <label for="input__date">
           Select a date
-
           <input type="date" name="" id="input__date" />
         </label>
 
         <label for="input__radio">
           Pão?
-
           <input type="radio" name="" id="" />
         </label>
 
         <label for="input__switch">
-          <input
-            type="checkbox"
-            id="input__switch"
-            role="switch"
-            aria-checked="false"
-          />
+          <input type="checkbox" id="input__switch" role="switch" aria-checked="false" />
         </label>
 
         <label for="input__switch--squished">
-          <input
-            id="input__switch--squished"
-            class="squished"
-            type="checkbox"
-            role="switch"
-            aria-checked="false"
-          />
+          <input id="input__switch--squished" class="squished" type="checkbox" role="switch" aria-checked="false" />
         </label>
 
         <label for="input__switch--squared">
-          <input
-            id="input__switch--squared"
-            class="squared"
-            type="checkbox"
-            role="switch"
-            aria-checked="false"
-          />
+          <input id="input__switch--squared" class="squared" type="checkbox" role="switch" aria-checked="false" />
         </label>
-      </section>
 
-      <section id="buttons">
-        <h2>Buttons</h2>
+        <button type="submit">Submit</button>
 
-        <div class="col">
-          <button class="cta">Call to Action</button>
-          <button class="ghost">Ghost</button>
-          <button class="disabled">Disabled</button>
-          <button class="destructive">Destructive</button>
-        </div>
-      </section>
+      </form>
+    </section>
 
-      <section id="colors">
-        <h2>Cards</h2>
+    <section id="buttons">
+      <h2>Buttons</h2>
 
-        <p>With the palette provided, I've created these colors to complement the basic needs in a website.</p>
+      <div class="col" style="--flex-spacing: var(--spacing)">
+        <button class="cta">Call to Action</button>
+        <button class="ghost">Ghost</button>
+        <button class="disabled">Disabled</button>
+        <button class="destructive">Destructive</button>
+      </div>
+    </section>
 
-        <div class="wrapper grid-dynamic">
-          <article style="--bg: var(--primary)">primary</article>
-          <article
-            style="--bg: var(--secondary); border: 0.2rem var(--accent) solid"
-          >
-            secondary
-          </article>
+    <section id="colors">
+      <h2>Cards</h2>
 
-          <article style="--bg: var(--accent)">accent</article>
+      <p>With the palette provided, I've created these colors to complement the basic needs in a website.</p>
 
-          <article style="--bg: var(--text); color: black">text</article>
+      <div class="wrapper grid-dynamic">
+        <article style="--bg: var(--primary)">primary</article>
+        <article style="--bg: var(--secondary); border: 0.2rem var(--accent) solid">
+          secondary
+        </article>
 
-          <article style="--bg: var(--foreground-text); color: black">
-            foreground text
-          </article>
+        <article style="--bg: var(--accent)">accent</article>
 
-          <article style="--bg: var(--foreground-secondary)">
-            foreground secondary
-          </article>
+        <article style="--bg: var(--text); color: black">text</article>
 
-          <article style="--bg: var(--background)">background</article>
+        <article style="--bg: var(--foreground-text); color: black">
+          foreground text
+        </article>
 
-          <article style="--bg: var(--foreground-background)">foreground background</article>
+        <article style="--bg: var(--foreground-secondary)">
+          foreground secondary
+        </article>
 
-          <article style="--bg: var(--foreground-accent)">
-            foreground accent
-          </article>
+        <article style="--bg: var(--background)">background</article>
 
-          <article style="--bg: var(--muted-text)">
-            muted text
-          </article>
+        <article style="--bg: var(--foreground-background)">foreground background</article>
 
-          <article style="--bg: var(--content-text); color: black;">
-            content text
-          </article>
+        <article style="--bg: var(--foreground-accent)">
+          foreground accent
+        </article>
 
-          <article style="--bg: var(--foreground-primary); color: var(--text);">
-            foreground primary
-          </article>
-          <article style="--bg: var(--foreground-destructive); color: var(--text);">
-            foreground primary
-          </article>
-        </div>
-      </section>
+        <article style="--bg: var(--muted-text)">
+          muted text
+        </article>
 
-      <section id="utilities">
-        <h2>Family Hierarquy</h2>
+        <article style="--bg: var(--content-text); color: black;">
+          content text
+        </article>
 
-        <p>Its a abstract way to think about CSS inheritance. You have several types of relations that you're problably used to, like first child, last child and etc...</p>
+        <article style="--bg: var(--foreground-primary); color: var(--text);">
+          foreground primary
+        </article>
+        <article style="--bg: var(--foreground-destructive); color: var(--text);">
+          foreground primary
+        </article>
+      </div>
+    </section>
 
-        <p>However, I think this way is easier to understand and apply, you just need to apply the <code>.parent</code> class in the tag that is really the parent.</p>
+    <section id="utilities">
+      <h2>Family Hierarquy</h2>
 
-        <p>After this, you just need to pass the <strong>Heritage</strong> that the children will inherit in fact. Like: colors, spacing and font related stuff.</p>
+      <p>Its a abstract way to think about CSS inheritance. You have several types of relations that you're problably
+        used to, like first child, last child and etc...</p>
 
-        <p>If you don't want a specific tag to inherit from the parent, just do like in Game of Thrones, call it a <code>.bastard</code> and the job is done.</p>
+      <p>However, I think this way is easier to understand and apply, you just need to apply the <code>.parent</code>
+        class in the tag that is really the parent.</p>
 
-        <div class="parent first-child-only" style="--bg: var(--primary)">
-          <h3>Parent</h3>
+      <p>After this, you just need to pass the <strong>Heritage</strong> that the children will inherit in fact. Like:
+        colors, spacing and font related stuff.</p>
 
-          <div>
-            <h4>First Son</h4>
+      <p>If you don't want a specific tag to inherit from the parent, just do like in Game of Thrones, call it a
+        <code>.bastard</code> and the job is done.</p>
 
+      <div class="parent first-child-only" style="--bg: var(--primary)">
+        <h3>Parent</h3>
+
+        <div>
+          <h4>First Son</h4>
+
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
+            quaerat, blanditiis quis officiis rem maiores itaque temporibus
+            totam quisquam veritatis distinctio alias quod, laborum numquam
+            deserunt harum eum tenetur hic!
+          </p>
+
+          <div class="bastard">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-              quaerat, blanditiis quis officiis rem maiores itaque temporibus
-              totam quisquam veritatis distinctio alias quod, laborum numquam
-              deserunt harum eum tenetur hic!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Accusantium architecto dolorum dolores animi amet quae adipisci
+              perferendis exercitationem quia, vel quam, iure expedita libero
+              velit esse nam laudantium, minus repudiandae!
             </p>
+          </div>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Accusantium architecto dolorum dolores animi amet quae adipisci
+              perferendis exercitationem quia, vel quam, iure expedita libero
+              velit esse nam laudantium, minus repudiandae!
+            </p>
+          </div>
+          <div>
+            <div>
+              <h5>Grand Son</h5>
 
-            <div class="bastard">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusantium architecto dolorum dolores animi amet quae adipisci
-                perferendis exercitationem quia, vel quam, iure expedita libero
-                velit esse nam laudantium, minus repudiandae!
+                Tenetur eos, quam sapiente temporibus excepturi nemo
+                architecto! Repellat vitae deserunt consectetur quisquam ea
+                voluptate beatae doloribus amet sit recusandae, debitis
+                voluptates!
               </p>
-            </div>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusantium architecto dolorum dolores animi amet quae adipisci
-                perferendis exercitationem quia, vel quam, iure expedita libero
-                velit esse nam laudantium, minus repudiandae!
-              </p>
-            </div>
-            <div>
+
               <div>
-                <h5>Grand Son</h5>
+                <h6>Grand Grand Son</h6>
 
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tenetur eos, quam sapiente temporibus excepturi nemo
-                  architecto! Repellat vitae deserunt consectetur quisquam ea
-                  voluptate beatae doloribus amet sit recusandae, debitis
-                  voluptates!
-                </p>
-
-                <div>
-                  <h6>Grand Grand Son</h6>
-
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Veniam repudiandae ut magnam officiis eum dolore quo dolor
-                  tenetur eos praesentium omnis, assumenda hic debitis modi
-                  quas. Aperiam voluptatibus voluptates tempora.
-                </div>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Veniam repudiandae ut magnam officiis eum dolore quo dolor
+                tenetur eos praesentium omnis, assumenda hic debitis modi
+                quas. Aperiam voluptatibus voluptates tempora.
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-    </main>
-    <a class="scroll-to-top" href=".hero">TOP</a>
+  </main>
+  <a class="scroll-to-top" href=".hero">TOP</a>
 
-    <div test></div>
+  <div test></div>
 
-    <div class="hamburguer-icon">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+  <div class="hamburguer-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-    <footer>
-      <nav>
-        <ul>
-          <li><a href="https://github.com/Vattghern203/yonaka">github</a></li>
-        </ul>
-      </nav>
-    </footer>
-  </body>
+  <footer>
+    <nav>
+      <ul>
+        <li><a href="https://github.com/Vattghern203/yonaka">github</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+
 </html>

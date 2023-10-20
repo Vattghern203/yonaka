@@ -47,3 +47,15 @@ body, .app {
         color: var(--txt-color);
     }
 }
+
+// Basic Styling for forms
+
+:where(form) {
+    display: grid;
+    place-items: center;
+    justify-items: stretch;
+    gap: var(--spacing)
+}
+
+// Clean the code after a time to better perfomance and reading
+// Low the specifity low as possible

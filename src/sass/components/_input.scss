@@ -1,6 +1,6 @@
 // Form Related -------------------------------------
 
-form.invalid {
+form:invalid {
 
     button[type="submit"] {
 
@@ -8,8 +8,10 @@ form.invalid {
         opacity: 60%;
     }
 
-    input {
+    input:invalid {
         border: .2rem var(--destructive) solid;
+
+        transition: border-color var(--transition);
     }
 }
 
@@ -76,11 +78,18 @@ input {
     font-weight: 500;
 
     font-size: var(--font-size);
-    border: .2rem solid var(--accent);
+    border: .2rem solid var(--foreground-accent);
     background-color: var(--bg);
     border-radius: var(--roundness);
     padding: var(--spacing);
     outline: none;
+
+    transition: all var(--transition);
+
+    &:focus {
+
+        border-color: var(--accent);
+    }
 
     &::placeholder {
         --text-color: var(--muted-text);

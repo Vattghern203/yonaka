@@ -1,13 +1,16 @@
-.row {
+:where(.row, .col) {
+    --flex-spacing: 0;
+
     display: flex;
+    gap: var(--flex-spacing);
+}
+
+.row {
     flex-direction: row;
-    gap: var(--spacing);
 }
 
 .col {
-    display: flex;
     flex-direction: column;
-    gap: var(--spacing);
 }
 
 // GRID
