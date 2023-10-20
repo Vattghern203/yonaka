@@ -24,6 +24,14 @@ h4, h5, h6 {
     margin-bottom: var(--spacing);
 }
 
+h2 { --spacing: var(--md) }
+
+h3, h4 { --spacing: var(--sm)}
+
+h5 { --spacing: var(--sm) }
+
+h6 { --spacing: var(--xs) }
+
 p {
     --text-color: var(--content-text);
     --font-weight: 500;
