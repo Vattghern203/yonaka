@@ -1,13 +1,7 @@
 // Form Related -------------------------------------
 
 form:invalid {
-
-    button[type="submit"] {
-
-        pointer-events: none;
-        opacity: 60%;
-    }
-
+    
     input:invalid {
         border: .2rem var(--destructive) solid;
 

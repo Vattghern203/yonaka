@@ -304,15 +304,15 @@ button:active:not(.disabled) {
   transform: translateY(6%);
   filter: brightness(115%);
 }
-button.cta {
+button.cta, button[type=submit] {
   --bg: var(--accent);
   background-color: var(--bg);
   border: 0.2rem var(--accent) solid;
 }
-button.cta:hover {
+button.cta:hover, button[type=submit]:hover {
   background-color: color-mix(in oklab, var(--bg), white 20%);
 }
-button.cta:active {
+button.cta:active, button[type=submit]:active {
   background-color: color-mix(in oklab, var(--bg), white 10%);
 }
 button.ghost {
@@ -328,6 +328,12 @@ button.destructive {
 button.disabled {
   cursor: not-allowed;
   opacity: 0.8;
+}
+
+form:invalid button[type=submit] {
+  pointer-events: none;
+  opacity: 60%;
+  cursor: not-allowed;
 }
 
 article {
@@ -383,10 +389,6 @@ div.hamburguer-icon span {
   backface-visibility: hidden;
 }
 
-form:invalid button[type=submit] {
-  pointer-events: none;
-  opacity: 60%;
-}
 form:invalid input:invalid {
   border: 0.2rem var(--destructive) solid;
   transition: border-color var(--transition);

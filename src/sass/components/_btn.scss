@@ -23,7 +23,7 @@ button {
         filter: brightness(115%);
     }
 
-    &.cta {
+    &.cta, &[type="submit"] {
         --bg: var(--accent);
 
         background-color: var(--bg);
@@ -57,5 +57,17 @@ button {
         //pointer-events: none;
         cursor: not-allowed;
         opacity: .8;
+    }
+}
+
+// Form Invalid Variant
+
+form:invalid {
+
+    & button[type="submit"] {
+
+        pointer-events: none;
+        opacity: 60%;
+        cursor: not-allowed;
     }
 }
