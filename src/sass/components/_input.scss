@@ -25,6 +25,7 @@ label {
     --spacing-x: var(--md);
 
     width: fit-content;
+    height: fit-content;
 
     display: flex;
     gap: var(--spacing-y);
@@ -60,6 +61,12 @@ label {
         display: flex;
         align-items: center;
     }
+
+    // Label that has the checkbox
+
+    &:has( > input[type="checkbox"] + span:empty) {
+        
+    }
 }
 
 // Styles the input itself
@@ -93,16 +100,22 @@ input {
 
     // Removing Style from Selected Types
 
-    & :is([type="color"], [type="date"], [type="radio"]) {
+    &:is([type="color"], [type="date"], [type="radio"], [type="checkbox"] ) {
         -moz-appearance: none;
         -webkit-appearance: none;
         appearance: none;
+        accent-color: var(--accent);
     }
 
     // Radio Input -----------------------------------------------------
 
     &[type="radio"] {
-        accent-color: var(--accent);
+        border-radius: 50%;
+    }
+
+    // A radio and checkbox common style
+    &:is([type="checkbox"], [type="radio"]) {
+        --spacing: var(--sm);
     }
 
     // File Input --------------------------------------------------------
@@ -141,6 +154,35 @@ input {
         }
 
         transition: border .2s ease;
+    }
+
+    // Check Box
+
+    &[type="checkbox"] {
+
+        overflow: hidden;
+        position: relative;
+
+        &:checked {
+            
+        }
+
+        & + span {
+
+            --borderWidth: .6rem;
+            --height: 2.4rem;
+            --width: 1.2rem;
+            --borderColor: var(--accent);
+
+            position: absolute;
+
+            display: inline-block;
+            transform: rotate(45deg);
+            height: var(--height);
+            width: var(--width);
+            border-bottom: var(--borderWidth) solid var(--borderColor);
+            border-right: var(--borderWidth) solid var(--borderColor);
+        }
     }
 
     // Date Input

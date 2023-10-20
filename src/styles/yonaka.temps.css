@@ -305,7 +305,7 @@ button {
   --spacing: var(--md) var(--lg);
   --roundness: .6vmin;
   text-align: center;
-  min-width: var(--widht);
+  min-width: var(--width);
   cursor: pointer;
   text-transform: uppercase;
   border: none;
@@ -420,6 +420,7 @@ label {
   --spacing-y: var(--sm);
   --spacing-x: var(--md);
   width: fit-content;
+  height: fit-content;
   display: flex;
   gap: var(--spacing-y);
   align-items: center;
@@ -448,7 +449,6 @@ label:has(> input[type=color]) {
   display: flex;
   align-items: center;
 }
-
 input {
   --spacing: var(--md);
   --roundness: .24vmin;
@@ -470,13 +470,17 @@ input::placeholder {
   --text-color: var(--muted-text);
   color: var(--text-color);
 }
-input :is([type=color], [type=date], [type=radio]) {
+input:is([type=color], [type=date], [type=radio], [type=checkbox]) {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+  accent-color: var(--accent);
 }
 input[type=radio] {
-  accent-color: var(--accent);
+  border-radius: 50%;
+}
+input:is([type=checkbox], [type=radio]) {
+  --spacing: var(--sm);
 }
 input[type=file] {
   visibility: hidden;
@@ -502,6 +506,23 @@ input[type=color]::-webkit-color-swatch {
 }
 input[type=color]:is(:active, :focus)::-webkit-color-swatch {
   border: 0.2rem var(--text) solid;
+}
+input[type=checkbox] {
+  overflow: hidden;
+  position: relative;
+}
+input[type=checkbox] + span {
+  --borderWidth: .6rem;
+  --height: 2.4rem;
+  --width: 1.2rem;
+  --borderColor: var(--accent);
+  position: absolute;
+  display: inline-block;
+  transform: rotate(45deg);
+  height: var(--height);
+  width: var(--width);
+  border-bottom: var(--borderWidth) solid var(--borderColor);
+  border-right: var(--borderWidth) solid var(--borderColor);
 }
 input[type=date] {
   --bg: var(--primary);

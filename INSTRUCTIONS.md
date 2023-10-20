@@ -12,7 +12,7 @@ Akatsuki CSS is a flexible and highly customizable CSS framework with a wide ran
 
 To get started with Akatsuki CSS, follow these steps:
 
-1. [Download](#) or clone the repository.
+1. [Download](#), clone the repository or use the [Jsdelivr](https://www.jsdelivr.com/package/npm/yonaka).
 
 2. Add the `akatsuki.css` file to your project.
 
