@@ -27,6 +27,7 @@ button {
         --bg: var(--accent);
 
         background-color: var(--bg);
+        will-change: background-color, transform;
         border: .2rem var(--accent) solid;
 
         &:hover {

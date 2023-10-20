@@ -323,6 +323,7 @@ button:active:not(.disabled) {
 button.cta, button[type=submit] {
   --bg: var(--accent);
   background-color: var(--bg);
+  will-change: background-color, transform;
   border: 0.2rem var(--accent) solid;
 }
 button.cta:hover, button[type=submit]:hover {
