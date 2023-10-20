@@ -732,11 +732,11 @@ header.header-sticky {
   font-size: calc(var(--font-size) / 5);
 }
 main {
-  --width: 90%;
+  --width: 70%;
   --height: auto;
   --spacing: var(--lg);
   --bg: inherit;
-  width: clamp(60%, 75%, var(--width));
+  width: clamp(60%, var(--width), 100vw);
   height: var(--height);
   padding: var(--md) var(--lg);
   border-radius: var(--roundness);
