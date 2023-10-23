@@ -4,11 +4,11 @@ html {
 
 @media (prefers-color-scheme: light) {
     :root {
-        --text: #060514; /* Changed to a dark color for better contrast with white */
-        --background: #ffffff; /* Changed to white */
-        --primary: #413e9f;
-        --secondary: #928fdb;
-        --accent: #716ed8;
+        --text: #081426;
+        --background: #f3f6fc;
+        --primary: #8cb1e8;
+        --secondary: #d9e5f7;
+        --accent: #2e71d6;
 
         --blend-text-color: #FFF;
         --blend-back-color: #000;
@@ -17,11 +17,11 @@ html {
 }
 
 [data-theme="light"] {
-    --text: #302f35; /* Changed to a dark color for better contrast with white */
-    --background: #ffffff; /* Changed to white */
-    --primary: #413e9f;
-    --secondary: #12103c;
-    --accent: #4f4bce;
+    --text: #081426;
+    --background: #f3f6fc;
+    --primary: #8cb1e8;
+    --secondary: #d9e5f7;
+    --accent: #2e71d6;
 
     --blend-text-color: #FFF;
     --blend-back-color: #000;

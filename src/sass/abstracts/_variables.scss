@@ -21,11 +21,11 @@
 
     // COLOR PALETTE ---------------------------------
 
-    --text: #e4e3f7;
-    --background: #060514;
-    --primary: #413E9F;
-    --secondary: #12103c;
-    --accent: #4f4bce;
+    --text: #d9e5f7;
+    --background: #03070d;
+    --primary: #173c73;
+    --secondary: #081426;
+    --accent: #296cd1;
 
     // Color created with the palette
 
@@ -37,9 +37,11 @@
     --blend-back-color: #FFF;
     --blend-highlight-color: #FFF;
 
-    // Content
+    // Content / Text
 
     --content-text: color-mix(in oklab, var(--text), var(--blend-text-color) 20%);
+
+    //--inverted-text: filter:invert(1)
 
     // Foregrounds
 

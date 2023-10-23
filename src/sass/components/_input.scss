@@ -256,18 +256,14 @@ input {
         // Styling the line track
 
         &:is(::-webkit-slider-runnable-track, ::-moz-range-track) {
-            
+            appearance: none;
+            background-color: rebeccapurple;
         }
 
         // Styling the little dot
 
         &:is(::-webkit-slider-thumb, ::-moz-range-thumb) {
             appearance: none;
-            background-color: red;
-        }
-
-        &::-webkit-slider-thumb {
-            
         }
     }
 }
