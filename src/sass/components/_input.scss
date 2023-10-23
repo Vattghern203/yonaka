@@ -12,6 +12,7 @@ form:invalid {
 // Input and Labels ----------------------------------
 
 // Sets the default behavior
+
 input, label {
     cursor: pointer;
     transition: background-color var(--transition), filter var(--transition);
@@ -23,6 +24,8 @@ label {
 
     --spacing-y: var(--sm);
     --spacing-x: var(--md);
+
+    --width: 100%;
 
     width: fit-content;
     height: fit-content;
@@ -75,6 +78,7 @@ input {
     --roundness: .24vmin;
     --bg: var(--foreground-primary);
     --font-size: 1.50rem;
+    --width: 100%;
 
     font-weight: 500;
 
@@ -165,7 +169,7 @@ input {
         position: relative;
 
         &:checked {
-            
+            // Styling to checked state
         }
 
         & + span {
@@ -232,4 +236,38 @@ input {
         width: 200%;
     }
 
+
+    // Range Input -------------------------------------------------
+
+    &[type="range"] {
+        --width: 100%;
+        --bg: transparent;
+        --roundness: 100vmax;
+
+        height: fit-content;
+        padding: 0;
+        width: var(--widht);
+        background-color: var(--bg, transparent);
+        border-radius: var(--roundness);
+
+        //outline-offset: .2rem;
+
+
+        // Styling the line track
+
+        &:is(::-webkit-slider-runnable-track, ::-moz-range-track) {
+            
+        }
+
+        // Styling the little dot
+
+        &:is(::-webkit-slider-thumb, ::-moz-range-thumb) {
+            appearance: none;
+            background-color: red;
+        }
+
+        &::-webkit-slider-thumb {
+            
+        }
+    }
 }

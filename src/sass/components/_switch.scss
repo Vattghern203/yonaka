@@ -77,22 +77,23 @@ input[role="switch"][type="checkbox"]:checked:not(:is(.squished, .squared)) {
 /* Squished Variation */
 input[type="checkbox"][role="switch"].squished {
 
-    --switch-h: 1em;
+    --switch-h: .8em;
 
     height: var(--switch-h);
     width: var(--switch-w);
     border-radius: var(--switch-round);
     background-color: var(--foreground-secondary);
     position: relative;
+    overflow: visible;
 
     &::after {
         content: "";
         background-color: var(--switch-slider-color);
-        height: 80%;
+        height: 150%;
         aspect-ratio: 1 / 1;
         position: absolute;
         top: 50%;
-        left: 5%;
+        left: 2.5%;
         transform: translateY(-50%);
         border-radius: inherit;
         transition:
@@ -108,7 +109,7 @@ input[role="switch"][type="checkbox"].squished:checked {
 
     &::after {
 
-       transform: translate(345%, -50%);
+       transform: translate(152.5%, -50%);
     }
 }
 

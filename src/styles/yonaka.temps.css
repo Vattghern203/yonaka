@@ -423,6 +423,7 @@ input, label {
 label {
   --spacing-y: var(--sm);
   --spacing-x: var(--md);
+  --width: 100%;
   width: fit-content;
   height: fit-content;
   display: flex;
@@ -458,6 +459,7 @@ input {
   --roundness: .24vmin;
   --bg: var(--foreground-primary);
   --font-size: 1.50rem;
+  --width: 100%;
   font-weight: 500;
   font-size: var(--font-size);
   border: 0.2rem solid var(--foreground-accent);
@@ -562,7 +564,20 @@ input[type=date]::-webkit-calendar-picker-indicator {
 input[type=radio] {
   width: 200%;
 }
-
+input[type=range] {
+  --width: 100%;
+  --bg: transparent;
+  --roundness: 100vmax;
+  height: fit-content;
+  padding: 0;
+  width: var(--widht);
+  background-color: var(--bg, transparent);
+  border-radius: var(--roundness);
+}
+input[type=range]:is(::-webkit-slider-thumb, ::-moz-range-thumb) {
+  appearance: none;
+  background-color: red;
+}
 .logo {
   --roundness: 50%;
   border-radius: var(--roundness);
@@ -638,21 +653,22 @@ input[role=switch][type=checkbox]:checked:not(:is(.squished, .squared))::after {
 /* SWITCH VARIATIONS */
 /* Squished Variation */
 input[type=checkbox][role=switch].squished {
-  --switch-h: 1em;
+  --switch-h: .8em;
   height: var(--switch-h);
   width: var(--switch-w);
   border-radius: var(--switch-round);
   background-color: var(--foreground-secondary);
   position: relative;
+  overflow: visible;
 }
 input[type=checkbox][role=switch].squished::after {
   content: "";
   background-color: var(--switch-slider-color);
-  height: 80%;
+  height: 150%;
   aspect-ratio: 1/1;
   position: absolute;
   top: 50%;
-  left: 5%;
+  left: 2.5%;
   transform: translateY(-50%);
   border-radius: inherit;
   transition: transform 0.24s ease-in, opacity 0.4s ease-out, background-color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
@@ -663,7 +679,7 @@ input[role=switch][type=checkbox].squished:checked {
   background-color: var(--primary);
 }
 input[role=switch][type=checkbox].squished:checked::after {
-  transform: translate(345%, -50%);
+  transform: translate(152.5%, -50%);
 }
 
 /* Squared Variation */
