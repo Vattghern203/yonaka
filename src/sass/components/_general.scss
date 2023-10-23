@@ -35,3 +35,9 @@ div.hamburguer-icon {
         backface-visibility: hidden;
     }
 }
+
+// INTERACTIONS ------------------------------------------------
+
+input:focus {
+    outline: var(--accent) .2rem solid;
+}

@@ -406,6 +406,10 @@ div.hamburguer-icon span {
   backface-visibility: hidden;
 }
 
+input:focus {
+  outline: var(--accent) 0.2rem solid;
+}
+
 form:invalid input:invalid {
   border: 0.2rem var(--destructive) solid;
   transition: border-color var(--transition);
@@ -470,7 +474,7 @@ input::placeholder {
   --text-color: var(--muted-text);
   color: var(--text-color);
 }
-input:is([type=color], [type=date], [type=radio], [type=checkbox]) {
+input:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range]) {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -590,16 +594,7 @@ input[type=checkbox][role=switch]) {
 
 /* Hiding it to achieve the toggle effect */
 input[type=checkbox][role=switch] {
-  opacity: 0;
-}
-
-/* Common styling between switches */
-label:has(input[type=checkbox][role=switch]) {
-  width: var(--switch-w);
-}
-
-/* Default Switch */
-label:has(input[type=checkbox][role=switch]:not(:is(.squished, .squared))) {
+  appearance: none;
   width: var(--switch-w);
   height: var(--switch-h);
   border-radius: var(--switch-round);
@@ -608,9 +603,9 @@ label:has(input[type=checkbox][role=switch]:not(:is(.squished, .squared))) {
   align-items: center;
   justify-content: center;
   background-color: var(--foreground-secondary);
-  transition: background-color 0.8s ease-in-out;
+  transition: transform 0.24s ease-in, opacity 0.4s ease-out, background-color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
-label:has(input[type=checkbox][role=switch]:not(:is(.squished, .squared)))::after {
+input[type=checkbox][role=switch]::after {
   content: "";
   background-color: var(--switch-slider-color);
   aspect-ratio: 1/1;
@@ -622,22 +617,27 @@ label:has(input[type=checkbox][role=switch]:not(:is(.squished, .squared)))::afte
   transition: transform 0.24s ease-in, opacity 0.4s ease-out, background-color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-label:has(input[type=checkbox][role=switch]:focus) {
+/* Common styling between switches */
+input[type=checkbox][role=switch] {
+  width: var(--switch-w);
+}
+
+input[type=checkbox][role=switch]:focus {
   outline: var(--accent) 0.2rem solid;
   outline-offset: 0.18rem;
 }
 
 /* Change Switch background when checked */
-label:has(input[role=switch][type=checkbox]:checked:not(:is(.squished, .squared))) {
+input[role=switch][type=checkbox]:checked:not(:is(.squished, .squared)) {
   background-color: var(--primary);
 }
-label:has(input[role=switch][type=checkbox]:checked:not(:is(.squished, .squared)))::after {
-  transform: translateX(100%);
+input[role=switch][type=checkbox]:checked:not(:is(.squished, .squared))::after {
+  transform: translateX(120%);
 }
 
 /* SWITCH VARIATIONS */
 /* Squished Variation */
-label:has(input[type=checkbox][role=switch].squished) {
+input[type=checkbox][role=switch].squished {
   --switch-h: 1em;
   height: var(--switch-h);
   width: var(--switch-w);
@@ -645,29 +645,29 @@ label:has(input[type=checkbox][role=switch].squished) {
   background-color: var(--foreground-secondary);
   position: relative;
 }
-label:has(input[type=checkbox][role=switch].squished)::after {
+input[type=checkbox][role=switch].squished::after {
   content: "";
   background-color: var(--switch-slider-color);
-  height: 160%;
+  height: 80%;
   aspect-ratio: 1/1;
   position: absolute;
   top: 50%;
-  left: 0;
+  left: 5%;
   transform: translateY(-50%);
   border-radius: inherit;
   transition: transform 0.24s ease-in, opacity 0.4s ease-out, background-color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 /* Change Switch background when checked */
-label:has(input[role=switch][type=checkbox].squished:checked) {
+input[role=switch][type=checkbox].squished:checked {
   background-color: var(--primary);
 }
-label:has(input[role=switch][type=checkbox].squished:checked)::after {
-  transform: translate(175%, -50%);
+input[role=switch][type=checkbox].squished:checked::after {
+  transform: translate(345%, -50%);
 }
 
 /* Squared Variation */
-label:has(input[type=checkbox][role=switch].squared) {
+input[type=checkbox][role=switch].squared {
   /* Add specific styles for squared variation */
   width: var(--switch-w);
   height: var(--switch-h);
@@ -675,7 +675,7 @@ label:has(input[type=checkbox][role=switch].squared) {
   background-color: var(--foreground-secondary);
   position: relative;
 }
-label:has(input[type=checkbox][role=switch].squared)::after {
+input[type=checkbox][role=switch].squared::after {
   content: "";
   background-color: var(--switch-slider-color);
   aspect-ratio: 1/1;
@@ -688,11 +688,11 @@ label:has(input[type=checkbox][role=switch].squared)::after {
 }
 
 /* Change Switch background when checked */
-label:has(input[role=switch][type=checkbox].squared:checked) {
+input[role=switch][type=checkbox].squared:checked {
   background-color: var(--primary);
 }
-label:has(input[role=switch][type=checkbox].squared:checked)::after {
-  transform: translateX(105%);
+input[role=switch][type=checkbox].squared:checked::after {
+  transform: translateX(120%);
 }
 
 footer {

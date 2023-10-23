@@ -19,16 +19,8 @@ input[type="checkbox"][role="switch"]) {
 
 /* Hiding it to achieve the toggle effect */
 input[type="checkbox"][role="switch"] {
-    opacity: 0;
-}
+    appearance: none;
 
-/* Common styling between switches */
-label:has(input[type="checkbox"][role="switch"]) {
-    width: var(--switch-w);
-}
-
-/* Default Switch */
-label:has(input[type="checkbox"][role="switch"]:not(:is(.squished, .squared))) {
     width: var(--switch-w);
     height: var(--switch-h);
     border-radius: var(--switch-round);
@@ -38,9 +30,13 @@ label:has(input[type="checkbox"][role="switch"]:not(:is(.squished, .squared))) {
     justify-content: center;
     background-color: var(--foreground-secondary);
 
-    transition: background-color .8s ease-in-out;
+    transition:
+            transform .24s ease-in,
+            opacity .4s ease-out,
+            background-color .8s cubic-bezier(0.19, 1, 0.22, 1);
 
     &::after {
+
         content: "";
         background-color: var(--switch-slider-color);
         aspect-ratio: 1 / 1;
@@ -50,30 +46,36 @@ label:has(input[type="checkbox"][role="switch"]:not(:is(.squished, .squared))) {
         left: 5%;
         border-radius: 50%;
         transition:
-            transform 0.24s ease-in,
-            opacity 0.4s ease-out,
-            background-color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+            transform .24s ease-in,
+            opacity .4s ease-out,
+            background-color .8s cubic-bezier(0.19, 1, 0.22, 1);
     }
+
 }
 
-label:has(input[type="checkbox"][role="switch"]:focus) {
+/* Common styling between switches */
+input[type="checkbox"][role="switch"] {
+    width: var(--switch-w);
+}
+
+input[type="checkbox"][role="switch"]:focus {
     outline: var(--accent) .2rem solid;
     outline-offset: 0.18rem;
 }
 
 /* Change Switch background when checked */
-label:has(input[role="switch"][type="checkbox"]:checked:not(:is(.squished, .squared))) {
+input[role="switch"][type="checkbox"]:checked:not(:is(.squished, .squared)) {
     background-color: var(--primary);
 
     &::after {
-        transform: translateX(100%);
+        transform: translateX(120%);
     }
 }
 
 /* SWITCH VARIATIONS */
 
 /* Squished Variation */
-label:has(input[type="checkbox"][role="switch"].squished) {
+input[type="checkbox"][role="switch"].squished {
 
     --switch-h: 1em;
 
@@ -86,11 +88,11 @@ label:has(input[type="checkbox"][role="switch"].squished) {
     &::after {
         content: "";
         background-color: var(--switch-slider-color);
-        height: 160%;
+        height: 80%;
         aspect-ratio: 1 / 1;
         position: absolute;
         top: 50%;
-        left: 0;
+        left: 5%;
         transform: translateY(-50%);
         border-radius: inherit;
         transition:
@@ -101,16 +103,17 @@ label:has(input[type="checkbox"][role="switch"].squished) {
 }
 
 /* Change Switch background when checked */
-label:has(input[role="switch"][type="checkbox"].squished:checked) {
+input[role="switch"][type="checkbox"].squished:checked {
     background-color: var(--primary);
 
     &::after {
-        transform: translate(175%, -50%);
+
+       transform: translate(345%, -50%);
     }
 }
 
 /* Squared Variation */
-label:has(input[type="checkbox"][role="switch"].squared) {
+input[type="checkbox"][role="switch"].squared {
     /* Add specific styles for squared variation */
     width: var(--switch-w);
     height: var(--switch-h);
@@ -136,10 +139,10 @@ label:has(input[type="checkbox"][role="switch"].squared) {
 }
 
 /* Change Switch background when checked */
-label:has(input[role="switch"][type="checkbox"].squared:checked) {
+input[role="switch"][type="checkbox"].squared:checked {
     background-color: var(--primary);
 
     &::after {
-        transform: translateX(105%);
+        transform: translateX(120%);
     }
 }

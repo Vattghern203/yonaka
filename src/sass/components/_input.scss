@@ -99,8 +99,9 @@ input {
     }
 
     // Removing Style from Selected Types
+    // PRESET
 
-    &:is([type="color"], [type="date"], [type="radio"], [type="checkbox"] ) {
+    &:is([type="color"], [type="date"], [type="radio"], [type="checkbox"], [type="range"] ) {
         -moz-appearance: none;
         -webkit-appearance: none;
         appearance: none;
