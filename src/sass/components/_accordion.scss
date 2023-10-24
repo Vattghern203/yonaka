@@ -11,14 +11,14 @@ details {
     align-items: center;
     justify-content: center;
     gap: var(--spacing);
+    margin-bottom: var(--spacing);
 
     summary {
-        
         background-color: var(--bg);
         border-radius: var(--roundness);
         padding: var(--spacing);
 
-        margin-bottom: var(--spacing);
+        margin-bottom: var(--sm);
 
         &:is(:focus, :hover) {
 
@@ -36,11 +36,15 @@ details {
             filter: brightness(150%);
         }
 
+        &:is(::marker, ::-webkit-details-marker) {
+            display: none;
+        }
+
         transition: all .4s ease, filter .145s ease-out;
     }
 
     p {
-        --bg: var(--foreground-accent);
+        --bg: var(--foreground-primary);
         background-color: var(--bg);
         padding: var(--spacing);
         border-radius: var(--roundness);

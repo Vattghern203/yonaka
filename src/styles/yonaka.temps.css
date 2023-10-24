@@ -257,6 +257,13 @@ ol {
   list-style: none;
 }
 
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+
 details {
   --bg: var(--primary);
   --roundness: var(--xs);
@@ -266,12 +273,13 @@ details {
   align-items: center;
   justify-content: center;
   gap: var(--spacing);
+  margin-bottom: var(--spacing);
 }
 details summary {
   background-color: var(--bg);
   border-radius: var(--roundness);
   padding: var(--spacing);
-  margin-bottom: var(--spacing);
+  margin-bottom: var(--sm);
   transition: all 0.4s ease, filter 0.145s ease-out;
 }
 details summary:is(:focus, :hover) {
@@ -285,8 +293,11 @@ details summary:focus {
 details summary:active {
   filter: brightness(150%);
 }
+details summary:is(::marker, ::-webkit-details-marker) {
+  display: none;
+}
 details p {
-  --bg: var(--foreground-accent);
+  --bg: var(--foreground-primary);
   background-color: var(--bg);
   padding: var(--spacing);
   border-radius: var(--roundness);
@@ -568,18 +579,13 @@ input[type=range] {
   --width: 100%;
   --bg: transparent;
   --roundness: 100vmax;
+  --spacing: .4vmin;
   height: fit-content;
   padding: 0;
-  width: var(--widht);
+  width: var(--width); /* Corrected typo here */
   background-color: var(--bg, transparent);
   border-radius: var(--roundness);
-}
-input[type=range]:is(::-webkit-slider-runnable-track, ::-moz-range-track) {
-  appearance: none;
-  background-color: rebeccapurple;
-}
-input[type=range]:is(::-webkit-slider-thumb, ::-moz-range-thumb) {
-  appearance: none;
+  outline-offset: 0.2rem;
 }
 
 .logo {
@@ -604,7 +610,7 @@ input[type=checkbox][role=switch]) {
   --switch-round: 100vmax;
   --switch-default-bg: var(--muted-secondary);
   --switch-focus-outline: var();
-  --switch-color: var(--muted-secondary);
+  --switch-color: var(--foreground-secondary);
   --switch-slider-color: whitesmoke;
   /* GLOBAL */
   --spacing: var(--md);
@@ -621,7 +627,7 @@ input[type=checkbox][role=switch] {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--foreground-secondary);
+  background-color: var(--switch-color);
   transition: transform 0.24s ease-in, opacity 0.4s ease-out, background-color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 input[type=checkbox][role=switch]::after {
@@ -647,6 +653,10 @@ input[type=checkbox][role=switch]:focus {
 }
 
 /* Change Switch background when checked */
+input[role=switch][type=checkbox]:checked {
+  --switch-color: var(--primary);
+}
+
 input[role=switch][type=checkbox]:checked:not(:is(.squished, .squared)) {
   background-color: var(--primary);
 }
@@ -664,15 +674,16 @@ input[type=checkbox][role=switch].squished {
   background-color: var(--foreground-secondary);
   position: relative;
   overflow: visible;
+  padding: 0;
 }
 input[type=checkbox][role=switch].squished::after {
   content: "";
   background-color: var(--switch-slider-color);
-  height: 150%;
+  height: 250%;
   aspect-ratio: 1/1;
   position: absolute;
   top: 50%;
-  left: 2.5%;
+  left: -2.5%;
   transform: translateY(-50%);
   border-radius: inherit;
   transition: transform 0.24s ease-in, opacity 0.4s ease-out, background-color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
@@ -683,7 +694,7 @@ input[role=switch][type=checkbox].squished:checked {
   background-color: var(--primary);
 }
 input[role=switch][type=checkbox].squished:checked::after {
-  transform: translate(152.5%, -50%);
+  transform: translate(252.5%, -50%);
 }
 
 /* Squared Variation */
@@ -832,6 +843,12 @@ nav ul li:active {
   opacity: 0.6;
 }
 
+@media only screen and (max-width: 37.5em) {
+  nav ul {
+    display: none;
+    visibility: hidden;
+  }
+}
 /*  --text: #e8e8ed;
  --background: #09090c;
  --primary: #47465d;

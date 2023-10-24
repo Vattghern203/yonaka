@@ -243,27 +243,15 @@ input {
         --width: 100%;
         --bg: transparent;
         --roundness: 100vmax;
-
+        --spacing: .4vmin;
+    
         height: fit-content;
         padding: 0;
-        width: var(--widht);
+        width: var(--width); /* Corrected typo here */
         background-color: var(--bg, transparent);
         border-radius: var(--roundness);
-
-        //outline-offset: .2rem;
-
-
+    
+        outline-offset: .2rem;
         // Styling the line track
-
-        &:is(::-webkit-slider-runnable-track, ::-moz-range-track) {
-            appearance: none;
-            background-color: rebeccapurple;
-        }
-
-        // Styling the little dot
-
-        &:is(::-webkit-slider-thumb, ::-moz-range-thumb) {
-            appearance: none;
-        }
     }
 }

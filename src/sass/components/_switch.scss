@@ -8,7 +8,7 @@ input[type="checkbox"][role="switch"]) {
     --switch-round: 100vmax;
     --switch-default-bg: var(--muted-secondary);
     --switch-focus-outline: var();
-    --switch-color: var(--muted-secondary);
+    --switch-color: var(--foreground-secondary);
     --switch-slider-color: whitesmoke;
 
     /* GLOBAL */
@@ -28,7 +28,7 @@ input[type="checkbox"][role="switch"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--foreground-secondary);
+    background-color: var(--switch-color);
 
     transition:
             transform .24s ease-in,
@@ -64,6 +64,10 @@ input[type="checkbox"][role="switch"]:focus {
 }
 
 /* Change Switch background when checked */
+input[role="switch"][type="checkbox"]:checked {
+    --switch-color: var(--primary);
+}
+
 input[role="switch"][type="checkbox"]:checked:not(:is(.squished, .squared)) {
     background-color: var(--primary);
 
@@ -85,15 +89,16 @@ input[type="checkbox"][role="switch"].squished {
     background-color: var(--foreground-secondary);
     position: relative;
     overflow: visible;
+    padding: 0;
 
     &::after {
         content: "";
         background-color: var(--switch-slider-color);
-        height: 150%;
+        height: 250%;
         aspect-ratio: 1 / 1;
         position: absolute;
         top: 50%;
-        left: 2.5%;
+        left: -2.5%;
         transform: translateY(-50%);
         border-radius: inherit;
         transition:
@@ -109,7 +114,7 @@ input[role="switch"][type="checkbox"].squished:checked {
 
     &::after {
 
-       transform: translate(152.5%, -50%);
+       transform: translate(252.5%, -50%);
     }
 }
 

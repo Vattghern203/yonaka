@@ -33,3 +33,10 @@ nav {
         }
     }
 }
+
+@media only screen and (max-width: 37.5em) {
+    nav ul {
+        display: none;
+        visibility: hidden;
+    }
+}
