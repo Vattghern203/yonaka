@@ -67,3 +67,9 @@ body, .app {
     outline: var(--outline);
     outline-offset: var(--xxs);
 }
+
+// EFFECTS 
+
+:where(:is(button, summary, li):not(.disabled):active) {
+    filter: var(--effect-bright);
+}

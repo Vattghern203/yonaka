@@ -34,7 +34,7 @@ details {
         }
 
         &:active {
-            filter: brightness(150%);
+            filter: var(--effect-bright);
         }
 
         &:is(::marker, ::-webkit-details-marker) {

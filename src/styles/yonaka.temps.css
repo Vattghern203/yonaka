@@ -13,6 +13,7 @@ html {
     --blend-text-color: #FFF;
     --blend-back-color: #000;
     --blend-highlight-color: #000;
+    --effect-bright-level: 85%;
   }
 }
 [data-theme=light] {
@@ -229,6 +230,10 @@ body * :where(:not(h1, p, span)), .app * :where(:not(h1, p, span)) {
   outline-offset: var(--xxs);
 }
 
+:where(:is(button, summary, li):not(.disabled):active) {
+  filter: var(--effect-bright);
+}
+
 *,
 *::before,
 *::after {
@@ -304,7 +309,7 @@ details summary:focus {
   outline: var(--outline);
 }
 details summary:active {
-  filter: brightness(150%);
+  filter: var(--effect-bright);
 }
 details summary:is(::marker, ::-webkit-details-marker) {
   display: none;
@@ -418,9 +423,13 @@ details[role=listbox] > ul li {
   border-radius: 0;
   padding: var(--spacing);
   cursor: pointer;
+  transition: background-color 0.4s ease, filter 0.2s ease-in;
 }
 details[role=listbox] > ul li:hover {
   --bg: var(--primary);
+}
+details[role=listbox] > ul li:active {
+  filter: var(--effect-bright);
 }
 
 a.scroll-to-top {
@@ -1042,6 +1051,8 @@ nav ul li:active {
   --index-nav: 900;
   --index-popup: 999;
   --index-backtap: -1;
+  --effect-bright-level: 150%;
+  --effect-bright: brightness(var(--effect-bright-level));
 }
 
 /*# sourceMappingURL=yonaka.temps.css.map */

@@ -28,4 +28,9 @@
     --index-popup: 999;
     --index-backtap: -1;
 
+    // EFFECTS
+
+    --effect-bright-level: 150%;
+    --effect-bright: brightness(var(--effect-bright-level));
+
 } 
