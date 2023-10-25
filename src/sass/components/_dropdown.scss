@@ -78,6 +78,15 @@ select {
     &::-ms-expand {
         display: none;
     }
+
+    &::after {
+        content: "";
+        width: 30em;
+        height: 30em;
+        background-color: var(--select-arrow);
+        clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+        z-index: 2000;
+    }
     
     &, & > * {
         font-family: inherit;
