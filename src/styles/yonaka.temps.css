@@ -381,6 +381,25 @@ article * > img:first-child {
   object-position: top;
 }
 
+details[role=listbox] summary {
+  margin-bottom: 0;
+}
+details[role=listbox] > ul {
+  background-color: rebeccapurple;
+}
+details[role=listbox] > ul li {
+  background-color: paleturquoise;
+  --roudness: 0;
+  border-radius: 0;
+  padding: var(--spacing);
+  --text-color: var(--foreground-text);
+  color: var(--text-color);
+  cursor: pointer;
+}
+details[role=listbox] > ul li:hover {
+  background-color: red;
+}
+
 a.scroll-to-top {
   display: grid;
   place-items: center;

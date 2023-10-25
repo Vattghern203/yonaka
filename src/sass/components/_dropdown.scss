@@ -1,3 +1,25 @@
-details[role="list"] {
+details[role="listbox"] {
+
+    summary {
+        margin-bottom: 0;
+    }
     
+    & > ul {
+        background-color: rebeccapurple;
+
+        li {
+            background-color: paleturquoise;
+            --roudness: 0;
+            border-radius: 0;
+            padding: var(--spacing);
+            --text-color: var(--foreground-text);
+            color: var(--text-color);
+            cursor: pointer;
+
+            &:hover {
+                background-color: red;
+            }
+        }
+        
+    }
 }
