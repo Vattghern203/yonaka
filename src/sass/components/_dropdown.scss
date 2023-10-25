@@ -10,7 +10,11 @@ details[role="listbox"] {
         padding: var(--spacing) 0;
         border: var(--border);
 
-        li {
+        & li, & > * {
+            text-transform: capitalize;
+        }
+
+        & li {
             --font-size: var(--md);
             --text-color: var(--text);
             --font-weight: 500;
@@ -36,6 +40,70 @@ details[role="listbox"] {
                 filter: var(--effect-bright);
             }
         }
+
+        & li * {
+            color: inherit;
+        }
+
+        & li:has(a) {
+            padding: 0;
+        }
+
+        & li a {
+            display: block;
+            padding: var(--spacing);
+            height: 100%;
+            width: 100%;
+        }
         
+    }
+}
+
+// SELECT
+
+select {
+    --font-size: var(--md);
+    --text-color: var(--text);
+    --font-weight: 500;
+
+    
+    appearance: none;
+    width: 100%;
+    
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    text-transform: capitalize;
+
+    &::-ms-expand {
+        display: none;
+    }
+    
+    &, & > * {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+    
+    & > option {
+        --bg: var(--foreground-primary);
+        --border: var(--border-sm);
+
+        color: var(--text-color);
+        background-color: var(--bg);
+        border-radius: 0;
+        padding: var(--spacing);
+        cursor: pointer;
+
+
+        transition: background-color .4s ease, filter .2s ease-in;
+
+        &:hover {
+            --bg: var(--primary);
+        }
+
+        &:active {
+            filter: var(--effect-bright);
+        }
     }
 }

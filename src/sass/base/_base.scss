@@ -62,7 +62,7 @@ body, .app {
 
 // Defining the focus on all elements by default
 
-:where(:focus) {
+:where(:focus-visible) {
     --outline: var(--outline-md);
     outline: var(--outline);
     outline-offset: var(--xxs);

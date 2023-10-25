@@ -73,7 +73,7 @@ label {
 }
 
 // Styles the input itself
-input {
+input, select {
     --spacing: var(--md);
     --roundness: .24vmin;
     --bg: var(--foreground-primary);

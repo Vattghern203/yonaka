@@ -224,7 +224,7 @@ body * :where(:not(h1, p, span)), .app * :where(:not(h1, p, span)) {
   gap: var(--spacing);
 }
 
-:where(:focus) {
+:where(:focus-visible) {
   --outline: var(--outline-md);
   outline: var(--outline);
   outline-offset: var(--xxs);
@@ -409,6 +409,9 @@ details[role=listbox] > ul {
   padding: var(--spacing) 0;
   border: var(--border);
 }
+details[role=listbox] > ul li, details[role=listbox] > ul > * {
+  text-transform: capitalize;
+}
 details[role=listbox] > ul li {
   --font-size: var(--md);
   --text-color: var(--text);
@@ -429,6 +432,54 @@ details[role=listbox] > ul li:hover {
   --bg: var(--primary);
 }
 details[role=listbox] > ul li:active {
+  filter: var(--effect-bright);
+}
+details[role=listbox] > ul li * {
+  color: inherit;
+}
+details[role=listbox] > ul li:has(a) {
+  padding: 0;
+}
+details[role=listbox] > ul li a {
+  display: block;
+  padding: var(--spacing);
+  height: 100%;
+  width: 100%;
+}
+
+select {
+  --font-size: var(--md);
+  --text-color: var(--text);
+  --font-weight: 500;
+  appearance: none;
+  width: 100%;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  text-transform: capitalize;
+}
+select::-ms-expand {
+  display: none;
+}
+select, select > * {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+select > option {
+  --bg: var(--foreground-primary);
+  --border: var(--border-sm);
+  color: var(--text-color);
+  background-color: var(--bg);
+  border-radius: 0;
+  padding: var(--spacing);
+  cursor: pointer;
+  transition: background-color 0.4s ease, filter 0.2s ease-in;
+}
+select > option:hover {
+  --bg: var(--primary);
+}
+select > option:active {
   filter: var(--effect-bright);
 }
 
@@ -516,7 +567,7 @@ label:has(> input[type=color]) {
   display: flex;
   align-items: center;
 }
-input {
+input, select {
   --spacing: var(--md);
   --roundness: .24vmin;
   --bg: var(--foreground-primary);
@@ -531,32 +582,32 @@ input {
   outline: none;
   transition: all var(--transition);
 }
-input:focus {
+input:focus, select:focus {
   border-color: var(--accent);
 }
-input::placeholder {
+input::placeholder, select::placeholder {
   --text-color: var(--muted-text);
   color: var(--text-color);
 }
-input:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range]) {
+input:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range]), select:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range]) {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
   accent-color: var(--accent);
 }
-input[type=radio] {
+input[type=radio], select[type=radio] {
   border-radius: 50%;
 }
-input:is([type=checkbox], [type=radio]) {
+input:is([type=checkbox], [type=radio]), select:is([type=checkbox], [type=radio]) {
   --spacing: var(--sm);
 }
-input[type=file] {
+input[type=file], select[type=file] {
   visibility: hidden;
   width: 0;
   height: 0;
   display: none;
 }
-input[type=color] {
+input[type=color], select[type=color] {
   --width: 2.4vmin;
   padding: 0;
   margin: 0;
@@ -568,18 +619,18 @@ input[type=color] {
   background-color: transparent;
   transition: border 0.2s ease;
 }
-input[type=color]::-webkit-color-swatch {
+input[type=color]::-webkit-color-swatch, select[type=color]::-webkit-color-swatch {
   border-radius: var(--roundness);
   border: 0.1rem var(--blend-back-color) solid;
 }
-input[type=color]:is(:active, :focus)::-webkit-color-swatch {
+input[type=color]:is(:active, :focus)::-webkit-color-swatch, select[type=color]:is(:active, :focus)::-webkit-color-swatch {
   border: 0.2rem var(--text) solid;
 }
-input[type=checkbox] {
+input[type=checkbox], select[type=checkbox] {
   overflow: hidden;
   position: relative;
 }
-input[type=checkbox] + span {
+input[type=checkbox] + span, select[type=checkbox] + span {
   --borderWidth: .6rem;
   --height: 2.4rem;
   --width: 1.2rem;
@@ -592,7 +643,7 @@ input[type=checkbox] + span {
   border-bottom: var(--borderWidth) solid var(--borderColor);
   border-right: var(--borderWidth) solid var(--borderColor);
 }
-input[type=date] {
+input[type=date], select[type=date] {
   --bg: var(--primary);
   --text-color: var(--text);
   --font-weight: 500;
@@ -609,13 +660,13 @@ input[type=date] {
   font-weight: var(--font-weight);
   letter-spacing: 0.2ch;
 }
-input[type=date]:hover {
+input[type=date]:hover, select[type=date]:hover {
   --bg: var(--accent);
 }
-input[type=date]:active {
+input[type=date]:active, select[type=date]:active {
   filter: brightness(125%);
 }
-input[type=date]::-webkit-calendar-picker-indicator {
+input[type=date]::-webkit-calendar-picker-indicator, select[type=date]::-webkit-calendar-picker-indicator {
   background-color: var(--secondary);
   padding: 0.6vmin 0.8vmin;
   border-radius: var(--roundness);
@@ -623,10 +674,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
   margin-top: 2.4%;
   cursor: pointer;
 }
-input[type=radio] {
+input[type=radio], select[type=radio] {
   width: 200%;
 }
-input[type=range] {
+input[type=range], select[type=range] {
   --width: 100%;
   --bg: transparent;
   --roundness: 100vmax;
@@ -1047,6 +1098,8 @@ nav ul li:active {
   --border-color: var(--accent);
   --border-style: solid;
   --border-sm: .1rem var(--border-style) var(--border-color);
+  --border-md: .2rem var(--border-style) var(--border-color);
+  --border-lg: .4rem var(--border-style) var(--border-color);
   --border: var(--border-sm);
   --index-nav: 900;
   --index-popup: 999;
