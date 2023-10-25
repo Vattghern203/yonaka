@@ -1,0 +1,31 @@
+:where(:root) {
+
+    // OUTLINE
+
+    --outline-color: var(--accent);
+    --outline-style: solid;
+
+    --outline-sm: .1rem var(--outline-style) var(--outline-color);
+    --outline-md: .2rem var(--outline-style) var(--outline-color);
+    --outline-lg: .4rem var(--outline-style) var(--outline-color);
+
+    --outline: var(--outline-md);
+
+    // BORDER
+
+    --border-color: var(--accent);
+    --border-style: solid;
+
+    --border-sm: .1rem var(--border-style) var(--border-color);
+
+    --border: var(--border-sm);
+
+    // BOX SHADOW
+
+    // Z-INDEX
+
+    --index-nav: 900;
+    --index-popup: 999;
+    --index-backtap: -1;
+
+} 

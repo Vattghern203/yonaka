@@ -7,17 +7,18 @@
     --spacing-x: auto;
     --jump: .4rem; // the jump value between elements
     --theme: dark; // the actual theme in the page
-    --width: unset; // the witdth of an element
-    --height: unset; // the height of each element
+    --width: auto; // the witdth of an element
+    --height: auto; // the height of each element
 
     // SPACING VARS ---------------------------------
 
-    --xs: .4rem;   //  1 
-    --sm: .8rem;   //  2
-    --md: 1.6rem;  //  4
-    --lg: 3.2rem;  //  6
-    --xl: 6.4rem;  //  8
-    --hg: 12.8rem; //  10
+    --xxs: .2rem;  //  0.5 Extra Extra Small
+    --xs: .4rem;   //  1.0 Extra Small
+    --sm: .8rem;   //  2.0 Small
+    --md: 1.6rem;  //  4.0 Medium
+    --lg: 3.2rem;  //  6.0 Large
+    --xl: 6.4rem;  //  8.0 Extra Large
+    --hg: 12.8rem; //  10.0 Huge
 
     // COLOR PALETTE ---------------------------------
 
@@ -103,7 +104,7 @@
 
     --roundness: var(--xs);
 
-    --round-full: 100%;
+    --round-full: 50%;
     --round-peal: 100vmax;
 
     // TYPOGRAPHY ---------------------------------

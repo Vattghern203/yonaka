@@ -54,8 +54,16 @@ body, .app {
     display: grid;
     place-items: center;
     justify-items: stretch;
-    gap: var(--spacing)
+    gap: var(--spacing);
 }
 
 // Clean the code after a time to better perfomance and reading
 // Low the specifity low as possible
+
+// Defining the focus on all elements by default
+
+:where(:focus) {
+    --outline: var(--outline-md);
+    outline: var(--outline);
+    outline-offset: var(--xxs);
+}

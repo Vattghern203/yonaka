@@ -5,6 +5,7 @@ details {
     --bg: var(--primary);
     --roundness: var(--xs);
     --spacing: var(--md);
+    --outline: var(--outline-md);
 
     display: flex;
     flex-direction: column;
@@ -29,7 +30,7 @@ details {
         &:focus {
 
             outline-offset: .150rem;
-            outline: .2rem solid var(--accent);
+            outline: var(--outline);
         }
 
         &:active {
@@ -48,6 +49,7 @@ details {
         background-color: var(--bg);
         padding: var(--spacing);
         border-radius: var(--roundness);
+        transition: all .4s ease;
     }
 }
 

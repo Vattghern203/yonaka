@@ -103,8 +103,9 @@ code {
   --spacing-x: auto;
   --jump: .4rem;
   --theme: dark;
-  --width: unset;
-  --height: unset;
+  --width: auto;
+  --height: auto;
+  --xxs: .2rem;
   --xs: .4rem;
   --sm: .8rem;
   --md: 1.6rem;
@@ -154,7 +155,7 @@ code {
   --grid-justify-items: start;
   --padding: var(--sm);
   --roundness: var(--xs);
-  --round-full: 100%;
+  --round-full: 50%;
   --round-peal: 100vmax;
   --font-family: system-ui, "Inter", "Roboto";
   --font-weight: 400;
@@ -222,6 +223,12 @@ body * :where(:not(h1, p, span)), .app * :where(:not(h1, p, span)) {
   gap: var(--spacing);
 }
 
+:where(:focus) {
+  --outline: var(--outline-md);
+  outline: var(--outline);
+  outline-offset: var(--xxs);
+}
+
 *,
 *::before,
 *::after {
@@ -229,6 +236,11 @@ body * :where(:not(h1, p, span)), .app * :where(:not(h1, p, span)) {
   padding: 0;
   margin: 0;
   text-decoration: none;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: white;
 }
 
 html {
@@ -268,6 +280,7 @@ details {
   --bg: var(--primary);
   --roundness: var(--xs);
   --spacing: var(--md);
+  --outline: var(--outline-md);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -288,7 +301,7 @@ details summary:is(:focus, :hover) {
 }
 details summary:focus {
   outline-offset: 0.15rem;
-  outline: 0.2rem solid var(--accent);
+  outline: var(--outline);
 }
 details summary:active {
   filter: brightness(150%);
@@ -301,6 +314,7 @@ details p {
   background-color: var(--bg);
   padding: var(--spacing);
   border-radius: var(--roundness);
+  transition: all 0.4s ease;
 }
 
 @keyframes margin-transition {
@@ -381,23 +395,32 @@ article * > img:first-child {
   object-position: top;
 }
 
-details[role=listbox] summary {
-  margin-bottom: 0;
-}
 details[role=listbox] > ul {
-  background-color: rebeccapurple;
+  --bg: var(--foreground-primary);
+  --border: var(--border-sm);
+  --width: var(--w-full);
+  background-color: var(--bg);
+  max-width: var(--width);
+  padding: var(--spacing) 0;
+  border: var(--border);
 }
 details[role=listbox] > ul li {
-  background-color: paleturquoise;
+  --font-size: var(--md);
+  --text-color: var(--text);
+  --font-weight: 500;
+  --bg: var(--foreground-primary);
+  --border: var(--border-sm);
   --roudness: 0;
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  color: var(--text-color);
+  background-color: var(--bg);
   border-radius: 0;
   padding: var(--spacing);
-  --text-color: var(--foreground-text);
-  color: var(--text-color);
   cursor: pointer;
 }
 details[role=listbox] > ul li:hover {
-  background-color: red;
+  --bg: var(--primary);
 }
 
 a.scroll-to-top {
@@ -1003,6 +1026,22 @@ nav ul li:active {
 
 .text-align-start {
   text-align: start;
+}
+
+:where(:root) {
+  --outline-color: var(--accent);
+  --outline-style: solid;
+  --outline-sm: .1rem var(--outline-style) var(--outline-color);
+  --outline-md: .2rem var(--outline-style) var(--outline-color);
+  --outline-lg: .4rem var(--outline-style) var(--outline-color);
+  --outline: var(--outline-md);
+  --border-color: var(--accent);
+  --border-style: solid;
+  --border-sm: .1rem var(--border-style) var(--border-color);
+  --border: var(--border-sm);
+  --index-nav: 900;
+  --index-popup: 999;
+  --index-backtap: -1;
 }
 
 /*# sourceMappingURL=yonaka.temps.css.map */

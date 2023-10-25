@@ -1,23 +1,33 @@
 details[role="listbox"] {
-
-    summary {
-        margin-bottom: 0;
-    }
     
     & > ul {
-        background-color: rebeccapurple;
+        --bg: var(--foreground-primary);
+        --border: var(--border-sm);
+        --width: var(--w-full);
+
+        background-color: var(--bg);
+        max-width: var(--width);
+        padding: var(--spacing) 0;
+        border: var(--border);
 
         li {
-            background-color: paleturquoise;
+            --font-size: var(--md);
+            --text-color: var(--text);
+            --font-weight: 500;
+            --bg: var(--foreground-primary);
+            --border: var(--border-sm);
             --roudness: 0;
+
+            font-size: var(--font-size);
+            font-weight: var(--font-weight);
+            color: var(--text-color);
+            background-color: var(--bg);
             border-radius: 0;
             padding: var(--spacing);
-            --text-color: var(--foreground-text);
-            color: var(--text-color);
             cursor: pointer;
 
             &:hover {
-                background-color: red;
+                --bg: var(--primary);
             }
         }
         

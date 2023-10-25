@@ -9,6 +9,11 @@
     text-decoration: none;
 }
 
+::selection {
+    background-color: var(--accent);
+    color: invert($color: #000000);
+}
+
 html {
     font-size: 62.5%;
     line-height: 1.15;
