@@ -27,6 +27,8 @@ label {
 
     --width: 100%;
 
+    margin-inline: 0;
+
     width: fit-content;
     height: fit-content;
 
@@ -37,26 +39,41 @@ label {
     // Styles the label that has a input file as child
     &:has( > input[type="file"]) {
 
-        font-weight: 600;
+        --width: var(--w-full, 100%);
+        --height: calc(32vmin + 5vw);
+        --font-weight: 600;
+
+        font-weight: var(--font-weight);
         vertical-align: center;
         display: flex;
         align-items: center;
         word-wrap: break-word;
         justify-content: center;
         border: .1rem dashed var(--text);
-        width: 50%;
-        height: 20vmin;
+        width: var(--width);
+        height: var(--height);
         padding: var(--spacing-y) var(--spacing-x);
         text-align: center;
-        transition: background-color .4s ease-in;
+        transition: background-color, filter .4s ease-in;
+        position: relative;
     
         &:hover {
             background-color: var(--accent);
         }
 
         &:active {
-            filter: brightness(150%);
+            filter: var(--effect-bright);
         }
+    }
+
+    // When focusing in the input, styles the label to pretend they're the same
+
+    &:has(> input[type="file"]:focus-visible) {
+        --outline: var(--outline-md);
+
+        outline-offset: var(--outline-offset);
+
+        outline: var(--outline);
     }
 
     // Styles a label that has a input color
@@ -68,7 +85,7 @@ label {
     // Label that has the checkbox
 
     &:has( > input[type="checkbox"] + span:empty) {
-        
+        // as
     }
 }
 
@@ -126,10 +143,14 @@ input, select {
     // File Input --------------------------------------------------------
 
     &[type="file"] {
-        visibility: hidden;
-        width: 0;
-        height: 0;
-        display: none;
+        position: absolute;
+        inset: 0;
+        z-index: -20;
+        opacity: 0;
+
+        &:focus-visible {
+            all: none
+        }
     }
 
     // Color Input --------------------------------------------------------

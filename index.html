@@ -35,7 +35,7 @@
 
     <section>
       <button class="cta">Get Started</button>
-      <button class="ghost">Fuck me</button>
+      <button class="ghost">Go Out</button>
     </section>
   </div>
 
@@ -48,17 +48,115 @@
       <p>It's a TCC for my Computer Sciece Course</p>
     </section>
 
-    <section class="grid-fixed">
-      <div style="--bg: var(--primary)">item 1</div>
-      <div style="--bg: var(--primary)">item 2</div>
-      <div style="--bg: var(--primary)">item 3</div>
-      <div style="--bg: var(--primary)">item 4</div>
-      <div style="--bg: var(--primary)">item 5</div>
-      <div style="--bg: var(--primary)">item 6</div>
-      <div style="--bg: var(--primary)">item 7</div>
-      <div style="--bg: var(--primary)">item 8</div>
-      <div style="--bg: var(--primary)">item 9</div>
-      <div style="--bg: var(--primary)">item 10</div>
+    <section>
+
+      <h2>Displays</h2>
+
+      <p>There's a bunch of displays to use going to the most simple and dynamic to real occasional use cases.</p>
+
+      <h3>Fixed Grid</h3>
+
+      <p>It's a grid display but with fixed columns.</p>
+
+      <div class="grid-fixed">
+        <div style="--bg: var(--primary)">item 1</div>
+        <div style="--bg: var(--primary)">item 2</div>
+        <div style="--bg: var(--primary)">item 3</div>
+        <div style="--bg: var(--primary)">item 4</div>
+        <div style="--bg: var(--primary)">item 5</div>
+        <div style="--bg: var(--primary)">item 6</div>
+        <div style="--bg: var(--primary)">item 7</div>
+        <div style="--bg: var(--primary)">item 8</div>
+        <div style="--bg: var(--primary)">item 9</div>
+        <div style="--bg: var(--primary)">item 10</div>
+      </div>
+
+      <h3>Grid Dynamic</h3>
+
+      <p>It's a grid with undefined columns, that can be any value(It depends in the child size).</p>
+
+      <div class="grid-dynamic">
+        <div style="--bg: var(--primary)">item 1</div>
+        <div style="--bg: var(--primary)">item 2</div>
+        <div style="--bg: var(--primary)">item 3</div>
+        <div style="--bg: var(--primary)">item 4</div>
+        <div style="--bg: var(--primary)">item 5</div>
+        <div style="--bg: var(--primary)">item 6</div>
+      </div>
+
+      <h3>Grid Reel</h3>
+
+      <p>Works as content "carousel". Hiding some content to be scrolled.</p>
+
+      <div class="reel">
+        <div style="--bg: var(--primary)">item 1</div>
+        <div style="--bg: var(--primary)">item 2</div>
+        <div style="--bg: var(--primary)">item 3</div>
+        <div style="--bg: var(--primary)">item 4</div>
+        <div style="--bg: var(--primary)">item 5</div>
+        <div style="--bg: var(--primary)">item 6</div>
+      </div>
+
+      <h3>Flex Row</h3>
+
+      <p>A ordinary flex row with no styling by default.(There's a gap just for demonstrative purposes).</p>
+
+      <div class="row" style="gap: 1rem;">
+        <div style="--bg: var(--primary)">item 1</div>
+        <div style="--bg: var(--primary)">item 2</div>
+        <div style="--bg: var(--primary)">item 3</div>
+        <div style="--bg: var(--primary)">item 4</div>
+        <div style="--bg: var(--primary)">item 5</div>
+        <div style="--bg: var(--primary)">item 6</div>
+      </div>
+
+      <h3>Flex Col</h3>
+
+      <p>A ordinary flex column with no styling by default.(There's a gap just for demonstrative purposes).</p>
+
+      <div class="col" style="gap: 1rem;">
+        <div style="--bg: var(--primary)">item 1</div>
+        <div style="--bg: var(--primary)">item 2</div>
+        <div style="--bg: var(--primary)">item 3</div>
+        <div style="--bg: var(--primary)">item 4</div>
+        <div style="--bg: var(--primary)">item 5</div>
+        <div style="--bg: var(--primary)">item 6</div>
+      </div>
+
+      <h3>Flex Cluster</h3>
+
+      <p>A flex container that wraps it's children as it fits on the row.</p>
+
+      <p><strong>The Children don't grow. It keeps the same size not matter what.</strong></p>
+
+      <div class="flex-cluster">
+        <div style="--bg: var(--primary)">
+          Lorem ipsum dolor sit amet.
+        </div>
+        
+        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet.</div>
+        <div style="--bg: var(--primary)">Lorem.</div>
+        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur.</div>
+        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque, distinctio?</div>
+        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+      </div>
+
+
+      <h3>Flex Col</h3>
+
+      <p>Same as the <code>.flex-cluster</code> but with <code>flex: 1</code> on its children(They're able to take all available space).</p>
+
+      <div class="flex-cluster-grow">
+        <div style="--bg: var(--primary)">
+          Lorem ipsum dolor sit amet.
+        </div>
+        
+        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet.</div>
+        <div style="--bg: var(--primary)">Lorem.</div>
+        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur.</div>
+        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque, distinctio?</div>
+        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+      </div>
     </section>
 
     <section id="components__section">
@@ -73,11 +171,11 @@
         <p>Accordion Text</p>
       </details>
 
-      <details role="listbox">
+      <details role="listbox" >
         <summary>Dropdown</summary>
 
         <ul>
-          <li>item 1</li>
+          <li tabindex="0">item 1</li>
           <li>item 2</li>
           <li>item 3</li>
           <li>
@@ -113,9 +211,9 @@
 
         <h3>File</h3>
 
-        <label for="input__file">
+        <label role="button" for="input__file">
           Drag & Drop a file here
-          <input type="file" name="" id="input__file" />
+          <input type="file" id="input__file" />
         </label>
 
         <h3>Color</h3>
@@ -150,14 +248,23 @@
         <h3>Switches</h3>
 
         <label for="input__switch">
+
+          Default Switch
+
           <input type="checkbox" id="input__switch" role="switch" aria-checked="false" />
         </label>
 
         <label for="input__switch--squished">
+
+          Squished
+
           <input id="input__switch--squished" class="squished" type="checkbox" role="switch" aria-checked="false" />
         </label>
 
         <label for="input__switch--squared">
+
+          Squared/Sharp
+
           <input id="input__switch--squared" class="squared" type="checkbox" role="switch" aria-checked="false" />
         </label>
 

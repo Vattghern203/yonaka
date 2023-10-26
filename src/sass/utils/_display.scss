@@ -1,3 +1,5 @@
+// FLEX
+
 :where(.row, .col) {
     --flex-spacing: 0;
 
@@ -11,6 +13,16 @@
 
 .col {
     flex-direction: column;
+}
+
+.flex-cluster, .flex-cluster-grow {
+    display: flex;
+    gap: var(--spacing);
+    flex-wrap: wrap;
+}
+
+.flex-cluster-grow > * {
+    flex: 1;
 }
 
 // GRID
@@ -28,8 +40,8 @@
 .grid-dynamic {
     display: grid;
     grid-template-columns: repeat(
-        var(--grid-cols), 
-        minmax(var(--grid-item-width), 1fr)
+        auto-fit, 
+        minmax(min(var(--grid-item-width), 100%), 1fr)
     );
     grid-auto-rows: var(--grid-rows);
     justify-content: space-between;
@@ -55,11 +67,28 @@
 
     display: grid;
     grid-template-columns: repeat(
-        var(--grid-cols), minmax(var(--grid-item-width), 1fr)
+        var(--grid-cols), minmax(min(var(--grid-item-width), 100%), 1fr)
     );
     grid-template-rows: var(--grid-rows);
     justify-content: center;
     gap: var(--spacing);
+}
+
+.reel {
+
+    --grid-auto-cols: 30%;
+
+    display: grid;
+    gap: var(--spacing);
+    grid-auto-flow: column;
+    grid-auto-columns: calc(var(--grid-auto-cols) - (var(--spacing) / 2));
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-padding: var(--spacing);
+
+    & > * {
+        scroll-snap-align: start;
+    }
 }
 
 // Wrapper

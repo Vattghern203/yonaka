@@ -254,7 +254,7 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+body, body * + * {
   box-sizing: border-box;
 }
 
@@ -400,7 +400,7 @@ article * > img:first-child {
   object-position: top;
 }
 
-details[role=listbox] > ul {
+details[role=listbox] > ul, details[role=list] > ul {
   --bg: var(--foreground-primary);
   --border: var(--border-sm);
   --width: var(--w-full);
@@ -408,49 +408,66 @@ details[role=listbox] > ul {
   max-width: var(--width);
   padding: var(--spacing) 0;
   border: var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
 }
-details[role=listbox] > ul li, details[role=listbox] > ul > * {
+details[role=listbox] > ul li, details[role=listbox] > ul > *, details[role=list] > ul li, details[role=list] > ul > * {
   text-transform: capitalize;
 }
-details[role=listbox] > ul li {
+details[role=listbox] > ul li, details[role=list] > ul li {
   --font-size: var(--md);
   --text-color: var(--text);
   --font-weight: 500;
   --bg: var(--foreground-primary);
   --border: var(--border-sm);
   --roudness: 0;
+  --width: fit-content;
   font-size: var(--font-size);
   font-weight: var(--font-weight);
   color: var(--text-color);
   background-color: var(--bg);
+  width: var(--widht);
   border-radius: 0;
   padding: var(--spacing);
   cursor: pointer;
   transition: background-color 0.4s ease, filter 0.2s ease-in;
 }
-details[role=listbox] > ul li:hover {
+details[role=listbox] > ul li:hover, details[role=listbox] > ul li:focus-visible, details[role=list] > ul li:hover, details[role=list] > ul li:focus-visible {
   --bg: var(--primary);
 }
-details[role=listbox] > ul li:active {
+details[role=listbox] > ul li:active, details[role=list] > ul li:active {
   filter: var(--effect-bright);
 }
-details[role=listbox] > ul li * {
+details[role=listbox] > ul li *, details[role=list] > ul li * {
   color: inherit;
 }
-details[role=listbox] > ul li:has(a) {
+details[role=listbox] > ul li:has(> a), details[role=list] > ul li:has(> a) {
   padding: 0;
 }
-details[role=listbox] > ul li a {
-  display: block;
-  padding: var(--spacing);
+details[role=listbox] > ul li a, details[role=list] > ul li a {
+  --roundness: 0;
+  --width: var(--w-full);
+  --bg: transparent;
+  background-color: var(--bg);
+  display: inline-flex;
   height: 100%;
-  width: 100%;
+  min-width: var(--width);
+  margin: 0;
+  padding: var(--spacing);
+  border-radius: var(--roundness);
+}
+details[role=listbox] > ul li a:focus-visible, details[role=list] > ul li a:focus-visible {
+  outline-offset: 0;
+  --outline: var(--outline-sm);
+  --bg: var(--primary);
 }
 
 select {
   --font-size: var(--md);
   --text-color: var(--text);
   --font-weight: 500;
+  cursor: pointer;
   appearance: none;
   width: 100%;
   font-family: var(--font-family);
@@ -545,6 +562,7 @@ label {
   --spacing-y: var(--sm);
   --spacing-x: var(--md);
   --width: 100%;
+  margin-inline: 0;
   width: fit-content;
   height: fit-content;
   display: flex;
@@ -552,24 +570,33 @@ label {
   align-items: center;
 }
 label:has(> input[type=file]) {
-  font-weight: 600;
+  --width: var(--w-full, 100%);
+  --height: calc(32vmin + 5vw);
+  --font-weight: 600;
+  font-weight: var(--font-weight);
   vertical-align: center;
   display: flex;
   align-items: center;
   word-wrap: break-word;
   justify-content: center;
   border: 0.1rem dashed var(--text);
-  width: 50%;
-  height: 20vmin;
+  width: var(--width);
+  height: var(--height);
   padding: var(--spacing-y) var(--spacing-x);
   text-align: center;
-  transition: background-color 0.4s ease-in;
+  transition: background-color, filter 0.4s ease-in;
+  position: relative;
 }
 label:has(> input[type=file]):hover {
   background-color: var(--accent);
 }
 label:has(> input[type=file]):active {
-  filter: brightness(150%);
+  filter: var(--effect-bright);
+}
+label:has(> input[type=file]:focus-visible) {
+  --outline: var(--outline-md);
+  outline-offset: var(--outline-offset);
+  outline: var(--outline);
 }
 label:has(> input[type=color]) {
   display: flex;
@@ -610,10 +637,13 @@ input:is([type=checkbox], [type=radio]), select:is([type=checkbox], [type=radio]
   --spacing: var(--sm);
 }
 input[type=file], select[type=file] {
-  visibility: hidden;
-  width: 0;
-  height: 0;
-  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: -20;
+  opacity: 0;
+}
+input[type=file]:focus-visible, select[type=file]:focus-visible {
+  all: none;
 }
 input[type=color], select[type=color] {
   --width: 2.4vmin;
@@ -978,6 +1008,16 @@ nav ul li:active {
   flex-direction: column;
 }
 
+.flex-cluster, .flex-cluster-grow {
+  display: flex;
+  gap: var(--spacing);
+  flex-wrap: wrap;
+}
+
+.flex-cluster-grow > * {
+  flex: 1;
+}
+
 :where(.grid-dynamic, .grid-fixed) {
   --grid-cols: auto-fill;
   --grid-rows: min-content;
@@ -988,7 +1028,7 @@ nav ul li:active {
 
 .grid-dynamic {
   display: grid;
-  grid-template-columns: repeat(var(--grid-cols), minmax(var(--grid-item-width), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-item-width), 100%), 1fr));
   grid-auto-rows: var(--grid-rows);
   justify-content: space-between;
   justify-items: var(--grid-justify-items);
@@ -1008,10 +1048,24 @@ nav ul li:active {
   --grid-cols: 2;
   --grid-rows: auto;
   display: grid;
-  grid-template-columns: repeat(var(--grid-cols), minmax(var(--grid-item-width), 1fr));
+  grid-template-columns: repeat(var(--grid-cols), minmax(min(var(--grid-item-width), 100%), 1fr));
   grid-template-rows: var(--grid-rows);
   justify-content: center;
   gap: var(--spacing);
+}
+
+.reel {
+  --grid-auto-cols: 30%;
+  display: grid;
+  gap: var(--spacing);
+  grid-auto-flow: column;
+  grid-auto-columns: calc(var(--grid-auto-cols) - var(--spacing) / 2);
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-padding: var(--spacing);
+}
+.reel > * {
+  scroll-snap-align: start;
 }
 
 :where(.wrapper) {
@@ -1097,6 +1151,12 @@ nav ul li:active {
 }
 
 :where(:root) {
+  --offset-min: 0rem;
+  --offset-sm: 1rem;
+  --offset-md: 1.25rem;
+  --offset-lg: 1.50rem;
+  --offset-hg: 1.75rem;
+  --outline-offset: var(--offset-md. 1.25rem);
   --outline-color: var(--accent);
   --outline-style: solid;
   --outline-sm: .1rem var(--outline-style) var(--outline-color);
@@ -1109,11 +1169,17 @@ nav ul li:active {
   --border-md: .2rem var(--border-style) var(--border-color);
   --border-lg: .4rem var(--border-style) var(--border-color);
   --border: var(--border-sm);
+  --box-shadow-sm: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
+  --box-shadow-lg: 0 .4rem .8rem rgba(0, 0, 0, 0.1);
+  --box-shadow: var(--box-shadow-sm, 0 .2rem .4rem rgba(0, 0, 0, 0.1););
   --index-nav: 900;
   --index-popup: 999;
   --index-backtap: -1;
+  --index-back: 20;
   --effect-bright-level: 150%;
   --effect-bright: brightness(var(--effect-bright-level));
+  --transition-colors: background-color, color, border-color, outline-color, fill
+  --transition-props: ;
 }
 
 /*# sourceMappingURL=yonaka.temps.css.map */

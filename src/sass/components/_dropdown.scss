@@ -1,4 +1,4 @@
-details[role="listbox"] {
+details[role="listbox"], details[role="list"] {
     
     & > ul {
         --bg: var(--foreground-primary);
@@ -9,6 +9,9 @@ details[role="listbox"] {
         max-width: var(--width);
         padding: var(--spacing) 0;
         border: var(--border);
+        display: flex;
+        flex-direction: column; 
+        overflow-x: hidden;
 
         & li, & > * {
             text-transform: capitalize;
@@ -21,18 +24,20 @@ details[role="listbox"] {
             --bg: var(--foreground-primary);
             --border: var(--border-sm);
             --roudness: 0;
+            --width: fit-content;
 
             font-size: var(--font-size);
             font-weight: var(--font-weight);
             color: var(--text-color);
             background-color: var(--bg);
+            width: var(--widht);
             border-radius: 0;
             padding: var(--spacing);
             cursor: pointer;
 
             transition: background-color .4s ease, filter .2s ease-in;
 
-            &:hover {
+            &:hover, &:focus-visible {
                 --bg: var(--primary);
             }
 
@@ -45,15 +50,29 @@ details[role="listbox"] {
             color: inherit;
         }
 
-        & li:has(a) {
+        & li:has(> a) {
             padding: 0;
+            //box-sizing: border-box;
         }
 
         & li a {
-            display: block;
-            padding: var(--spacing);
+            --roundness: 0;
+            --width: var(--w-full);
+            --bg: transparent;
+
+            background-color: var(--bg);
+            display: inline-flex;
             height: 100%;
-            width: 100%;
+            min-width: var(--width);
+            margin: 0;
+            padding: var(--spacing);
+            border-radius: var(--roundness);
+
+            &:focus-visible {
+                outline-offset: 0;      
+                --outline: var(--outline-sm);
+                --bg: var(--primary);
+            }
         }
         
     }
@@ -66,7 +85,8 @@ select {
     --text-color: var(--text);
     --font-weight: 500;
 
-    
+    cursor: pointer;
+
     appearance: none;
     width: 100%;
     

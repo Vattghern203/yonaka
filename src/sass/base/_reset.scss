@@ -20,7 +20,7 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
+body, body * + * {
     box-sizing: border-box;
 }
 

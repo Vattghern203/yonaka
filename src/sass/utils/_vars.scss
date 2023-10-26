@@ -1,17 +1,31 @@
 :where(:root) {
 
-    // OUTLINE
+    // OUTLINE ---------------------------------------------------
+
+    --offset-min: 0rem; // Minimal value possible
+    --offset-sm: 1rem; 
+    --offset-md: 1.25rem;
+    --offset-lg: 1.50rem;
+    --offset-hg: 1.75rem;
+
+    // Offset Base
+    --outline-offset: var(--offset-md. 1.25rem);
+
+    // Offset Customization
 
     --outline-color: var(--accent);
     --outline-style: solid;
+
 
     --outline-sm: .1rem var(--outline-style) var(--outline-color);
     --outline-md: .2rem var(--outline-style) var(--outline-color);
     --outline-lg: .4rem var(--outline-style) var(--outline-color);
 
+    // Base
+
     --outline: var(--outline-md);
 
-    // BORDER
+    // BORDER ------------------------------------------------------
 
     --border-color: var(--accent);
     --border-style: solid;
@@ -20,19 +34,35 @@
     --border-md: .2rem var(--border-style) var(--border-color);
     --border-lg: .4rem var(--border-style) var(--border-color);
 
+    // Base
+
     --border: var(--border-sm);
 
-    // BOX SHADOW
+    // BOX SHADOW --------------------------------------------------
 
-    // Z-INDEX
+    --box-shadow-sm: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
+    --box-shadow-lg: 0 .4rem .8rem rgba(0, 0, 0, 0.1);
+
+    // Base
+
+    --box-shadow: var(--box-shadow-sm, 0 .2rem .4rem rgba(0, 0, 0, 0.1););
+
+    // Z-INDEX -----------------------------------------------------
 
     --index-nav: 900;
     --index-popup: 999;
     --index-backtap: -1;
+    --index-back: 20;
 
-    // EFFECTS
+    // EFFECTS -----------------------------------------------------
 
     --effect-bright-level: 150%;
     --effect-bright: brightness(var(--effect-bright-level));
+
+    // TRANSITIONS -------------------------------------------------
+
+    --transition-colors: background-color, color, border-color, outline-color, fill
+
+    --transition-props: 
 
 } 
