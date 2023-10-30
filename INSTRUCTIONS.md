@@ -208,3 +208,58 @@ with these colors, the framework will generate variants as: muted, foreground an
     
     --foreground-destructive: color-mix(in oklab, var(--destructive), var(--blend-back-color) 15%);```
 }
+```
+
+## Components
+
+Akatsuki has a decent amount of components as: switches, headers, navs, buttons, accordions, drropdowns and cards.
+
+To create them, the user must follow some "rules", because the css iis very specific to avoid conflict with others selectors.
+
+### Switch
+
+```html
+<label for="input__switch">
+
+    Default Switch
+
+    <input type="checkbox" id="input__switch" role="switch" aria-checked="false" />
+</label>
+```
+
+### Accordion
+
+```html
+<details>
+    <summary>Accordion</summary>
+
+    <p>Accordion Text</p>
+</details>
+```
+
+### Select
+
+```html
+<select>
+    <option value="" selected>Select</option>
+    <option value="">option 1</option>
+    <option value="">option 2</option>
+    <option value="">option 3</option>
+    <option value="">option 4</option>
+</select>
+```
+
+### Dropdown
+
+```html
+<details role="listbox" >
+    <summary>Dropdown</summary>
+
+    <ul>
+        <li><a href="#">item 1</a></li>
+        <li><a href="#">item 2</a></li>
+        <li><a href="#">item 3</a></li>
+        <li><a href="#">item 4</a></li>
+    </ul>
+</details>
+```
