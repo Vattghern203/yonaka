@@ -25,9 +25,6 @@
     "source-map-js": "^1.0.2",
     "to-regex-range": "^5.0.1"
   },
-  "dependencies": {
-    "normalize.css": "^8.0.1"
-  },
   "scripts": {
     "build:css": "sass src/sass/main.scss dist/yonaka.css --style=compressed && postcss dist/yonaka.css --use autoprefixer -d dist",
     "watch:sass": "sass src/sass/main.scss src/styles/yonaka.temps.css -w",
