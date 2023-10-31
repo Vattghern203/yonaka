@@ -1,6 +1,6 @@
 {
   "name": "yonaka",
-  "description": "A easy customizable css framework",
+  "description": "A easily customizable css framework",
   "version": "1.1.6",
   "main": "dist/yonaka.css",
   "devDependencies": {
@@ -48,6 +48,7 @@
   ],
   "author": "vattghern203",
   "license": "MIT",
+  "private": "false",
   "bugs": {
     "url": "https://github.com/Vattghern203/yonaka/issues"
   },
