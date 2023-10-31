@@ -632,6 +632,20 @@ input:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range])
 }
 input[type=radio], select[type=radio] {
   border-radius: 50%;
+  padding: 5%;
+}
+input[type=radio]::after, select[type=radio]::after {
+  content: "";
+  display: block;
+  scale: 0;
+  width: 0.8em;
+  border-radius: inherit;
+  aspect-ratio: 1/1;
+  background-color: var(--accent);
+  transition: scale 0.2s ease;
+}
+input[type=radio]:checked::after, select[type=radio]:checked::after {
+  scale: 1;
 }
 input:is([type=checkbox], [type=radio]), select:is([type=checkbox], [type=radio]) {
   --spacing: var(--sm);
@@ -647,6 +661,7 @@ input[type=file]:focus-visible, select[type=file]:focus-visible {
 }
 input[type=color], select[type=color] {
   --width: 2.4vmin;
+  --bg: transparent;
   padding: 0;
   margin: 0;
   border: none;
@@ -654,7 +669,7 @@ input[type=color], select[type=color] {
   aspect-ratio: 1/1;
   width: var(--width);
   border-radius: var(--roundness);
-  background-color: transparent;
+  background-color: var(--bg, transparent);
   transition: border 0.2s ease;
 }
 input[type=color]::-webkit-color-swatch, select[type=color]::-webkit-color-swatch {
@@ -664,17 +679,16 @@ input[type=color]::-webkit-color-swatch, select[type=color]::-webkit-color-swatc
 input[type=color]:is(:active, :focus)::-webkit-color-swatch, select[type=color]:is(:active, :focus)::-webkit-color-swatch {
   border: 0.2rem var(--text) solid;
 }
-input[type=checkbox], select[type=checkbox] {
+input[type=checkbox]:not([role=switch]), select[type=checkbox]:not([role=switch]) {
   overflow: hidden;
   position: relative;
 }
-input[type=checkbox] + span, select[type=checkbox] + span {
+input[type=checkbox]:not([role=switch])::after, select[type=checkbox]:not([role=switch])::after {
   --borderWidth: .6rem;
-  --height: 2.4rem;
-  --width: 1.2rem;
+  --height: 2.4em;
+  --width: 1.2em;
   --borderColor: var(--accent);
   position: absolute;
-  display: inline-block;
   transform: rotate(45deg);
   height: var(--height);
   width: var(--width);

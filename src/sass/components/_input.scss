@@ -133,6 +133,22 @@ input, select {
 
     &[type="radio"] {
         border-radius: 50%;
+        padding: 5%;
+        
+        &::after {
+            content: "";
+            display: block;
+            scale: 0;
+            width: .8em;
+            border-radius: inherit;
+            aspect-ratio: 1 / 1;
+            background-color: var(--accent);
+            transition: scale .2s ease;
+        }
+
+        &:checked::after {
+            scale: 1;
+        }
     }
 
     // A radio and checkbox common style
@@ -159,6 +175,8 @@ input, select {
 
         --width: 2.4vmin;
 
+        --bg: transparent;
+
         padding: 0;
         margin: 0;
         border: none;
@@ -168,7 +186,7 @@ input, select {
         
         width: var(--width);
         border-radius: var(--roundness);
-        background-color: transparent;
+        background-color: var(--bg, transparent);
         
         &::-webkit-color-swatch {
             border-radius: var(--roundness);
@@ -184,7 +202,7 @@ input, select {
 
     // Check Box
 
-    &[type="checkbox"] {
+    &[type="checkbox"]:not([role="switch"]) {
 
         overflow: hidden;
         position: relative;
@@ -193,16 +211,15 @@ input, select {
             // Styling to checked state
         }
 
-        & + span {
+        &::after {
 
             --borderWidth: .6rem;
-            --height: 2.4rem;
-            --width: 1.2rem;
+            --height: 2.4em;
+            --width: 1.2em;
             --borderColor: var(--accent);
 
             position: absolute;
-
-            display: inline-block;
+            
             transform: rotate(45deg);
             height: var(--height);
             width: var(--width);

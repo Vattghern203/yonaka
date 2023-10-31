@@ -206,7 +206,7 @@ with these colors, the framework will generate variants as: muted, foreground an
     
     --foreground-accent: color-mix(in oklab, var(--accent), var(--blend-text-color) 35%);
     
-    --foreground-destructive: color-mix(in oklab, var(--destructive), var(--blend-back-color) 15%);```
+    --foreground-destructive: color-mix(in oklab, var(--destructive), var(--blend-back-color) 15%);
 }
 ```
 
