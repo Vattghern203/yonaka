@@ -54,17 +54,22 @@ html {
   --spacing: .8rem;
   --spacing-y: auto;
   --spacing-x: auto;
-  --jump: .4rem;
+  --jump: 2;
   --theme: dark;
   --width: auto;
   --height: auto;
-  --xxs: .2rem;
-  --xs: .4rem;
-  --sm: .8rem;
-  --md: 1.6rem;
-  --lg: 3.2rem;
-  --xl: 6.4rem;
-  --hg: 12.8rem;
+  --base: 1.6rem;
+  --sl: calc(var(--base) / 10);
+  --3xs: calc(var(--base) / 8);
+  --xxs: calc(var(--base) / 6);
+  --xs: calc(var(--base) / 4);
+  --sm: calc(var(--base) / 2);
+  --md: var(--base);
+  --lg: calc(var(--base) * 2);
+  --xl: calc(var(--base) * 4);
+  --xxl: calc(var(--base) * 6);
+  --3xl: calc(var(--base) * 8);
+  --hg: calc(var(--base) * 10);
   --text: #d9e5f7;
   --background: #03070d;
   --primary: #173c73;
@@ -123,12 +128,12 @@ html {
 }
 
 .gradient {
-  --gradient-from: var(--secondary);
-  --gradient-to: var(--accent);
+  --_gradient-from: var(--secondary);
+  --_gradient-to: var(--accent);
   --from-percentage: 0%;
-  --to-percentage: 0%;
-  --gradient-direction: to left;
-  background-image: linear-gradient(var(--gradient-direction), var(--gradient-from) var(--gradient-to));
+  --_to-percentage: 0%;
+  --_gradient-direction: to left;
+  background-image: linear-gradient(var(--_gradient-direction), var(--_gradient-from) var(--_gradient-to));
 }
 
 body {
@@ -198,6 +203,8 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
   --_text-overflow: ellipsis;
   text-overflow: var(--_text-overflow);
   line-clamp: var(--_line-number);
+  -webkit-line-clamp: var(--_line-number);
+  overflow: hidden;
 }
 
 @property --block-spacing {
@@ -220,17 +227,22 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
   --spacing: .8rem;
   --spacing-y: auto;
   --spacing-x: auto;
-  --jump: .4rem;
+  --jump: 2;
   --theme: dark;
   --width: auto;
   --height: auto;
-  --xxs: .2rem;
-  --xs: .4rem;
-  --sm: .8rem;
-  --md: 1.6rem;
-  --lg: 3.2rem;
-  --xl: 6.4rem;
-  --hg: 12.8rem;
+  --base: 1.6rem;
+  --sl: calc(var(--base) / 10);
+  --3xs: calc(var(--base) / 8);
+  --xxs: calc(var(--base) / 6);
+  --xs: calc(var(--base) / 4);
+  --sm: calc(var(--base) / 2);
+  --md: var(--base);
+  --lg: calc(var(--base) * 2);
+  --xl: calc(var(--base) * 4);
+  --xxl: calc(var(--base) * 6);
+  --3xl: calc(var(--base) * 8);
+  --hg: calc(var(--base) * 10);
   --text: #d9e5f7;
   --background: #03070d;
   --primary: #173c73;
@@ -289,12 +301,12 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
 }
 
 .gradient {
-  --gradient-from: var(--secondary);
-  --gradient-to: var(--accent);
+  --_gradient-from: var(--secondary);
+  --_gradient-to: var(--accent);
   --from-percentage: 0%;
-  --to-percentage: 0%;
-  --gradient-direction: to left;
-  background-image: linear-gradient(var(--gradient-direction), var(--gradient-from) var(--gradient-to));
+  --_to-percentage: 0%;
+  --_gradient-direction: to left;
+  background-image: linear-gradient(var(--_gradient-direction), var(--_gradient-from) var(--_gradient-to));
 }
 
 body, .app, #root {
@@ -702,7 +714,7 @@ label:has(> input[type=file]) {
   height: var(--height);
   padding: var(--spacing-y) var(--spacing-x);
   text-align: center;
-  transition: background-color 0.2 ease, filter 0.4s ease-in;
+  transition: background-color 0.2s ease, filter 0.4s ease-in;
   position: relative;
 }
 label:has(> input[type=file]):hover {
@@ -1048,13 +1060,13 @@ header a[role=img], header a:has(img.logo), header.header-sticky a[role=img], he
 }
 header a[role=img] :is(img, svg, em), header a:has(img.logo) :is(img, svg, em), header.header-sticky a[role=img] :is(img, svg, em), header.header-sticky a:has(img.logo) :is(img, svg, em) {
   box-sizing: content-box;
-  border: var(--primary) 0.4rem solid;
+  border: var(--primary) 0.4vmin solid;
 }
 
 header.header-sticky {
-  --header-top-position: 0;
+  --_header-top-position: 0;
   position: sticky;
-  top: var(--header-top-position, 0);
+  top: var(--_header-top-position, 0);
   z-index: 100;
 }
 
@@ -1124,7 +1136,7 @@ nav ul li a {
 nav ul li:is(:hover, :focus) a {
   opacity: 0.8;
 }
-nav ul li:active {
+nav ul li:active a {
   opacity: 0.6;
 }
 
@@ -1143,6 +1155,7 @@ nav ul li:active {
   --flex-spacing: 0;
   display: flex;
   gap: var(--flex-spacing);
+  flex-wrap: wrap;
 }
 
 .row {

@@ -1,4 +1,4 @@
-@import "props";
+@use "props";
 
 :where(:root) {
     // GLOBAL SCOPED VARS
@@ -7,20 +7,26 @@
     --spacing: .8rem; // the spacing between elements
     --spacing-y: auto;
     --spacing-x: auto;
-    --jump: .4rem; // the jump value between elements
+    --jump: 2; // the jump value between elements
     --theme: dark; // the actual theme in the page
     --width: auto; // the witdth of an element
     --height: auto; // the height of each element
 
     // SPACING VARS ---------------------------------
 
-    --xxs: .2rem;  //  0.5 Extra Extra Small
-    --xs: .4rem;   //  1.0 Extra Small
-    --sm: .8rem;   //  2.0 Small
-    --md: 1.6rem;  //  4.0 Medium
-    --lg: 3.2rem;  //  6.0 Large
-    --xl: 6.4rem;  //  8.0 Extra Large
-    --hg: 12.8rem; //  10.0 Huge
+    --base: 1.6rem;
+
+    --sl: calc(var(--base) / 10);
+    --3xs: calc(var(--base) / 8);
+    --xxs: calc(var(--base) / 6);  //  0.5 Extra Extra Small
+    --xs: calc(var(--base) / 4);   //  1.0 Extra Small
+    --sm: calc(var(--base) / 2);   //  2.0 Small
+    --md: var(--base);  //  4.0 Medium
+    --lg: calc(var(--base) * 2);  //  6.0 Large
+    --xl: calc(var(--base) * 4);  //  8.0 Extra Large
+    --xxl: calc(var(--base) * 6);
+    --3xl: calc(var(--base) * 8); //  10.0 Huge
+    --hg: calc(var(--base) * 10);
 
     // COLOR PALETTE ---------------------------------
 
@@ -138,25 +144,25 @@
 $text-elements:"p, h1, h2, h3, h4, h5, h6, span, a, li";
 
 // Media elements
-$media-elements: img, video, audio;
+$media-elements: "img, video, audio";
 
 // Box elements (main, header, nav, etc.)
-$box-elements: main, header, nav, section, div;
+$box-elements: "main, header, nav, section, div";
 
 // Layout Elements
 
-$layout-elements: header, nav, footer;
+$layout-elements: "header, nav, footer";
 
 // GRADIENTS ----------------------------------------
 
 .gradient {
-    --gradient-from: var(--secondary);
-    --gradient-to: var(--accent);
+    --_gradient-from: var(--secondary);
+    --_gradient-to: var(--accent);
     --from-percentage: 0%;
-    --to-percentage: 0%;
-    --gradient-direction: to left;
+    --_to-percentage: 0%;
+    --_gradient-direction: to left;
 
     background-image: linear-gradient(
-        var(--gradient-direction), var(--gradient-from) var(--gradient-to)
+        var(--_gradient-direction), var(--_gradient-from) var(--_gradient-to)
     );
 }

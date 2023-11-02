@@ -54,7 +54,7 @@ label {
         height: var(--height);
         padding: var(--spacing-y) var(--spacing-x);
         text-align: center;
-        transition: background-color .2 ease, filter .4s ease-in;
+        transition: background-color .2s ease, filter .4s ease-in;
         position: relative;
     
         &:hover {

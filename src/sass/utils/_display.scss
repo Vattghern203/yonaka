@@ -5,6 +5,7 @@
 
     display: flex;
     gap: var(--flex-spacing);
+    flex-wrap: wrap;
 }
 
 .row {

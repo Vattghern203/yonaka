@@ -18,16 +18,16 @@ header, header.header-sticky {
     
         & :is(img, svg, em) {
             box-sizing: content-box;
-            border: var(--primary) .4rem solid;
+            border: var(--primary) .4vmin solid;
         }
     }
 }
 
 header.header-sticky {
 
-    --header-top-position: 0;
+    --_header-top-position: 0;
 
     position: sticky;
-    top: var(--header-top-position, 0);
+    top: var(--_header-top-position, 0);
     z-index: 100;
 }

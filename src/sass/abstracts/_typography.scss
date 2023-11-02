@@ -78,5 +78,8 @@ code {
         
         text-overflow: var(--_text-overflow);
         line-clamp: var(--_line-number);
+        -webkit-line-clamp: var(--_line-number);
+        //white-space: nowrap;
+        overflow: hidden;
     }
 }
