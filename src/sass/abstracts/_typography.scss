@@ -1,5 +1,7 @@
 // DEFINE ALL FONT REALTED STUFF
 
+@import "variables";
+
 body {
     --font-size: var(--md);
 
@@ -54,7 +56,7 @@ code {
 
 // text variants
 
-:is(h1, h2, h3, h4, h5, h6, p) {
+#{$text-elements} {
 
     &.muted {
         color: var(--muted-text);
@@ -62,5 +64,19 @@ code {
 
     &.foreground {
         color: var(--foreground-text);
+    }
+}
+
+// utilities
+
+#{$text-elements} {
+
+    &.limited-text {
+
+        --_line-number: 3;
+        --_text-overflow: ellipsis;
+        
+        text-overflow: var(--_text-overflow);
+        line-clamp: var(--_line-number);
     }
 }

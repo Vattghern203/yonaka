@@ -1,0 +1,17 @@
+@property --block-spacing {
+    syntax: "<lenght>";
+    inherits: true;
+    initial-value: .4rem;
+}
+
+@property --inline-spacing {
+    syntax: "<lenght>";
+    inherits: true;
+    initial-value: .8rem;
+}
+
+@property --roundness {
+    syntax: "<lenght>";
+    inherits: true;
+    initial-value: .4vmin;
+}

@@ -54,7 +54,7 @@ label {
         height: var(--height);
         padding: var(--spacing-y) var(--spacing-x);
         text-align: center;
-        transition: background-color, filter .4s ease-in;
+        transition: background-color .2 ease, filter .4s ease-in;
         position: relative;
     
         &:hover {
@@ -134,6 +134,8 @@ input, select {
     &[type="radio"] {
         border-radius: 50%;
         padding: 5%;
+        display: grid;
+        place-items: center;
         
         &::after {
             content: "";
@@ -207,30 +209,35 @@ input, select {
         overflow: hidden;
         position: relative;
 
-        &:checked {
-            // Styling to checked state
+        &:checked::after {
+            scale: 45%;
         }
 
         &::after {
+            content: "";
 
             --borderWidth: .6rem;
-            --height: 2.4em;
-            --width: 1.2em;
+            --height: 2em;
+            --width: 1em;
             --borderColor: var(--accent);
 
             position: absolute;
+            inset: 0;
             
-            transform: rotate(45deg);
+            transform: rotate(40deg) translate(-65%, -50%);
             height: var(--height);
             width: var(--width);
+            scale: 0;
             border-bottom: var(--borderWidth) solid var(--borderColor);
             border-right: var(--borderWidth) solid var(--borderColor);
+
+            transition: inherit;
         }
     }
 
     // Date Input
 
-    &[type="date"] {
+    &[type="date"], &[type="time"], &[type="datetime-local"] {
         --bg: var(--primary);
         --text-color: var(--text);
         --font-weight: 500;
@@ -291,5 +298,11 @@ input, select {
     
         outline-offset: .2rem;
         // Styling the line track
+    }
+
+    &:is([type="checkbox"], [type="radio"]):focus-visible {
+
+        outline-offset: var(--outline-offset);
+        outline: var(--outline);
     }
 }

@@ -3,13 +3,13 @@
 /* Default Styling */
 label:has(input[type="checkbox"][role="switch"], 
 input[type="checkbox"][role="switch"]) {
-    --switch-w: 4.4em;
-    --switch-h: 2.4em;
-    --switch-round: 100vmax;
-    --switch-default-bg: var(--muted-secondary);
-    --switch-focus-outline: var();
-    --switch-color: var(--foreground-secondary);
-    --switch-slider-color: whitesmoke;
+    --_switch-w: 4.4em;
+    --_switch-h: 2.4em;
+    --_switch-round: 100vmax;
+    --_switch-default-bg: var(--muted-secondary);
+    --_switch-focus-outline: var();
+    --_switch-color: var(--foreground-secondary);
+    --_switch-slider-color: whitesmoke;
 
     /* GLOBAL */
     --spacing: var(--md);
@@ -21,14 +21,14 @@ input[type="checkbox"][role="switch"]) {
 input[type="checkbox"][role="switch"] {
     appearance: none;
 
-    width: var(--switch-w);
-    height: var(--switch-h);
-    border-radius: var(--switch-round);
+    width: var(--_switch-w);
+    height: var(--_switch-h);
+    border-radius: var(--_switch-round);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--switch-color);
+    background-color: var(--_switch-color);
 
     transition:
             transform .24s ease-in,
@@ -38,7 +38,7 @@ input[type="checkbox"][role="switch"] {
     &::after {
 
         content: "";
-        background-color: var(--switch-slider-color);
+        background-color: var(--_switch-slider-color);
         aspect-ratio: 1 / 1;
         height: 80%;
         position: absolute;
@@ -55,7 +55,7 @@ input[type="checkbox"][role="switch"] {
 
 /* Common styling between switches */
 input[type="checkbox"][role="switch"] {
-    width: var(--switch-w);
+    width: var(--_switch-w);
 }
 
 input[type="checkbox"][role="switch"]:focus {
@@ -65,7 +65,7 @@ input[type="checkbox"][role="switch"]:focus {
 
 /* Change Switch background when checked */
 input[role="switch"][type="checkbox"]:checked {
-    --switch-color: var(--primary);
+    --_switch-color: var(--primary);
 }
 
 input[role="switch"][type="checkbox"]:checked:not(:is(.squished, .squared)) {
@@ -81,11 +81,11 @@ input[role="switch"][type="checkbox"]:checked:not(:is(.squished, .squared)) {
 /* Squished Variation */
 input[type="checkbox"][role="switch"].squished {
 
-    --switch-h: .8em;
+    --_switch-h: .8em;
 
-    height: var(--switch-h);
-    width: var(--switch-w);
-    border-radius: var(--switch-round);
+    height: var(--_switch-h);
+    width: var(--_switch-w);
+    border-radius: var(--_switch-round);
     background-color: var(--foreground-secondary);
     position: relative;
     overflow: visible;
@@ -93,7 +93,7 @@ input[type="checkbox"][role="switch"].squished {
 
     &::after {
         content: "";
-        background-color: var(--switch-slider-color);
+        background-color: var(--_switch-slider-color);
         height: 250%;
         aspect-ratio: 1 / 1;
         position: absolute;
@@ -121,8 +121,8 @@ input[role="switch"][type="checkbox"].squished:checked {
 /* Squared Variation */
 input[type="checkbox"][role="switch"].squared {
     /* Add specific styles for squared variation */
-    width: var(--switch-w);
-    height: var(--switch-h);
+    width: var(--_switch-w);
+    height: var(--_switch-h);
     border-radius: 0;
     background-color: var(--foreground-secondary);
     position: relative;
@@ -130,7 +130,7 @@ input[type="checkbox"][role="switch"].squared {
 
     &::after {
         content: "";
-        background-color: var(--switch-slider-color);
+        background-color: var(--_switch-slider-color);
         aspect-ratio: 1 / 1;
         height: 80%;
         position: absolute;

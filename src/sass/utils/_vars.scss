@@ -9,7 +9,7 @@
     --offset-hg: 1.75rem;
 
     // Offset Base
-    --outline-offset: var(--offset-md. 1.25rem);
+    --outline-offset: var(--offset-md, 1.25rem);
 
     // Offset Customization
 
@@ -53,6 +53,9 @@
     --index-popup: 999;
     --index-backtap: -1;
     --index-back: 20;
+    --index-hidden-back: -20;
+
+    --z-index: var(--index-back, 20)
 
     // EFFECTS -----------------------------------------------------
 
@@ -61,8 +64,29 @@
 
     // TRANSITIONS -------------------------------------------------
 
-    --transition-colors: background-color, color, border-color, outline-color, fill
+    --transition-colors: background-color, color, border-color, outline-color, fill;
+    --transition-motion: transform, scale, width, height, min-width, min-height, max-height, min-height;
+    --transition-effect: opacity, filter;
+    --transition-all: all;
 
-    --transition-props: 
+    --transition-props: unset;
 
-} 
+    --transition-ease: ease;
+    --transition-ease-in: ease-in;
+    --transition-linear: linear;
+    --transition-ease-in-out: ease-in-out;
+    
+    // Custom Easing
+    --transition-middle-break: cubic-bezier(0, .82, 1, .21);
+    --transition-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    --transition-out-circle: cubic-bezier(0.85, 0, 0.15, 1);
+    --transition-friction: cubic-bezier(0, 1.46 ,1 ,-0.29);
+
+    --transition-time-ssl: 2s; // Super Slow
+    --transition-time-sl: .8s; // Slow
+    --transition-time-md: .4s; // Medium
+    --transition-time-ft: .2s; // Fast
+
+
+    //--transition: 
+}

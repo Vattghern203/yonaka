@@ -34,68 +34,21 @@ html {
   --spacing: var(--lg);
 }
 
-body {
-  --font-size: var(--md);
-  font-size: var(--font-size);
-  font-family: var(--font-family);
-  font-weight: var(--font-weight);
-  line-height: var(--line-height);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-smoothing: antialiased;
+@property --block-spacing {
+  syntax: "<lenght>";
+  inherits: true;
+  initial-value: 0.4rem;
 }
-
-:where(h1) {
-  --text-color: var(--accent);
-  color: var(--text-color);
+@property --inline-spacing {
+  syntax: "<lenght>";
+  inherits: true;
+  initial-value: 0.8rem;
 }
-
-h1, h2, h3,
-h4, h5, h6 {
-  --spacing: var(--lg);
-  margin-bottom: var(--spacing);
+@property --roundness {
+  syntax: "<lenght>";
+  inherits: true;
+  initial-value: 0.4vmin;
 }
-
-h2 {
-  --spacing: var(--md) ;
-}
-
-h3, h4 {
-  --spacing: var(--sm);
-}
-
-h5 {
-  --spacing: var(--sm) ;
-}
-
-h6 {
-  --spacing: var(--xs) ;
-}
-
-p {
-  --text-color: var(--content-text);
-  --font-weight: 500;
-  color: var(--text-color);
-  font-weight: var(--font-weight);
-}
-p:not(:last-child) {
-  margin-bottom: var(--lg);
-}
-
-code {
-  --font-family: monospace;
-  --bg: var(--foreground-secondary)
-  font-family: var(--font-family);
-  background-color: var(--bg);
-}
-
-:is(h1, h2, h3, h4, h5, h6, p).muted {
-  color: var(--muted-text);
-}
-:is(h1, h2, h3, h4, h5, h6, p).foreground {
-  color: var(--foreground-text);
-}
-
 :where(:root) {
   --roundness: auto;
   --spacing: .8rem;
@@ -178,7 +131,173 @@ code {
   background-image: linear-gradient(var(--gradient-direction), var(--gradient-from) var(--gradient-to));
 }
 
-body, .app {
+body {
+  --font-size: var(--md);
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+}
+
+:where(h1) {
+  --text-color: var(--accent);
+  color: var(--text-color);
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+  --spacing: var(--lg);
+  margin-bottom: var(--spacing);
+}
+
+h2 {
+  --spacing: var(--md) ;
+}
+
+h3, h4 {
+  --spacing: var(--sm);
+}
+
+h5 {
+  --spacing: var(--sm) ;
+}
+
+h6 {
+  --spacing: var(--xs) ;
+}
+
+p {
+  --text-color: var(--content-text);
+  --font-weight: 500;
+  color: var(--text-color);
+  font-weight: var(--font-weight);
+}
+p:not(:last-child) {
+  margin-bottom: var(--lg);
+}
+
+code {
+  --font-family: monospace;
+  --bg: var(--foreground-secondary)
+  font-family: var(--font-family);
+  background-color: var(--bg);
+}
+
+p.muted, h1.muted, h2.muted, h3.muted, h4.muted, h5.muted, h6.muted, span.muted, a.muted, li.muted {
+  color: var(--muted-text);
+}
+p.foreground, h1.foreground, h2.foreground, h3.foreground, h4.foreground, h5.foreground, h6.foreground, span.foreground, a.foreground, li.foreground {
+  color: var(--foreground-text);
+}
+
+p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-text, h5.limited-text, h6.limited-text, span.limited-text, a.limited-text, li.limited-text {
+  --_line-number: 3;
+  --_text-overflow: ellipsis;
+  text-overflow: var(--_text-overflow);
+  line-clamp: var(--_line-number);
+}
+
+@property --block-spacing {
+  syntax: "<lenght>";
+  inherits: true;
+  initial-value: 0.4rem;
+}
+@property --inline-spacing {
+  syntax: "<lenght>";
+  inherits: true;
+  initial-value: 0.8rem;
+}
+@property --roundness {
+  syntax: "<lenght>";
+  inherits: true;
+  initial-value: 0.4vmin;
+}
+:where(:root) {
+  --roundness: auto;
+  --spacing: .8rem;
+  --spacing-y: auto;
+  --spacing-x: auto;
+  --jump: .4rem;
+  --theme: dark;
+  --width: auto;
+  --height: auto;
+  --xxs: .2rem;
+  --xs: .4rem;
+  --sm: .8rem;
+  --md: 1.6rem;
+  --lg: 3.2rem;
+  --xl: 6.4rem;
+  --hg: 12.8rem;
+  --text: #d9e5f7;
+  --background: #03070d;
+  --primary: #173c73;
+  --secondary: #081426;
+  --accent: #296cd1;
+  --destructive: #772626;
+  --blend-text-color: #000;
+  --blend-back-color: #FFF;
+  --blend-highlight-color: #FFF;
+  --content-text: color-mix(in oklab, var(--text), var(--blend-text-color) 20%);
+  --muted-text: color-mix(in oklab, var(--text), var(--blend-text-color) 35%);
+  --foreground-text: color-mix(in oklab, var(--text), var(--blend-text-color) 35%);
+  --foreground-primary: color-mix(in oklab, var(--primary), var(--blend-text-color) 35%);
+  --foreground-background: color-mix(in oklab, var(--background), var(--blend-back-color) 15%);
+  --foreground-secondary: color-mix(in oklab, var(--secondary), var(--blend-back-color) 30%);
+  --foreground-accent: color-mix(in oklab, var(--accent), var(--blend-text-color) 35%);
+  --foreground-destructive: color-mix(in oklab, var(--destructive), var(--blend-back-color) 15%);
+  --bp-sm: 40em;
+  --bp-md: 48em;
+  --bp-lg: 64em;
+  --bp-hg: 80em;
+  --h-full: 100%;
+  --h-half: 50%;
+  --h-third: 33.3333%
+  --h-quarter: 25%;
+  --h-screen: 100vh;
+  --h-half-screen: 50vh;
+  --h-third-screen: 33.3333vh;
+  --h-quarter-screen: 25vh;
+  --w-full: 100%;
+  --w-half: 50%;
+  --w-third: 33.3333%
+  --w-quarter: 25%;
+  --w-screen: 100vw;
+  --w-half-screen: 50vw;
+  --w-third-screen: 33.3333vw;
+  --w-quarter-screen: 25vw;
+  --grid-cols: auto-fill;
+  --grid-rows: auto;
+  --grid-item-width: 10rem;
+  --grid-justify-items: start;
+  --padding: var(--sm);
+  --roundness: var(--xs);
+  --round-full: 50%;
+  --round-peal: 100vmax;
+  --font-family: system-ui, "Inter", "Roboto";
+  --font-weight: 400;
+  --font-size: 1.6rem;
+  --line-height: 1.15;
+  --transition: var(--transition--duration, .2s) var(--transition--timing, ease-in);
+  --transition--duration: .4s;
+  --transition--timing: ease;
+  --transition--props: all;
+  --bg: inherit;
+  --txt-color: inherit;
+}
+
+.gradient {
+  --gradient-from: var(--secondary);
+  --gradient-to: var(--accent);
+  --from-percentage: 0%;
+  --to-percentage: 0%;
+  --gradient-direction: to left;
+  background-image: linear-gradient(var(--gradient-direction), var(--gradient-from) var(--gradient-to));
+}
+
+body, .app, #root {
   --bg: var(--background);
   --spacing: var(--md);
   display: grid;
@@ -187,21 +306,21 @@ body, .app {
   gap: var(--md);
   background-color: var(--bg);
 }
-body :where(nav, header, footer):not(.hero), .app :where(nav, header, footer):not(.hero) {
+body :where(nav, header, footer):not(.hero), .app :where(nav, header, footer):not(.hero), #root :where(nav, header, footer):not(.hero) {
   --bg: var(--background);
   background-color: var(--bg);
 }
-body :where(main > section, div):not(.hero, .wrapper, .hamburguer-icon), .app :where(main > section, div):not(.hero, .wrapper, .hamburguer-icon) {
+body :where(main > section, div):not(.hero, .wrapper, .hamburguer-icon), .app :where(main > section, div):not(.hero, .wrapper, .hamburguer-icon), #root :where(main > section, div):not(.hero, .wrapper, .hamburguer-icon) {
   --bg: var(--secondary);
   background-color: var(--bg);
   margin-block: var(--spacing);
   padding: var(--spacing);
 }
-body :where(main > section > div):not(.hero, .wrapper, .hamburguer-icon), .app :where(main > section > div):not(.hero, .wrapper, .hamburguer-icon) {
+body :where(main > section > div):not(.hero, .wrapper, .hamburguer-icon), .app :where(main > section > div):not(.hero, .wrapper, .hamburguer-icon), #root :where(main > section > div):not(.hero, .wrapper, .hamburguer-icon) {
   --spacing: var(--md);
   margin-block: var(--spacing);
 }
-body * :where(:not(h1, p, span)), .app * :where(:not(h1, p, span)) {
+body * :where(:not(h1, p, span)), .app * :where(:not(h1, p, span)), #root * :where(:not(h1, p, span)) {
   --txt: var(--text);
   color: var(--txt);
   border-radius: var(--roundness);
@@ -583,7 +702,7 @@ label:has(> input[type=file]) {
   height: var(--height);
   padding: var(--spacing-y) var(--spacing-x);
   text-align: center;
-  transition: background-color, filter 0.4s ease-in;
+  transition: background-color 0.2 ease, filter 0.4s ease-in;
   position: relative;
 }
 label:has(> input[type=file]):hover {
@@ -632,6 +751,8 @@ input:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range])
 input[type=radio], select[type=radio] {
   border-radius: 50%;
   padding: 5%;
+  display: grid;
+  place-items: center;
 }
 input[type=radio]::after, select[type=radio]::after {
   content: "";
@@ -682,19 +803,26 @@ input[type=checkbox]:not([role=switch]), select[type=checkbox]:not([role=switch]
   overflow: hidden;
   position: relative;
 }
+input[type=checkbox]:not([role=switch]):checked::after, select[type=checkbox]:not([role=switch]):checked::after {
+  scale: 45%;
+}
 input[type=checkbox]:not([role=switch])::after, select[type=checkbox]:not([role=switch])::after {
+  content: "";
   --borderWidth: .6rem;
-  --height: 2.4em;
-  --width: 1.2em;
+  --height: 2em;
+  --width: 1em;
   --borderColor: var(--accent);
   position: absolute;
-  transform: rotate(45deg);
+  inset: 0;
+  transform: rotate(40deg) translate(-65%, -50%);
   height: var(--height);
   width: var(--width);
+  scale: 0;
   border-bottom: var(--borderWidth) solid var(--borderColor);
   border-right: var(--borderWidth) solid var(--borderColor);
+  transition: inherit;
 }
-input[type=date], select[type=date] {
+input[type=date], input[type=time], input[type=datetime-local], select[type=date], select[type=time], select[type=datetime-local] {
   --bg: var(--primary);
   --text-color: var(--text);
   --font-weight: 500;
@@ -711,13 +839,13 @@ input[type=date], select[type=date] {
   font-weight: var(--font-weight);
   letter-spacing: 0.2ch;
 }
-input[type=date]:hover, select[type=date]:hover {
+input[type=date]:hover, input[type=time]:hover, input[type=datetime-local]:hover, select[type=date]:hover, select[type=time]:hover, select[type=datetime-local]:hover {
   --bg: var(--accent);
 }
-input[type=date]:active, select[type=date]:active {
+input[type=date]:active, input[type=time]:active, input[type=datetime-local]:active, select[type=date]:active, select[type=time]:active, select[type=datetime-local]:active {
   filter: brightness(125%);
 }
-input[type=date]::-webkit-calendar-picker-indicator, select[type=date]::-webkit-calendar-picker-indicator {
+input[type=date]::-webkit-calendar-picker-indicator, input[type=time]::-webkit-calendar-picker-indicator, input[type=datetime-local]::-webkit-calendar-picker-indicator, select[type=date]::-webkit-calendar-picker-indicator, select[type=time]::-webkit-calendar-picker-indicator, select[type=datetime-local]::-webkit-calendar-picker-indicator {
   background-color: var(--secondary);
   padding: 0.6vmin 0.8vmin;
   border-radius: var(--roundness);
@@ -740,6 +868,10 @@ input[type=range], select[type=range] {
   border-radius: var(--roundness);
   outline-offset: 0.2rem;
 }
+input:is([type=checkbox], [type=radio]):focus-visible, select:is([type=checkbox], [type=radio]):focus-visible {
+  outline-offset: var(--outline-offset);
+  outline: var(--outline);
+}
 
 .logo {
   --roundness: 50%;
@@ -758,13 +890,13 @@ video {
 /* Default Styling */
 label:has(input[type=checkbox][role=switch],
 input[type=checkbox][role=switch]) {
-  --switch-w: 4.4em;
-  --switch-h: 2.4em;
-  --switch-round: 100vmax;
-  --switch-default-bg: var(--muted-secondary);
-  --switch-focus-outline: var();
-  --switch-color: var(--foreground-secondary);
-  --switch-slider-color: whitesmoke;
+  --_switch-w: 4.4em;
+  --_switch-h: 2.4em;
+  --_switch-round: 100vmax;
+  --_switch-default-bg: var(--muted-secondary);
+  --_switch-focus-outline: var();
+  --_switch-color: var(--foreground-secondary);
+  --_switch-slider-color: whitesmoke;
   /* GLOBAL */
   --spacing: var(--md);
   margin: var(--spacing);
@@ -773,19 +905,19 @@ input[type=checkbox][role=switch]) {
 /* Hiding it to achieve the toggle effect */
 input[type=checkbox][role=switch] {
   appearance: none;
-  width: var(--switch-w);
-  height: var(--switch-h);
-  border-radius: var(--switch-round);
+  width: var(--_switch-w);
+  height: var(--_switch-h);
+  border-radius: var(--_switch-round);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--switch-color);
+  background-color: var(--_switch-color);
   transition: transform 0.24s ease-in, opacity 0.4s ease-out, background-color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 input[type=checkbox][role=switch]::after {
   content: "";
-  background-color: var(--switch-slider-color);
+  background-color: var(--_switch-slider-color);
   aspect-ratio: 1/1;
   height: 80%;
   position: absolute;
@@ -797,7 +929,7 @@ input[type=checkbox][role=switch]::after {
 
 /* Common styling between switches */
 input[type=checkbox][role=switch] {
-  width: var(--switch-w);
+  width: var(--_switch-w);
 }
 
 input[type=checkbox][role=switch]:focus {
@@ -807,7 +939,7 @@ input[type=checkbox][role=switch]:focus {
 
 /* Change Switch background when checked */
 input[role=switch][type=checkbox]:checked {
-  --switch-color: var(--primary);
+  --_switch-color: var(--primary);
 }
 
 input[role=switch][type=checkbox]:checked:not(:is(.squished, .squared)) {
@@ -820,10 +952,10 @@ input[role=switch][type=checkbox]:checked:not(:is(.squished, .squared))::after {
 /* SWITCH VARIATIONS */
 /* Squished Variation */
 input[type=checkbox][role=switch].squished {
-  --switch-h: .8em;
-  height: var(--switch-h);
-  width: var(--switch-w);
-  border-radius: var(--switch-round);
+  --_switch-h: .8em;
+  height: var(--_switch-h);
+  width: var(--_switch-w);
+  border-radius: var(--_switch-round);
   background-color: var(--foreground-secondary);
   position: relative;
   overflow: visible;
@@ -831,7 +963,7 @@ input[type=checkbox][role=switch].squished {
 }
 input[type=checkbox][role=switch].squished::after {
   content: "";
-  background-color: var(--switch-slider-color);
+  background-color: var(--_switch-slider-color);
   height: 250%;
   aspect-ratio: 1/1;
   position: absolute;
@@ -853,15 +985,15 @@ input[role=switch][type=checkbox].squished:checked::after {
 /* Squared Variation */
 input[type=checkbox][role=switch].squared {
   /* Add specific styles for squared variation */
-  width: var(--switch-w);
-  height: var(--switch-h);
+  width: var(--_switch-w);
+  height: var(--_switch-h);
   border-radius: 0;
   background-color: var(--foreground-secondary);
   position: relative;
 }
 input[type=checkbox][role=switch].squared::after {
   content: "";
-  background-color: var(--switch-slider-color);
+  background-color: var(--_switch-slider-color);
   aspect-ratio: 1/1;
   height: 80%;
   position: absolute;
@@ -1169,7 +1301,7 @@ nav ul li:active {
   --offset-md: 1.25rem;
   --offset-lg: 1.50rem;
   --offset-hg: 1.75rem;
-  --outline-offset: var(--offset-md. 1.25rem);
+  --outline-offset: var(--offset-md, 1.25rem);
   --outline-color: var(--accent);
   --outline-style: solid;
   --outline-sm: .1rem var(--outline-style) var(--outline-color);
@@ -1189,10 +1321,28 @@ nav ul li:active {
   --index-popup: 999;
   --index-backtap: -1;
   --index-back: 20;
+  --index-hidden-back: -20;
+  --z-index: var(--index-back, 20)
+  // EFFECTS -----------------------------------------------------
   --effect-bright-level: 150%;
   --effect-bright: brightness(var(--effect-bright-level));
-  --transition-colors: background-color, color, border-color, outline-color, fill
-  --transition-props: ;
+  --transition-colors: background-color, color, border-color, outline-color, fill;
+  --transition-motion: transform, scale, width, height, min-width, min-height, max-height, min-height;
+  --transition-effect: opacity, filter;
+  --transition-all: all;
+  --transition-props: unset;
+  --transition-ease: ease;
+  --transition-ease-in: ease-in;
+  --transition-linear: linear;
+  --transition-ease-in-out: ease-in-out;
+  --transition-middle-break: cubic-bezier(0, .82, 1, .21);
+  --transition-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --transition-out-circle: cubic-bezier(0.85, 0, 0.15, 1);
+  --transition-friction: cubic-bezier(0, 1.46 ,1 ,-0.29);
+  --transition-time-ssl: 2s;
+  --transition-time-sl: .8s;
+  --transition-time-md: .4s;
+  --transition-time-ft: .2s;
 }
 
 /*# sourceMappingURL=yonaka.temps.css.map */
