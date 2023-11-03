@@ -39,6 +39,8 @@
     </section>
   </div>
 
+  <hr>
+
   <main>
     <h1>Welcome to Yokana</h1>
 
@@ -133,28 +135,31 @@
         <div style="--bg: var(--primary)">
           Lorem ipsum dolor sit amet.
         </div>
-        
+
         <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet.</div>
         <div style="--bg: var(--primary)">Lorem.</div>
         <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur.</div>
-        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque, distinctio?</div>
+        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque, distinctio?
+        </div>
         <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
       </div>
 
 
       <h3>Flex Col</h3>
 
-      <p>Same as the <code>.flex-cluster</code> but with <code>flex: 1</code> on its children(They're able to take all available space).</p>
+      <p>Same as the <code>.flex-cluster</code> but with <code>flex: 1</code> on its children(They're able to take all
+        available space).</p>
 
       <div class="flex-cluster-grow">
         <div style="--bg: var(--primary)">
           Lorem ipsum dolor sit amet.
         </div>
-        
+
         <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet.</div>
         <div style="--bg: var(--primary)">Lorem.</div>
         <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur.</div>
-        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque, distinctio?</div>
+        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque, distinctio?
+        </div>
         <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
       </div>
     </section>
@@ -171,7 +176,7 @@
         <p>Accordion Text</p>
       </details>
 
-      <details role="listbox" >
+      <details role="listbox">
         <summary>Dropdown</summary>
 
         <ul>
@@ -194,11 +199,15 @@
     <section class="col" id="forms">
       <h2>Forms</h2>
 
-      <p>In the forms section, the form has 2 states: valid or invalid. With that in mind, I developed a "return to user" with the colors, being the destructive a signal of something is wrong.</p>
+      <p>In the forms section, the form has 2 states: valid or invalid. With that in mind, I developed a "return to
+        user" with the colors, being the destructive a signal of something is wrong.</p>
 
-      <p>To achieve this, you only need to create a input inside the <code>form</code> tag and put some <code>required</code> or any demand on it.</p>
+      <p>To achieve this, you only need to create a input inside the <code>form</code> tag and put some
+        <code>required</code> or any demand on it.
+      </p>
 
-      <p>As you can see below, everything that is not ok will be red bordered and the submit button is gonna look like is disabled.</p>
+      <p>As you can see below, everything that is not ok will be red bordered and the submit button is gonna look like
+        is disabled.</p>
 
       <form action="#">
         <input type="text" name="" id="" placeholder="Text..." required />
@@ -206,6 +215,8 @@
         <input type="number" placeholder="Number..." />
 
         <input type="email" name="" id="" placeholder="Email..." />
+
+        <input type="search" placeholder="search here..." autocomplete="url">
 
         <h3>File</h3>
 
@@ -242,7 +253,7 @@
 
         <label for="input__radio">
           Pão?
-          <input type="radio" id="input__radio"/>
+          <input type="radio" id="input__radio" />
         </label>
 
         <h3>Checkbox</h3>
@@ -360,7 +371,8 @@
         colors, spacing and font related stuff.</p>
 
       <p>If you don't want a specific tag to inherit from the parent, just do like in Game of Thrones, call it a
-        <code>.bastard</code> and the job is done.</p>
+        <code>.bastard</code> and the job is done.
+      </p>
 
       <div class="parent first-child-only" style="--bg: var(--primary)">
         <h3>Parent</h3>
@@ -417,6 +429,28 @@
       </div>
     </section>
 
+    <section>
+      <div class="carousel">
+        <figure>
+          <img id="slide-1"
+            src="https://images.unsplash.com/photo-1656464868371-602be27fd4c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+            alt="3D rendering of an imaginary orange planet in space" />
+          <img id="slide-2"
+            src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+            alt="3D rendering of an imaginary green planet in space" />
+          <img id="slide-3"
+            src="https://images.unsplash.com/photo-1656077217715-bdaeb06bd01f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+            alt="3D rendering of an imaginary blue planet in space" />
+        </figure>
+
+        <nav>
+          <a href="#slide-1" target="_self"></a>
+          <a href="#slide-2" target="_self"></a>
+          <a href="#slide-3" target="_self"></a>
+        </nav>
+      </div>
+    </section>
+
   </main>
   <a class="scroll-to-top" href=".hero">TOP</a>
 
@@ -428,14 +462,19 @@
     <span></span>
   </div>
 
-  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'></polyline></svg>
+  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'
+    stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'>
+    <polyline points='20 6 9 17 4 12'></polyline>
+  </svg>
 
   <footer id="about">
     <nav>
       <ul>
         <li>
-          <p class="limited-text" style="">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt officiis nesciunt consectetur in fuga et iusto excepturi, rem, laboriosam veritatis non reiciendis quam sint mollitia voluptatem ipsam recusandae tenetur possimus?
+          <p class="limited-text" style="--border: var(--border-lg); border: var(--border); --border-color: red;">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt officiis nesciunt consectetur in fuga et
+            iusto excepturi, rem, laboriosam veritatis non reiciendis quam sint mollitia voluptatem ipsam recusandae
+            tenetur possimus?
           </p>
         </li>
         <li>

@@ -56,6 +56,8 @@ label {
         text-align: center;
         transition: background-color .2s ease, filter .4s ease-in;
         position: relative;
+
+        --_effect-level: 0%;
     
         &:hover {
             background-color: var(--accent);
@@ -175,7 +177,7 @@ input, select {
 
     &[type="color"] {
 
-        --width: 2.4vmin;
+        --width: 2.4vmax;
 
         --bg: transparent;
 
@@ -186,7 +188,7 @@ input, select {
         
         aspect-ratio: 1 / 1;
         
-        width: var(--width);
+        width: max(var(--width), 2.4vmin);
         border-radius: var(--roundness);
         background-color: var(--bg, transparent);
         

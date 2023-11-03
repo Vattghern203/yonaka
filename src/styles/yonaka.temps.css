@@ -34,108 +34,6 @@ html {
   --spacing: var(--lg);
 }
 
-@property --block-spacing {
-  syntax: "<lenght>";
-  inherits: true;
-  initial-value: 0.4rem;
-}
-@property --inline-spacing {
-  syntax: "<lenght>";
-  inherits: true;
-  initial-value: 0.8rem;
-}
-@property --roundness {
-  syntax: "<lenght>";
-  inherits: true;
-  initial-value: 0.4vmin;
-}
-:where(:root) {
-  --roundness: auto;
-  --spacing: .8rem;
-  --spacing-y: auto;
-  --spacing-x: auto;
-  --jump: 2;
-  --theme: dark;
-  --width: auto;
-  --height: auto;
-  --base: 1.6rem;
-  --sl: calc(var(--base) / 10);
-  --3xs: calc(var(--base) / 8);
-  --xxs: calc(var(--base) / 6);
-  --xs: calc(var(--base) / 4);
-  --sm: calc(var(--base) / 2);
-  --md: var(--base);
-  --lg: calc(var(--base) * 2);
-  --xl: calc(var(--base) * 4);
-  --xxl: calc(var(--base) * 6);
-  --3xl: calc(var(--base) * 8);
-  --hg: calc(var(--base) * 10);
-  --text: #d9e5f7;
-  --background: #03070d;
-  --primary: #173c73;
-  --secondary: #081426;
-  --accent: #296cd1;
-  --destructive: #772626;
-  --blend-text-color: #000;
-  --blend-back-color: #FFF;
-  --blend-highlight-color: #FFF;
-  --content-text: color-mix(in oklab, var(--text), var(--blend-text-color) 20%);
-  --muted-text: color-mix(in oklab, var(--text), var(--blend-text-color) 35%);
-  --foreground-text: color-mix(in oklab, var(--text), var(--blend-text-color) 35%);
-  --foreground-primary: color-mix(in oklab, var(--primary), var(--blend-text-color) 35%);
-  --foreground-background: color-mix(in oklab, var(--background), var(--blend-back-color) 15%);
-  --foreground-secondary: color-mix(in oklab, var(--secondary), var(--blend-back-color) 30%);
-  --foreground-accent: color-mix(in oklab, var(--accent), var(--blend-text-color) 35%);
-  --foreground-destructive: color-mix(in oklab, var(--destructive), var(--blend-back-color) 15%);
-  --bp-sm: 40em;
-  --bp-md: 48em;
-  --bp-lg: 64em;
-  --bp-hg: 80em;
-  --h-full: 100%;
-  --h-half: 50%;
-  --h-third: 33.3333%
-  --h-quarter: 25%;
-  --h-screen: 100vh;
-  --h-half-screen: 50vh;
-  --h-third-screen: 33.3333vh;
-  --h-quarter-screen: 25vh;
-  --w-full: 100%;
-  --w-half: 50%;
-  --w-third: 33.3333%
-  --w-quarter: 25%;
-  --w-screen: 100vw;
-  --w-half-screen: 50vw;
-  --w-third-screen: 33.3333vw;
-  --w-quarter-screen: 25vw;
-  --grid-cols: auto-fill;
-  --grid-rows: auto;
-  --grid-item-width: 10rem;
-  --grid-justify-items: start;
-  --padding: var(--sm);
-  --roundness: var(--xs);
-  --round-full: 50%;
-  --round-peal: 100vmax;
-  --font-family: system-ui, "Inter", "Roboto";
-  --font-weight: 400;
-  --font-size: 1.6rem;
-  --line-height: 1.15;
-  --transition: var(--transition--duration, .2s) var(--transition--timing, ease-in);
-  --transition--duration: .4s;
-  --transition--timing: ease;
-  --transition--props: all;
-  --bg: inherit;
-  --txt-color: inherit;
-}
-
-.gradient {
-  --_gradient-from: var(--secondary);
-  --_gradient-to: var(--accent);
-  --from-percentage: 0%;
-  --_to-percentage: 0%;
-  --_gradient-direction: to left;
-  background-image: linear-gradient(var(--_gradient-direction), var(--_gradient-from) var(--_gradient-to));
-}
-
 body {
   --font-size: var(--md);
   font-size: var(--font-size);
@@ -223,6 +121,56 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
   initial-value: 0.4vmin;
 }
 :where(:root) {
+  --offset-min: 0rem;
+  --offset-sm: 1rem;
+  --offset-md: 1.25rem;
+  --offset-lg: 1.50rem;
+  --offset-hg: 1.75rem;
+  --outline-offset: var(--offset-md, 1.25rem);
+  --outline-color: var(--accent);
+  --outline-style: solid;
+  --outline-sm: .1rem var(--outline-style) var(--outline-color);
+  --outline-md: .2rem var(--outline-style) var(--outline-color);
+  --outline-lg: .4rem var(--outline-style) var(--outline-color);
+  --outline: var(--outline-md);
+  --border-color: var(--accent);
+  --border-style: solid;
+  --border-sm: .1rem var(--border-style) var(--border-color);
+  --border-md: .2rem var(--border-style) var(--border-color);
+  --border-lg: .4rem var(--border-style) var(--border-color);
+  --border-hg: .6rem var(--border-style) var(--border-color);
+  --border: var(--border-sm);
+  --box-shadow-sm: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
+  --box-shadow-lg: 0 .4rem .8rem rgba(0, 0, 0, 0.1);
+  --box-shadow: var(--box-shadow-sm, 0 .2rem .4rem rgba(0, 0, 0, 0.1););
+  --index-nav: 900;
+  --index-popup: 999;
+  --index-backtap: -1;
+  --index-back: 20;
+  --index-hidden-back: -20;
+  --z-index: var(--index-back, 20);
+  --effect-bright-level: var(--_effect-level, 150%);
+  --effect-bright: brightness(var(--effect-bright-level));
+  --transition-colors: background-color, color, border-color, outline-color, fill;
+  --transition-motion: transform, scale, width, height, min-width, min-height, max-height, min-height;
+  --transition-effect: opacity, filter;
+  --transition-all: all;
+  --transition-props: unset;
+  --transition-ease: ease;
+  --transition-ease-in: ease-in;
+  --transition-linear: linear;
+  --transition-ease-in-out: ease-in-out;
+  --transition-middle-break: cubic-bezier(0, .82, 1, .21);
+  --transition-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --transition-out-circle: cubic-bezier(0.85, 0, 0.15, 1);
+  --transition-friction: cubic-bezier(0, 1.46 ,1 ,-0.29);
+  --transition-time-ssl: 2s;
+  --transition-time-sl: .8s;
+  --transition-time-md: .4s;
+  --transition-time-ft: .2s;
+}
+
+:where(:root, html) {
   --roundness: auto;
   --spacing: .8rem;
   --spacing-y: auto;
@@ -678,6 +626,60 @@ input:focus {
   outline: var(--accent) 0.2rem solid;
 }
 
+div[role=separator] {
+  --_separator-h: 100%;
+  --_separotor-w: .1rem;
+  --bg: var(--secondary);
+  height: var(--_separator-h);
+  width: var(--_separotor-w);
+  background-color: var(--bg, var(--secondary));
+}
+
+.carousel {
+  position: relative;
+  max-width: 100%;
+}
+.carousel figure, .carousel .carousel__wrapper {
+  display: flex;
+  aspect-ratio: 16/9;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+  border-radius: 0.5rem;
+  -ms-overflow-style: none; /* Hide scrollbar IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+.carousel figure::-webkit-scrollbar, .carousel .carousel__wrapper::-webkit-scrollbar {
+  display: none;
+}
+.carousel figure img, .carousel figure .carousel__img, .carousel .carousel__wrapper img, .carousel .carousel__wrapper .carousel__img {
+  flex: 1 0 100%;
+  scroll-snap-align: start;
+  object-fit: cover;
+}
+.carousel nav, .carousel .carousel__nav {
+  --bg: transparent;
+  display: flex;
+  column-gap: 1rem;
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.carousel nav a, .carousel nav .carousel__link, .carousel .carousel__nav a, .carousel .carousel__nav .carousel__link {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.75;
+  transition: opacity ease 250ms;
+}
+.carousel nav a:hover, .carousel nav .carousel__link:hover, .carousel .carousel__nav a:hover, .carousel .carousel__nav .carousel__link:hover {
+  opacity: 1;
+}
+
 form:invalid input:invalid {
   border: 0.2rem var(--destructive) solid;
   transition: border-color var(--transition);
@@ -716,6 +718,7 @@ label:has(> input[type=file]) {
   text-align: center;
   transition: background-color 0.2s ease, filter 0.4s ease-in;
   position: relative;
+  --_effect-level: 0%;
 }
 label:has(> input[type=file]):hover {
   background-color: var(--accent);
@@ -792,14 +795,14 @@ input[type=file]:focus-visible, select[type=file]:focus-visible {
   all: none;
 }
 input[type=color], select[type=color] {
-  --width: 2.4vmin;
+  --width: 2.4vmax;
   --bg: transparent;
   padding: 0;
   margin: 0;
   border: none;
   overflow: hidden;
   aspect-ratio: 1/1;
-  width: var(--width);
+  width: max(var(--width), 2.4vmin);
   border-radius: var(--roundness);
   background-color: var(--bg, transparent);
   transition: border 0.2s ease;
@@ -1110,33 +1113,33 @@ main {
   background-color: var(--bg);
 }
 
-nav {
+header nav {
   --font-size: 1.75rem;
   --bg: auto;
   background-color: var(--bg);
   width: clamp(30vmin, 40rem, 45%);
 }
-nav * {
+header nav * {
   transition: opacity var(--transition);
 }
-nav ul {
+header nav ul {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
 }
-nav ul li {
+header nav ul li {
   width: fit-content;
   height: fit-content;
 }
-nav ul li a {
+header nav ul li a {
   font-size: var(--font-size);
   font-weight: 600;
 }
-nav ul li:is(:hover, :focus) a {
+header nav ul li:is(:hover, :focus) a {
   opacity: 0.8;
 }
-nav ul li:active a {
+header nav ul li:active a {
   opacity: 0.6;
 }
 
@@ -1306,56 +1309,6 @@ nav ul li:active a {
 
 .text-align-start {
   text-align: start;
-}
-
-:where(:root) {
-  --offset-min: 0rem;
-  --offset-sm: 1rem;
-  --offset-md: 1.25rem;
-  --offset-lg: 1.50rem;
-  --offset-hg: 1.75rem;
-  --outline-offset: var(--offset-md, 1.25rem);
-  --outline-color: var(--accent);
-  --outline-style: solid;
-  --outline-sm: .1rem var(--outline-style) var(--outline-color);
-  --outline-md: .2rem var(--outline-style) var(--outline-color);
-  --outline-lg: .4rem var(--outline-style) var(--outline-color);
-  --outline: var(--outline-md);
-  --border-color: var(--accent);
-  --border-style: solid;
-  --border-sm: .1rem var(--border-style) var(--border-color);
-  --border-md: .2rem var(--border-style) var(--border-color);
-  --border-lg: .4rem var(--border-style) var(--border-color);
-  --border: var(--border-sm);
-  --box-shadow-sm: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
-  --box-shadow-lg: 0 .4rem .8rem rgba(0, 0, 0, 0.1);
-  --box-shadow: var(--box-shadow-sm, 0 .2rem .4rem rgba(0, 0, 0, 0.1););
-  --index-nav: 900;
-  --index-popup: 999;
-  --index-backtap: -1;
-  --index-back: 20;
-  --index-hidden-back: -20;
-  --z-index: var(--index-back, 20)
-  // EFFECTS -----------------------------------------------------
-  --effect-bright-level: 150%;
-  --effect-bright: brightness(var(--effect-bright-level));
-  --transition-colors: background-color, color, border-color, outline-color, fill;
-  --transition-motion: transform, scale, width, height, min-width, min-height, max-height, min-height;
-  --transition-effect: opacity, filter;
-  --transition-all: all;
-  --transition-props: unset;
-  --transition-ease: ease;
-  --transition-ease-in: ease-in;
-  --transition-linear: linear;
-  --transition-ease-in-out: ease-in-out;
-  --transition-middle-break: cubic-bezier(0, .82, 1, .21);
-  --transition-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
-  --transition-out-circle: cubic-bezier(0.85, 0, 0.15, 1);
-  --transition-friction: cubic-bezier(0, 1.46 ,1 ,-0.29);
-  --transition-time-ssl: 2s;
-  --transition-time-sl: .8s;
-  --transition-time-md: .4s;
-  --transition-time-ft: .2s;
 }
 
 /*# sourceMappingURL=yonaka.temps.css.map */

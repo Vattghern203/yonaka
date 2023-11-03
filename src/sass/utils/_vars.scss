@@ -33,6 +33,7 @@
     --border-sm: .1rem var(--border-style) var(--border-color);
     --border-md: .2rem var(--border-style) var(--border-color);
     --border-lg: .4rem var(--border-style) var(--border-color);
+    --border-hg: .6rem var(--border-style) var(--border-color);
 
     // Base
 
@@ -55,11 +56,11 @@
     --index-back: 20;
     --index-hidden-back: -20;
 
-    --z-index: var(--index-back, 20)
+    --z-index: var(--index-back, 20);
 
     // EFFECTS -----------------------------------------------------
 
-    --effect-bright-level: 150%;
+    --effect-bright-level: var(--_effect-level, 150%);
     --effect-bright: brightness(var(--effect-bright-level));
 
     // TRANSITIONS -------------------------------------------------
