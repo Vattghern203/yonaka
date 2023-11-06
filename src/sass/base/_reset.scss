@@ -17,7 +17,7 @@
 html {
     font-size: 62.5%;
     line-height: 1.15;
-    scroll-behavior: smooth;
+    //scroll-behavior: smooth;
 }
 
 body, body * + * {
@@ -41,6 +41,7 @@ ol {
 }
 
 summary {
+    
     &::-webkit-details-marker {
         display: none;
     }

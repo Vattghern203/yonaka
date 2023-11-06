@@ -1,3 +1,5 @@
+@use "../abstracts/mixins";
+
 details[role="listbox"], details[role="list"] {
     
     & > ul {
@@ -99,14 +101,23 @@ select {
         display: none;
     }
 
+    @include icon(var(--expand-icon));
+        
     &::after {
+        rotate: -90deg;
+        transition: rotate .4s var(--transition-out-back);
+        z-index: -200;
+        background-color: khaki;
+    }
+
+    /* &::after {
         content: "";
         width: 30em;
         height: 30em;
         background-color: var(--select-arrow);
         clip-path: polygon(100% 0%, 0 0%, 50% 100%);
         z-index: 2000;
-    }
+    } */
     
     &, & > * {
         font-family: inherit;

@@ -1,0 +1,12 @@
+@mixin icon($icon-url) {
+    &::after {
+      content: "";
+      display: block;
+      align-self: center;
+      background-image: $icon-url; /* Use the provided icon URL */
+      background-size: cover;
+      background-position: center;
+      aspect-ratio: 1 / 1;
+      width: 1.5em;
+    }
+}

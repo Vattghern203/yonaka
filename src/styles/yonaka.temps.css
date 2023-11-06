@@ -34,6 +34,21 @@ html {
   --spacing: var(--lg);
 }
 
+@property --block-spacing {
+  syntax: "<lenght>";
+  inherits: true;
+  initial-value: 0.4rem;
+}
+@property --inline-spacing {
+  syntax: "<lenght>";
+  inherits: true;
+  initial-value: 0.8rem;
+}
+@property --roundness {
+  syntax: "<lenght>";
+  inherits: true;
+  initial-value: 0.4vmin;
+}
 body {
   --font-size: var(--md);
   font-size: var(--font-size);
@@ -246,6 +261,7 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
   --transition--props: all;
   --bg: inherit;
   --txt-color: inherit;
+  --expand-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(162, 175, 185)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
 .gradient {
@@ -329,7 +345,6 @@ body * :where(:not(h1, p, span)), .app * :where(:not(h1, p, span)), #root * :whe
 html {
   font-size: 62.5%;
   line-height: 1.15;
-  scroll-behavior: smooth;
 }
 
 body, body * + * {
@@ -376,7 +391,24 @@ details summary {
   border-radius: var(--roundness);
   padding: var(--spacing);
   margin-bottom: var(--sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   transition: all 0.4s ease, filter 0.145s ease-out;
+}
+details summary::after {
+  content: "";
+  display: block;
+  align-self: center;
+  background-image: var(--expand-icon); /* Use the provided icon URL */
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 1/1;
+  width: 1.5em;
+}
+details summary::after {
+  rotate: -90deg;
+  transition: rotate 0.4s var(--transition-out-back);
 }
 details summary:is(:focus, :hover) {
   filter: brightness(125%);
@@ -398,6 +430,9 @@ details p {
   padding: var(--spacing);
   border-radius: var(--roundness);
   transition: all 0.4s ease;
+}
+details[open] > summary::after {
+  rotate: initial;
 }
 
 @keyframes margin-transition {
@@ -552,17 +587,33 @@ select {
   font-size: var(--font-size);
   font-weight: var(--font-weight);
   text-transform: capitalize;
+  /* &::after {
+      content: "";
+      width: 30em;
+      height: 30em;
+      background-color: var(--select-arrow);
+      clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+      z-index: 2000;
+  } */
 }
 select::-ms-expand {
   display: none;
 }
 select::after {
   content: "";
-  width: 30em;
-  height: 30em;
-  background-color: var(--select-arrow);
-  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-  z-index: 2000;
+  display: block;
+  align-self: center;
+  background-image: var(--expand-icon); /* Use the provided icon URL */
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 1/1;
+  width: 1.5em;
+}
+select::after {
+  rotate: -90deg;
+  transition: rotate 0.4s var(--transition-out-back);
+  z-index: -200;
+  background-color: khaki;
 }
 select, select > * {
   font-family: inherit;
@@ -765,7 +816,7 @@ input:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range])
 }
 input[type=radio], select[type=radio] {
   border-radius: 50%;
-  padding: 5%;
+  padding: 0.2vmin;
   display: grid;
   place-items: center;
 }
@@ -777,7 +828,7 @@ input[type=radio]::after, select[type=radio]::after {
   border-radius: inherit;
   aspect-ratio: 1/1;
   background-color: var(--accent);
-  transition: scale 0.2s ease;
+  transition: scale 0.2s var(--transition-out-circle);
 }
 input[type=radio]:checked::after, select[type=radio]:checked::after {
   scale: 1;
@@ -884,6 +935,7 @@ input[type=range], select[type=range] {
   outline-offset: 0.2rem;
 }
 input:is([type=checkbox], [type=radio]):focus-visible, select:is([type=checkbox], [type=radio]):focus-visible {
+  --outline-offset: var(--outline-lg);
   outline-offset: var(--outline-offset);
   outline: var(--outline);
 }

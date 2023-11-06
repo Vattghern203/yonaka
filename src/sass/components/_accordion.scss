@@ -1,3 +1,5 @@
+@use "../abstracts/mixins";
+
 // ACCORDION
 
 details {
@@ -13,14 +15,25 @@ details {
     justify-content: center;
     gap: var(--spacing);
     margin-bottom: var(--spacing);
-
+    
     summary {
         background-color: var(--bg);
         border-radius: var(--roundness);
         padding: var(--spacing);
-
+        
         margin-bottom: var(--sm);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
+        
+        @include icon(var(--expand-icon));
+        
+        &::after {
+            rotate: -90deg;
+            transition: rotate .4s var(--transition-out-back);
+        }
+        
         &:is(:focus, :hover) {
 
             filter: brightness(125%);
@@ -50,6 +63,11 @@ details {
         padding: var(--spacing);
         border-radius: var(--roundness);
         transition: all .4s ease;
+    }
+
+    &[open] > summary::after {
+
+        rotate: initial;
     }
 }
 

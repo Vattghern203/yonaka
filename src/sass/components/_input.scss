@@ -1,3 +1,5 @@
+@use "../abstracts/mixins";
+
 // Form Related -------------------------------------
 
 form:invalid {
@@ -92,6 +94,7 @@ label {
 }
 
 // Styles the input itself
+
 input, select {
     --spacing: var(--md);
     --roundness: .24vmin;
@@ -135,7 +138,7 @@ input, select {
 
     &[type="radio"] {
         border-radius: 50%;
-        padding: 5%;
+        padding: .2vmin;
         display: grid;
         place-items: center;
         
@@ -147,7 +150,7 @@ input, select {
             border-radius: inherit;
             aspect-ratio: 1 / 1;
             background-color: var(--accent);
-            transition: scale .2s ease;
+            transition: scale .2s var(--transition-out-circle);
         }
 
         &:checked::after {
@@ -303,6 +306,8 @@ input, select {
     }
 
     &:is([type="checkbox"], [type="radio"]):focus-visible {
+
+        --outline-offset: var(--outline-lg);
 
         outline-offset: var(--outline-offset);
         outline: var(--outline);
