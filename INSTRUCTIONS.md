@@ -322,3 +322,7 @@ Variables:
 ```
 
 A div with the clas wraps everything, you can pass the --bg-img-url to change the background as you please in the inline css or in another stylesheet above in the cascade.
+
+___
+
+[playground](https://codepen.io/Vattghern203/pen/XWOpQgw?editors=1100)
