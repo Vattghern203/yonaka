@@ -1,3 +1,4 @@
+@use "color-palette";
 @use "props";
 @use "../utils/vars";
 
@@ -28,14 +29,6 @@
     --xxl: calc(var(--base) * 6);
     --3xl: calc(var(--base) * 8); //  10.0 Huge
     --hg: calc(var(--base) * 10);
-
-    // COLOR PALETTE ---------------------------------
-
-    --text: #d9e5f7;
-    --background: #03070d;
-    --primary: #173c73;
-    --secondary: #081426;
-    --accent: #296cd1;
 
     // Color created with the palette
 

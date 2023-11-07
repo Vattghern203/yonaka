@@ -1,3 +1,19 @@
-$dark-palette: ();
+@media (prefers-color-scheme: light) {
+    :root {
+      --text: #081426;
+      --background: #f3f6fc;
+      --primary: #8cb1e8;
+      --secondary: #d9e5f7;
+      --accent: #2e71d6;
+    }
+}
 
-$light-palette: ();
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #d9e5f7;
+        --background: #03070d;
+        --primary: #173c73;
+        --secondary: #081426;
+        --accent: #296cd1;
+    }
+}

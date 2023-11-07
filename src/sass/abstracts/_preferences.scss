@@ -4,12 +4,6 @@ html {
 
 @media (prefers-color-scheme: light) {
     :root {
-        --text: #081426;
-        --background: #f3f6fc;
-        --primary: #8cb1e8;
-        --secondary: #d9e5f7;
-        --accent: #2e71d6;
-
         --blend-text-color: #FFF;
         --blend-back-color: #000;
         --blend-highlight-color: #000;
@@ -21,12 +15,6 @@ html {
 }
 
 [data-theme="light"] {
-    --text: #081426;
-    --background: #f3f6fc;
-    --primary: #8cb1e8;
-    --secondary: #d9e5f7;
-    --accent: #2e71d6;
-
     --blend-text-color: #FFF;
     --blend-back-color: #000;
     --blend-highlight-color: #000;

@@ -7,7 +7,7 @@ Akatsuki CSS is a flexible and highly customizable CSS framework with a wide ran
 - Easily customizable elements
 - Rich collection of presets
 - No reliance on PostCSS or JavaScript for customization
-- Dependency Free in the compiled version
+- Dependency free
 
 ## Getting Started
 
@@ -30,9 +30,11 @@ or in the HTML
 
 - You can overwrite the default values of the variables, by simpling rewriting it in the `:root` or `html` selector. The default specifity is equals to 0
 
-- You can also customize a variable for a single tag with the inline css
+- Also you can customize a variable for a single tag with the inline css
 
     * Ex: ```html <div style="--spacing: var(--lg)">Dummy Text</div>```
+
+- Or you can use the inheritance on the parent selector
 
 ### Global Scoped Variables
 
@@ -118,7 +120,7 @@ Some of the variables used in the project.
 The framework uses variables for almost everithing, allowing the user to customize a big portion of the Akatsuki-CSS default styling, simulating a mini design system.
 
 I've create a pattern that works like this. 
-1. I create the sub variables for example, to a border(color, width and it's style)
+1. I create the sub variables for example, to a border(color, width and it's style) _Experimental_
 
 ```css
 --border-color: var(--primary) // red;
@@ -126,7 +128,7 @@ I've create a pattern that works like this.
 --border-style: solid;
 ```
 
-2. Then I create the 'shorthand' border variable
+2. Then I created the 'shorthand' border variable
 
 ```css
 --border: var(--border-color) var(--border-size) var(--border-style);
@@ -214,7 +216,7 @@ with these colors, the framework will generate variants as: muted, foreground an
 
 Akatsuki has a decent amount of components as: switches, headers, navs, buttons, accordions, drropdowns and cards.
 
-To create them, the user must follow some "rules", because the css iis very specific to avoid conflict with others selectors.
+To create them, the user must follow some "rules", because the css is very specific to avoid conflict with others selectors.
 
 ### Switch
 
@@ -226,6 +228,8 @@ To create them, the user must follow some "rules", because the css iis very spec
     <input type="checkbox" id="input__switch" role="switch" aria-checked="false" />
 </label>
 ```
+
+- class variants: ```.squished and .squared```
 
 ### Accordion
 
@@ -263,3 +267,58 @@ To create them, the user must follow some "rules", because the css iis very spec
     </ul>
 </details>
 ```
+
+### Header with Nav
+
+```html
+<header class="header-sticky">
+    <a href="#" role="img" aria-label="">
+      <img src="https://1000logos.net/wp-content/uploads/2021/12/Akatsuki-Logo.png" alt="logo" class="logo" /> <!--the logo must have the logo class-->
+    </a>
+
+    <nav role="navigation">
+      <ul>
+        <li>
+          <a href="#">components</a>
+        </li>
+        <li>
+          <a href="#">examples</a>
+        </li>
+        <li>
+          <a href="#about">about</a>
+        </li>
+      </ul>
+    </nav>
+</header>
+```
+
+- class variants: ```.sticky```
+
+In this case the nav and the header are together, but you can use them separately.
+
+### Hero
+
+```html
+<div class="hero">
+    <h1>Yonaka</h1>
+    <p>the best framework in the world</p>
+
+    <section>
+      <button class="cta">Get Started</button>
+      <button class="ghost">Go Out</button>
+    </section>
+</div>
+```
+
+Variables:
+
+```css
+.hero {
+    --bg-img-url: url(https://images.unsplash.com/photo-1528353518104-dbd48bee7bc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80);
+    --bg-img-size: cover;
+    --bg-img-repeat: no-repeat;
+    --bg-img-pos: center;
+}
+```
+
+A div with the clas wraps everything, you can pass the --bg-img-url to change the background as you please in the inline css or in another stylesheet above in the cascade.

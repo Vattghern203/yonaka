@@ -4,11 +4,6 @@ html {
 
 @media (prefers-color-scheme: light) {
   :root {
-    --text: #081426;
-    --background: #f3f6fc;
-    --primary: #8cb1e8;
-    --secondary: #d9e5f7;
-    --accent: #2e71d6;
     --blend-text-color: #FFF;
     --blend-back-color: #000;
     --blend-highlight-color: #000;
@@ -16,11 +11,6 @@ html {
   }
 }
 [data-theme=light] {
-  --text: #081426;
-  --background: #f3f6fc;
-  --primary: #8cb1e8;
-  --secondary: #d9e5f7;
-  --accent: #2e71d6;
   --blend-text-color: #FFF;
   --blend-back-color: #000;
   --blend-highlight-color: #000;
@@ -120,6 +110,24 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
   overflow: hidden;
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: #081426;
+    --background: #f3f6fc;
+    --primary: #8cb1e8;
+    --secondary: #d9e5f7;
+    --accent: #2e71d6;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #d9e5f7;
+    --background: #03070d;
+    --primary: #173c73;
+    --secondary: #081426;
+    --accent: #296cd1;
+  }
+}
 @property --block-spacing {
   syntax: "<lenght>";
   inherits: true;
@@ -206,11 +214,6 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
   --xxl: calc(var(--base) * 6);
   --3xl: calc(var(--base) * 8);
   --hg: calc(var(--base) * 10);
-  --text: #d9e5f7;
-  --background: #03070d;
-  --primary: #173c73;
-  --secondary: #081426;
-  --accent: #296cd1;
   --destructive: #772626;
   --blend-text-color: #000;
   --blend-back-color: #FFF;
@@ -1152,6 +1155,7 @@ header.header-sticky {
 .hero p {
   font-size: calc(var(--font-size) / 5);
 }
+
 main {
   --width: 70%;
   --height: auto;
