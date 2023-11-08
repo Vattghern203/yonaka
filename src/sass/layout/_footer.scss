@@ -2,7 +2,9 @@ footer {
     --width: 100%;
     --height: 35vmin;
 
-    color: color-mix(in oklab, var(--text-color) 90%, black 10%);
+    --_txt: color-mix(in oklab, var(--text-color) 90%, black 10%)
+
+    color: var(--_txt);
     align-self: flex-end;
     display: grid;
     place-items: center;
@@ -16,7 +18,7 @@ footer {
         justify-content: center;
 
         & a {
-            --txt: var(--secondary);
+            color: var(--_txt);
         }
     }
 }

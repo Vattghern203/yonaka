@@ -361,7 +361,8 @@ html {
   line-height: 1.15;
 }
 
-body, body * + * {
+body,
+body * + * {
   box-sizing: border-box;
 }
 
@@ -460,7 +461,7 @@ details[open] > summary::after {
 button {
   --width: 16em;
   --spacing: var(--md) var(--lg);
-  --roundness: .6vmin;
+  --roundness: 0.6vmin;
   text-align: center;
   min-width: var(--width);
   cursor: pointer;
@@ -468,7 +469,7 @@ button {
   border: none;
   padding: var(--md) var(--lg);
   border-radius: var(--roundness);
-  transition: background-color, transform var(--transition);
+  transition: background-color transform var(--transition);
 }
 button:hover:not(.disabled) {
   transform: translateY(2%);
@@ -514,17 +515,32 @@ article {
   --_aspect: 1.5 / 1.85;
   --bg: var(--primary);
   background-color: var(--bg);
+  container: card/inline-size;
   width: calc(2vmin + 15vw);
   aspect-ratio: var(--_aspect);
   text-align: center;
+  gap: 0.2vmin;
   display: grid;
   place-items: center;
 }
-article * > img:first-child {
+article:has(> img:first-child) {
+  padding-block-end: var(--spacing);
+  align-content: start;
+  gap: 0.4vmin;
+}
+article > img:first-child {
   align-self: self-start;
-  width: 100%;
+  max-width: 100%;
   object-fit: cover;
   object-position: top;
+}
+article > :is(h2, h3, h4, h5, h6) {
+  --font-size: var(--font-size);
+  font-size: var(--font-size);
+}
+article > :is(p, span) {
+  --font-size: var(--font-size);
+  font-size: 1.2vmin;
 }
 
 details[role=listbox] > ul, details[role=list] > ul {
@@ -1095,7 +1111,8 @@ input[role=switch][type=checkbox].squared:checked::after {
 footer {
   --width: 100%;
   --height: 35vmin;
-  color: color-mix(in oklab, var(--text-color) 90%, black 10%);
+  --_txt: color-mix(in oklab, var(--text-color) 90%, black 10%)
+  color: var(--_txt);
   align-self: flex-end;
   display: grid;
   place-items: center;
@@ -1109,7 +1126,7 @@ footer ul {
   justify-content: center;
 }
 footer ul a {
-  --txt: var(--secondary);
+  color: var(--_txt);
 }
 
 header, header.header-sticky {

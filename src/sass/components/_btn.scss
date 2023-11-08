@@ -1,8 +1,7 @@
 button {
-
     --width: 16em;
     --spacing: var(--md) var(--lg);
-    --roundness: .6vmin;
+    --roundness: 0.6vmin;
     text-align: center;
 
     min-width: var(--width);
@@ -11,7 +10,9 @@ button {
     border: none;
     padding: var(--md) var(--lg);
     border-radius: var(--roundness);
-    transition: background-color, transform var(--transition);
+    transition:
+        background-color
+        transform var(--transition);
 
     &:hover:not(.disabled) {
         transform: translateY(2%);
@@ -23,15 +24,16 @@ button {
         filter: brightness(115%);
     }
 
-    &.cta, &[type="submit"] {
+    &.cta,
+    &[type="submit"] {
         --bg: var(--accent);
 
         background-color: var(--bg);
         will-change: background-color, transform;
-        border: .2rem var(--accent) solid;
+        border: 0.2rem var(--accent) solid;
 
         &:hover {
-            background-color: color-mix(in oklab, var(--bg), white 20%); 
+            background-color: color-mix(in oklab, var(--bg), white 20%);
         }
 
         &:active {
@@ -43,30 +45,28 @@ button {
         --bg: transparent;
 
         background-color: var(--bg);
-        border: .2rem solid var(--accent);
+        border: 0.2rem solid var(--accent);
 
         transition: transform var(--transition);
     }
 
     &.destructive {
         --bg: var(--destructive);
-        
+
         background-color: var(--bg);
     }
 
     &.disabled {
         //pointer-events: none;
         cursor: not-allowed;
-        opacity: .8;
+        opacity: 0.8;
     }
 }
 
 // Form Invalid Variant
 
 form:invalid {
-
     & button[type="submit"] {
-
         pointer-events: none;
         opacity: 60%;
         cursor: not-allowed;

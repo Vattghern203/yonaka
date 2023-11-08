@@ -1,24 +1,47 @@
 // CARD Component
 
 article {
-
     --_aspect: 1.5 / 1.85;
 
     --bg: var(--primary);
 
     background-color: var(--bg);
-    
+
+    container: card / inline-size;
+
     width: calc(2vmin + 15vw);
     aspect-ratio: var(--_aspect);
     text-align: center;
-
+    gap: .2vmin;
+    
     display: grid;
     place-items: center;
+    
+    // Card with a Image
+    
+    &:has(> img:first-child) {
+        padding-block-end: var(--spacing);
+        align-content: start;
+        gap: .4vmin;
+    }
 
-    * > img:first-child {
+    // Ensure that if has a card as first child its sticky on top
+
+    & > img:first-child {
         align-self: self-start;
-        width: 100%;
+        max-width: 100%;
         object-fit: cover;
         object-position: top;
+    }
+
+    & > :is(h2, h3, h4, h5, h6) {
+        --font-size: var(--font-size);
+
+        font-size: var(--font-size);
+    }
+
+    & > :is(p, span) {
+        --font-size: var(--font-size);
+        font-size: 1.2vmin;
     }
 }

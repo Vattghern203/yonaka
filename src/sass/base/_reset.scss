@@ -20,7 +20,8 @@ html {
     //scroll-behavior: smooth;
 }
 
-body, body * + * {
+body,
+body * + * {
     box-sizing: border-box;
 }
 
@@ -41,7 +42,6 @@ ol {
 }
 
 summary {
-    
     &::-webkit-details-marker {
         display: none;
     }
