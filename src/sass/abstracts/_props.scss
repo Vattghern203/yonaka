@@ -1,3 +1,9 @@
+@property --base {
+    syntax: "<lenght";
+    inherits: false;
+    initial-value: 1.6rem;
+}
+
 @property --block-spacing {
     syntax: "<lenght>";
     inherits: true;

@@ -1,5 +1,5 @@
 @media (prefers-color-scheme: light) {
-    :root {
+    :where(:root, html, [data-theme=light]) {
       --text: #081426;
       --background: #f3f6fc;
       --primary: #8cb1e8;
@@ -9,7 +9,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
+    :where(:root, html, [data-theme=dark]) {
         --text: #d9e5f7;
         --background: #03070d;
         --primary: #173c73;

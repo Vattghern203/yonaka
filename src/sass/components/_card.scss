@@ -2,14 +2,14 @@
 
 article {
 
-    --aspect: 1.5 / 1.85;
+    --_aspect: 1.5 / 1.85;
 
     --bg: var(--primary);
 
     background-color: var(--bg);
     
     width: calc(2vmin + 15vw);
-    aspect-ratio: var(--aspect);
+    aspect-ratio: var(--_aspect);
     text-align: center;
 
     display: grid;

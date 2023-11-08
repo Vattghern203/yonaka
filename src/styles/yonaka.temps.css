@@ -24,6 +24,11 @@ html {
   --spacing: var(--lg);
 }
 
+@property --base {
+  syntax: "<lenght";
+  inherits: false;
+  initial-value: 1.6rem;
+}
 @property --block-spacing {
   syntax: "<lenght>";
   inherits: true;
@@ -111,7 +116,7 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
+  :where(:root, html, [data-theme=light]) {
     --text: #081426;
     --background: #f3f6fc;
     --primary: #8cb1e8;
@@ -120,13 +125,18 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
   }
 }
 @media (prefers-color-scheme: dark) {
-  :root {
+  :where(:root, html, [data-theme=dark]) {
     --text: #d9e5f7;
     --background: #03070d;
     --primary: #173c73;
     --secondary: #081426;
     --accent: #296cd1;
   }
+}
+@property --base {
+  syntax: "<lenght";
+  inherits: false;
+  initial-value: 1.6rem;
 }
 @property --block-spacing {
   syntax: "<lenght>";
@@ -194,15 +204,15 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
 }
 
 :where(:root, html) {
-  --roundness: auto;
-  --spacing: .8rem;
-  --spacing-y: auto;
-  --spacing-x: auto;
+  --roundness: unset;
   --jump: 2;
   --theme: dark;
   --width: auto;
   --height: auto;
   --base: 1.6rem;
+  --spacing: .8rem;
+  --spacing-y: calc(--spacing / 2);
+  --spacing-x: calc(--spacing * 2);
   --sl: calc(var(--base) / 10);
   --3xs: calc(var(--base) / 8);
   --xxs: calc(var(--base) / 6);
@@ -282,10 +292,10 @@ body, .app, #root {
   display: grid;
   place-items: center;
   min-height: 100vh;
-  gap: var(--md);
+  gap: var(--spacing);
   background-color: var(--bg);
 }
-body :where(nav, header, footer):not(.hero), .app :where(nav, header, footer):not(.hero), #root :where(nav, header, footer):not(.hero) {
+body > :where(nav, header, main, footer):not(.hero), .app > :where(nav, header, main, footer):not(.hero), #root > :where(nav, header, main, footer):not(.hero) {
   --bg: var(--background);
   background-color: var(--bg);
 }
@@ -295,7 +305,7 @@ body :where(main > section, div):not(.hero, .wrapper, .hamburguer-icon), .app :w
   margin-block: var(--spacing);
   padding: var(--spacing);
 }
-body :where(main > section > div):not(.hero, .wrapper, .hamburguer-icon), .app :where(main > section > div):not(.hero, .wrapper, .hamburguer-icon), #root :where(main > section > div):not(.hero, .wrapper, .hamburguer-icon) {
+body :where(main > section > :is(section, div)):not(.hero, .wrapper, .hamburguer-icon), .app :where(main > section > :is(section, div)):not(.hero, .wrapper, .hamburguer-icon), #root :where(main > section > :is(section, div)):not(.hero, .wrapper, .hamburguer-icon) {
   --spacing: var(--md);
   margin-block: var(--spacing);
 }
@@ -315,6 +325,7 @@ body * :where(:not(h1, p, span)), .app * :where(:not(h1, p, span)), #root * :whe
 }
 
 :where(form) {
+  --spacing: inherit;
   display: grid;
   place-items: center;
   justify-items: stretch;
@@ -324,7 +335,7 @@ body * :where(:not(h1, p, span)), .app * :where(:not(h1, p, span)), #root * :whe
 :where(:focus-visible) {
   --outline: var(--outline-md);
   outline: var(--outline);
-  outline-offset: var(--xxs);
+  outline-offset: var(--xs);
 }
 
 :where(:is(button, summary, li):not(.disabled):active) {
@@ -500,11 +511,11 @@ form:invalid button[type=submit] {
 }
 
 article {
-  --aspect: 1.5 / 1.85;
+  --_aspect: 1.5 / 1.85;
   --bg: var(--primary);
   background-color: var(--bg);
   width: calc(2vmin + 15vw);
-  aspect-ratio: var(--aspect);
+  aspect-ratio: var(--_aspect);
   text-align: center;
   display: grid;
   place-items: center;

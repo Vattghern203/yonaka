@@ -1,3 +1,7 @@
+$exclude-from-layout: ".hero, .wrapper, .hamburguer-icon";
+
+// Styles the body, .app or #root (for react and other libs)
+
 body, .app, #root {
     --bg: var(--background);
     --spacing: var(--md);
@@ -6,23 +10,28 @@ body, .app, #root {
     place-items: center;
     min-height: 100vh;
     //min-width: 750px;
-    gap: var(--md);
+    gap: var(--spacing);
 
     background-color: var(--bg);
 
-    & :where(nav, header, footer):not(.hero) {
+    // Styles the Nav, Header, Main and Footer thar are direct children from the body. Excludes the hero.
+
+    & > :where(nav, header, main, footer):not(.hero) {
+
         --bg: var(--background);
         background-color: var(--bg);
     }
 
-    & :where(main > section, div):not(.hero, .wrapper, .hamburguer-icon) {
+    // Styles the div and section that are direct children from the main.
+
+    & :where(main > section, div):not(#{$exclude-from-layout}) {
         --bg: var(--secondary);
         background-color: var(--bg);
         margin-block: var(--spacing);
         padding: var(--spacing);
     }
 
-    & :where(main > section > div):not(.hero, .wrapper, .hamburguer-icon) {
+    & :where(main > section > :is(section, div)):not(#{$exclude-from-layout}) {
 
         --spacing: var(--md);
 
@@ -51,6 +60,9 @@ body, .app, #root {
 // Basic Styling for forms
 
 :where(form) {
+
+    --spacing: inherit;
+
     display: grid;
     place-items: center;
     justify-items: stretch;
@@ -64,8 +76,9 @@ body, .app, #root {
 
 :where(:focus-visible) {
     --outline: var(--outline-md);
+    
     outline: var(--outline);
-    outline-offset: var(--xxs);
+    outline-offset: var(--xs);
 }
 
 // EFFECTS 
