@@ -2,7 +2,8 @@ section {
 
     height: auto;
 
-    & > * {
-        background-color: var(--background);
+    & section {
+
+        margin-block: var(--spacing-block);
     }
 }

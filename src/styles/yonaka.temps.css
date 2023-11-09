@@ -133,6 +133,15 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
     --accent: #296cd1;
   }
 }
+.gradient {
+  --_gradient-from: var(--secondary);
+  --_gradient-to: var(--accent);
+  --_from-percentage: 0%;
+  --_to-percentage: 0%;
+  --_gradient-direction: to left;
+  background-image: linear-gradient(var(--_gradient-direction), var(--_gradient-from) var(--_gradient-to));
+}
+
 @property --base {
   syntax: "<lenght";
   inherits: false;
@@ -229,6 +238,7 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
   --blend-back-color: #FFF;
   --blend-highlight-color: #FFF;
   --content-text: color-mix(in oklab, var(--text), var(--blend-text-color) 20%);
+  --footer-text: color-mix(in oklab, var(--text), var(var(--blend-back-color) 75%));
   --muted-text: color-mix(in oklab, var(--text), var(--blend-text-color) 35%);
   --foreground-text: color-mix(in oklab, var(--text), var(--blend-text-color) 35%);
   --foreground-primary: color-mix(in oklab, var(--primary), var(--blend-text-color) 35%);
@@ -260,36 +270,30 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
   --grid-rows: auto;
   --grid-item-width: 10rem;
   --grid-justify-items: start;
-  --padding: var(--sm);
+  --padding-block: var(--sm);
+  --padding-inline: var(--lg);
   --roundness: var(--xs);
   --round-full: 50%;
   --round-peal: 100vmax;
-  --font-family: system-ui, "Inter", "Roboto";
+  --font-serif: "Times New Roman", Times, serif;
+  --font-mono: "Roboto Mono", monospace;
+  --font-sans-serif: system-ui, "Inter", "Roboto", sans-serif;
   --font-weight: 400;
   --font-size: 1.6rem;
   --line-height: 1.15;
+  --font-family: var(--font-sans-serif);
   --transition: var(--transition--duration, .2s) var(--transition--timing, ease-in);
   --transition--duration: .4s;
   --transition--timing: ease;
   --transition--props: all;
-  --bg: inherit;
-  --txt-color: inherit;
   --expand-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(162, 175, 185)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-}
-
-.gradient {
-  --_gradient-from: var(--secondary);
-  --_gradient-to: var(--accent);
-  --from-percentage: 0%;
-  --_to-percentage: 0%;
-  --_gradient-direction: to left;
-  background-image: linear-gradient(var(--_gradient-direction), var(--_gradient-from) var(--_gradient-to));
 }
 
 body, .app, #root {
   --bg: var(--background);
   --spacing: var(--md);
   --spacing-block: var(--md); /* Added variable for block spacing */
+  --spacing-inline: var(--lg);
   display: grid;
   place-items: center;
   min-height: 100vh;
@@ -462,15 +466,15 @@ details[open] > summary::after {
 button {
   --width: 16em;
   --spacing: var(--md) var(--lg);
-  --roundness: 0.6vmin;
+  --_roundness: var(--roundness);
   text-align: center;
   min-width: var(--width);
   cursor: pointer;
   text-transform: uppercase;
   border: none;
   padding: var(--md) var(--lg);
-  border-radius: var(--roundness);
-  transition: background-color transform var(--transition);
+  border-radius: var(--_roundness);
+  transition: background-color var(--transition), transform var(--transition);
 }
 button:hover:not(.disabled) {
   transform: translateY(2%);
@@ -523,6 +527,7 @@ article {
   gap: 0.2vmin;
   display: grid;
   place-items: center;
+  overflow: hidden;
 }
 article:has(> img:first-child) {
   padding-block-end: var(--spacing);
@@ -534,6 +539,7 @@ article > img:first-child {
   max-width: 100%;
   object-fit: cover;
   object-position: top;
+  --roundness: 0;
 }
 article > :is(h2, h3, h4, h5, h6) {
   --font-size: var(--font-size);
@@ -1186,11 +1192,11 @@ header.header-sticky {
 }
 
 main {
-  --width: 70%;
+  --width: 80%;
   --height: auto;
   --spacing: var(--lg);
   --bg: inherit;
-  width: clamp(60%, var(--width), 100vw);
+  width: clamp(75%, var(--width), 100vw);
   height: var(--height);
   padding: var(--md) var(--lg);
   border-radius: var(--roundness);
@@ -1234,6 +1240,13 @@ header nav ul li:active a {
     visibility: hidden;
   }
 }
+section {
+  height: auto;
+}
+section section {
+  margin-block: var(--spacing-block);
+}
+
 /*  --text: #e8e8ed;
  --background: #09090c;
  --primary: #47465d;
@@ -1317,6 +1330,8 @@ header nav ul li:active a {
 :where(.wrapper) {
   width: auto;
   height: auto;
+  margin: 0;
+  padding: 0;
 }
 
 /* This code simulates a family hierarchy, where the father/parent shares his attributes across the family tree.

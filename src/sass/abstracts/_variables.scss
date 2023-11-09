@@ -49,9 +49,9 @@
 
     --content-text: color-mix(in oklab, var(--text), var(--blend-text-color) 20%);
 
-    //--inverted-text: filter:invert(1)
+    --footer-text: color-mix(in oklab, var(--text), var(var(--blend-back-color) 75%));
 
-    // Foregrounds
+    // Foregrounds & Muted colors ------------------------------
 
     --muted-text: color-mix(in oklab, var(--text), var(--blend-text-color) 35%);
 
@@ -86,6 +86,8 @@
     --h-third-screen: 33.3333vh;
     --h-quarter-screen: 25vh;
 
+    // width
+
     --w-full: 100%;
     --w-half: 50%;
     --w-third: 33.3333%
@@ -105,7 +107,8 @@
 
     // Padding
 
-    --padding: var(--sm);
+    --padding-block: var(--sm);
+    --padding-inline: var(--lg);
 
     // BASE VARS ---------------------------------
 
@@ -116,10 +119,25 @@
 
     // TYPOGRAPHY ---------------------------------
 
-    --font-family: system-ui, 'Inter', 'Roboto';
+    // Types of font
+
+    --font-serif: 'Times New Roman', Times, serif;
+    --font-mono: 'Roboto Mono', monospace;
+    --font-sans-serif: system-ui, 'Inter', 'Roboto', sans-serif;
+
+    // Font Weight
+
     --font-weight: 400;
+
+    // Font Size
     --font-size: 1.6rem;
+
+    // Line Height
     --line-height: 1.15;
+
+    // typography default
+
+    --font-family: var(--font-sans-serif);
 
     // ANIMATION ---------------------------------
 
@@ -131,8 +149,7 @@
 
     // GENERAL -----------------------------------
 
-    --bg: inherit;
-    --txt-color: inherit;
+
 
     // FAMILY VARS
 
@@ -142,15 +159,3 @@
 }
 
 // GRADIENTS ----------------------------------------
-
-.gradient {
-    --_gradient-from: var(--secondary);
-    --_gradient-to: var(--accent);
-    --from-percentage: 0%;
-    --_to-percentage: 0%;
-    --_gradient-direction: to left;
-
-    background-image: linear-gradient(
-        var(--_gradient-direction), var(--_gradient-from) var(--_gradient-to)
-    );
-}

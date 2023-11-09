@@ -4,6 +4,7 @@ body, .app, #root {
     --bg: var(--background);
     --spacing: var(--md);
     --spacing-block: var(--md); /* Added variable for block spacing */
+    --spacing-inline: var(--lg);
 
     display: grid;
     place-items: center;

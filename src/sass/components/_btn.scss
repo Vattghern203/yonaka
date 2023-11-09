@@ -1,7 +1,7 @@
 button {
     --width: 16em;
     --spacing: var(--md) var(--lg);
-    --roundness: 0.6vmin;
+    --_roundness: var(--roundness);
     text-align: center;
 
     min-width: var(--width);
@@ -9,9 +9,9 @@ button {
     text-transform: uppercase;
     border: none;
     padding: var(--md) var(--lg);
-    border-radius: var(--roundness);
+    border-radius: var(--_roundness);
     transition:
-        background-color
+        background-color var(--transition),
         transform var(--transition);
 
     &:hover:not(.disabled) {

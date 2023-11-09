@@ -16,7 +16,7 @@ article {
     
     display: grid;
     place-items: center;
-    
+    overflow: hidden;    
     // Card with a Image
     
     &:has(> img:first-child) {
@@ -32,6 +32,7 @@ article {
         max-width: 100%;
         object-fit: cover;
         object-position: top;
+        --roundness: 0;
     }
 
     & > :is(h2, h3, h4, h5, h6) {

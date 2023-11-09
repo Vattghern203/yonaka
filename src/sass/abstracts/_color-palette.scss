@@ -18,3 +18,16 @@
     }
 }
 
+.gradient {
+    --_gradient-from: var(--secondary);
+    --_gradient-to: var(--accent);
+    --_from-percentage: 0%;
+    --_to-percentage: 0%;
+    --_gradient-direction: to left;
+
+    background-image: linear-gradient(
+        var(--_gradient-direction),
+      var(--_gradient-from)
+      var(--_gradient-to)
+    );
+}
