@@ -1,4 +1,4 @@
-header, header.header-sticky {
+body > :is(header, header.header-sticky) {
 
     --widht: 100%;
     --height: 10vmin;
@@ -23,7 +23,7 @@ header, header.header-sticky {
     }
 }
 
-header.header-sticky {
+body > header.header-sticky {
 
     --_header-top-position: 0;
 

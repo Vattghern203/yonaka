@@ -112,7 +112,13 @@
 
     // BASE VARS ---------------------------------
 
-    --roundness: var(--xs);
+    --roundness: var(--sm);
+
+    --inner-round: calc(var(--spacing) - var(--roudness));
+
+    --round-sm: var(--sm);
+    --round-md: var(--md);
+    --round-lg: var(--lg);
 
     --round-full: 50%;
     --round-peal: 100vmax;
@@ -130,10 +136,16 @@
     --font-weight: 400;
 
     // Font Size
-    --font-size: 1.6rem;
+    --font-size: var(--md);
 
     // Line Height
-    --line-height: 1.15;
+    --line-height: var(--line-height-relaxed); // Default
+
+    --line-height-tight: 1.25;
+    --line-height-snug: 1.375;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.625;
+    --line-height-loose: 2; 
 
     // typography default
 

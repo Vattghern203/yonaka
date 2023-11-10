@@ -12,14 +12,17 @@ article {
     width: calc(2vmin + 15vw);
     aspect-ratio: var(--_aspect);
     text-align: center;
+    word-break: normal;
+    text-wrap: wrap;
     gap: .2vmin;
     
     display: grid;
     place-items: center;
-    overflow: hidden;    
-    // Card with a Image
+    overflow: hidden;
+
+    // Card Image -------------------------------------
     
-    &:has(> img:first-child) {
+    &:has(> img:first-child):not(.hero-card) {
         padding-block-end: var(--spacing);
         align-content: start;
         gap: .4vmin;
@@ -45,4 +48,8 @@ article {
         --font-size: var(--font-size);
         font-size: 1.2vmin;
     }
+
+    // Hero Card --------------------------------
+
+    &:has(.hero-card) {}
 }

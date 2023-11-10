@@ -15,9 +15,34 @@ form:invalid {
 
 // Sets the default behavior
 
-input, label {
+input, label, textarea {
     cursor: pointer;
     transition: background-color var(--transition), filter var(--transition);
+}
+
+textarea {
+
+    padding: var(--spacing);
+    background-color: var(--foreground-primary);
+    border: .2rem solid var(--primary);
+    resize: none;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    outline: none;
+
+    &:hover {
+
+        outline: none;
+    }
+
+    &:active {
+        outline: none;
+    }
+
+    &:focus-visible {
+
+        outline: var(--outline);
+    }
 }
 
 // Label -----------------------------------------------

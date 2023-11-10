@@ -1,4 +1,8 @@
-:where(:root) {
+// Universal Vars that any element can access and change within it's scope
+
+// Variants
+
+:where(:root, html, *, *::after, *::before) {
 
     // OUTLINE ---------------------------------------------------
 

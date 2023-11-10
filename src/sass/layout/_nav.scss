@@ -1,4 +1,10 @@
-header nav {
+// Navigation Styles
+
+// Nav default
+
+
+// Header direct child of header
+header > nav {
     --font-size: 1.75rem;
     --bg: auto;
     background-color: var(--bg);
@@ -35,7 +41,7 @@ header nav {
 }
 
 @media only screen and (max-width: 37.5em) {
-    nav ul {
+    header nav ul {
         display: none;
         visibility: hidden;
     }
