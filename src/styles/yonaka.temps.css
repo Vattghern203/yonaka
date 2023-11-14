@@ -526,10 +526,8 @@ form:invalid button[type=submit] {
 }
 
 article {
-  --_aspect: 1.5 / 1.85;
   --bg: var(--primary);
   background-color: var(--bg);
-  container: card/inline-size;
   width: calc(2vmin + 15vw);
   aspect-ratio: var(--_aspect);
   text-align: center;
@@ -540,26 +538,44 @@ article {
   place-items: center;
   overflow: hidden;
 }
-article:has(> img:first-child):not(.hero-card) {
+article.hero-card {
+  --_background-url: url(https://animehunch.com/wp-content/uploads/2020/10/Malevolent-Shrine.jpg);
+  --_background-size: cover;
+  --_background-pos: center;
+  --_background-repeat: no-repeat;
+  --_aspect: 16 / 9;
+  --bg: none;
+  aspect-ratio: var(--_aspect);
+  background-image: var(--_background-url);
+  background-size: var(--_background-size, cover);
+  background-position: var(--_background-pos, center);
+  background-repeat: var(--_background-repeat, no-repeat);
+  transition: background-size 4s var(--transition-out-back);
+}
+article:not(.hero-card) {
+  --_aspect: 1.5 / 1.85;
+}
+article:not(.hero-card):has(> img:first-child) {
   padding-block-end: var(--spacing);
   align-content: start;
   gap: 0.4vmin;
 }
-article > img:first-child {
+article:not(.hero-card) > img:first-child {
   align-self: self-start;
   max-width: 100%;
   object-fit: cover;
   object-position: top;
   --roundness: 0;
 }
-article > :is(h2, h3, h4, h5, h6) {
+article:not(.hero-card) > :is(h2, h3, h4, h5, h6) {
   --font-size: var(--font-size);
   font-size: var(--font-size);
 }
-article > :is(p, span) {
+article:not(.hero-card) > :is(p, span) {
   --font-size: var(--font-size);
   font-size: 1.2vmin;
 }
+
 details[role=listbox] > ul, details[role=list] > ul {
   --bg: var(--foreground-primary);
   --border: var(--border-sm);
@@ -807,7 +823,7 @@ textarea:focus-visible {
   outline: var(--outline);
 }
 
-label {
+label:not([role=button]) {
   --spacing-y: var(--sm);
   --spacing-x: var(--md);
   --width: 100%;
@@ -818,7 +834,7 @@ label {
   gap: var(--spacing-y);
   align-items: center;
 }
-label:has(> input[type=file]) {
+label:not([role=button]):has(> input[type=file]) {
   --width: var(--w-full, 100%);
   --height: calc(32vmin + 5vw);
   --font-weight: 600;
@@ -837,18 +853,18 @@ label:has(> input[type=file]) {
   position: relative;
   --_effect-level: 0%;
 }
-label:has(> input[type=file]):hover {
+label:not([role=button]):has(> input[type=file]):hover {
   background-color: var(--accent);
 }
-label:has(> input[type=file]):active {
+label:not([role=button]):has(> input[type=file]):active {
   filter: var(--effect-bright);
 }
-label:has(> input[type=file]:focus-visible) {
+label:not([role=button]):has(> input[type=file]:focus-visible) {
   --outline: var(--outline-md);
   outline-offset: var(--outline-offset);
   outline: var(--outline);
 }
-label:has(> input[type=color]) {
+label:not([role=button]):has(> input[type=color]) {
   display: flex;
   align-items: center;
 }
@@ -1017,6 +1033,42 @@ input:is([type=checkbox], [type=radio]):focus-visible, select:is([type=checkbox]
 
 video {
   aspect-ratio: 16/9;
+}
+
+label[role=button]:has(> input[type=checkbox]) input[type=checkbox] {
+  display: none;
+}
+
+label[role=button]:has(> input[type=checkbox]:checked) {
+  background-color: red;
+}
+label[role=button]:has(> input[type=checkbox]:checked) + [role=dialog] {
+  display: grid;
+  opacity: 100%;
+  transition: opacity 10s ease;
+}
+
+label[role=button]:has(> input[type=checkbox]) + [role=dialog] {
+  display: none;
+  opacity: 0%;
+  --_z-index: var(--index-popup);
+  --_modal-top: 50%;
+  --_modal-left: 50%;
+  z-index: var(--_z-index);
+  position: fixed;
+  top: var(--_modal-top);
+  left: var(--_modal-left);
+  transform: translate(-50%, -50%);
+}
+label[role=button]:has(> input[type=checkbox]) + [role=dialog] > [role=dialog] {
+  background-color: black;
+  z-index: calc(var(--_z-index) + 1);
+  top: calc(var(--_modal-top) + 5%);
+}
+
+.modal-close {
+  float: right;
+  font-size: 2rem;
 }
 
 /* SWITCH COMPONENT */
@@ -1326,8 +1378,9 @@ section section {
   width: 100%;
 }
 .grid-dynamic > * {
-  --bg: var(--foreground-secondary);
-  background-color: var(--bg);
+  /* --bg: var(--foreground-secondary);
+
+  background-color: var(--bg); */
   align-self: stretch;
   width: 100%;
 }

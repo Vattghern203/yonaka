@@ -319,7 +319,7 @@
       </div>
     </section>
 
-    <section id="colors">
+    <section id="cards">
       <h2>Cards</h2>
 
       <p>With the palette provided, I've created these colors to complement the basic needs in a website.</p>
@@ -328,56 +328,61 @@
 
       <p>Obs: It might not look so good in Light Themes... working on it.</p>
 
-      <div>
-        <article>
+      <article>
+        <img
+          src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"alt="a japanese landscape"
+          loading="lazy"
+        >
+        <h3>image card</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quas blanditiis.</p>
+      </article>
 
-          <img 
-            src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"alt="a japanese landscape"
-            loading="lazy"
-          >
+      <article class="hero-card">
+        <h3>Hero Card</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, enim?</p>
+      </article>
+    </section>
 
-          <h3>image card</h3>
+    </section>
 
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quas blanditiis.</p>
-        </article>
+    <section id="colors">
 
-
-      </div>
+      <h2>Colors</h2>
 
       <div class="wrapper grid-dynamic">
         <article style="--bg: var(--primary)">primary</article>
         <article style="--bg: var(--secondary); border: 0.2rem var(--accent) solid">
           secondary
         </article>
-
+  
         <article style="--bg: var(--accent)">accent</article>
-
+  
         <article style="--bg: var(--text); color: black">text</article>
-
+  
         <article style="--bg: var(--foreground-text); color: black">
           foreground text
         </article>
-
+  
         <article style="--bg: var(--foreground-secondary)">
           foreground secondary
         </article>
-
+  
         <article style="--bg: var(--background)">background</article>
-
+  
         <article style="--bg: var(--foreground-background)">foreground background</article>
-
+  
         <article style="--bg: var(--foreground-accent)">
           foreground accent
         </article>
-
+  
         <article style="--bg: var(--muted-text)">
           muted text
         </article>
-
+  
         <article style="--bg: var(--content-text); color: black;">
           content text
         </article>
-
+  
         <article style="--bg: var(--foreground-primary); color: var(--text);">
           foreground primary
         </article>
@@ -480,6 +485,55 @@
       </div>
     </section>
 
+    <section>
+      <h3>Modals</h3>
+
+      <!--First Modal-->
+
+      <label for="modal__open" role="button" class="cta">
+
+        Teste
+
+        <input type="checkbox" id="modal__open">
+      </label>
+
+      <article role="dialog">
+        TESTE
+
+        <label for="modal__open" class="cta">&times;</label>
+
+        <!--Second Modal-->
+
+        <label for="modal__open--2" role="button" class="cta">
+
+          Teste2
+  
+          <input type="checkbox" id="modal__open--2">
+        </label>
+
+        <article role="dialog">
+          TESTE2 
+  
+          <label for="modal__open--2" class="modal-close">&times;</label>
+
+          <!--Third Modal-->
+
+          <label for="modal__open--2" role="button" class="cta">
+
+            Teste3
+    
+            <input type="checkbox" id="modal__open--2">
+          </label>
+  
+          <article role="dialog">
+            TESTE3
+    
+            <label for="modal__open--2" class="modal-close">&times;</label>
+        </article>
+        
+      </article>
+    </section>
+
   </main>
   <a class="scroll-to-top" href=".hero">TOP</a>
 
@@ -495,7 +549,7 @@
     <nav>
       <ul>
         <li>
-          <p class="limited-text" style="--border: var(--border-lg); border: var(--border); --border-color: red;">
+          <p class="limited-text">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt officiis nesciunt consectetur in fuga et
             iusto excepturi, rem, laboriosam veritatis non reiciendis quam sint mollitia voluptatem ipsam recusandae
             tenetur possimus?

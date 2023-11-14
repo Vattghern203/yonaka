@@ -53,9 +53,9 @@
     width: 100%;
 
     & > * {
-        --bg: var(--foreground-secondary);
+        /* --bg: var(--foreground-secondary);
 
-        background-color: var(--bg);
+        background-color: var(--bg); */
         align-self: stretch;
         width: 100%;
     }

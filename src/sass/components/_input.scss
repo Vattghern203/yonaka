@@ -47,7 +47,7 @@ textarea {
 
 // Label -----------------------------------------------
 
-label {
+label:not([role="button"]) {
 
     --spacing-y: var(--sm);
     --spacing-x: var(--md);

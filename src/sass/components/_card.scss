@@ -1,14 +1,9 @@
 // CARD Component
 
 article {
-    --_aspect: 1.5 / 1.85;
-
     --bg: var(--primary);
-
+    
     background-color: var(--bg);
-
-    container: card / inline-size;
-
     width: calc(2vmin + 15vw);
     aspect-ratio: var(--_aspect);
     text-align: center;
@@ -20,36 +15,58 @@ article {
     place-items: center;
     overflow: hidden;
 
-    // Card Image -------------------------------------
+    // Hero Card ---------------------------------------
+
+    &.hero-card {
+
+        --_background-url: url(https://animehunch.com/wp-content/uploads/2020/10/Malevolent-Shrine.jpg);
+        --_background-size: cover;
+        --_background-pos: center;
+        --_background-repeat: no-repeat;
+        --_aspect: 16 / 9;
+        --bg: none;
+
+        aspect-ratio: var(--_aspect);
+
+        //width: 100%;
+
+        background-image: var(--_background-url);
+        background-size: var(--_background-size, cover);
+        background-position: var(--_background-pos, center);
+        background-repeat: var(--_background-repeat, no-repeat);
+
+        transition: background-size 4s var(--transition-out-back);
+    }
     
-    &:has(> img:first-child):not(.hero-card) {
-        padding-block-end: var(--spacing);
-        align-content: start;
-        gap: .4vmin;
+    // Card Image -------------------------------------
+
+    &:not(.hero-card) {
+
+        --_aspect: 1.5 / 1.85;
+
+        &:has(> img:first-child) {
+            padding-block-end: var(--spacing);
+            align-content: start;
+            gap: .4vmin;
+        }
+
+        & > img:first-child {
+            align-self: self-start;
+            max-width: 100%;
+            object-fit: cover;
+            object-position: top;
+            --roundness: 0;
+        }
+        
+        & > :is(h2, h3, h4, h5, h6) {
+            --font-size: var(--font-size);
+            
+            font-size: var(--font-size);
+        }
+        
+        & > :is(p, span) {
+            --font-size: var(--font-size);
+            font-size: 1.2vmin;
+        }
     }
-
-    // Ensure that if has a card as first child its sticky on top
-
-    & > img:first-child {
-        align-self: self-start;
-        max-width: 100%;
-        object-fit: cover;
-        object-position: top;
-        --roundness: 0;
-    }
-
-    & > :is(h2, h3, h4, h5, h6) {
-        --font-size: var(--font-size);
-
-        font-size: var(--font-size);
-    }
-
-    & > :is(p, span) {
-        --font-size: var(--font-size);
-        font-size: 1.2vmin;
-    }
-
-    // Hero Card --------------------------------
-
-    &:has(.hero-card) {}
 }
