@@ -1063,7 +1063,6 @@ label[role=button]:has(> input[type=checkbox]) + [role=dialog] {
 label[role=button]:has(> input[type=checkbox]) + [role=dialog] [role=dialog] {
   position: fixed;
   --_modal-top: inherit;
-  background-color: black;
   z-index: calc(var(--_z-index) - 1%);
   top: var(--_modal-top);
 }
@@ -1072,10 +1071,10 @@ html:has(label[role=button] > input[type=checkbox]:checked) {
   overflow-y: hidden;
 }
 
-article[role=dialog] {
+article[role=dialog], article[role=dialog] article[role=dialog] {
   --_modal-width: 50dvw;
   --_modal-height: 50dvh;
-  --_bg: var(--foreground-secondary);
+  --_bg: var(--foreground-background);
   width: var(--_modal-width, 50%);
   height: var(--_modal-height, 50%);
   display: grid;
@@ -1084,7 +1083,7 @@ article[role=dialog] {
   overflow: hidden;
   background-color: var(--_bg);
 }
-article[role=dialog] > header {
+article[role=dialog] > header, article[role=dialog] article[role=dialog] > header {
   --roundness: 0;
   --spacing: var(--sm);
   padding: var(--spacing);
@@ -1092,10 +1091,6 @@ article[role=dialog] > header {
   background-color: red;
   grid-row: 1;
 }
-article[role=dialog] > footer {
-  grid-row: -1;
-}
-
 .modal-close {
   float: right;
   font-size: 2rem;
