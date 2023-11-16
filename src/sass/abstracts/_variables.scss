@@ -39,6 +39,8 @@
 
     --destructive: #772626;
 
+    --light-destructive: color-mix(in oklab, var(--destructive), #FFF 30%);
+
     // Blend Colors
 
     --blend-text-color: #000; // Color that blend with texts
@@ -128,7 +130,7 @@
     // Types of font
 
     --font-serif: 'Times New Roman', Times, serif;
-    --font-mono: 'Roboto Mono', monospace;
+    --font-mono: 'Cascadia Code', 'Roboto Mono', monospace;
     --font-sans-serif: system-ui, 'Inter', 'Roboto', sans-serif;
 
     // Font Weight

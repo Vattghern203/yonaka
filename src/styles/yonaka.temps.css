@@ -234,6 +234,7 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
   --3xl: calc(var(--base) * 8);
   --hg: calc(var(--base) * 10);
   --destructive: #772626;
+  --light-destructive: color-mix(in oklab, var(--destructive), #FFF 30%);
   --blend-text-color: #000;
   --blend-back-color: #FFF;
   --blend-highlight-color: #FFF;
@@ -280,7 +281,7 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
   --round-full: 50%;
   --round-peal: 100vmax;
   --font-serif: "Times New Roman", Times, serif;
-  --font-mono: "Roboto Mono", monospace;
+  --font-mono: "Cascadia Code", "Roboto Mono", monospace;
   --font-sans-serif: system-ui, "Inter", "Roboto", sans-serif;
   --font-weight: 400;
   --font-size: var(--md);
@@ -799,7 +800,9 @@ form:invalid input:invalid {
   transition: border-color var(--transition);
 }
 
-input, label, textarea {
+input,
+label,
+textarea {
   cursor: pointer;
   transition: background-color var(--transition), filter var(--transition);
 }
@@ -1044,13 +1047,10 @@ label[role=button]:has(> input[type=checkbox]:checked) {
 }
 label[role=button]:has(> input[type=checkbox]:checked) + [role=dialog] {
   display: grid;
-  opacity: 100%;
-  transition: opacity 10s ease;
 }
 
 label[role=button]:has(> input[type=checkbox]) + [role=dialog] {
   display: none;
-  opacity: 0%;
   --_z-index: var(--index-popup);
   --_modal-top: 50%;
   --_modal-left: 50%;
@@ -1063,37 +1063,37 @@ label[role=button]:has(> input[type=checkbox]) + [role=dialog] {
 label[role=button]:has(> input[type=checkbox]) + [role=dialog] [role=dialog] {
   position: fixed;
   --_modal-top: inherit;
-  z-index: calc(var(--_z-index) - 1%);
+  z-index: calc(var(--_z-index) - 5);
   top: var(--_modal-top);
 }
 
 html:has(label[role=button] > input[type=checkbox]:checked) {
-  overflow-y: hidden;
+  overflow-y: visible;
 }
 
-article[role=dialog], article[role=dialog] article[role=dialog] {
+:is(article[role=dialog], article[role=dialog] article[role=dialog]) {
   --_modal-width: 50dvw;
   --_modal-height: 50dvh;
   --_bg: var(--foreground-background);
   width: var(--_modal-width, 50%);
   height: var(--_modal-height, 50%);
-  display: grid;
-  align-content: space-between;
-  place-items: center;
   overflow: hidden;
   background-color: var(--_bg);
 }
-article[role=dialog] > header, article[role=dialog] article[role=dialog] > header {
-  --roundness: 0;
-  --spacing: var(--sm);
-  padding: var(--spacing);
-  width: 100%;
-  background-color: red;
-  grid-row: 1;
+:is(article[role=dialog], article[role=dialog] article[role=dialog]) > header {
+  background-color: black;
 }
+:is(article[role=dialog], article[role=dialog] article[role=dialog]) > footer {
+  background-color: chocolate;
+}
+
 .modal-close {
   float: right;
-  font-size: 2rem;
+  font-size: 2.4em;
+  transition: color 0.1s ease-in;
+}
+.modal-close:hover {
+  color: var(--light-destructive);
 }
 
 /* SWITCH COMPONENT */
@@ -1221,24 +1221,24 @@ input[role=switch][type=checkbox].squared:checked::after {
   transform: translateX(120%);
 }
 
-footer {
-  --width: 100%;
-  --height: 35vmin;
-  --_txt: color-mix(in oklab, var(--text-color) 90%, black 10%)
+body > footer {
+  --_width: 100%;
+  --_height: 35vmin;
+  --_txt: color-mix(in oklab, var(--text-color) 90%, black 10%);
   color: var(--_txt);
   align-self: flex-end;
   display: grid;
   place-items: center;
-  width: var(--width);
-  height: var(--height);
+  width: var(--_width);
+  height: var(--_height);
   border-top: 0.1rem solid var(--foreground-accent);
 }
-footer ul {
+body > footer ul {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-footer ul a {
+body > footer ul a {
   color: var(--_txt);
 }
 
@@ -1297,7 +1297,7 @@ body > header.header-sticky {
   font-size: calc(var(--font-size) / 5);
 }
 
-main {
+body > main {
   --width: 80%;
   --height: auto;
   --spacing: var(--lg);

@@ -12,24 +12,21 @@ label[role="button"]:has( > input[type="checkbox"]) {
 
 label[role="button"]:has( > input[type="checkbox"]:checked) {
 
-    background-color: red;
+    background-color: red; // Just a debug sign
 
-    // Styling the Article with role dialog
+    // Styling the Article with role dialog when the input is checked
 
     & + [role="dialog"] {
 
         display: grid;
-
-        opacity: 100%;
-        transition: opacity 10s ease;
+       
     }
 }
 
 label[role="button"]:has( > input[type="checkbox"]) + [role="dialog"] {
 
     display: none;
-    opacity: 0%;
-
+   
     --_z-index: var(--index-popup);
     --_modal-top: 50%;
     --_modal-left: 50%;
@@ -51,7 +48,7 @@ label[role="button"]:has( > input[type="checkbox"]) + [role="dialog"] {
         //--_z-index: calc(var(--_z-index) - 1);
         //--_modal-top: calc(inherit + 1%);
 
-        z-index: calc(var(--_z-index) - 1%);
+        z-index: calc(var(--_z-index) - 5);
 
         top: var(--_modal-top);
     }
@@ -60,10 +57,10 @@ label[role="button"]:has( > input[type="checkbox"]) + [role="dialog"] {
 // Stop scrolling when a modal is opened
 
 html:has(label[role="button"] > input[type="checkbox"]:checked) {
-    overflow-y: hidden;
+    overflow-y: visible;
 }
 
-article[role="dialog"], article[role="dialog"] article[role="dialog"] {
+:is(article[role="dialog"], article[role="dialog"] article[role="dialog"]) {
 
     --_modal-width: 50dvw;
     --_modal-height: 50dvh;
@@ -73,33 +70,20 @@ article[role="dialog"], article[role="dialog"] article[role="dialog"] {
     width: var(--_modal-width, 50%);
     height: var(--_modal-height, 50%);
 
-    display: grid;
-    align-content: space-between;
-    place-items: center;
-
     overflow: hidden;
 
     background-color: var(--_bg);
 
     // Building a layout
 
-    > header {
+    & > header {
 
-        --roundness: 0;
-        --spacing: var(--sm);
-
-        padding: var(--spacing);
-
-        width: 100%;
-
-        background-color: red;
-
-        grid-row: 1;
+        background-color: black;
     }
 
-    > footer {
+    & > footer {
 
-        
+        background-color: chocolate;
     }
 }
 
@@ -107,5 +91,12 @@ article[role="dialog"], article[role="dialog"] article[role="dialog"] {
 .modal-close {
 
     float: right;
-    font-size: 2rem;
+    font-size: 2.4em;
+
+    &:hover {
+
+        color: var(--light-destructive);
+    }
+
+    transition: color .1s ease-in;
 }

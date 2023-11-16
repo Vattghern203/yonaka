@@ -15,7 +15,9 @@ form:invalid {
 
 // Sets the default behavior
 
-input, label, textarea {
+input, 
+label, 
+textarea {
     cursor: pointer;
     transition: background-color var(--transition), filter var(--transition);
 }

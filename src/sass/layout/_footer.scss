@@ -1,15 +1,15 @@
-footer {
-    --width: 100%;
-    --height: 35vmin;
+body > footer {
+    --_width: 100%;
+    --_height: 35vmin;
 
-    --_txt: color-mix(in oklab, var(--text-color) 90%, black 10%)
+    --_txt: color-mix(in oklab, var(--text-color) 90%, black 10%);
 
     color: var(--_txt);
     align-self: flex-end;
     display: grid;
     place-items: center;
-    width: var(--width);
-    height: var(--height);
+    width: var(--_width);
+    height: var(--_height);
     border-top: .1rem solid var(--foreground-accent);
 
     & ul {
