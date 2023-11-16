@@ -1,3 +1,5 @@
+// Hidden Input
+
 label[role="button"]:has( > input[type="checkbox"]) {
 
     & input[type="checkbox"] {
@@ -6,11 +8,13 @@ label[role="button"]:has( > input[type="checkbox"]) {
     }
 }
 
-// Changing State
+// Changing State -> Checked
 
 label[role="button"]:has( > input[type="checkbox"]:checked) {
 
     background-color: red;
+
+    // Styling the Article with role dialog
 
     & + [role="dialog"] {
 
@@ -38,13 +42,66 @@ label[role="button"]:has( > input[type="checkbox"]) + [role="dialog"] {
     transform: translate(-50%, -50%);
 
 
-    & > [role="dialog"] {
+    & [role="dialog"] {
+
+        position: fixed;
+
+        --_modal-top: inherit;
+        
+        //--_z-index: calc(var(--_z-index) - 1);
+        //--_modal-top: calc(inherit + 1%);
 
         background-color: black;
 
-        z-index: calc(var(--_z-index) + 1);
+        z-index: calc(var(--_z-index) - 1%);
 
-        top: calc(var(--_modal-top) + 5%);
+        top: var(--_modal-top);
+    }
+}
+
+// Stop scrolling when a modal is opened
+
+html:has(label[role="button"] > input[type="checkbox"]:checked) {
+    overflow-y: hidden;
+}
+
+article[role="dialog"] {
+
+    --_modal-width: 50dvw;
+    --_modal-height: 50dvh;
+
+    --_bg: var(--foreground-secondary);
+
+    width: var(--_modal-width, 50%);
+    height: var(--_modal-height, 50%);
+
+    display: grid;
+    align-content: space-between;
+    place-items: center;
+
+    overflow: hidden;
+
+    background-color: var(--_bg);
+
+    // Building a layout
+
+    > header {
+
+        --roundness: 0;
+        --spacing: var(--sm);
+
+        padding: var(--spacing);
+
+        width: 100%;
+
+        background-color: red;
+
+        grid-row: 1;
+    }
+
+    > footer {
+
+        grid-row: -1;
     }
 }
 
