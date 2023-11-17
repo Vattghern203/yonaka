@@ -9,20 +9,14 @@
 </head>
 
 <style>
-  :root {
-    
-  }
+  :root {}
 </style>
 
 <body>
   <header class="header-sticky">
     <a href="#" role="img" aria-label="">
-      <img 
-        class="logo" 
-        src="https://i.pinimg.com/474x/a5/66/b8/a566b87e4bcc24b33eda8bd41513f1a8.jpg" 
-        alt="logo"
-        loading="eager"
-      />
+      <img class="logo" src="https://i.pinimg.com/474x/a5/66/b8/a566b87e4bcc24b33eda8bd41513f1a8.jpg" alt="logo"
+        loading="eager" />
     </a>
 
     <nav role="navigation">
@@ -330,9 +324,8 @@
 
       <article>
         <img
-          src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"alt="a japanese landscape"
-          loading="lazy"
-        >
+          src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="a japanese landscape" loading="lazy">
         <h3>image card</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quas blanditiis.</p>
       </article>
@@ -350,45 +343,96 @@
       <h2>Colors</h2>
 
       <div class="wrapper grid-dynamic">
-        <article style="--bg: var(--primary)">primary</article>
+
+        <!--BASIC-->
+
+        <article style="--bg: var(--primary)">
+          primary
+        </article>
+
         <article style="--bg: var(--secondary); border: 0.2rem var(--accent) solid">
           secondary
         </article>
-  
-        <article style="--bg: var(--accent)">accent</article>
-  
-        <article style="--bg: var(--text); color: black">text</article>
-  
-        <article style="--bg: var(--foreground-text); color: black">
-          foreground text
+
+        <article style="--bg: var(--accent)">
+          accent
         </article>
-  
-        <article style="--bg: var(--foreground-secondary)">
-          foreground secondary
+
+        <article style="--bg: var(--text); color: black">
+          text
         </article>
-  
-        <article style="--bg: var(--background)">background</article>
-  
-        <article style="--bg: var(--foreground-background)">foreground background</article>
-  
-        <article style="--bg: var(--foreground-accent)">
-          foreground accent
+        
+        <article style="--bg: var(--background)">
+          background
         </article>
-  
-        <article style="--bg: var(--muted-text)">
-          muted text
+
+        <article style="--bg: var(--destructive)">
+          destructive
         </article>
-  
-        <article style="--bg: var(--content-text); color: black;">
-          content text
-        </article>
-  
+
+        <!--FOREGROUND-->
+        
         <article style="--bg: var(--foreground-primary); color: var(--text);">
           foreground primary
         </article>
-        <article style="--bg: var(--foreground-destructive); color: var(--text);">
-          foreground primary
+
+        <article style="--bg: var(--foreground-secondary)">
+          foreground secondary
         </article>
+
+        <article style="--bg: var(--foreground-accent)">
+          foreground accent
+        </article>
+
+        <article style="--bg: var(--foreground-text); color: black">
+          foreground text
+        </article>
+
+        <article style="--bg: var(--foreground-background)">
+          foreground background
+        </article>
+
+        <article style="--bg: var(--foreground-destructive); color: var(--text);">
+          foreground destructive
+        </article>
+
+        <!--MUTED-->
+        <article style="--bg: var(--muted-primary); color: var(--text);">
+          muted primary
+        </article>
+        
+        <article style="--bg: var(--muted-secondary); color: var(--text); border: var(--border);">
+          muted secondary
+        </article>
+        
+        <article style="--bg: var(--muted-accent); color: var(--text);">
+          muted accent
+        </article>
+
+        <article style="--bg: var(--muted-text)">
+          muted text
+        </article>
+        
+        <article style="--bg: var(--muted-background); color: var(--text); border: var(--border);">
+          muted background
+        </article>
+
+        <article style="--bg: var(--muted-destructive); color: var(--text);">
+          muted destructive
+        </article>
+        
+        <!--VARIATIONS-->
+
+        <article style="--bg: var(--content-text); color: black;">
+          content text
+        </article>
+
+        <!--GRADIENTS-->
+
+        <article style="background-image: var(--gradient-primary-secondary); color: var(--text); border: var(--border);">
+          content text
+        </article>
+
       </div>
     </section>
 
@@ -507,7 +551,7 @@
         <label for="modal__open--2" role="button" class="cta">
 
           Teste2
-  
+
           <input type="checkbox" id="modal__open--2">
         </label>
 
@@ -516,9 +560,9 @@
 
           <header>Text top</header>
 
-          
+
           TESTE2
-          
+
           <footer>footer</footer>
 
           <!--Third Modal-->
@@ -526,17 +570,17 @@
           <label for="modal__open--3" role="button" class="cta">
 
             Teste3
-    
+
             <input type="checkbox" id="modal__open--3">
           </label>
-  
+
           <article role="dialog">
             TESTE3
-    
+
             <label for="modal__open--3" class="modal-close">&times;</label>
+          </article>
+
         </article>
-        
-      </article>
     </section>
 
   </main>

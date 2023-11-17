@@ -55,19 +55,53 @@
 
     // Foregrounds & Muted colors ------------------------------
 
-    --muted-text: color-mix(in oklab, var(--text), var(--blend-text-color) 35%);
+    // Muted --------------------------------------------------
 
-    --foreground-text: color-mix(in oklab, var(--text), var(--blend-text-color) 35%);
+    --muted-blend-intensity: 45%; // Intensity of blending
 
-    --foreground-primary: color-mix(in oklab, var(--primary), var(--blend-text-color) 35%);
+    --muted-text: color-mix(in oklab, var(--text), var(--blend-text-color) var(--muted-blend-intensity));
 
-    --foreground-background: color-mix(in oklab, var(--background), var(--blend-back-color) 15%);
+    --muted-accent: color-mix(in oklab, var(--accent), var(--background) var(--muted-blend-intensity));
 
-    --foreground-secondary: color-mix(in oklab, var(--secondary), var(--blend-back-color) 30%);
+    --muted-primary: color-mix(in oklab, var(--primary), var(--background) var(--muted-blend-intensity));
 
-    --foreground-accent: color-mix(in oklab, var(--accent), var(--blend-text-color) 35%);
+    --muted-secondary: color-mix(in oklab, var(--secondary), var(--background) var(--muted-blend-intensity));
 
-    --foreground-destructive: color-mix(in oklab, var(--destructive), var(--blend-back-color) 15%);
+    --muted-destructive: color-mix(in oklab, var(--destructive), var(--background) var(--muted-blend-intensity));
+
+    --muted-background: color-mix(in oklab, var(--background) var(--blend-back-color) var(--muted-blend-intensity));
+
+    // Foreground ---------------------------------------------------
+
+    --foreground-blend-intensity: 15%;
+
+    --foreground-text: color-mix(in oklab, var(--text), var(--blend-highlight-color) var(--foreground-blend-intensity));
+
+    --foreground-primary: color-mix(in oklab, var(--primary), var(--text) var(--foreground-blend-intensity));
+
+    --foreground-background: color-mix(in oklab, var(--background), var(--text) var(--foreground-blend-intensity));
+
+    --foreground-secondary: color-mix(in oklab, var(--secondary), var(--text) var(--foreground-blend-intensity));
+
+    --foreground-accent: color-mix(in oklab, var(--accent), var(--text) var(--foreground-blend-intensity));
+
+    --foreground-destructive: color-mix(in oklab, var(--destructive), var(--text) var(--foreground-blend-intensity));
+
+    // GRADIENTS ----------------------------------------------------
+
+    --gradient-primary-secondary-accent: linear-gradient(90deg, rgba(23,60,115,1) 0%, rgba(8,20,38,1) 35%, rgba(41,108,209,1) 100%);
+
+    --gradient-primary-secondary: linear-gradient(90deg, rgba(23,60,115,1) 0%, rgba(8,20,38,1) 35%);
+
+    --gradient-secondary-accent: linear-gradient(90deg, rgba(8,20,38,1) 35%, rgba(41,108,209,1) 100%);
+
+    --gradient-primary-accent: linear-gradient(90deg, rgba(23,60,115,1) 50%, rgba(41,108,209,1) 100%);
+
+    // Highlight ------------------------------------------------------
+
+    --highlight-text: color-mix(in oklab, var(--text) 60%);
+
+    --highlight-accent: color-mix(in oklab, var(--accent) 60%);
 
     // BREAKPOINTS ---------------------------------
 
