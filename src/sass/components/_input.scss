@@ -25,7 +25,7 @@ textarea {
 textarea {
 
     padding: var(--spacing);
-    background-color: var(--foreground-primary);
+    background-color: var(--muted-primary);
     border: .2rem solid var(--primary);
     resize: none;
     font-family: var(--font-family);
@@ -125,7 +125,7 @@ label:not([role="button"]) {
 input, select {
     --spacing: var(--md);
     --roundness: .24vmin;
-    --bg: var(--foreground-primary);
+    --bg: var(--muted-primary);
     --font-size: 1.50rem;
     --width: 100%;
 

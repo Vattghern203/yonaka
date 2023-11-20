@@ -717,7 +717,8 @@ select > option:active {
 .gallery {
   --_gallery-gap: 0.4rem;
   --_gallery-height: 72rem;
-  --_bg: var(--muted-secondary);
+  --_bg: transparent;
+  background-color: var(--_bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -865,7 +866,7 @@ textarea {
 
 textarea {
   padding: var(--spacing);
-  background-color: var(--foreground-primary);
+  background-color: var(--muted-primary);
   border: 0.2rem solid var(--primary);
   resize: none;
   font-family: var(--font-family);
@@ -930,7 +931,7 @@ label:not([role=button]):has(> input[type=color]) {
 input, select {
   --spacing: var(--md);
   --roundness: .24vmin;
-  --bg: var(--foreground-primary);
+  --bg: var(--muted-primary);
   --font-size: 1.50rem;
   --width: 100%;
   font-weight: 500;
