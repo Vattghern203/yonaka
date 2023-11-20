@@ -714,6 +714,49 @@ select > option:active {
   filter: var(--effect-bright);
 }
 
+.gallery {
+  --_gallery-gap: 0.4rem;
+  --_gallery-height: 72rem;
+  --_bg: var(--muted-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  align-self: center;
+  margin: var(--spacing) auto;
+  gap: var(--_gallery-gap);
+}
+.gallery * {
+  transition: flex 0.666s var(--transition-motion), border-radius 0.2s var(--transition-middle-break);
+}
+.gallery > figure {
+  flex: 1;
+  text-align: center;
+  transition: flex 0.666s ease, border-radius 0.2s var(--transition-middle-break);
+}
+.gallery > figure:hover {
+  flex: 3;
+}
+.gallery > figure:hover > img {
+  border-radius: var(--roundness);
+}
+.gallery > figure figcaption {
+  opacity: 0;
+  transition: opacity 1.44s ease-out;
+}
+.gallery > figure:hover figcaption {
+  opacity: 1;
+}
+.gallery img {
+  cursor: pointer;
+  border-radius: 100vmax;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  height: var(--_gallery-height);
+  transition: border-radius 0.4s var(--transition-out-circle);
+}
+
 a.scroll-to-top {
   display: grid;
   place-items: center;
