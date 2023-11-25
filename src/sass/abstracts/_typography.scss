@@ -1,6 +1,8 @@
-// DEFINE ALL FONT REALTED STUFF
+// Define all the fonts and text related stuff
 
 @import "../utils/selectors";
+
+// Default
 
 body {
     --font-size: var(--md);
@@ -9,10 +11,15 @@ body {
     font-family: var(--font-family);
     font-weight: var(--font-weight);
     line-height: var(--line-height);
+
+    // Font Smoothing
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-smoothing: antialiased;
 }
+
+// Headings
 
 :where(h1) {
     --text-color: var(--accent);
@@ -34,6 +41,8 @@ h5 { --spacing: var(--sm) }
 
 h6 { --spacing: var(--xs) }
 
+// Paragraphs
+
 p {
     --text-color: var(--content-text);
     --font-weight: 500;
@@ -46,14 +55,22 @@ p {
     }
 }
 
-//  Font Variants
+//  Text Tags Variants
 
-code {
+code, pre {
     --font-family: var(--font-mono, monospace);
     --bg: var(--foreground-secondary);
     
     font-family: var(--font-family);
     background-color: var(--bg);
+    color: var(--text-color);
+}
+
+small {
+    --font-weight: 500;
+    --text-color: var(--muted-text);
+
+    font-weight: var(--font-weight);
     color: var(--text-color);
 }
 
@@ -91,4 +108,6 @@ code {
 a > #{$text-elements} {
 
     --spacing: 0;
+    padding: 0;
+    margin: 0;
 }

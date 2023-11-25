@@ -1,10 +1,10 @@
 body > main {
-    --width: 80%;
+    --width: 60%;
     --height: auto;
     --spacing: var(--lg);
     --bg: inherit;
 
-    width: clamp(75%, var(--width), 100vw);
+    width: clamp(80vmin, var(--width), 80dvw);
     height: var(--height);
     padding: var(--md) var(--lg);
     border-radius: var(--roundness);

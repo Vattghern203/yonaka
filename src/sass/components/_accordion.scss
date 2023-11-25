@@ -58,7 +58,7 @@ details {
     }
 
     p {
-        --bg: var(--foreground-primary);
+        --bg: var(--muted-primary);
         background-color: var(--bg);
         padding: var(--spacing);
         border-radius: var(--roundness);

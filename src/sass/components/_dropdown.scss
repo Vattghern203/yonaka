@@ -1,18 +1,18 @@
 @use "../abstracts/mixins";
 
-details[role="listbox"], details[role="list"] {
-    
+details[role="listbox"],
+details[role="list"] {
     & > ul {
-        --bg: var(--foreground-primary);
+        --bg: var(--muted-primary);
         --border: var(--border-sm);
         --width: var(--w-full);
 
         background-color: var(--bg);
-        max-width: var(--width);
         padding: var(--spacing) 0;
         border: var(--border);
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
+        align-items: stretch;
         overflow-x: hidden;
 
         & li, & > * {
@@ -23,60 +23,53 @@ details[role="listbox"], details[role="list"] {
             --font-size: var(--md);
             --text-color: var(--text);
             --font-weight: 500;
-            --bg: var(--foreground-primary);
-            --border: var(--border-sm);
+            --bg: inherit;
             --roudness: 0;
-            --width: fit-content;
 
+            display: flex;
+            align-items: center; /* Align items vertically if needed */
+            width: 100%;
             font-size: var(--font-size);
             font-weight: var(--font-weight);
             color: var(--text-color);
             background-color: var(--bg);
-            width: var(--widht);
-            border-radius: 0;
+            border-radius: var(--roudness);
             padding: var(--spacing);
             cursor: pointer;
-
             transition: background-color .4s ease, filter .2s ease-in;
 
-            &:hover, &:focus-visible {
+            &:is(:hover, :focus, :focus-visible) {
                 --bg: var(--primary);
+            }
+
+            &:has(> a:is(:focus, :focus-visible)) {
+
+                --bg: var(--primary);
+                --border: var(--border);
             }
 
             &:active {
                 filter: var(--effect-bright);
             }
-        }
 
-        & li * {
-            color: inherit;
-        }
+            & > a {
+                --spacing-y: var(--sm);
+                --spacing-x: var(--md);
 
-        & li:has(> a) {
-            padding: 0;
-            //box-sizing: border-box;
-        }
+                color: inherit;
+                box-sizing: border-box;
+                flex: 1; /* Allow the anchor tag to take up all available space */
+                min-width: 0; /* Ensure it can shrink if needed */
+                align-self: stretch;
+                margin-inline: var(--spacing-x);
+                padding-block: var(--spacing-y);
+                border-radius: var(--roundness);
 
-        & li a {
-            --roundness: 0;
-            --width: var(--w-full);
-            --bg: transparent;
-
-            background-color: var(--bg);
-            display: inline-flex;
-            height: 100%;
-            min-width: var(--width);
-            margin: 0;
-            padding: var(--spacing);
-            border-radius: var(--roundness);
-
-            &:focus-visible {
-                outline-offset: 0;      
-                --outline: var(--outline-sm);
-                --bg: var(--primary);
+                &:focus-visible {
+                    outline: none;
+                }
             }
         }
-        
     }
 }
 
@@ -99,6 +92,16 @@ select {
 
     &::-ms-expand {
         display: none;
+    }
+
+    &:is(:hover, :focus, :focus-visible) {
+        --bg: var(--primary);
+    }
+
+    &:focus-visible {
+        --outline: var(--outline);
+
+        outline: var(--outline);
     }
 
     @include icon(var(--expand-icon));
@@ -126,7 +129,7 @@ select {
     }
     
     & > option {
-        --bg: var(--foreground-primary);
+        --bg: var(--muted-primary);
         --border: var(--border-sm);
 
         color: var(--text-color);
@@ -134,7 +137,6 @@ select {
         border-radius: 0;
         padding: var(--spacing);
         cursor: pointer;
-
 
         transition: background-color .4s ease, filter .2s ease-in;
 

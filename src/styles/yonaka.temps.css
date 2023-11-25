@@ -92,11 +92,18 @@ p:not(:last-child) {
   margin-bottom: var(--lg);
 }
 
-code {
+code, pre {
   --font-family: var(--font-mono, monospace);
   --bg: var(--foreground-secondary);
   font-family: var(--font-family);
   background-color: var(--bg);
+  color: var(--text-color);
+}
+
+small {
+  --font-weight: 500;
+  --text-color: var(--muted-text);
+  font-weight: var(--font-weight);
   color: var(--text-color);
 }
 
@@ -118,6 +125,8 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
 
 a > p, h1, h2, h3, h4, h5, h6, span, a, li {
   --spacing: 0;
+  padding: 0;
+  margin: 0;
 }
 
 @media (prefers-color-scheme: light) {
@@ -138,7 +147,7 @@ a > p, h1, h2, h3, h4, h5, h6, span, a, li {
     --accent: #296cd1;
   }
 }
-.gradient {
+.custom-gradient {
   --_gradient-from: var(--secondary);
   --_gradient-to: var(--accent);
   --_from-percentage: 0%;
@@ -251,7 +260,7 @@ a > p, h1, h2, h3, h4, h5, h6, span, a, li {
   --muted-primary: color-mix(in oklab, var(--primary), var(--background) var(--muted-blend-intensity));
   --muted-secondary: color-mix(in oklab, var(--secondary), var(--background) var(--muted-blend-intensity));
   --muted-destructive: color-mix(in oklab, var(--destructive), var(--background) var(--muted-blend-intensity));
-  --muted-background: color-mix(in oklab, var(--background) var(--blend-back-color) var(--muted-blend-intensity));
+  --muted-background: color-mix(in oklab, var(--background), var(--blend-text-color) var(--muted-blend-intensity));
   --foreground-blend-intensity: 15%;
   --foreground-text: color-mix(in oklab, var(--text), var(--blend-highlight-color) var(--foreground-blend-intensity));
   --foreground-primary: color-mix(in oklab, var(--primary), var(--text) var(--foreground-blend-intensity));
@@ -473,7 +482,7 @@ details summary:is(::marker, ::-webkit-details-marker) {
   display: none;
 }
 details p {
-  --bg: var(--foreground-primary);
+  --bg: var(--muted-primary);
   background-color: var(--bg);
   padding: var(--spacing);
   border-radius: var(--roundness);
@@ -497,9 +506,11 @@ a[role=button] {
 
 :is(button, a[role=button]) {
   --width: 16em;
+  --font-weight: 500;
   --spacing: var(--md) var(--lg);
   --_roundness: var(--roundness);
   text-align: center;
+  font-weight: var(--font-weight);
   min-width: var(--width);
   cursor: pointer;
   text-transform: uppercase;
@@ -526,6 +537,9 @@ a[role=button] {
 }
 :is(button, a[role=button]).cta:active, :is(button, a[role=button])[type=submit]:active {
   background-color: color-mix(in oklab, var(--bg), white 10%);
+}
+:is(button, a[role=button]).secondary {
+  --bg: var(--secondary);
 }
 :is(button, a[role=button]).ghost {
   --bg: transparent;
@@ -599,67 +613,72 @@ article:not(.hero-card) > :is(p, span) {
   font-size: 1.2vmin;
 }
 
-details[role=listbox] > ul, details[role=list] > ul {
-  --bg: var(--foreground-primary);
+details[role=listbox] > ul,
+details[role=list] > ul {
+  --bg: var(--muted-primary);
   --border: var(--border-sm);
   --width: var(--w-full);
   background-color: var(--bg);
-  max-width: var(--width);
   padding: var(--spacing) 0;
   border: var(--border);
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   overflow-x: hidden;
 }
-details[role=listbox] > ul li, details[role=listbox] > ul > *, details[role=list] > ul li, details[role=list] > ul > * {
+details[role=listbox] > ul li, details[role=listbox] > ul > *,
+details[role=list] > ul li,
+details[role=list] > ul > * {
   text-transform: capitalize;
 }
-details[role=listbox] > ul li, details[role=list] > ul li {
+details[role=listbox] > ul li,
+details[role=list] > ul li {
   --font-size: var(--md);
   --text-color: var(--text);
   --font-weight: 500;
-  --bg: var(--foreground-primary);
-  --border: var(--border-sm);
+  --bg: inherit;
   --roudness: 0;
-  --width: fit-content;
+  display: flex;
+  align-items: center; /* Align items vertically if needed */
+  width: 100%;
   font-size: var(--font-size);
   font-weight: var(--font-weight);
   color: var(--text-color);
   background-color: var(--bg);
-  width: var(--widht);
-  border-radius: 0;
+  border-radius: var(--roudness);
   padding: var(--spacing);
   cursor: pointer;
   transition: background-color 0.4s ease, filter 0.2s ease-in;
 }
-details[role=listbox] > ul li:hover, details[role=listbox] > ul li:focus-visible, details[role=list] > ul li:hover, details[role=list] > ul li:focus-visible {
+details[role=listbox] > ul li:is(:hover, :focus, :focus-visible),
+details[role=list] > ul li:is(:hover, :focus, :focus-visible) {
   --bg: var(--primary);
 }
-details[role=listbox] > ul li:active, details[role=list] > ul li:active {
+details[role=listbox] > ul li:has(> a:is(:focus, :focus-visible)),
+details[role=list] > ul li:has(> a:is(:focus, :focus-visible)) {
+  --bg: var(--primary);
+  --border: var(--border);
+}
+details[role=listbox] > ul li:active,
+details[role=list] > ul li:active {
   filter: var(--effect-bright);
 }
-details[role=listbox] > ul li *, details[role=list] > ul li * {
+details[role=listbox] > ul li > a,
+details[role=list] > ul li > a {
+  --spacing-y: var(--sm);
+  --spacing-x: var(--md);
   color: inherit;
-}
-details[role=listbox] > ul li:has(> a), details[role=list] > ul li:has(> a) {
-  padding: 0;
-}
-details[role=listbox] > ul li a, details[role=list] > ul li a {
-  --roundness: 0;
-  --width: var(--w-full);
-  --bg: transparent;
-  background-color: var(--bg);
-  display: inline-flex;
-  height: 100%;
-  min-width: var(--width);
-  margin: 0;
-  padding: var(--spacing);
+  box-sizing: border-box;
+  flex: 1; /* Allow the anchor tag to take up all available space */
+  min-width: 0; /* Ensure it can shrink if needed */
+  align-self: stretch;
+  margin-inline: var(--spacing-x);
+  padding-block: var(--spacing-y);
   border-radius: var(--roundness);
 }
-details[role=listbox] > ul li a:focus-visible, details[role=list] > ul li a:focus-visible {
-  outline-offset: 0;
-  --outline: var(--outline-sm);
-  --bg: var(--primary);
+details[role=listbox] > ul li > a:focus-visible,
+details[role=list] > ul li > a:focus-visible {
+  outline: none;
 }
 
 select {
@@ -685,6 +704,13 @@ select {
 select::-ms-expand {
   display: none;
 }
+select:is(:hover, :focus, :focus-visible) {
+  --bg: var(--primary);
+}
+select:focus-visible {
+  --outline: var(--outline);
+  outline: var(--outline);
+}
 select::after {
   content: "";
   display: block;
@@ -707,7 +733,7 @@ select, select > * {
   font-weight: inherit;
 }
 select > option {
-  --bg: var(--foreground-primary);
+  --bg: var(--muted-primary);
   --border: var(--border-sm);
   color: var(--text-color);
   background-color: var(--bg);
@@ -772,15 +798,13 @@ select > option:active {
 }
 
 .scroll-gallery {
-  --_gallery-columns: 4;
+  --_gallery-columns: 3;
   --_gallery-gap: .8rem;
   column-count: var(--_gallery-columns);
   gap: var(--_gallery-gap);
   width: var(--_gallery-width);
 }
 .scroll-gallery img {
-  width: 100%;
-  height: auto;
   margin-bottom: 0;
   overflow: hidden;
   object-fit: contain;
@@ -1385,11 +1409,11 @@ body > header.header-sticky {
 }
 
 body > main {
-  --width: 80%;
+  --width: 60%;
   --height: auto;
   --spacing: var(--lg);
   --bg: inherit;
-  width: clamp(75%, var(--width), 100vw);
+  width: clamp(80vmin, var(--width), 80dvw);
   height: var(--height);
   padding: var(--md) var(--lg);
   border-radius: var(--roundness);

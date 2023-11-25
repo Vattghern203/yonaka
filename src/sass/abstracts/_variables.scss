@@ -69,7 +69,7 @@
 
     --muted-destructive: color-mix(in oklab, var(--destructive), var(--background) var(--muted-blend-intensity));
 
-    --muted-background: color-mix(in oklab, var(--background) var(--blend-back-color) var(--muted-blend-intensity));
+    --muted-background: color-mix(in oklab, var(--background), var(--blend-text-color) var(--muted-blend-intensity));
 
     // Foreground ---------------------------------------------------
 

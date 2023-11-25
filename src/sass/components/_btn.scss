@@ -5,10 +5,12 @@ a[role="button"] {
 
 :is(button, a[role="button"]) {
     --width: 16em;
+    --font-weight: 500;
     --spacing: var(--md) var(--lg);
     --_roundness: var(--roundness);
     text-align: center;
 
+    font-weight: var(--font-weight);
     min-width: var(--width);
     cursor: pointer;
     text-transform: uppercase;
@@ -46,11 +48,15 @@ a[role="button"] {
         }
     }
 
+    &.secondary {
+        --bg: var(--secondary);
+    }
+
     &.ghost {
         --bg: transparent;
 
         background-color: var(--bg);
-        border: 0.2rem solid var(--accent);
+        border: .2rem solid var(--accent);
 
         transition: transform var(--transition);
     }
