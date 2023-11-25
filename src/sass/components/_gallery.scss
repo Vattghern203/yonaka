@@ -1,6 +1,13 @@
+// The default gallery simulates a accordion
+
 .gallery {
     --_gallery-gap: 0.4rem;
     --_gallery-height: 72rem;
+    --_gallery-width: clamp(
+        50%,
+        80vmin,
+        100%
+    );
     --_bg: transparent;
 
     background-color: var(--_bg);
@@ -9,25 +16,19 @@
     align-items: center;
     justify-content: center;
 
-    width: 50%;
+    width: var(--_gallery-width);
     align-self: center;
     margin: var(--spacing) auto;
 
     gap: var(--_gallery-gap);
 
-    & * {
-        transition:
-            flex 0.666s var(--transition-motion),
-            border-radius 0.2s var(--transition-middle-break);
-    }
-
     & > figure {
         flex: 1;
         text-align: center;
 
-        transition:
-            flex 0.666s ease,
-            border-radius 0.2s var(--transition-middle-break);
+        will-change: flex;
+
+        transition: flex 0.666s ease;
 
         &:hover {
             flex: 3;
@@ -54,8 +55,34 @@
         width: 100%;
         object-fit: cover;
         object-position: center;
-        height: var(--_gallery-height);
+        aspect-ratio: 1 / 8;
+        height: clamp(
+            64rem,    
+            var(--_gallery-height),
+            80vmax
+        );
         transition:
             border-radius .4s var(--transition-out-circle);
+    }
+}
+
+// Scroll Gallery, like Pinterest
+
+.scroll-gallery {
+    --_gallery-columns: 4;
+    --_gallery-gap: .8rem;
+
+    column-count: var(--_gallery-columns);
+    gap: var(--_gallery-gap);
+    width: var(--_gallery-width);
+
+    img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 0;
+        overflow: hidden;
+        object-fit: contain;
+        object-position: center;
+        backface-visibility: hidden;
     }
 }

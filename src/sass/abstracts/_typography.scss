@@ -46,12 +46,15 @@ p {
     }
 }
 
-code {
-    --font-family: monospace;
-    --bg: var(--foreground-secondary)
+//  Font Variants
 
+code {
+    --font-family: var(--font-mono, monospace);
+    --bg: var(--foreground-secondary);
+    
     font-family: var(--font-family);
     background-color: var(--bg);
+    color: var(--text-color);
 }
 
 // text variants
@@ -82,4 +85,10 @@ code {
         //white-space: nowrap;
         overflow: hidden;
     }
+}
+
+// Customizing Spacing for Wrappers
+a > #{$text-elements} {
+
+    --spacing: 0;
 }

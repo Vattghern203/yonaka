@@ -1,4 +1,9 @@
-button {
+a[role="button"] {
+
+    color: var(--text-color);
+}
+
+:is(button, a[role="button"]) {
     --width: 16em;
     --spacing: var(--md) var(--lg);
     --_roundness: var(--roundness);

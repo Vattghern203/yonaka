@@ -24,7 +24,7 @@ header > nav {
             width: fit-content;
             height: fit-content;
 
-            a {
+            a:not([role="button"]) {
                 font-size: var(--font-size);
                 font-weight: 600;
             }

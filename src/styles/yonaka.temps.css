@@ -93,10 +93,11 @@ p:not(:last-child) {
 }
 
 code {
-  --font-family: monospace;
-  --bg: var(--foreground-secondary)
+  --font-family: var(--font-mono, monospace);
+  --bg: var(--foreground-secondary);
   font-family: var(--font-family);
   background-color: var(--bg);
+  color: var(--text-color);
 }
 
 p.muted, h1.muted, h2.muted, h3.muted, h4.muted, h5.muted, h6.muted, span.muted, a.muted, li.muted {
@@ -113,6 +114,10 @@ p.limited-text, h1.limited-text, h2.limited-text, h3.limited-text, h4.limited-te
   line-clamp: var(--_line-number);
   -webkit-line-clamp: var(--_line-number);
   overflow: hidden;
+}
+
+a > p, h1, h2, h3, h4, h5, h6, span, a, li {
+  --spacing: 0;
 }
 
 @media (prefers-color-scheme: light) {
@@ -486,7 +491,11 @@ details[open] > summary::after {
     margin-bottom: var(--spacing);
   }
 }
-button {
+a[role=button] {
+  color: var(--text-color);
+}
+
+:is(button, a[role=button]) {
   --width: 16em;
   --spacing: var(--md) var(--lg);
   --_roundness: var(--roundness);
@@ -499,36 +508,36 @@ button {
   border-radius: var(--_roundness);
   transition: background-color var(--transition), transform var(--transition);
 }
-button:hover:not(.disabled) {
+:is(button, a[role=button]):hover:not(.disabled) {
   transform: translateY(2%);
 }
-button:active:not(.disabled) {
+:is(button, a[role=button]):active:not(.disabled) {
   transform: translateY(6%);
   filter: brightness(115%);
 }
-button.cta, button[type=submit] {
+:is(button, a[role=button]).cta, :is(button, a[role=button])[type=submit] {
   --bg: var(--accent);
   background-color: var(--bg);
   will-change: background-color, transform;
   border: 0.2rem var(--accent) solid;
 }
-button.cta:hover, button[type=submit]:hover {
+:is(button, a[role=button]).cta:hover, :is(button, a[role=button])[type=submit]:hover {
   background-color: color-mix(in oklab, var(--bg), white 20%);
 }
-button.cta:active, button[type=submit]:active {
+:is(button, a[role=button]).cta:active, :is(button, a[role=button])[type=submit]:active {
   background-color: color-mix(in oklab, var(--bg), white 10%);
 }
-button.ghost {
+:is(button, a[role=button]).ghost {
   --bg: transparent;
   background-color: var(--bg);
   border: 0.2rem solid var(--accent);
   transition: transform var(--transition);
 }
-button.destructive {
+:is(button, a[role=button]).destructive {
   --bg: var(--destructive);
   background-color: var(--bg);
 }
-button.disabled {
+:is(button, a[role=button]).disabled {
   cursor: not-allowed;
   opacity: 0.8;
 }
@@ -717,23 +726,26 @@ select > option:active {
 .gallery {
   --_gallery-gap: 0.4rem;
   --_gallery-height: 72rem;
+  --_gallery-width: clamp(
+      50%,
+      80vmin,
+      100%
+  );
   --_bg: transparent;
   background-color: var(--_bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: var(--_gallery-width);
   align-self: center;
   margin: var(--spacing) auto;
   gap: var(--_gallery-gap);
 }
-.gallery * {
-  transition: flex 0.666s var(--transition-motion), border-radius 0.2s var(--transition-middle-break);
-}
 .gallery > figure {
   flex: 1;
   text-align: center;
-  transition: flex 0.666s ease, border-radius 0.2s var(--transition-middle-break);
+  will-change: flex;
+  transition: flex 0.666s ease;
 }
 .gallery > figure:hover {
   flex: 3;
@@ -754,8 +766,26 @@ select > option:active {
   width: 100%;
   object-fit: cover;
   object-position: center;
-  height: var(--_gallery-height);
+  aspect-ratio: 1/8;
+  height: clamp(64rem, var(--_gallery-height), 80vmax);
   transition: border-radius 0.4s var(--transition-out-circle);
+}
+
+.scroll-gallery {
+  --_gallery-columns: 4;
+  --_gallery-gap: .8rem;
+  column-count: var(--_gallery-columns);
+  gap: var(--_gallery-gap);
+  width: var(--_gallery-width);
+}
+.scroll-gallery img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0;
+  overflow: hidden;
+  object-fit: contain;
+  object-position: center;
+  backface-visibility: hidden;
 }
 
 a.scroll-to-top {
@@ -1386,7 +1416,7 @@ header > nav ul li {
   width: fit-content;
   height: fit-content;
 }
-header > nav ul li a {
+header > nav ul li a:not([role=button]) {
   font-size: var(--font-size);
   font-weight: 600;
 }
