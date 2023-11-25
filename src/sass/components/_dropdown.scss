@@ -90,6 +90,10 @@ select {
     font-weight: var(--font-weight);
     text-transform: capitalize;
 
+    background-image: var(--expand-icon);
+    background-repeat: no-repeat;
+    background-position: calc(100% - var(--spacing)) center;
+
     &::-ms-expand {
         display: none;
     }
