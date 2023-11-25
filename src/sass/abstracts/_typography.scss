@@ -60,6 +60,9 @@ p {
 code, pre {
     --font-family: var(--font-mono, monospace);
     --bg: var(--foreground-secondary);
+    --spacing: var(--xs);
+
+    padding: var(--spacing);
     
     font-family: var(--font-family);
     background-color: var(--bg);

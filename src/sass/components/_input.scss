@@ -339,4 +339,17 @@ input, select {
         outline-offset: var(--outline-offset);
         outline: var(--outline);
     }
+
+    &[type="search"] {
+
+        --spacing-x: var(--lg);
+
+        --roundness: var(--round-peal);
+
+        text-transform: capitalize;
+        padding-inline: var(--spacing-x);
+        position: relative;
+
+        @include icon(var(--search-icon));
+    }
 }

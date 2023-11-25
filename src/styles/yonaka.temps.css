@@ -95,6 +95,8 @@ p:not(:last-child) {
 code, pre {
   --font-family: var(--font-mono, monospace);
   --bg: var(--foreground-secondary);
+  --spacing: var(--xs);
+  padding: var(--spacing);
   font-family: var(--font-family);
   background-color: var(--bg);
   color: var(--text-color);
@@ -324,6 +326,7 @@ a > p, h1, h2, h3, h4, h5, h6, span, a, li {
   --transition--timing: ease;
   --transition--props: all;
   --expand-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(162, 175, 185)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
 }
 
 body, .app, #root {
@@ -1137,6 +1140,23 @@ input:is([type=checkbox], [type=radio]):focus-visible, select:is([type=checkbox]
   --outline-offset: var(--outline-lg);
   outline-offset: var(--outline-offset);
   outline: var(--outline);
+}
+input[type=search], select[type=search] {
+  --spacing-x: var(--lg);
+  --roundness: var(--round-peal);
+  text-transform: capitalize;
+  padding-inline: var(--spacing-x);
+  position: relative;
+}
+input[type=search]::after, select[type=search]::after {
+  content: "";
+  display: block;
+  align-self: center;
+  background-image: var(--search-icon); /* Use the provided icon URL */
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 1/1;
+  width: 1.5em;
 }
 
 .logo {
