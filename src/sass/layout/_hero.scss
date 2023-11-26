@@ -1,4 +1,4 @@
-.hero {
+:is(div, section):is(.hero, .hero-effect) {
     --bg-img-url: url(https://images.unsplash.com/photo-1528353518104-dbd48bee7bc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80);
     --bg-img-size: cover;
     --bg-img-repeat: no-repeat;
@@ -7,6 +7,7 @@
     display: grid;
     place-items: center;
     align-content: center;
+    grid-auto-rows: min-content;
     width: var(--w-full);
     height: var(--h-screen);
     background-color: var(--background);
@@ -16,9 +17,15 @@
     background-position: var(--bg-img-pos);
     text-align: center;
 
-    & :is(h1, p) {
+    & section {
+        
+        z-index: 1;
+    }
+
+    & :is(h1, h2, p) {
 
         --font-size: 11.44rem;
+        margin: 0;
     }
 
     & h1 {
@@ -26,7 +33,45 @@
         color: var(--accent);
     }
 
-    & p {
+    & h2 {
+        --_spacing-y: var(--md);
         font-size: calc(var(--font-size) / 5);
+        margin-block-end: var(--_spacing-y);
+    }
+
+    & p {
+
+        font-size: calc(var(--font-size) / 8);
+    }
+}
+
+:is(div, section).hero-effect {
+
+    --_effect-name: unset;
+    --_effect-intensity: 45%;
+    --_effect-color: unset;
+    --_effect-coverage: unset;
+
+    position: relative;
+
+    &::before {
+
+        content: "";
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+
+        background-color: rgba(0, 0, 0,  var(--_effect-intensity));
+    }
+
+    &-fade {
+
+        background-image: linear-gradient(
+            to bottom
+                var(--_effect-color),
+                transparent
+            
+        );
     }
 }
