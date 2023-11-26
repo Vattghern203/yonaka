@@ -337,7 +337,6 @@ body, .app, #root {
   display: grid;
   place-items: center;
   min-height: 100vh;
-  gap: var(--spacing);
   background-color: var(--bg);
 }
 body > :where(nav, header, main, footer):not(.hero), .app > :where(nav, header, main, footer):not(.hero), #root > :where(nav, header, main, footer):not(.hero) {
@@ -1002,9 +1001,10 @@ input, select {
   padding: var(--spacing);
   outline: none;
   transition: all var(--transition);
-}
-input:focus, select:focus {
-  border-color: var(--accent);
+  /* &:focus {
+
+      border-color: var(--accent);
+  } */
 }
 input::placeholder, select::placeholder {
   --text-color: var(--muted-text);
@@ -1147,16 +1147,9 @@ input[type=search], select[type=search] {
   text-transform: capitalize;
   padding-inline: var(--spacing-x);
   position: relative;
-}
-input[type=search]::after, select[type=search]::after {
-  content: "";
-  display: block;
-  align-self: center;
-  background-image: var(--search-icon); /* Use the provided icon URL */
-  background-size: cover;
-  background-position: center;
-  aspect-ratio: 1/1;
-  width: 1.5em;
+  background-image: var(--search-icon);
+  background-position: calc(100% - var(--spacing));
+  background-repeat: no-repeat;
 }
 
 .logo {
@@ -1438,7 +1431,7 @@ body > main {
   --bg: inherit;
   width: clamp(80vmin, var(--width), 80dvw);
   height: var(--height);
-  padding: var(--md) var(--lg);
+  padding: var(--lg) var(--xl);
   border-radius: var(--roundness);
   margin-block: var(--spacing);
   background-color: var(--bg);

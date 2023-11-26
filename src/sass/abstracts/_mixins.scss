@@ -10,3 +10,10 @@
       width: 1.5em;
     }
 }
+
+@mixin icon-background($icon-url) {
+
+  background-image: $icon-url;
+  background-position: calc(100% - var(--spacing));
+  background-repeat: no-repeat;
+}

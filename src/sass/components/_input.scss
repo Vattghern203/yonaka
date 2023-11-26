@@ -140,10 +140,10 @@ input, select {
 
     transition: all var(--transition);
 
-    &:focus {
+    /* &:focus {
 
         border-color: var(--accent);
-    }
+    } */
 
     &::placeholder {
         --text-color: var(--muted-text);
@@ -350,6 +350,6 @@ input, select {
         padding-inline: var(--spacing-x);
         position: relative;
 
-        @include icon(var(--search-icon));
+        @include icon-background(var(--search-icon));
     }
 }

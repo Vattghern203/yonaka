@@ -9,7 +9,7 @@ body, .app, #root {
     display: grid;
     place-items: center;
     min-height: 100vh;
-    gap: var(--spacing);
+    //gap: var(--spacing); Testing for hero section
     background-color: var(--bg);
 
     & > :where(nav, header, main, footer):not(.hero) {
