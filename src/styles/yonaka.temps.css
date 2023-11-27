@@ -284,18 +284,18 @@ a > p, h1, h2, h3, h4, h5, h6, span, a, li {
   --h-half: 50%;
   --h-third: 33.3333%
   --h-quarter: 25%;
-  --h-screen: 100vh;
-  --h-half-screen: 50vh;
-  --h-third-screen: 33.3333vh;
-  --h-quarter-screen: 25vh;
+  --h-screen: 100dvh;
+  --h-half-screen: 50dvh;
+  --h-third-screen: 33.3333dvh;
+  --h-quarter-screen: 25dvh;
   --w-full: 100%;
   --w-half: 50%;
   --w-third: 33.3333%
   --w-quarter: 25%;
-  --w-screen: 100vw;
-  --w-half-screen: 50vw;
-  --w-third-screen: 33.3333vw;
-  --w-quarter-screen: 25vw;
+  --w-screen: 100dvw;
+  --w-half-screen: 50dvw;
+  --w-third-screen: 33.3333dvw;
+  --w-quarter-screen: 25dvw;
   --grid-cols: auto-fill;
   --grid-rows: auto;
   --grid-item-width: 10rem;
@@ -1396,7 +1396,13 @@ body > header.header-sticky {
   z-index: 100;
 }
 
-:is(div, section):is(.hero, .hero-effect) {
+:is(.hero-shade, .hero-blur, .hero-fade, .hero-gradient) {
+  --_effect-intensity: unset;
+  --_effect-color: unset;
+  position: relative;
+}
+
+:is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) {
   --bg-img-url: url(https://images.unsplash.com/photo-1528353518104-dbd48bee7bc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80);
   --bg-img-size: cover;
   --bg-img-repeat: no-repeat;
@@ -1414,43 +1420,50 @@ body > header.header-sticky {
   background-position: var(--bg-img-pos);
   text-align: center;
 }
-:is(div, section):is(.hero, .hero-effect) section {
+:is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) section {
   z-index: 1;
 }
-:is(div, section):is(.hero, .hero-effect) :is(h1, h2, p) {
+:is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) :is(h1, h2, p) {
   --font-size: 11.44rem;
   margin: 0;
 }
-:is(div, section):is(.hero, .hero-effect) h1 {
+:is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) h1 {
   font-size: var(--font-size);
   color: var(--accent);
 }
-:is(div, section):is(.hero, .hero-effect) h2 {
+:is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) h2 {
   --_spacing-y: var(--md);
   font-size: calc(var(--font-size) / 5);
   margin-block-end: var(--_spacing-y);
 }
-:is(div, section):is(.hero, .hero-effect) p {
+:is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) p {
   font-size: calc(var(--font-size) / 8);
 }
 
-:is(div, section).hero-effect {
-  --_effect-name: unset;
-  --_effect-intensity: 45%;
-  --_effect-color: unset;
-  --_effect-coverage: unset;
-  position: relative;
-}
-:is(div, section).hero-effect::before {
+:is(:is(div, section).hero-shade, :is(div, section).hero-gradient)::before {
   content: "";
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, var(--_effect-intensity));
 }
-:is(div, section).hero-effect-fade {
-  background-image: linear-gradient(to bottom var(--_effect-color), transparent);
+:is(div, section).hero-shade {
+  --_effect-intensity: 45%;
+  --_effect-color: 0, 0, 0,;
+}
+:is(div, section).hero-shade::before {
+  background-color: rgba(var(--_effect-color) var(--_effect-intensity));
+}
+:is(div, section).hero-blur {
+  --_effect-intensity: var(--md);
+  filter: blur(var(--_effect-intensity));
+}
+:is(div, section).hero-gradient {
+  --_effect-intensity: 20%;
+  --_effect-color: var(--background);
+}
+:is(div, section).hero-gradient::before {
+  background-image: linear-gradient(to bottom, var(--_effect-color) var(--_effect-intensity), transparent);
 }
 
 body > main {

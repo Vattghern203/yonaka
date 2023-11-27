@@ -73,7 +73,7 @@
 
     // Foreground ---------------------------------------------------
 
-    --foreground-blend-intensity: 15%;
+    --foreground-blend-intensity: 15%; // Blend Intensity
 
     --foreground-text: color-mix(in oklab, var(--text), var(--blend-highlight-color) var(--foreground-blend-intensity));
 
@@ -117,10 +117,10 @@
     --h-third: 33.3333%
     --h-quarter: 25%;
 
-    --h-screen: 100vh;
-    --h-half-screen: 50vh;
-    --h-third-screen: 33.3333vh;
-    --h-quarter-screen: 25vh;
+    --h-screen: 100dvh;
+    --h-half-screen: 50dvh;
+    --h-third-screen: 33.3333dvh;
+    --h-quarter-screen: 25dvh;
 
     // width
 
@@ -129,10 +129,10 @@
     --w-third: 33.3333%
     --w-quarter: 25%;
 
-    --w-screen: 100vw;
-    --w-half-screen: 50vw;
-    --w-third-screen: 33.3333vw;
-    --w-quarter-screen: 25vw;
+    --w-screen: 100dvw;
+    --w-half-screen: 50dvw;
+    --w-third-screen: 33.3333dvw;
+    --w-quarter-screen: 25dvw;
 
     // GRID -----------------------------------------
 

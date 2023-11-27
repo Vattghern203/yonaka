@@ -1,4 +1,14 @@
-:is(div, section):is(.hero, .hero-effect) {
+$hero-variations: ".hero-shade, .hero-blur, .hero-fade, .hero-gradient";
+
+:is(#{$hero-variations}) {
+
+    --_effect-intensity: unset;
+    --_effect-color: unset;
+
+    position: relative;
+}
+
+:is(div, section):is(.hero, #{$hero-variations}) {
     --bg-img-url: url(https://images.unsplash.com/photo-1528353518104-dbd48bee7bc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80);
     --bg-img-size: cover;
     --bg-img-repeat: no-repeat;
@@ -8,6 +18,7 @@
     place-items: center;
     align-content: center;
     grid-auto-rows: min-content;
+
     width: var(--w-full);
     height: var(--h-screen);
     background-color: var(--background);
@@ -45,33 +56,47 @@
     }
 }
 
-:is(div, section).hero-effect {
+:is(div, section).hero {
 
-    --_effect-name: unset;
-    --_effect-intensity: 45%;
-    --_effect-color: unset;
-    --_effect-coverage: unset;
-
-    position: relative;
-
-    &::before {
+    :is(&-shade, &-gradient)::before {
 
         content: "";
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
-
-        background-color: rgba(0, 0, 0,  var(--_effect-intensity));
     }
 
-    &-fade {
+    &-shade {
 
-        background-image: linear-gradient(
-            to bottom
-                var(--_effect-color),
-                transparent
-            
-        );
+        --_effect-intensity: 45%;
+        --_effect-color: 0, 0, 0,;
+        
+        &::before {
+        
+            background-color: rgba(var(--_effect-color) var(--_effect-intensity));
+        }
+    }
+
+    &-blur {
+
+        --_effect-intensity: var(--md); 
+
+        filter: blur(var(--_effect-intensity));
+    }
+
+    &-gradient {
+
+        --_effect-intensity: 20%;
+        --_effect-color: var(--background);
+
+        &::before {
+
+            background-image: linear-gradient(
+                to bottom,
+                var(--_effect-color) var(--_effect-intensity),
+                transparent 
+            );
+        }
     }
 }
