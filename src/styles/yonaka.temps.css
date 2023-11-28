@@ -1407,6 +1407,7 @@ body > header.header-sticky {
   --bg-img-size: cover;
   --bg-img-repeat: no-repeat;
   --bg-img-pos: center;
+  --_hero-content-pos: center;
   display: grid;
   place-items: center;
   align-content: center;
@@ -1418,14 +1419,18 @@ body > header.header-sticky {
   background-size: var(--bg-img-size);
   background-repeat: var(--bg-img-repeat);
   background-position: var(--bg-img-pos);
-  text-align: center;
+  text-align: start;
 }
 :is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) section {
   z-index: 1;
+  display: grid;
+  grid-template-columns: 10% repeat(4, 1fr) 10%;
+  width: clamp(50%, 10vmin, 20vmin);
 }
 :is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) :is(h1, h2, p) {
   --font-size: 11.44rem;
   margin: 0;
+  grid-column: 1/3;
 }
 :is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) h1 {
   font-size: var(--font-size);
