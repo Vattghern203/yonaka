@@ -68,7 +68,11 @@
 
     display: grid;
     grid-template-columns: repeat(
-        var(--grid-cols), minmax(min(var(--grid-item-width), 100%), 1fr)
+        var(--grid-cols),
+        minmax(
+            min(
+                var(--grid-item-width), 100%),
+            1fr)
     );
     grid-template-rows: var(--grid-rows);
     justify-content: center;
