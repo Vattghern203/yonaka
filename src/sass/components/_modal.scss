@@ -1,3 +1,26 @@
+// DIALOG MODAL --------------------------------------------
+dialog {
+
+    position: fixed;
+    inset: 50%;
+    transform: translate(-50%, -50%);
+
+    transition: background-color .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &::backdrop {
+
+        background-color: rgba($color: #000000, $alpha: .6);
+        backdrop-filter: blur(.8rem);
+    }
+
+    &:focus {
+
+        //border: none;
+        outline: unset;
+    }
+}
+
+// CUSTOM MODAL --------------------------------------------
 // Hidden Input
 
 label[role="button"]:has( > input[type="checkbox"]) {
@@ -60,17 +83,32 @@ html:has(label[role="button"] > input[type="checkbox"]:checked) {
     overflow-y: visible;
 }
 
-:is(article[role="dialog"], article[role="dialog"] article[role="dialog"]) {
+// Defines the default styling of a modal (custom or dialog)
+
+:is(
+    dialog,
+    article[role="dialog"],
+    article[role="dialog"] article[role="dialog"]
+) {
 
     --_modal-width: 50dvw;
     --_modal-height: 50dvh;
 
+    --_spacing-y: var(--lg);
+    --_spacing-x: var(--md);
+
     --_bg: var(--foreground-background);
+    --_border: var(--border);
 
     width: var(--_modal-width, 50%);
     height: var(--_modal-height, 50%);
 
+    padding-inline: var(--_spacing-x);
+    padding-block: var(--_spacing-y);
+
     overflow: hidden;
+
+    border: var(--_border);
 
     background-color: var(--_bg);
 

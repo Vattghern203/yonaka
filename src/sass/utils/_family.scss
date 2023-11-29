@@ -7,9 +7,7 @@
         --spacing: var(--md);
         --font-size: var(--font-size);
 
-        --_heritage-type: inherit;
-
-        all: var(--bg);
+        background-color: var(--bg);
 
 
     // Heritage Variants -----------------------------------------------------------
@@ -36,49 +34,49 @@
 
     /* All children, no matter the nesting level */
     &.all-childs *:not(.bastard) {
-        all: var(--_heritage-type);
+        background-color: inherit;
 
     }
 
     /* All children, but only the direct ones */
     &.direct-childs > *:not(.bastard) {
-        all: var(--_heritage-type);
+        background-color: inherit;
 
     }
 
     /* Only the first direct child */
     &.first-child-only > :first-child:not(.bastard) {
-        all: var(--_heritage-type);
+        background-color: inherit;
 
     }
 
     /* All the first children, no matter the nesting level */
     &.all-first-childs :first-child:not(.bastard) {
-        all: var(--_heritage-type);
+        background-color: inherit;
 
     }
 
     /* All the last children, no matter the nesting level */
     &.all-last-childs :last-child:not(.bastard) {
-        all: var(--_heritage-type);
+        background-color: inherit;
 
     }
 
     /* Only the last direct child */
     &.last-child-only > :last-child:not(.bastard) {
-        all: var(--_heritage-type);
+        background-color: inherit;
 
     }
 
     /* Odd children */
     &.odd-children > *:nth-child(odd):not(.bastard) {
-        all: var(--_heritage-type);
+        background-color: inherit;
 
     }
 
     /* Even children */
     &.even-children > *:nth-child(even):not(.bastard) {
-        all: var(--_heritage-type);
+        background-color: inherit;
 
     }
 }

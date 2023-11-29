@@ -1165,6 +1165,20 @@ video {
   aspect-ratio: 16/9;
 }
 
+dialog {
+  position: fixed;
+  inset: 50%;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(0.8rem);
+}
+dialog:focus {
+  outline: unset;
+}
+
 label[role=button]:has(> input[type=checkbox]) input[type=checkbox] {
   display: none;
 }
@@ -1198,19 +1212,31 @@ html:has(label[role=button] > input[type=checkbox]:checked) {
   overflow-y: visible;
 }
 
-:is(article[role=dialog], article[role=dialog] article[role=dialog]) {
+:is(dialog,
+article[role=dialog],
+article[role=dialog] article[role=dialog]) {
   --_modal-width: 50dvw;
   --_modal-height: 50dvh;
+  --_spacing-y: var(--lg);
+  --_spacing-x: var(--md);
   --_bg: var(--foreground-background);
+  --_border: var(--border);
   width: var(--_modal-width, 50%);
   height: var(--_modal-height, 50%);
+  padding-inline: var(--_spacing-x);
+  padding-block: var(--_spacing-y);
   overflow: hidden;
+  border: var(--_border);
   background-color: var(--_bg);
 }
-:is(article[role=dialog], article[role=dialog] article[role=dialog]) > header {
+:is(dialog,
+article[role=dialog],
+article[role=dialog] article[role=dialog]) > header {
   background-color: black;
 }
-:is(article[role=dialog], article[role=dialog] article[role=dialog]) > footer {
+:is(dialog,
+article[role=dialog],
+article[role=dialog] article[role=dialog]) > footer {
   background-color: chocolate;
 }
 
@@ -1628,8 +1654,7 @@ section section {
   --text-color: currentColor;
   --spacing: var(--md);
   --font-size: var(--font-size);
-  --_heritage-type: inherit;
-  all: var(--bg);
+  background-color: var(--bg);
   /* All children, no matter the nesting level */
   /* All children, but only the direct ones */
   /* Only the first direct child */
@@ -1651,28 +1676,28 @@ section section {
   --text-color: var(--text-color);
 }
 :where(.parent).all-childs *:not(.bastard) {
-  all: var(--_heritage-type);
+  background-color: inherit;
 }
 :where(.parent).direct-childs > *:not(.bastard) {
-  all: var(--_heritage-type);
+  background-color: inherit;
 }
 :where(.parent).first-child-only > :first-child:not(.bastard) {
-  all: var(--_heritage-type);
+  background-color: inherit;
 }
 :where(.parent).all-first-childs :first-child:not(.bastard) {
-  all: var(--_heritage-type);
+  background-color: inherit;
 }
 :where(.parent).all-last-childs :last-child:not(.bastard) {
-  all: var(--_heritage-type);
+  background-color: inherit;
 }
 :where(.parent).last-child-only > :last-child:not(.bastard) {
-  all: var(--_heritage-type);
+  background-color: inherit;
 }
 :where(.parent).odd-children > *:nth-child(odd):not(.bastard) {
-  all: var(--_heritage-type);
+  background-color: inherit;
 }
 :where(.parent).even-children > *:nth-child(even):not(.bastard) {
-  all: var(--_heritage-type);
+  background-color: inherit;
 }
 
 .text-align-center {
