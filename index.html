@@ -204,13 +204,32 @@
       </select>
     </section>
 
-    <section id="typography">
+    <section 
+      id="typography" 
+      class="col"
+      style="gap: var(--md);"
+    >
 
       <h2>Typography</h2>
 
-      <p>The text hyerarquy</p>
+      <p>Text Hierarquy and Text Variations</p>
 
+      <strong>Strong</strong>
+      <b>Bold</b>
       
+      <i>Italic</i>
+      <em>Emphasized</em>
+      
+      <small>Small</small>
+
+      <sub>Subscript</sub>
+      <sup>Superscript</sup>
+
+      <del>Deleted</del>
+      <ins>Inserted</ins>
+
+
+      <kbd>Keyboard Input</kbd>
 
     </section>
 
@@ -318,10 +337,13 @@
 
       <progress
         id="progress-bar" 
-        value="69%" 
+        max="100" 
+        value="69%"
+        aria-busy="true"
         aria-valuemin="0" 
         aria-valuemax="100" 
         aria-valuenow="69%"
+        data-progress="69%"
       >
         69%
       </progress>
@@ -332,6 +354,7 @@
 
       <div class="col" style="--flex-spacing: var(--spacing)">
         <button class="cta">Call to Action</button>
+        <button class="secondary">Secondary</button>
         <button class="ghost">Ghost</button>
         <button class="disabled">Disabled</button>
         <button class="destructive">Destructive</button>
@@ -559,9 +582,13 @@
 
       <dialog id="dialog_modal">
         <header>OPA</header>
+
+        <p>O</p>
+
+        <footer>OMG</footer>
       </dialog>
 
-      <button class="cta" onclick="dialog_modal.showModal()">
+      <button class="secondary" onclick="dialog_modal.showModal()">
         Modal Here
       </button>
 

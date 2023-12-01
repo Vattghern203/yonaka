@@ -50,6 +50,10 @@ a[role="button"] {
 
     &.secondary {
         --bg: var(--secondary);
+        --_border: var(--border);
+
+        background-color: var(--bg);
+        border: var(--_border);
     }
 
     &.ghost {

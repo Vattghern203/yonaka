@@ -77,6 +77,10 @@ small {
     color: var(--text-color);
 }
 
+del {
+    text-decoration: line-through;
+}
+
 // text variants
 
 #{$text-elements} {

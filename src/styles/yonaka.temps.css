@@ -109,6 +109,10 @@ small {
   color: var(--text-color);
 }
 
+del {
+  text-decoration: line-through;
+}
+
 p.muted, h1.muted, h2.muted, h3.muted, h4.muted, h5.muted, h6.muted, span.muted, a.muted, li.muted {
   color: var(--muted-text);
 }
@@ -542,6 +546,9 @@ a[role=button] {
 }
 :is(button, a[role=button]).secondary {
   --bg: var(--secondary);
+  --_border: var(--border);
+  background-color: var(--bg);
+  border: var(--_border);
 }
 :is(button, a[role=button]).ghost {
   --bg: transparent;
@@ -911,6 +918,21 @@ div[role=separator] {
   opacity: 1;
 }
 
+progress {
+  --_width: var(--w-full);
+  --_roundness: var(--round-full);
+  --_border: var(--border);
+  border: var(--_border);
+  padding: 0.2rem;
+  width: var(--_width);
+}
+progress::-webkit-progress-bar {
+  --_bg: var(--accent);
+  width: 25%;
+  border-radius: calc(2px + var(--round-peal));
+  background-color: var(--accent);
+}
+
 form:invalid input:invalid {
   border: 0.2rem var(--destructive) solid;
   transition: border-color var(--transition);
@@ -942,6 +964,7 @@ textarea:focus-visible {
   outline: var(--outline);
 }
 
+label,
 label:not([role=button]) {
   --spacing-y: var(--sm);
   --spacing-x: var(--md);
@@ -953,6 +976,7 @@ label:not([role=button]) {
   gap: var(--spacing-y);
   align-items: center;
 }
+label:has(> input[type=file]),
 label:not([role=button]):has(> input[type=file]) {
   --width: var(--w-full, 100%);
   --height: calc(32vmin + 5vw);
@@ -972,17 +996,21 @@ label:not([role=button]):has(> input[type=file]) {
   position: relative;
   --_effect-level: 0%;
 }
+label:has(> input[type=file]):hover,
 label:not([role=button]):has(> input[type=file]):hover {
   background-color: var(--accent);
 }
+label:has(> input[type=file]):active,
 label:not([role=button]):has(> input[type=file]):active {
   filter: var(--effect-bright);
 }
+label:has(> input[type=file]:focus-visible),
 label:not([role=button]):has(> input[type=file]:focus-visible) {
   --outline: var(--outline-md);
   outline-offset: var(--outline-offset);
   outline: var(--outline);
 }
+label:has(> input[type=color]),
 label:not([role=button]):has(> input[type=color]) {
   display: flex;
   align-items: center;
@@ -1171,6 +1199,12 @@ dialog {
   transform: translate(-50%, -50%);
   transition: background-color 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+dialog[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(0.8rem);
@@ -1220,24 +1254,39 @@ article[role=dialog] article[role=dialog]) {
   --_spacing-y: var(--lg);
   --_spacing-x: var(--md);
   --_bg: var(--foreground-background);
-  --_border: var(--border);
+  --_border: var(--border-md);
+  --_text-align: start;
   width: var(--_modal-width, 50%);
-  height: var(--_modal-height, 50%);
-  padding-inline: var(--_spacing-x);
-  padding-block: var(--_spacing-y);
+  height: clamp(50%, var(--_modal-height), 100%);
+  /*  padding-inline: var(--_spacing-x);
+   padding-block: var(--_spacing-y); */
   overflow: hidden;
   border: var(--_border);
   background-color: var(--_bg);
 }
 :is(dialog,
 article[role=dialog],
+article[role=dialog] article[role=dialog]) > * {
+  padding-inline: var(--_spacing-x);
+}
+:is(dialog,
+article[role=dialog],
+article[role=dialog] article[role=dialog]) > :is(header, footer) {
+  border-radius: var(--roudness) 0;
+}
+:is(dialog,
+article[role=dialog],
 article[role=dialog] article[role=dialog]) > header {
-  background-color: black;
+  background-color: var(--secondary);
+  padding-inline: var(--_spacing-x);
+  padding-block: var(--_spacing-y);
 }
 :is(dialog,
 article[role=dialog],
 article[role=dialog] article[role=dialog]) > footer {
-  background-color: chocolate;
+  --_spacing-y: var(--md);
+  padding: var(--_spacing-y);
+  background-color: var(--muted-secondary);
 }
 
 .modal-close {

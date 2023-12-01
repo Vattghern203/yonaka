@@ -7,6 +7,14 @@ dialog {
 
     transition: background-color .4s cubic-bezier(0.075, 0.82, 0.165, 1);
 
+    &[open] {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
     &::backdrop {
 
         background-color: rgba($color: #000000, $alpha: .6);
@@ -98,30 +106,49 @@ html:has(label[role="button"] > input[type="checkbox"]:checked) {
     --_spacing-x: var(--md);
 
     --_bg: var(--foreground-background);
-    --_border: var(--border);
+    --_border: var(--border-md);
+
+    --_text-align: start;
 
     width: var(--_modal-width, 50%);
-    height: var(--_modal-height, 50%);
+    height: clamp(50%, var(--_modal-height), 100%);
 
-    padding-inline: var(--_spacing-x);
-    padding-block: var(--_spacing-y);
+   /*  padding-inline: var(--_spacing-x);
+    padding-block: var(--_spacing-y); */
 
     overflow: hidden;
 
     border: var(--_border);
 
     background-color: var(--_bg);
+    //text-align: var(--_text-align);
 
     // Building a layout
 
+    & > * {
+
+        padding-inline: var(--_spacing-x);
+    }
+
+    & > :is(header, footer) {
+
+        border-radius: var(--roudness) 0;
+    }
+
     & > header {
 
-        background-color: black;
+        background-color: var(--secondary);
+        padding-inline: var(--_spacing-x);
+        padding-block: var(--_spacing-y);
+        
     }
 
     & > footer {
 
-        background-color: chocolate;
+        --_spacing-y: var(--md);
+        padding: var(--_spacing-y);
+
+        background-color: var(--muted-secondary);
     }
 }
 

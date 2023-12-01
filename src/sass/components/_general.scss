@@ -114,3 +114,31 @@ div[role="separator"] {
 }
 
 // Progress
+
+progress {
+
+    --_width: var(--w-full);
+    --_roundness: var(--round-full);
+    --_border: var(--border);
+
+    
+    border: var(--_border);
+
+    padding: .2rem;
+
+    width: var(--_width);
+    
+    &::-webkit-progress-bar {
+
+        --_bg: var(--accent);
+
+        width: 25%;
+        //height: 100%;
+
+        border-radius: calc(2px + var(--round-peal));
+
+        background-color: var(--accent);
+        
+        //background-color: var(--_bg);
+    }
+}
