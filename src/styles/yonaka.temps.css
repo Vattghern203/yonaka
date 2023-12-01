@@ -1445,10 +1445,10 @@ body > footer ul a {
 }
 
 body > :is(header, header.header-sticky) {
-  --widht: 100%;
-  --height: 10vmin;
-  min-width: var(--widht);
-  height: var(--height);
+  --_widht: 100%;
+  --_height: 10vmin;
+  min-width: var(--_widht);
+  height: clamp(16vmin, var(--_height), 8.44dvh);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -1557,7 +1557,7 @@ body > main {
   --height: auto;
   --spacing: var(--lg);
   --bg: inherit;
-  width: clamp(80vmin, var(--width), 80dvw);
+  width: clamp(fit-content, var(--width), 80dvw);
   height: var(--height);
   padding: var(--lg) var(--xl);
   border-radius: var(--roundness);

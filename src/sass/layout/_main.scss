@@ -4,7 +4,7 @@ body > main {
     --spacing: var(--lg);
     --bg: inherit;
 
-    width: clamp(80vmin, var(--width), 80dvw);
+    width: clamp(fit-content, var(--width), 80dvw);
     height: var(--height);
     padding: var(--lg) var(--xl);
     border-radius: var(--roundness);
