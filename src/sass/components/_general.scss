@@ -127,7 +127,7 @@ progress {
     padding: .2rem;
 
     width: var(--_width);
-    
+
     &::-webkit-progress-bar {
 
         --_bg: var(--accent);
@@ -141,4 +141,6 @@ progress {
         
         //background-color: var(--_bg);
     }
+
+    // Circular Variant
 }
