@@ -622,13 +622,21 @@ article:not(.hero-card) > :is(p, span) {
   font-size: 1.2vmin;
 }
 
+details[role=listbox], details[role=list], select {
+  --_border: var(--border-sm);
+  --_width: var(--w-full);
+  --_spacing-y: var(--md);
+  --_spacing-x: var(--md);
+  padding-block: var(--_spacing-y);
+}
+
 details[role=listbox] > ul,
 details[role=list] > ul {
   --bg: var(--muted-primary);
   --border: var(--border-sm);
   --width: var(--w-full);
+  --_spacing-y: var(--md);
   background-color: var(--bg);
-  padding: var(--spacing) 0;
   border: var(--border);
   display: flex;
   flex-direction: column;
@@ -697,6 +705,7 @@ select {
   cursor: pointer;
   appearance: none;
   width: 100%;
+  padding-inline: var(--_spacing-x);
   font-family: var(--font-family);
   font-size: var(--font-size);
   font-weight: var(--font-weight);
@@ -941,12 +950,19 @@ form:invalid input:invalid {
 input,
 label,
 textarea {
+  --_spacing-y: var(--md);
+  --_spacing-x: var(--lg);
   cursor: pointer;
   transition: background-color var(--transition), filter var(--transition);
 }
 
+input,
 textarea {
-  padding: var(--spacing);
+  padding-block: var(--_spacing-y);
+  padding-inline: var(--_spacing-x);
+}
+
+textarea {
   background-color: var(--muted-primary);
   border: 0.2rem solid var(--primary);
   resize: none;
@@ -1026,7 +1042,6 @@ input, select {
   border: 0.2rem solid var(--foreground-accent);
   background-color: var(--bg);
   border-radius: var(--roundness);
-  padding: var(--spacing);
   outline: none;
   transition: all var(--transition);
   /* &:focus {
@@ -1446,9 +1461,9 @@ body > footer ul a {
 
 body > :is(header, header.header-sticky) {
   --_widht: 100%;
-  --_height: 10vmin;
+  --_height: 16vmin;
   min-width: var(--_widht);
-  height: clamp(16vmin, var(--_height), 8.44dvh);
+  height: clamp(12vmin, var(--_height), 8.44dvh);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -1553,11 +1568,11 @@ body > header.header-sticky {
 }
 
 body > main {
-  --width: 60%;
+  --width: 50%;
   --height: auto;
   --spacing: var(--lg);
   --bg: inherit;
-  width: clamp(fit-content, var(--width), 80dvw);
+  width: max(var(--width), 80dvw);
   height: var(--height);
   padding: var(--lg) var(--xl);
   border-radius: var(--roundness);
@@ -1693,15 +1708,19 @@ section section {
   display: grid;
   gap: var(--xs);
   grid-auto-rows: 1fr;
+  aspect-ratio: 16/9;
 }
 :is(.big-bento, .small-bento, .bento) > * {
   margin: 0;
   align-self: stretch;
-  background-color: black;
+  background-color: var(--background);
+}
+:is(.big-bento, .small-bento, .bento) > img {
+  object-position: center;
+  object-fit: cover;
 }
 
 .small-bento {
-  aspect-ratio: 16/9;
   grid-template-columns: repeat(3, 1fr);
 }
 .small-bento :nth-child(1) {
@@ -1716,7 +1735,6 @@ section section {
 }
 
 .bento {
-  aspect-ratio: 16/9;
   grid-template-columns: repeat(4, 1fr);
 }
 .bento :nth-child(1) {
@@ -1731,7 +1749,6 @@ section section {
 }
 
 .big-bento {
-  aspect-ratio: 16/9;
   grid-template-columns: repeat(7, 1fr);
 }
 .big-bento :is(:nth-child(1), :nth-child(3)) {

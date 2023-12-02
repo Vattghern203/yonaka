@@ -80,7 +80,6 @@
 }
 
 .reel {
-
     --grid-auto-cols: 30%;
 
     display: grid;
@@ -103,19 +102,24 @@
     display: grid;
     gap: var(--xs);
     grid-auto-rows: 1fr;
+    aspect-ratio: 16 / 9;
 
     & > * {
         margin: 0;
         align-self: stretch;
         //aspect-ratio: 1;
-        background-color: black;
+        background-color: var(--background);
     }
 
+    & > img {
+
+        object-position: center;
+        object-fit: cover;
+    }
 }
 
 .small-bento {
 
-    aspect-ratio: 16 / 9;
     grid-template-columns: repeat(3, 1fr);
 
     & :nth-child(1) {
@@ -136,8 +140,6 @@
 }
 
 .bento {
-
-    aspect-ratio: 16 / 9;
 
     grid-template-columns: repeat(4, 1fr);
 
@@ -161,8 +163,6 @@
 // A Bento with 10 items
 
 .big-bento {
-
-    aspect-ratio: 16 / 9;
 
     grid-template-columns: repeat(7, 1fr);
 

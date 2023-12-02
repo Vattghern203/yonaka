@@ -1,14 +1,31 @@
 @use "../abstracts/mixins";
 
+$dropdown: "details[role="listbox"], details[role="list"], select";
+
+// Common Styles
+
+#{$dropdown} {
+
+    --_border: var(--border-sm);
+    --_width: var(--w-full);
+
+    --_spacing-y: var(--md);
+    --_spacing-x: var(--md);
+
+    padding-block: var(--_spacing-y);
+}
+
 details[role="listbox"],
 details[role="list"] {
+
     & > ul {
         --bg: var(--muted-primary);
         --border: var(--border-sm);
         --width: var(--w-full);
 
+        --_spacing-y: var(--md);
+
         background-color: var(--bg);
-        padding: var(--spacing) 0;
         border: var(--border);
         display: flex;
         flex-direction: column;
@@ -84,6 +101,8 @@ select {
 
     appearance: none;
     width: 100%;
+
+    padding-inline: var(--_spacing-x);
     
     font-family: var(--font-family);
     font-size: var(--font-size);

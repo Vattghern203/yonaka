@@ -18,13 +18,24 @@ form:invalid {
 input, 
 label, 
 textarea {
+
+    // Common vars
+    --_spacing-y: var(--md);
+    --_spacing-x: var(--lg);
+
     cursor: pointer;
     transition: background-color var(--transition), filter var(--transition);
 }
 
+input,
 textarea {
 
-    padding: var(--spacing);
+    padding-block: var(--_spacing-y);
+    padding-inline: var(--_spacing-x);
+}
+
+textarea {
+
     background-color: var(--muted-primary);
     border: .2rem solid var(--primary);
     resize: none;
@@ -82,6 +93,9 @@ label:not([role="button"]) {
         border: .1rem dashed var(--text);
         width: var(--width);
         height: var(--height);
+
+        // Padding inline and block
+
         padding: var(--spacing-y) var(--spacing-x);
         text-align: center;
         transition: background-color .2s ease, filter .4s ease-in;
@@ -136,7 +150,6 @@ input, select {
     border: .2rem solid var(--foreground-accent);
     background-color: var(--bg);
     border-radius: var(--roundness);
-    padding: var(--spacing);
     outline: none;
 
     transition: all var(--transition);

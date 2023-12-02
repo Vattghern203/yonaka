@@ -1,10 +1,10 @@
 body > :is(header, header.header-sticky) {
 
     --_widht: 100%;
-    --_height: 10vmin;
+    --_height: 16vmin;
     
     min-width: var(--_widht);
-    height: clamp(16vmin, var(--_height), 8.44dvh);
+    height: clamp(12vmin, var(--_height), 8.44dvh);
     
     display: flex;
     align-items: center;
