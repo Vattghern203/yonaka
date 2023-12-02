@@ -96,6 +96,102 @@
     }
 }
 
+// Bento Grid -------------------------------------------------
+
+:is(.big-bento, .small-bento, .bento) {
+
+    display: grid;
+    gap: var(--xs);
+    grid-auto-rows: 1fr;
+
+    & > * {
+        margin: 0;
+        align-self: stretch;
+        //aspect-ratio: 1;
+        background-color: black;
+    }
+
+}
+
+.small-bento {
+
+    aspect-ratio: 16 / 9;
+    grid-template-columns: repeat(3, 1fr);
+
+    & :nth-child(1) {
+
+        grid-row: span 3;
+    }
+
+    & :is(:nth-child(2), :nth-child(3)) {
+
+        grid-row: span 2;
+        grid-column: span 2;
+    }
+
+    & :nth-child(4) {
+
+        grid-column: span -1;
+    }
+}
+
+.bento {
+
+    aspect-ratio: 16 / 9;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    & :nth-child(1) {
+
+        grid-row: span 2;
+        grid-column: span 2;
+    }
+
+    & :is(:nth-child(2), :nth-child(3)) {
+
+        grid-row: span 2;
+    }
+
+    & :is(:nth-child(5)) {
+
+        grid-column: span 2;
+    }
+}
+
+// A Bento with 10 items
+
+.big-bento {
+
+    aspect-ratio: 16 / 9;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    & :is(:nth-child(1), :nth-child(3)) {
+
+        grid-column: span 2;
+    }
+
+    & :nth-child(2) {
+
+        grid-column: span 3;
+    }
+
+    & :is(:nth-child(4), :nth-child(5), :nth-child(7), :nth-child(8)) {
+        grid-row: span 2;
+    }
+
+    & :nth-child(6) {
+
+        grid-row: span 3;
+        grid-column: span 3;
+    }
+
+    & :is(:nth-child(9), :nth-child(10)) {
+
+        grid-column: span 2;
+    }
+}
+
 // Wrapper
 
 :where(.wrapper) {

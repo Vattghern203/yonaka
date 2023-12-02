@@ -1689,6 +1689,68 @@ section section {
   scroll-snap-align: start;
 }
 
+:is(.big-bento, .small-bento, .bento) {
+  display: grid;
+  gap: var(--xs);
+  grid-auto-rows: 1fr;
+}
+:is(.big-bento, .small-bento, .bento) > * {
+  margin: 0;
+  align-self: stretch;
+  background-color: black;
+}
+
+.small-bento {
+  aspect-ratio: 16/9;
+  grid-template-columns: repeat(3, 1fr);
+}
+.small-bento :nth-child(1) {
+  grid-row: span 3;
+}
+.small-bento :is(:nth-child(2), :nth-child(3)) {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+.small-bento :nth-child(4) {
+  grid-column: span -1;
+}
+
+.bento {
+  aspect-ratio: 16/9;
+  grid-template-columns: repeat(4, 1fr);
+}
+.bento :nth-child(1) {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+.bento :is(:nth-child(2), :nth-child(3)) {
+  grid-row: span 2;
+}
+.bento :is(:nth-child(5)) {
+  grid-column: span 2;
+}
+
+.big-bento {
+  aspect-ratio: 16/9;
+  grid-template-columns: repeat(7, 1fr);
+}
+.big-bento :is(:nth-child(1), :nth-child(3)) {
+  grid-column: span 2;
+}
+.big-bento :nth-child(2) {
+  grid-column: span 3;
+}
+.big-bento :is(:nth-child(4), :nth-child(5), :nth-child(7), :nth-child(8)) {
+  grid-row: span 2;
+}
+.big-bento :nth-child(6) {
+  grid-row: span 3;
+  grid-column: span 3;
+}
+.big-bento :is(:nth-child(9), :nth-child(10)) {
+  grid-column: span 2;
+}
+
 :where(.wrapper) {
   width: auto;
   height: auto;
