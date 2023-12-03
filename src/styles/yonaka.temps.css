@@ -964,15 +964,16 @@ input,
 textarea {
   padding-block: var(--_spacing-y);
   padding-inline: var(--_spacing-x);
+  border: 0.2rem solid var(--primary);
 }
 
 textarea {
   background-color: var(--muted-primary);
-  border: 0.2rem solid var(--primary);
   resize: none;
   font-family: var(--font-family);
   font-size: var(--font-size);
   outline: none;
+  margin-block: var(--spacing);
 }
 textarea:hover {
   outline: none;
@@ -1039,13 +1040,13 @@ label:not([role=button]):has(> input[type=color]) {
 }
 input,
 select {
-  --roundness: .24vmin;
+  --roundness: var(--xs);
   --bg: var(--muted-primary);
-  --font-size: var(--md);
+  --_font-size: var(--font-size);
   --width: 100%;
   font-weight: 500;
-  font-size: var(--font-size);
-  border: 0.2rem solid var(--foreground-accent);
+  font-size: var(--_font-size);
+  border: 0.2rem solid var(--muted-accent);
   background-color: var(--bg);
   border-radius: var(--roundness);
   outline: none;
