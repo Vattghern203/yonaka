@@ -1,8 +1,10 @@
 @use "../abstracts/mixins";
 
+
+
 // Form Related -------------------------------------
 
-form:invalid {
+form:-moz-submit-invalid {
     
     input:invalid {
         border: .2rem var(--destructive) solid;
@@ -23,9 +25,16 @@ textarea {
     --_spacing-y: var(--md);
     --_spacing-x: var(--lg);
 
+    font-size: 1.6rem;
+
     cursor: pointer;
-    transition: background-color var(--transition), filter var(--transition);
+
+    transition: 
+        background-color var(--transition),
+        filter var(--transition);
 }
+
+// Common styling only between inputs and textareas
 
 input,
 textarea {
@@ -80,31 +89,41 @@ label:not([role="button"]) {
     // Styles the label that has a input file as child
     &:has( > input[type="file"]) {
 
-        --width: var(--w-full, 100%);
-        --height: calc(32vmin + 5vw);
-        --font-weight: 600;
+        --_width: var(--w-full, 100%);
+        --_font-weight: 600;
 
-        font-weight: var(--font-weight);
-        vertical-align: center;
+        --_border-color: var(--content-text);
+        --_bg: transparent;
+
+        aspect-ratio: 1 / .5;
+
+        background-color: var(--_bg);
+
+        font-weight: var(--_font-weight);
+        //vertical-align: center;
         display: flex;
         align-items: center;
-        word-wrap: break-word;
         justify-content: center;
-        border: .1rem dashed var(--text);
-        width: var(--width);
-        height: var(--height);
+        word-wrap: break-word;
+        border: .2rem dashed var(--_border-color);
+        width: var(--_width);
 
         // Padding inline and block
 
         padding: var(--spacing-y) var(--spacing-x);
         text-align: center;
-        transition: background-color .2s ease, filter .4s ease-in;
         position: relative;
 
-        --_effect-level: 0%;
+        transition: 
+            background-color .8s ease,
+            border-color .4s var(--transition-out-circle),
+            filter .4s ease-in;
+
+        --_effect-level: 125%;
     
         &:hover {
-            background-color: var(--accent);
+            --_bg: var(--muted-accent);
+            --_border-color: var(--text);
         }
 
         &:active {
@@ -137,11 +156,12 @@ label:not([role="button"]) {
 
 // Styles the input itself
 
-input, select {
-    --spacing: var(--md);
+input, 
+select {
+    //--spacing: var(--md);
     --roundness: .24vmin;
     --bg: var(--muted-primary);
-    --font-size: 1.50rem;
+    --font-size: var(--md);
     --width: 100%;
 
     font-weight: 500;
@@ -201,7 +221,8 @@ input, select {
 
     // A radio and checkbox common style
     &:is([type="checkbox"], [type="radio"]) {
-        --spacing: var(--sm);
+        --_spacing-x: var(--sm);
+        --_spacing-y: var(--sm);
     }
 
     // File Input --------------------------------------------------------

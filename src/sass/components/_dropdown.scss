@@ -7,12 +7,23 @@ $dropdown: "details[role="listbox"], details[role="list"], select";
 #{$dropdown} {
 
     --_border: var(--border-sm);
-    --_width: var(--w-full);
 
+    --_font-size: var(--font-size);
+    
     --_spacing-y: var(--md);
     --_spacing-x: var(--md);
+    
+    --_width: var(--w-full);
+    
+    cursor: pointer;
+
+    font-size: var(--_font-size);
 
     padding-block: var(--_spacing-y);
+
+    transition: outline .2s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+
+    width: var(--_width);
 }
 
 details[role="listbox"],
@@ -38,10 +49,10 @@ details[role="list"] {
 
         & li {
             --font-size: var(--md);
-            --text-color: var(--text);
+            --text-color: var(--content-text);
             --font-weight: 500;
             --bg: inherit;
-            --roudness: 0;
+            --_roudness: 0;
 
             display: flex;
             align-items: center; /* Align items vertically if needed */
@@ -50,13 +61,17 @@ details[role="list"] {
             font-weight: var(--font-weight);
             color: var(--text-color);
             background-color: var(--bg);
-            border-radius: var(--roudness);
+            border-radius: var(--_roudness);
             padding: var(--spacing);
-            cursor: pointer;
-            transition: background-color .4s ease, filter .2s ease-in;
+            
+            transition: 
+                background-color .4s ease,
+                color .2s ease-in-out, 
+                filter .2s ease-in;
 
             &:is(:hover, :focus, :focus-visible) {
                 --bg: var(--primary);
+                --text-color: var(--text);
             }
 
             &:has(> a:is(:focus, :focus-visible)) {
@@ -93,25 +108,18 @@ details[role="list"] {
 // SELECT
 
 select {
-    --font-size: var(--md);
     --text-color: var(--text);
     --font-weight: 500;
 
-    cursor: pointer;
-
     appearance: none;
-    width: 100%;
 
     padding-inline: var(--_spacing-x);
     
-    font-family: var(--font-family);
-    font-size: var(--font-size);
-    font-weight: var(--font-weight);
     text-transform: capitalize;
 
     background-image: var(--expand-icon);
     background-repeat: no-repeat;
-    background-position: calc(100% - var(--spacing)) center;
+    background-position: calc(100% - var(--font-size)) center;
 
     &::-ms-expand {
         display: none;
@@ -154,6 +162,7 @@ select {
     & > option {
         --bg: var(--muted-primary);
         --border: var(--border-sm);
+        --_text-color: var(--content-text);
 
         color: var(--text-color);
         background-color: var(--bg);
@@ -161,7 +170,7 @@ select {
         padding: var(--spacing);
         cursor: pointer;
 
-        transition: background-color .4s ease, filter .2s ease-in;
+        transition: background-color .8s ease, filter .2s ease-in;
 
         &:hover {
             --bg: var(--primary);
@@ -169,6 +178,11 @@ select {
 
         &:active {
             filter: var(--effect-bright);
+        }
+
+        &[selected] {
+
+           background-color: var(--muted-primary);
         }
     }
 }

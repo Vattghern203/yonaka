@@ -624,10 +624,15 @@ article:not(.hero-card) > :is(p, span) {
 
 details[role=listbox], details[role=list], select {
   --_border: var(--border-sm);
-  --_width: var(--w-full);
+  --_font-size: var(--font-size);
   --_spacing-y: var(--md);
   --_spacing-x: var(--md);
+  --_width: var(--w-full);
+  cursor: pointer;
+  font-size: var(--_font-size);
   padding-block: var(--_spacing-y);
+  transition: outline 0.2s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  width: var(--_width);
 }
 
 details[role=listbox] > ul,
@@ -651,10 +656,10 @@ details[role=list] > ul > * {
 details[role=listbox] > ul li,
 details[role=list] > ul li {
   --font-size: var(--md);
-  --text-color: var(--text);
+  --text-color: var(--content-text);
   --font-weight: 500;
   --bg: inherit;
-  --roudness: 0;
+  --_roudness: 0;
   display: flex;
   align-items: center; /* Align items vertically if needed */
   width: 100%;
@@ -662,14 +667,14 @@ details[role=list] > ul li {
   font-weight: var(--font-weight);
   color: var(--text-color);
   background-color: var(--bg);
-  border-radius: var(--roudness);
+  border-radius: var(--_roudness);
   padding: var(--spacing);
-  cursor: pointer;
-  transition: background-color 0.4s ease, filter 0.2s ease-in;
+  transition: background-color 0.4s ease, color 0.2s ease-in-out, filter 0.2s ease-in;
 }
 details[role=listbox] > ul li:is(:hover, :focus, :focus-visible),
 details[role=list] > ul li:is(:hover, :focus, :focus-visible) {
   --bg: var(--primary);
+  --text-color: var(--text);
 }
 details[role=listbox] > ul li:has(> a:is(:focus, :focus-visible)),
 details[role=list] > ul li:has(> a:is(:focus, :focus-visible)) {
@@ -699,20 +704,14 @@ details[role=list] > ul li > a:focus-visible {
 }
 
 select {
-  --font-size: var(--md);
   --text-color: var(--text);
   --font-weight: 500;
-  cursor: pointer;
   appearance: none;
-  width: 100%;
   padding-inline: var(--_spacing-x);
-  font-family: var(--font-family);
-  font-size: var(--font-size);
-  font-weight: var(--font-weight);
   text-transform: capitalize;
   background-image: var(--expand-icon);
   background-repeat: no-repeat;
-  background-position: calc(100% - var(--spacing)) center;
+  background-position: calc(100% - var(--font-size)) center;
   /* &::after {
       content: "";
       width: 30em;
@@ -756,18 +755,22 @@ select, select > * {
 select > option {
   --bg: var(--muted-primary);
   --border: var(--border-sm);
+  --_text-color: var(--content-text);
   color: var(--text-color);
   background-color: var(--bg);
   border-radius: 0;
   padding: var(--spacing);
   cursor: pointer;
-  transition: background-color 0.4s ease, filter 0.2s ease-in;
+  transition: background-color 0.8s ease, filter 0.2s ease-in;
 }
 select > option:hover {
   --bg: var(--primary);
 }
 select > option:active {
   filter: var(--effect-bright);
+}
+select > option[selected] {
+  background-color: var(--muted-primary);
 }
 
 .gallery {
@@ -942,7 +945,7 @@ progress::-webkit-progress-bar {
   background-color: var(--accent);
 }
 
-form:invalid input:invalid {
+form:-moz-submit-invalid input:invalid {
   border: 0.2rem var(--destructive) solid;
   transition: border-color var(--transition);
 }
@@ -952,6 +955,7 @@ label,
 textarea {
   --_spacing-y: var(--md);
   --_spacing-x: var(--lg);
+  font-size: 1.6rem;
   cursor: pointer;
   transition: background-color var(--transition), filter var(--transition);
 }
@@ -994,27 +998,29 @@ label:not([role=button]) {
 }
 label:has(> input[type=file]),
 label:not([role=button]):has(> input[type=file]) {
-  --width: var(--w-full, 100%);
-  --height: calc(32vmin + 5vw);
-  --font-weight: 600;
-  font-weight: var(--font-weight);
-  vertical-align: center;
+  --_width: var(--w-full, 100%);
+  --_font-weight: 600;
+  --_border-color: var(--content-text);
+  --_bg: transparent;
+  aspect-ratio: 1/0.5;
+  background-color: var(--_bg);
+  font-weight: var(--_font-weight);
   display: flex;
   align-items: center;
-  word-wrap: break-word;
   justify-content: center;
-  border: 0.1rem dashed var(--text);
-  width: var(--width);
-  height: var(--height);
+  word-wrap: break-word;
+  border: 0.2rem dashed var(--_border-color);
+  width: var(--_width);
   padding: var(--spacing-y) var(--spacing-x);
   text-align: center;
-  transition: background-color 0.2s ease, filter 0.4s ease-in;
   position: relative;
-  --_effect-level: 0%;
+  transition: background-color 0.8s ease, border-color 0.4s var(--transition-out-circle), filter 0.4s ease-in;
+  --_effect-level: 125%;
 }
 label:has(> input[type=file]):hover,
 label:not([role=button]):has(> input[type=file]):hover {
-  background-color: var(--accent);
+  --_bg: var(--muted-accent);
+  --_border-color: var(--text);
 }
 label:has(> input[type=file]):active,
 label:not([role=button]):has(> input[type=file]):active {
@@ -1031,11 +1037,11 @@ label:not([role=button]):has(> input[type=color]) {
   display: flex;
   align-items: center;
 }
-input, select {
-  --spacing: var(--md);
+input,
+select {
   --roundness: .24vmin;
   --bg: var(--muted-primary);
-  --font-size: 1.50rem;
+  --font-size: var(--md);
   --width: 100%;
   font-weight: 500;
   font-size: var(--font-size);
@@ -1049,23 +1055,27 @@ input, select {
       border-color: var(--accent);
   } */
 }
-input::placeholder, select::placeholder {
+input::placeholder,
+select::placeholder {
   --text-color: var(--muted-text);
   color: var(--text-color);
 }
-input:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range]), select:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range]) {
+input:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range]),
+select:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range]) {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
   accent-color: var(--accent);
 }
-input[type=radio], select[type=radio] {
+input[type=radio],
+select[type=radio] {
   border-radius: 50%;
   padding: 0.2vmin;
   display: grid;
   place-items: center;
 }
-input[type=radio]::after, select[type=radio]::after {
+input[type=radio]::after,
+select[type=radio]::after {
   content: "";
   display: block;
   scale: 0;
@@ -1075,22 +1085,28 @@ input[type=radio]::after, select[type=radio]::after {
   background-color: var(--accent);
   transition: scale 0.2s var(--transition-out-circle);
 }
-input[type=radio]:checked::after, select[type=radio]:checked::after {
+input[type=radio]:checked::after,
+select[type=radio]:checked::after {
   scale: 1;
 }
-input:is([type=checkbox], [type=radio]), select:is([type=checkbox], [type=radio]) {
-  --spacing: var(--sm);
+input:is([type=checkbox], [type=radio]),
+select:is([type=checkbox], [type=radio]) {
+  --_spacing-x: var(--sm);
+  --_spacing-y: var(--sm);
 }
-input[type=file], select[type=file] {
+input[type=file],
+select[type=file] {
   position: absolute;
   inset: 0;
   z-index: -20;
   opacity: 0;
 }
-input[type=file]:focus-visible, select[type=file]:focus-visible {
+input[type=file]:focus-visible,
+select[type=file]:focus-visible {
   all: none;
 }
-input[type=color], select[type=color] {
+input[type=color],
+select[type=color] {
   --width: 2.4vmax;
   --bg: transparent;
   padding: 0;
@@ -1103,21 +1119,26 @@ input[type=color], select[type=color] {
   background-color: var(--bg, transparent);
   transition: border 0.2s ease;
 }
-input[type=color]::-webkit-color-swatch, select[type=color]::-webkit-color-swatch {
+input[type=color]::-webkit-color-swatch,
+select[type=color]::-webkit-color-swatch {
   border-radius: var(--roundness);
   border: 0.1rem var(--blend-back-color) solid;
 }
-input[type=color]:is(:active, :focus)::-webkit-color-swatch, select[type=color]:is(:active, :focus)::-webkit-color-swatch {
+input[type=color]:is(:active, :focus)::-webkit-color-swatch,
+select[type=color]:is(:active, :focus)::-webkit-color-swatch {
   border: 0.2rem var(--text) solid;
 }
-input[type=checkbox]:not([role=switch]), select[type=checkbox]:not([role=switch]) {
+input[type=checkbox]:not([role=switch]),
+select[type=checkbox]:not([role=switch]) {
   overflow: hidden;
   position: relative;
 }
-input[type=checkbox]:not([role=switch]):checked::after, select[type=checkbox]:not([role=switch]):checked::after {
+input[type=checkbox]:not([role=switch]):checked::after,
+select[type=checkbox]:not([role=switch]):checked::after {
   scale: 45%;
 }
-input[type=checkbox]:not([role=switch])::after, select[type=checkbox]:not([role=switch])::after {
+input[type=checkbox]:not([role=switch])::after,
+select[type=checkbox]:not([role=switch])::after {
   content: "";
   --borderWidth: .6rem;
   --height: 2em;
@@ -1133,7 +1154,10 @@ input[type=checkbox]:not([role=switch])::after, select[type=checkbox]:not([role=
   border-right: var(--borderWidth) solid var(--borderColor);
   transition: inherit;
 }
-input[type=date], input[type=time], input[type=datetime-local], select[type=date], select[type=time], select[type=datetime-local] {
+input[type=date], input[type=time], input[type=datetime-local],
+select[type=date],
+select[type=time],
+select[type=datetime-local] {
   --bg: var(--primary);
   --text-color: var(--text);
   --font-weight: 500;
@@ -1150,13 +1174,22 @@ input[type=date], input[type=time], input[type=datetime-local], select[type=date
   font-weight: var(--font-weight);
   letter-spacing: 0.2ch;
 }
-input[type=date]:hover, input[type=time]:hover, input[type=datetime-local]:hover, select[type=date]:hover, select[type=time]:hover, select[type=datetime-local]:hover {
+input[type=date]:hover, input[type=time]:hover, input[type=datetime-local]:hover,
+select[type=date]:hover,
+select[type=time]:hover,
+select[type=datetime-local]:hover {
   --bg: var(--accent);
 }
-input[type=date]:active, input[type=time]:active, input[type=datetime-local]:active, select[type=date]:active, select[type=time]:active, select[type=datetime-local]:active {
+input[type=date]:active, input[type=time]:active, input[type=datetime-local]:active,
+select[type=date]:active,
+select[type=time]:active,
+select[type=datetime-local]:active {
   filter: brightness(125%);
 }
-input[type=date]::-webkit-calendar-picker-indicator, input[type=time]::-webkit-calendar-picker-indicator, input[type=datetime-local]::-webkit-calendar-picker-indicator, select[type=date]::-webkit-calendar-picker-indicator, select[type=time]::-webkit-calendar-picker-indicator, select[type=datetime-local]::-webkit-calendar-picker-indicator {
+input[type=date]::-webkit-calendar-picker-indicator, input[type=time]::-webkit-calendar-picker-indicator, input[type=datetime-local]::-webkit-calendar-picker-indicator,
+select[type=date]::-webkit-calendar-picker-indicator,
+select[type=time]::-webkit-calendar-picker-indicator,
+select[type=datetime-local]::-webkit-calendar-picker-indicator {
   background-color: var(--secondary);
   padding: 0.6vmin 0.8vmin;
   border-radius: var(--roundness);
@@ -1164,10 +1197,12 @@ input[type=date]::-webkit-calendar-picker-indicator, input[type=time]::-webkit-c
   margin-top: 2.4%;
   cursor: pointer;
 }
-input[type=radio], select[type=radio] {
+input[type=radio],
+select[type=radio] {
   width: 200%;
 }
-input[type=range], select[type=range] {
+input[type=range],
+select[type=range] {
   --width: 100%;
   --bg: transparent;
   --roundness: 100vmax;
@@ -1179,12 +1214,14 @@ input[type=range], select[type=range] {
   border-radius: var(--roundness);
   outline-offset: 0.2rem;
 }
-input:is([type=checkbox], [type=radio]):focus-visible, select:is([type=checkbox], [type=radio]):focus-visible {
+input:is([type=checkbox], [type=radio]):focus-visible,
+select:is([type=checkbox], [type=radio]):focus-visible {
   --outline-offset: var(--outline-lg);
   outline-offset: var(--outline-offset);
   outline: var(--outline);
 }
-input[type=search], select[type=search] {
+input[type=search],
+select[type=search] {
   --spacing-x: var(--lg);
   --roundness: var(--round-peal);
   text-transform: capitalize;
@@ -1773,6 +1810,14 @@ section section {
   height: auto;
   margin: 0;
   padding: 0;
+}
+
+.dotted-grid {
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to right, rgba(128, 128, 128, 0.0705882353) 1px, transparent 1px), linear-gradient(to bottom, rgba(128, 128, 128, 0.0705882353) 1px, transparent 1px);
+  background-size: 24px 2px;
+  background-repeat: repeat;
 }
 
 /* This code simulates a family hierarchy, where the father/parent shares his attributes across the family tree.
