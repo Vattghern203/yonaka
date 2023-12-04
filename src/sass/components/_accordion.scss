@@ -27,7 +27,7 @@ details {
         justify-content: space-between;
 
         
-        @include icon(var(--expand-icon));
+        @include icon(var(--expand-icon)); // ICON MIXIN
         
         &::after {
             rotate: -90deg;

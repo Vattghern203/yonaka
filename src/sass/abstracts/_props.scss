@@ -21,3 +21,10 @@
     inherits: true;
     initial-value: .4vmin;
 }
+
+@property --spacing {
+
+    syntax: "<lenght>";
+    inherits: true;
+    initial-vaue: .8rem;
+}

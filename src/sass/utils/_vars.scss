@@ -13,6 +13,7 @@
     --offset-hg: 1.75rem;
 
     // Offset Base
+
     --outline-offset: var(--offset-md, 1.25rem);
 
     // Offset Customization
@@ -45,12 +46,24 @@
 
     // BOX SHADOW --------------------------------------------------
 
+    /* Small variant */
+    --box-shadow-xs: 0 .1rem .2rem rgba(0, 0, 0, 0.08);
+
+    /* Regular shadow (same as the provided --box-shadow-sm) */
     --box-shadow-sm: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
+
+    /* Larger variant */
     --box-shadow-lg: 0 .4rem .8rem rgba(0, 0, 0, 0.1);
 
-    // Base
+    /* Extra large variant */
+    --box-shadow-xl: 0 .8rem 1.6rem rgba(0, 0, 0, 0.15);
 
-    --box-shadow: var(--box-shadow-sm, 0 .2rem .4rem rgba(0, 0, 0, 0.1););
+    /* Double extra large variant */
+    --box-shadow-2xl: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+
+    // Base --------------------------
+
+    --box-shadow: var(--box-shadow-sm, 0 .2rem .4rem rgba(0, 0, 0, 0.1));
 
     // Z-INDEX -----------------------------------------------------
 
@@ -69,23 +82,56 @@
 
     // TRANSITIONS -------------------------------------------------
 
-    --transition-colors: background-color, color, border-color, outline-color, fill;
-    --transition-motion: transform, scale, width, height, min-width, min-height, max-height, min-height;
-    --transition-effect: opacity, filter;
-    --transition-all: all;
+    --transition-props-colors: 
+        background-color,
+        border-color,
+        color,
+        fill,
+        outline-color,
+        text-decoration-color;
+    
+    --transition-props-motion: 
+        transform,
+        rotate,
+        scale,
+        zoom;
+        
+    --transition-props-sizes:
+        height,
+        max-height, 
+        max-width,
+        min-height,
+        min-width,
+        width;
+
+    --transition-props-filter: filter, backdrop-filter;
+
+    --transition-props-effect: opacity, box-shadow;
+
+    --transition-props-all: all;
 
     --transition-props: unset;
+
+    // EASE CURVES --------------------------------------------
 
     --transition-ease: ease;
     --transition-ease-in: ease-in;
     --transition-linear: linear;
     --transition-ease-in-out: ease-in-out;
     
-    // Custom Easing
+    // Custom Easing (Cubic Bezier)
+    
     --transition-middle-break: cubic-bezier(0, .82, 1, .21);
     --transition-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
     --transition-out-circle: cubic-bezier(0.85, 0, 0.15, 1);
     --transition-friction: cubic-bezier(0, 1.46 ,1 ,-0.29);
+
+    // My own creation 👨‍🔬
+
+    --transition-delay-in: cubic-bezier(.13, 0, 1, .13);
+    --transition-jump-the-gun: cubic-bezier(.1, .65, .65, .9);
+    --transition-samurai-cut: cubic-bezier(0, 1.51, 1, 1.88);
+    --transition-time-reversal: cubic-bezier(0.71, 1.7, 0.76, -0.49);
 
     --transition-time-ssl: 2s; // Super Slow
     --transition-time-sl: .8s; // Slow
@@ -93,5 +139,9 @@
     --transition-time-ft: .2s; // Fast
 
 
-    //--transition: 
+    // TRANSITION DELAY ------------------------------------------
+    
+    --transition-delay-short: .1s; /* Short delay */
+    --transition-delay-normal: .3s; /* Normal delay */
+    --transition-delay-long: .6s; /* Long delay */
 }

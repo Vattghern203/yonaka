@@ -12,6 +12,8 @@
     --height: auto; // the height of each element
     
     // CONTROL VARS ---------------------------------
+
+    // These are the variables that generate all the style system
     
     --base: 1.6rem; // Represent the inital value for measurements
     --spacing: .8rem; // the spacing between elements
@@ -41,7 +43,7 @@
 
     --light-destructive: color-mix(in oklab, var(--destructive), #FFF 30%);
 
-    // Blend Colors
+    // Blend Colors -----------------------------------------
 
     --blend-text-color: #000; // Color that blend with texts
     --blend-back-color: #FFF; // Color that blend with bg colors
@@ -159,13 +161,21 @@
     --round-full: 50%;
     --round-peal: 100vmax;
 
-    // TYPOGRAPHY ---------------------------------
+    // TYPOGRAPHY -------------------------------------------------
 
     // Types of font
 
-    --font-serif: 'Times New Roman', Times, serif;
-    --font-mono: 'Cascadia Code', 'Roboto Mono', monospace;
-    --font-sans-serif: system-ui, 'Inter', 'Roboto', sans-serif;
+    --font-serif: 'Baskerville', 'Merriweather', 'Cormorant Garamond', 'Times New Roman', Georgia, Times, serif;
+
+    --font-mono: 'Cascadia Code', 'Roboto Mono', 'Fira Code' 'Inconsolata', 'Red Hat Mono', monospace;
+
+    --font-sans-serif: 'Inter', system-ui, 'Roboto', Poppins, Monstserrat, 'Open Sans', Lato, Nunito, sans-serif;
+
+    --font-special: 'Rubik Bubbles', 'Special Elite';
+
+    --font-handwrite: Ephesis, Smooch, 'Dancing Script', Cassandra, Caveat, system-ui;
+    
+    --font-slab-serif: 'Roboto Slab', Arvo, 'Josefin Slab', Rokkitt, sans-serif; // It's a variant from sans-serif, but with squared serifs. I don't recommend the usage, cause it's not so customizable with variants.
 
     // Font Weight
 
@@ -196,8 +206,6 @@
     --transition--props: all;
 
     // GENERAL -----------------------------------
-
-
 
     // FAMILY VARS
 
