@@ -424,6 +424,8 @@ body * :where(:not(h1, p, span)), .app * :where(:not(h1, p, span)), #root * :whe
   place-items: center;
   justify-items: stretch;
   gap: var(--spacing);
+  height: auto;
+  width: var(--w-full);
 }
 
 :where(:focus-visible) {
@@ -989,6 +991,27 @@ progress::-webkit-progress-bar {
   width: 25%;
   border-radius: calc(2px + var(--round-peal));
   background-color: var(--accent);
+}
+
+hr,
+.separator {
+  --_bg: var(--text);
+  background-color: var(--_bg);
+}
+
+hr {
+  --_bg: var(--text);
+  margin-block: var(--lg);
+  height: 2px;
+}
+
+.separator {
+  border-left: 1px solid var(--_bg);
+  height: clamp(1ch, 10rem, 100vmin);
+  margin-inline: var(--lg);
+  width: 2px;
+  padding: 0;
+  border-radius: 0;
 }
 
 form:-moz-submit-invalid input:invalid {
@@ -1880,48 +1903,97 @@ section section {
   --spacing: var(--md);
   --font-size: var(--font-size);
   background-color: var(--bg);
-  /* All children, no matter the nesting level */
-  /* All children, but only the direct ones */
-  /* Only the first direct child */
-  /* All the first children, no matter the nesting level */
-  /* All the last children, no matter the nesting level */
-  /* Only the last direct child */
-  /* Odd children */
-  /* Even children */
 }
-:where(.parent).colors {
+
+:is(.heritage-all, [data-heritage=all]) {
+  all: inherit;
+}
+
+:is(.heritage-appearence, [data-heritage=aspect]) {
+  --roundness: inherit;
+  aspect-ratio: inherit;
+  border: inherit;
+  outline: inherit;
+}
+
+:is(.heritage-typography, [data-heritage=typography]) {
+  --_font-size: inherit;
+  --_font-family: inherit;
+  --_font-weigth: inherit;
+  font: inherit;
+}
+
+:is(.heritage-spacing, [data-heritage=spacing]) {
+  padding: inherit;
+  margin: inherit;
+  margin-block: inherit;
+  margin-inline: inherit;
+  padding-block: inherit;
+  padding-inline: inherit;
+}
+
+:is(.heritage-colors, [data-heritage=colors]) {
+  --_bg: inherit;
+  --_text-color: inherit;
+  accent-color: inherit;
+  background-color: inherit;
+  border-color: inherit;
+  color: inherit;
+  fill: inherit;
+  outline-color: inherit;
+  text-decoration-color: inherit;
+}
+
+/* Inherit colors */
+:where(.parent.colors) {
   --bg: currentColor;
   --text-color: currentColor;
 }
-:where(.parent).sizes {
+
+/* Inherit the spacing vars */
+:where(.parent.sizes) {
   --spacing: var(--spacing);
 }
-:where(.parent).font {
+
+/* Inherit the font variables */
+:where(.parent.font) {
   --font-size: var(--font-size);
   --text-color: var(--text-color);
 }
-:where(.parent).all-childs *:not(.bastard) {
+
+/* All children, no matter the nesting level */
+/* All children, but only the direct ones */
+.parent.direct-childs > *:not(.bastard) {
   background-color: inherit;
 }
-:where(.parent).direct-childs > *:not(.bastard) {
+
+/* Only the first direct child */
+.parent.first-child-only > :first-child:not(.bastard) {
   background-color: inherit;
 }
-:where(.parent).first-child-only > :first-child:not(.bastard) {
+
+/* All the first children, no matter the nesting level */
+.parent.all-first-childs :first-child:not(.bastard) {
   background-color: inherit;
 }
-:where(.parent).all-first-childs :first-child:not(.bastard) {
+
+/* All the last children, no matter the nesting level */
+.parent.all-last-childs :last-child:not(.bastard) {
   background-color: inherit;
 }
-:where(.parent).all-last-childs :last-child:not(.bastard) {
+
+/* Only the last direct child */
+.parent.last-child-only > :last-child:not(.bastard) {
   background-color: inherit;
 }
-:where(.parent).last-child-only > :last-child:not(.bastard) {
+
+/* Odd children */
+.parent.odd-children > *:nth-child(odd):not(.bastard) {
   background-color: inherit;
 }
-:where(.parent).odd-children > *:nth-child(odd):not(.bastard) {
-  background-color: inherit;
-}
-:where(.parent).even-children > *:nth-child(even):not(.bastard) {
+
+/* Even children */
+.parent.even-children > *:nth-child(even):not(.bastard) {
   background-color: inherit;
 }
 

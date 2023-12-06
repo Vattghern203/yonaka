@@ -53,6 +53,9 @@ body, .app, #root {
     place-items: center;
     justify-items: stretch;
     gap: var(--spacing);
+
+    height: auto;
+    width: var(--w-full);
 }
 
 :where(:focus-visible) {

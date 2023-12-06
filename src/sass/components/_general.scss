@@ -144,3 +144,26 @@ progress {
 
     // Circular Variant
 }
+
+// Separator ------------------------------------------------------
+hr,
+.separator {
+    --_bg: var(--text);
+    background-color: var(--_bg);
+}
+
+hr {
+    --_bg: var(--text);
+    margin-block: var(--lg);
+    //border-radius: var(--roundness);
+    height: 2px;
+}
+
+.separator {
+    border-left: 1px solid var(--_bg);
+    height: clamp(1ch, 10rem, 100vmin); 
+    margin-inline: var(--lg);
+    width: 2px;
+    padding: 0;
+    border-radius: 0;
+}

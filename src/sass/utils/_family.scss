@@ -1,82 +1,181 @@
 /* This code simulates a family hierarchy, where the father/parent shares his attributes across the family tree.
    It aims to be a more flexible way to work with inheritance. */
 
-    :where(.parent) {
-        --bg: currentColor;
-        --text-color: currentColor;
-        --spacing: var(--md);
-        --font-size: var(--font-size);
+:where(.parent) {
+    --bg: currentColor;
+    --text-color: currentColor;
+    --spacing: var(--md);
+    --font-size: var(--font-size);
 
-        background-color: var(--bg);
+    background-color: var(--bg);
+}
 
+// HERITAGE VARIANTS -------------------------------------------------------------
 
-    // Heritage Variants -----------------------------------------------------------
+// Inherit all Attributes
 
-    // Inherit colors
+:is(.heritage-all, [data-heritage="all"]){ 
 
-    &.colors {
-        --bg: currentColor;
-        --text-color: currentColor;
+    all: inherit;
+}
+
+// Inherit Only the Aspect 
+
+:is(.heritage-appearence, [data-heritage="aspect"]) {
+
+    --roundness: inherit;
+
+    aspect-ratio: inherit;
+    border: inherit;
+    outline: inherit;
+}
+
+// Inherit Only Typography
+
+:is(.heritage-typography, [data-heritage="typography"]) {
+
+    --_font-size: inherit;
+    --_font-family: inherit;
+    --_font-weigth: inherit;
+
+    font: inherit;
+}
+
+// Inherit Spacing Attributes
+
+:is(.heritage-spacing, [data-heritage="spacing"]) {
+
+    padding: inherit;
+    margin: inherit;
+    margin-block: inherit;
+    margin-inline: inherit;
+    padding-block: inherit;
+    padding-inline: inherit;
+}
+
+// Inherit Colors
+
+:is(.heritage-colors, [data-heritage="colors"]) {
+
+    --_bg: inherit;
+    --_text-color: inherit;
+
+    accent-color: inherit;
+    background-color: inherit;
+    border-color: inherit;
+    color: inherit;
+    fill: inherit;
+    outline-color: inherit;
+    text-decoration-color: inherit;
+}
+
+// INHERIT LEVELS -------------------------------------------
+
+.parent {
+
+    // Direct Children
+
+    &.direct-children > *:not(.bastard) {
+
     }
 
-    // Inherit the the spacing vars
+    // First Chil Only ------------------------------------------------------------
 
-    &.sizes {
-        --spacing: var(--spacing);
-    }
-
-    // Inherit the font variables
-
-    &.font {
-        --font-size: var(--font-size);
-        --text-color: var(--text-color);
-    }
-
-    /* All children, no matter the nesting level */
-    &.all-childs *:not(.bastard) {
-        background-color: inherit;
-
-    }
-
-    /* All children, but only the direct ones */
-    &.direct-childs > *:not(.bastard) {
-        background-color: inherit;
-
-    }
-
-    /* Only the first direct child */
     &.first-child-only > :first-child:not(.bastard) {
-        background-color: inherit;
+
 
     }
 
-    /* All the first children, no matter the nesting level */
-    &.all-first-childs :first-child:not(.bastard) {
-        background-color: inherit;
-
-    }
-
-    /* All the last children, no matter the nesting level */
-    &.all-last-childs :last-child:not(.bastard) {
-        background-color: inherit;
-
-    }
-
-    /* Only the last direct child */
     &.last-child-only > :last-child:not(.bastard) {
-        background-color: inherit;
 
     }
 
-    /* Odd children */
-    &.odd-children > *:nth-child(odd):not(.bastard) {
-        background-color: inherit;
+    &.odd-child-only > :nth-child(odd):not(.bastard) {
+
 
     }
 
-    /* Even children */
-    &.even-children > *:nth-child(even):not(.bastard) {
-        background-color: inherit;
+    &.even-child-onnly > :nth-child(even):not(.bastard) {
+
+        
+    }
+
+    // Generations --------------------------------------------------------------
+
+    &.first-generation > * + *:not(.bastard) {
 
     }
+
+    &.second-generation > *:is(:nth-child(2), :not(.bastard)) + *:not(.bastard) {
+
+    }
+
+    &.third-generation > *:is(:nth-child(3), :not(.bastard)) + *:not(.bastard) {}
+
+    // Brothers ----------------------------------------------------------------
+
+    &.nearest-siblings + *:not(.bastard) {
+
+    }
+
+    &.all-siblings ~ *:not(.bastard) {}
+
+}
+
+
+/* Inherit colors */
+:where(.parent.colors) {
+    --bg: currentColor;
+    --text-color: currentColor;
+}
+
+/* Inherit the spacing vars */
+:where(.parent.sizes) {
+    --spacing: var(--spacing);
+}
+
+/* Inherit the font variables */
+:where(.parent.font) {
+    --font-size: var(--font-size);
+    --text-color: var(--text-color);
+}
+
+/* All children, no matter the nesting level */
+.parent.all-childs *:not(.bastard) {
+   
+}
+
+/* All children, but only the direct ones */
+.parent.direct-childs > *:not(.bastard) {
+    background-color: inherit;
+}
+
+/* Only the first direct child */
+.parent.first-child-only > :first-child:not(.bastard) {
+    background-color: inherit;
+}
+
+/* All the first children, no matter the nesting level */
+.parent.all-first-childs :first-child:not(.bastard) {
+    background-color: inherit;
+}
+
+/* All the last children, no matter the nesting level */
+.parent.all-last-childs :last-child:not(.bastard) {
+    background-color: inherit;
+}
+
+/* Only the last direct child */
+.parent.last-child-only > :last-child:not(.bastard) {
+    background-color: inherit;
+}
+
+/* Odd children */
+.parent.odd-children > *:nth-child(odd):not(.bastard) {
+    background-color: inherit;
+}
+
+/* Even children */
+.parent.even-children > *:nth-child(even):not(.bastard) {
+    background-color: inherit;
 }
