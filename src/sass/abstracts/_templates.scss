@@ -9,6 +9,8 @@
 
     --main-container-size: 80dvw;
     --min-layou-size: 20rem;
+
+    --spacing-between-sections: var(--lg);
     
     // These are the variables that generate all the style system
     
@@ -28,9 +30,9 @@
 }
 
 :where(:root[data-template="modern"]) {
-    --base: 2.4rem;
+    --base: 2rem;
 
-    --min-container-size: 60dvw;
+    --min-container-size: 100dvw;
 }
 
 :where(:root[data-template="classic"]) {

@@ -191,6 +191,7 @@ a > p, h1, h2, h3, h4, h5, h6, span, a, li {
   --height: auto;
   --main-container-size: 80dvw;
   --min-layou-size: 20rem;
+  --spacing-between-sections: var(--lg);
   --base: 1.6rem;
   --spacing: .8rem;
   --jump: 2;
@@ -200,8 +201,8 @@ a > p, h1, h2, h3, h4, h5, h6, span, a, li {
 }
 
 :where(:root[data-template=modern]) {
-  --base: 2.4rem;
-  --min-container-size: 60dvw;
+  --base: 2rem;
+  --min-container-size: 100dvw;
 }
 
 :where(:root[data-template=classic]) {
@@ -390,22 +391,23 @@ body, .app, #root {
   --spacing: var(--md);
   --spacing-block: var(--md); /* Added variable for block spacing */
   --spacing-inline: var(--lg);
+  --roundness: inherit;
   display: grid;
   place-items: center;
-  min-height: 100dvh;
+  min-height: var(--h-screen);
   background-color: var(--bg);
 }
 body > :where(nav, header, main, footer):not(.hero), .app > :where(nav, header, main, footer):not(.hero), #root > :where(nav, header, main, footer):not(.hero) {
   --bg: var(--background);
   background-color: var(--bg);
 }
-body :where(main > section, div:not(.hero, .wrapper, .hamburguer-icon)), .app :where(main > section, div:not(.hero, .wrapper, .hamburguer-icon)), #root :where(main > section, div:not(.hero, .wrapper, .hamburguer-icon)) {
+body :where(main > section, div):not(.hero, .wrapper, .hamburguer-icon, .separator), .app :where(main > section, div):not(.hero, .wrapper, .hamburguer-icon, .separator), #root :where(main > section, div):not(.hero, .wrapper, .hamburguer-icon, .separator) {
   --bg: var(--secondary);
   background-color: var(--bg);
   margin-block: var(--spacing-block);
   padding: var(--spacing);
 }
-body :where(main > section > :is(section, div):not(.hero, .wrapper, .hamburguer-icon)), .app :where(main > section > :is(section, div):not(.hero, .wrapper, .hamburguer-icon)), #root :where(main > section > :is(section, div):not(.hero, .wrapper, .hamburguer-icon)) {
+body :where(main > section > :is(section, div):not(.hero, .wrapper, .hamburguer-icon, .separator)), .app :where(main > section > :is(section, div):not(.hero, .wrapper, .hamburguer-icon, .separator)), #root :where(main > section > :is(section, div):not(.hero, .wrapper, .hamburguer-icon, .separator)) {
   --spacing: var(--md);
   margin-block: var(--spacing);
 }
@@ -1020,6 +1022,37 @@ hr {
   border-radius: 0;
 }
 
+:where(:root, html) {
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted-accent) var(--muted-background);
+}
+
+::-webkit-scrollbar {
+  width: 1.6vmax;
+  height: 1.6vmax;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--muted-accent);
+  border-radius: var(--round-peal);
+  cursor: pointer;
+  border: 0.2em var(--muted-background) solid;
+  transition: background-color 0.2s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent);
+}
+
+/* ::-webkit-scrollbar-thumb:hover {
+
+    background-color: red;
+} */
+::-webkit-scrollbar-track {
+  background-color: var(--muted-background);
+  border-radius: var(--round-peal);
+  margin-block: 1vmin;
+}
+
 form:-moz-submit-invalid input:invalid {
   border: 0.2rem var(--destructive) solid;
   transition: border-color var(--transition);
@@ -1065,12 +1098,9 @@ label:not([role=button]) {
   --spacing-y: var(--sm);
   --spacing-x: var(--md);
   --width: 100%;
-  margin-inline: 0;
   width: fit-content;
   height: fit-content;
-  display: flex;
-  gap: var(--spacing-y);
-  align-items: center;
+  padding-block: var(--spacing-y);
 }
 label:has(> input[type=file]),
 label:not([role=button]):has(> input[type=file]) {
@@ -1127,7 +1157,7 @@ select {
   border-radius: var(--roundness);
   outline: none;
   transition: all var(--transition);
-  /* &:focus {
+  /* &:focus 
 
       border-color: var(--accent);
   } */
@@ -1151,7 +1181,10 @@ select:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range]
 input[type=radio],
 select[type=radio] {
   border-radius: 50%;
-  padding: 0.2vmin;
+  padding: 0;
+  margin: 0;
+  width: 1.4em;
+  aspect-ratio: 1;
   display: grid;
   place-items: center;
 }
@@ -1160,9 +1193,9 @@ select[type=radio]::after {
   content: "";
   display: block;
   scale: 0;
-  width: 0.8em;
+  width: 60%;
   border-radius: inherit;
-  aspect-ratio: 1/1;
+  aspect-ratio: inherit;
   background-color: var(--accent);
   transition: scale 0.2s var(--transition-out-circle);
 }
@@ -1213,6 +1246,9 @@ input[type=checkbox]:not([role=switch]),
 select[type=checkbox]:not([role=switch]) {
   overflow: hidden;
   position: relative;
+  width: 1.4em;
+  height: 1.4em;
+  aspect-ratio: 1;
 }
 input[type=checkbox]:not([role=switch]):checked::after,
 select[type=checkbox]:not([role=switch]):checked::after {
@@ -1227,7 +1263,7 @@ select[type=checkbox]:not([role=switch])::after {
   --borderColor: var(--accent);
   position: absolute;
   inset: 0;
-  transform: rotate(40deg) translate(-65%, -50%);
+  transform: rotate(40deg) translate(-60%, -50%);
   height: var(--height);
   width: var(--width);
   scale: 0;
@@ -1277,10 +1313,6 @@ select[type=datetime-local]::-webkit-calendar-picker-indicator {
   align-self: center;
   margin-top: 2.4%;
   cursor: pointer;
-}
-input[type=radio],
-select[type=radio] {
-  width: 200%;
 }
 input[type=range],
 select[type=range] {
@@ -1444,7 +1476,6 @@ input[type=checkbox][role=switch]) {
   --_switch-slider-color: whitesmoke;
   /* GLOBAL */
   --spacing: var(--md);
-  margin: var(--spacing);
 }
 
 /* Hiding it to achieve the toggle effect */
@@ -1578,7 +1609,7 @@ body > footer {
 body > footer ul {
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(10ch, 1fr));
 }
 body > footer ul li {
   font-size: calc(10vw - var(--footer-size));
@@ -1735,6 +1766,33 @@ header > nav ul li:is(:hover, :focus) a {
 }
 header > nav ul li:active a {
   opacity: 0.6;
+}
+
+nav[role=navigation].floating-nav {
+  --_spacing-x: var(--sm);
+  --_spacing-y: var(--md);
+  border-radius: 0 var(--roundness) var(--roundness) 0;
+  width: fit-content;
+  padding-inline: var(--_spacing-x);
+  padding-block: var(--_spacing-y);
+  position: fixed;
+  left: 0;
+}
+nav[role=navigation].floating-nav[data-orientation=right] {
+  left: unset;
+  right: 0;
+}
+nav[role=navigation].floating-nav ul {
+  display: grid;
+  gap: var(--sm);
+}
+nav[role=navigation].floating-nav li {
+  --_spacing-y: var(--lg);
+  --_spacing-x: var(--lg);
+  --_border: var(--border);
+  padding-block: var(--_spacing-y);
+  padding-inline: var(--_spacing-x);
+  border: var(--_border);
 }
 
 @media only screen and (max-width: 37.5em) {

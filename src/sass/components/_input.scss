@@ -77,14 +77,10 @@ label:not([role="button"]) {
 
     --width: 100%;
 
-    margin-inline: 0;
-
     width: fit-content;
     height: fit-content;
 
-    display: flex;
-    gap: var(--spacing-y);
-    align-items: center;
+    padding-block: var(--spacing-y);
 
     // Styles the label that has a input file as child
     &:has( > input[type="file"]) {
@@ -176,7 +172,7 @@ select {
 
     transition: all var(--transition);
 
-    /* &:focus {
+    /* &:focus 
 
         border-color: var(--accent);
     } */
@@ -206,7 +202,11 @@ select {
 
     &[type="radio"] {
         border-radius: 50%;
-        padding: .2vmin;
+        padding: 0;
+        margin: 0;
+        width: 1.4em;
+        aspect-ratio: 1;
+        //padding: .1em;
         display: grid;
         place-items: center;
         
@@ -214,9 +214,9 @@ select {
             content: "";
             display: block;
             scale: 0;
-            width: .8em;
+            width: 60%;
             border-radius: inherit;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: inherit;
             background-color: var(--accent);
             transition: scale .2s var(--transition-out-circle);
         }
@@ -282,6 +282,9 @@ select {
 
         overflow: hidden;
         position: relative;
+        width: 1.4em;
+        height: 1.4em;
+        aspect-ratio: 1;
 
         &:checked::after {
             scale: 45%;
@@ -298,7 +301,7 @@ select {
             position: absolute;
             inset: 0;
             
-            transform: rotate(40deg) translate(-65%, -50%);
+            transform: rotate(40deg) translate(-60%, -50%);
             height: var(--height);
             width: var(--width);
             scale: 0;
@@ -346,13 +349,6 @@ select {
             margin-top: 2.4%;
             cursor: pointer;
         }
-    }
-
-    // Radio
-
-    &[type="radio"] {
-
-        width: 200%;
     }
 
 

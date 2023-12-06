@@ -1,14 +1,15 @@
-$exclude-from-layout: ".hero, .wrapper, .hamburguer-icon";
+$exclude-from-layout: ".hero, .wrapper, .hamburguer-icon, .separator";
 
 body, .app, #root {
     --bg: var(--background);
     --spacing: var(--md);
     --spacing-block: var(--md); /* Added variable for block spacing */
     --spacing-inline: var(--lg);
+    --roundness: inherit;
 
     display: grid;
     place-items: center;
-    min-height: 100dvh;
+    min-height: var(--h-screen);
     //gap: var(--spacing); Testing for hero section
     background-color: var(--bg);
 
@@ -19,7 +20,7 @@ body, .app, #root {
         background-color: var(--bg);
     }
     
-    & :where(main > section, div:not(#{$exclude-from-layout})) {
+    & :where(main > section, div):not(#{$exclude-from-layout}) {
         --bg: var(--secondary);
         background-color: var(--bg);
         margin-block: var(--spacing-block);
@@ -38,6 +39,8 @@ body, .app, #root {
     }
 }
 
+// Logo Styling
+
 :where(a:not([role="img"])) {
     --txt-color: var(--accent);
     width: fit-content;
@@ -47,6 +50,8 @@ body, .app, #root {
         color: var(--txt-color);
     }
 }
+
+// Form Default Styling
 
 :where(form) {
     --spacing: inherit;
@@ -60,11 +65,15 @@ body, .app, #root {
     width: var(--w-full);
 }
 
+// Default Behavior when focused by using the TAB key
+
 :where(:focus-visible) {
     --outline: var(--outline-md);
     outline: var(--outline);
     outline-offset: var(--xs);
 }
+
+// Default Effect Behavior
 
 :where(:is(button, summary, li):not(.disabled):active) {
     filter: var(--effect-bright);

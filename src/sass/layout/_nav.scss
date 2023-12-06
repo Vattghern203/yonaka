@@ -40,6 +40,45 @@ header > nav {
     }
 }
 
+nav[role="navigation"].floating-nav {
+
+    --_spacing-x: var(--sm);
+    --_spacing-y: var(--md);
+
+    border-radius: 0 var(--roundness) var(--roundness) 0;
+    width: fit-content;
+    padding-inline: var(--_spacing-x);
+    padding-block: var(--_spacing-y);
+    position: fixed;
+    left: 0;
+    
+    
+    &[data-orientation="right"] {
+        left: unset;
+        right: 0;
+    }
+
+    & ul {
+
+        display: grid;
+        gap: var(--sm);
+    }
+
+    & li {
+
+        --_spacing-y: var(--lg);
+        --_spacing-x: var(--lg);
+        --_border: var(--border);
+
+        padding-block: var(--_spacing-y);
+        padding-inline: var(--_spacing-x);
+        border: var(--_border);
+    }
+
+}
+
+// MEDIA QUERIES
+
 @media only screen and (max-width: 37.5em) {
     header nav ul {
         display: none;
