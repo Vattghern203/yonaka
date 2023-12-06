@@ -1,0 +1,41 @@
+:where(:root, html) {
+
+    --roundness: unset; // The border-radius to everything
+    --theme: dark; // the actual theme in the page
+    --width: auto; // the witdth of an element
+    --height: auto; // the height of each element
+    
+    // CONTROL VARS ---------------------------------
+
+    --main-container-size: 80dvw;
+    --min-layou-size: 20rem;
+    
+    // These are the variables that generate all the style system
+    
+    --base: 1.6rem; // Represent the inital value for measurements
+    --spacing: .8rem; // the spacing between elements
+    
+    --jump: 2; // the jump value between elements
+
+    // SPACING VARS
+
+    --spacing-y: calc(--spacing / 2);
+    --spacing-x: calc(--spacing * 2);
+
+    // COLOR SPECIFIC
+
+    --destructive: #772626;
+}
+
+:where(:root[data-template="modern"]) {
+    --base: 2.4rem;
+
+    --min-container-size: 60dvw;
+}
+
+:where(:root[data-template="classic"]) {
+
+    --base: 1rem;
+}
+
+:where(:root[data-template="roundy"]) {}

@@ -1,21 +1,39 @@
 body > footer {
     --_width: 100%;
     --_height: 35vmin;
+    --_bg: var(--muted-background);
 
     --_txt: color-mix(in oklab, var(--text-color) 90%, black 10%);
+
+    font-size: calc(10vw - var(--footer-size));
+
+    background-color: var(--_bg);
 
     color: var(--_txt);
     align-self: flex-end;
     display: grid;
+
+    padding-block: var(--3xl);
+    padding-inline: var(--lg);
+
     place-items: center;
     width: var(--_width);
-    height: var(--_height);
-    border-top: .1rem solid var(--foreground-accent);
+    height: clamp(var(--_height), auto, fit-content);
+    border-top: .2rem solid var(--muted-accent);
+
+    display: grid;
+    place-items: center;
 
     & ul {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+
+        & li {
+
+            font-size: calc(10vw - var(--footer-size));
+        }
+        
 
         & a {
             color: var(--_txt);

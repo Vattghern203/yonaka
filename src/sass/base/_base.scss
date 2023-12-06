@@ -12,6 +12,8 @@ body, .app, #root {
     //gap: var(--spacing); Testing for hero section
     background-color: var(--bg);
 
+    //padding: calc(12vw - 1em);
+
     & > :where(nav, header, main, footer):not(.hero) {
         --bg: var(--background);
         background-color: var(--bg);

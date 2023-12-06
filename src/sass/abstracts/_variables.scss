@@ -1,27 +1,9 @@
 @use "color-palette";
 @use "props";
+@use "templates"; // Base Styles and Templates
 @use "../utils/vars";
 
 :where(:root, html) {
-    // GLOBAL SCOPED VARS
-
-    --roundness: unset; // The border-radius to everything
-    --jump: 2; // the jump value between elements
-    --theme: dark; // the actual theme in the page
-    --width: auto; // the witdth of an element
-    --height: auto; // the height of each element
-    
-    // CONTROL VARS ---------------------------------
-
-    // These are the variables that generate all the style system
-    
-    --base: 1.6rem; // Represent the inital value for measurements
-    --spacing: .8rem; // the spacing between elements
-    
-    // SPACING VARS
-
-    --spacing-y: calc(--spacing / 2);
-    --spacing-x: calc(--spacing * 2);
 
     // MEASUREMENTS
 
@@ -38,8 +20,6 @@
     --hg: calc(var(--base) * 10);
 
     // Color created with the palette
-
-    --destructive: #772626;
 
     --light-destructive: color-mix(in oklab, var(--destructive), #FFF 30%);
 

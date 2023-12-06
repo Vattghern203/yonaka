@@ -1,13 +1,14 @@
 body > main {
-    --width: 50%;
-    --height: auto;
-    --spacing: var(--lg);
-    --bg: inherit;
+    --_width: var(--main-container-size);
+    --_height: auto;
+    --_spacing-y: var(--spacing-y);
+    --_bg: inherit;
 
-    width: max(var(--width), 80dvw);
-    height: var(--height);
-    padding: var(--lg) var(--xl);
+    width: clamp(20rem, var(--_width), 100dvw);
+    height: var(--_height);
+    //padding: var(--lg) var(--xl);
     border-radius: var(--roundness);
-    margin-block: var(--spacing);
-    background-color: var(--bg);
+    margin-block: var(--_spacing-y);
+    //margin-inline: auto;
+    background-color: var(--_bg);
 }

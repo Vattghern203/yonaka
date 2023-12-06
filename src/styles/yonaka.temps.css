@@ -16,14 +16,6 @@ html {
   --blend-highlight-color: #000;
 }
 
-[data-style=sharp] {
-  --roundness: 0;
-}
-
-[data-style=modern] {
-  --spacing: var(--lg);
-}
-
 @property --base {
   syntax: "<lenght";
   inherits: false;
@@ -192,6 +184,30 @@ a > p, h1, h2, h3, h4, h5, h6, span, a, li {
   inherits: true;
   initial-vaue: 0.8rem;
 }
+:where(:root, html) {
+  --roundness: unset;
+  --theme: dark;
+  --width: auto;
+  --height: auto;
+  --main-container-size: 80dvw;
+  --min-layou-size: 20rem;
+  --base: 1.6rem;
+  --spacing: .8rem;
+  --jump: 2;
+  --spacing-y: calc(--spacing / 2);
+  --spacing-x: calc(--spacing * 2);
+  --destructive: #772626;
+}
+
+:where(:root[data-template=modern]) {
+  --base: 2.4rem;
+  --min-container-size: 60dvw;
+}
+
+:where(:root[data-template=classic]) {
+  --base: 1rem;
+}
+
 :where(:root, html, *, *::after, *::before) {
   --offset-min: 0rem;
   --offset-sm: 1rem;
@@ -276,15 +292,6 @@ a > p, h1, h2, h3, h4, h5, h6, span, a, li {
 }
 
 :where(:root, html) {
-  --roundness: unset;
-  --jump: 2;
-  --theme: dark;
-  --width: auto;
-  --height: auto;
-  --base: 1.6rem;
-  --spacing: .8rem;
-  --spacing-y: calc(--spacing / 2);
-  --spacing-x: calc(--spacing * 2);
   --sl: calc(var(--base) / 10);
   --3xs: calc(var(--base) / 8);
   --xxs: calc(var(--base) / 6);
@@ -296,7 +303,6 @@ a > p, h1, h2, h3, h4, h5, h6, span, a, li {
   --xxl: calc(var(--base) * 6);
   --3xl: calc(var(--base) * 8);
   --hg: calc(var(--base) * 10);
-  --destructive: #772626;
   --light-destructive: color-mix(in oklab, var(--destructive), #FFF 30%);
   --blend-text-color: #000;
   --blend-back-color: #FFF;
@@ -1553,19 +1559,29 @@ input[role=switch][type=checkbox].squared:checked::after {
 body > footer {
   --_width: 100%;
   --_height: 35vmin;
+  --_bg: var(--muted-background);
   --_txt: color-mix(in oklab, var(--text-color) 90%, black 10%);
+  font-size: calc(10vw - var(--footer-size));
+  background-color: var(--_bg);
   color: var(--_txt);
   align-self: flex-end;
   display: grid;
+  padding-block: var(--3xl);
+  padding-inline: var(--lg);
   place-items: center;
   width: var(--_width);
-  height: var(--_height);
-  border-top: 0.1rem solid var(--foreground-accent);
+  height: clamp(var(--_height), auto, fit-content);
+  border-top: 0.2rem solid var(--muted-accent);
+  display: grid;
+  place-items: center;
 }
 body > footer ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+}
+body > footer ul li {
+  font-size: calc(10vw - var(--footer-size));
 }
 body > footer ul a {
   color: var(--_txt);
@@ -1680,16 +1696,15 @@ body > header.header-sticky {
 }
 
 body > main {
-  --width: 50%;
-  --height: auto;
-  --spacing: var(--lg);
-  --bg: inherit;
-  width: max(var(--width), 80dvw);
-  height: var(--height);
-  padding: var(--lg) var(--xl);
+  --_width: var(--main-container-size);
+  --_height: auto;
+  --_spacing-y: var(--spacing-y);
+  --_bg: inherit;
+  width: clamp(20rem, var(--_width), 100dvw);
+  height: var(--_height);
   border-radius: var(--roundness);
-  margin-block: var(--spacing);
-  background-color: var(--bg);
+  margin-block: var(--_spacing-y);
+  background-color: var(--_bg);
 }
 
 header > nav {
