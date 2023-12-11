@@ -9,12 +9,15 @@ $hero-variations: ".hero-shade, .hero-blur, .hero-fade, .hero-gradient";
 }
 
 :is(div, section):is(.hero, #{$hero-variations}) {
-    --bg-img-url: url(https://images.unsplash.com/photo-1528353518104-dbd48bee7bc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80);
-    --bg-img-size: cover;
-    --bg-img-repeat: no-repeat;
-    --bg-img-pos: center;
+    --_bg-img-url: url(https://images.unsplash.com/photo-1528353518104-dbd48bee7bc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80);
+    --_bg-img-size: cover;
+    --_bg-img-repeat: no-repeat;
+    --_bg-img-pos: center;
 
     --_hero-content-pos: center;
+
+    // Default Values
+    --_bg: var(--background);
 
     display: grid;
     place-items: center;
@@ -25,7 +28,7 @@ $hero-variations: ".hero-shade, .hero-blur, .hero-fade, .hero-gradient";
     width: var(--w-full);
     height: var(--h-screen);
 
-    background-color: var(--background);
+    background-color: var(--_bg);
     background-image: var(--bg-img-url);
     background-size: var(--bg-img-size);
     background-repeat: var(--bg-img-repeat);

@@ -185,9 +185,9 @@ Some of the variables used in the project can be accessed by any element in the 
 
 #### Private Scope
 
-They're variables that only has effect on itself and it's children.
+There's variables that only has effect on itself and on it's children.
 
-You can use global scoped vars and changes it.
+You can use global scoped vars and change them.
 
 ```css
 :where(:root, html) {
