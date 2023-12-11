@@ -20,7 +20,6 @@ To get started with Akatsuki-CSS, follow these steps:
 3. Add it to your code
 
 * HTML
-
   ```html
   <head>
     <meta charset="UTF-8" />
@@ -78,18 +77,9 @@ To get started with Akatsuki-CSS, follow these steps:
 
 ## Customizing
 
-- You can overwrite the default values of the variables, by simpling rewriting it in the `:root` or `html` selectors. The default specifity for almost all styles is equals to 0;
+Since it's designed to be flexible and accessible by any level of knowlodge, there's several ways to make the framework looks as you please.
 
-- Also you can customize a variable for a single tag with the inline css;
-
-    * Ex: ```<div style="--spacing: var(--lg)">Dummy Text</div>```
-
-- Or you can use the inheritance on the parent selector;
-
-**Note:** I personally recommend creating your own stylesheet and import it below the Akatsuki one in your HTML.
-
-
-### Design Systen Variables
+### Design System Variables
 
 #### Global Scoped
 
@@ -207,6 +197,21 @@ You can use global scoped vars and changes it.
   --border-style: dotted;
 }
 ```
+
+### Overwrite
+
+- You can overwrite the default values of the variables, by simpling rewriting it in the `:root` or `html` selectors. The default specifity for almost all styles is equals to 0;
+
+- Also you can customize a variable for a single tag with the inline css;
+
+    * Ex: ```<div style="--spacing: var(--lg)">Dummy Text</div>```
+
+- Or you can use the inheritance on the parent selector;
+
+**Note:** I personally recommend creating your own stylesheet and import it below the Akatsuki one in your HTML.
+
+
+
 
 #### Usage and Pattern
 
