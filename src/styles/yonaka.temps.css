@@ -1671,42 +1671,48 @@ body > header.header-sticky {
   width: var(--w-full);
   height: var(--h-screen);
   background-color: var(--_bg);
-  background-image: var(--bg-img-url);
-  background-size: var(--bg-img-size);
-  background-repeat: var(--bg-img-repeat);
-  background-position: var(--bg-img-pos);
+  background-image: var(--_bg-img-url);
+  background-size: var(--_bg-img-size);
+  background-repeat: var(--_bg-img-repeat);
+  background-position: var(--_bg-img-pos);
   text-align: center;
 }
 :is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) section {
   z-index: 1;
   /* display: grid;
   grid-template-columns: 10% repeat(4, 1fr) 10%; */
-  width: clamp(10px, 50%, 56rem);
+  width: max(50%, 80vmin);
   height: auto;
   margin-inline: auto;
   margin-block: 0;
 }
-:is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) section :is(h1, h2, p) {
-  --font-size: var(--hg);
+:is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) section :is(h1, h2) {
+  --_font-size: var(--lg);
   margin: 0;
   grid-column: 1/3;
 }
 :is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) section h1 {
-  font-size: calc(var(--font-size) / 2);
+  --_font-size: var(--lg);
+  font-size: clamp(5rem, 1.25rem + 12vw, 8rem);
   color: var(--accent);
   --spacing: 0;
 }
 :is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) section h2 {
   --_spacing-y: var(--md);
-  font-size: calc(var(--font-size) / 6);
+  --_font-size: var(--md);
+  font-size: clamp(1rem, -1.5rem + 8vw, 3rem);
   margin-block-end: var(--_spacing-y);
 }
 :is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) section p {
-  font-size: calc(var(--font-size) / 10);
+  font-size: clamp(0.8rem, 0.3rem + 1.6vw, 1.2rem);
   margin-block-end: var(--lg);
 }
+:is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) section button {
+  --_spacing-y: var(--xs);
+  margin-block-start: var(--_spacing-y);
+}
 
-:is(:is(div, section).hero-shade, :is(div, section).hero-gradient)::before {
+:is(:is(div, section).hero-shade, :is(div, section).hero-gradient, :is(div, section).hero-blur)::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -1722,6 +1728,8 @@ body > header.header-sticky {
 }
 :is(div, section).hero-blur {
   --_effect-intensity: var(--md);
+}
+:is(div, section).hero-blur::before {
   filter: blur(var(--_effect-intensity));
 }
 :is(div, section).hero-gradient {
