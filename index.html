@@ -8,13 +8,9 @@
   <title>Akatsuki V2</title>
 </head>
 
-<style>
-  :root {}
-</style>
-
 <body>
   <header class="header-sticky">
-    <a href="#" role="img" aria-label="">
+    <a href="#" role="img" aria-label="Brand Logo">
       <img 
         class="logo" 
         src="https://i.pinimg.com/474x/a5/66/b8/a566b87e4bcc24b33eda8bd41513f1a8.jpg" 
@@ -43,7 +39,7 @@
 
   <!--Hero Section-->
 
-  <section class="hero-blur">
+  <section class="hero-gradient">
     
     <section>
       <h1>Yonaka</h1>
@@ -52,7 +48,7 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi atque, totam aliquam, quasi molestias ex dolores magnam neque id voluptas doloremque omnis repellat quae velit aut magni laborum ducimus. Officiis?</p>
 
       <button class="cta">Get Started</button>
-      <button class="ghost">Go Out</button>
+      <button class="ghost">See More</button>
     </section>
   </section>
 
@@ -64,17 +60,20 @@
     <section>
       <h2>What is it?</h2>
 
-      
-      <p>It's a mix of several other ideas combined in one, trying to </p>
+      <p>It's a mix of several other ideas combined in one, trying to retain the best of each one</p>
+
+      <p>The usage of the framework consists of 3 keys points: <strong>Sematinc HTML, ARIA Usage</strong> and <strong>CSS variables.</strong></p>
+
+
     </section>
-    
-    <div class="separator"></div>
 
     <section>
 
       <h2>Displays</h2>
 
       <p>There's a bunch of displays to use going to the most simple and dynamic to real occasional use cases.</p>
+
+      <hr>
 
       <h3>Fixed Grid</h3>
 
@@ -93,6 +92,8 @@
         <div style="--bg: var(--primary)">item 10</div>
       </div>
 
+      <hr>
+
       <h3>Grid Dynamic</h3>
 
       <p>It's a grid with undefined columns, that can be any value(It depends in the child size).</p>
@@ -105,6 +106,8 @@
         <div style="--bg: var(--primary)">item 5</div>
         <div style="--bg: var(--primary)">item 6</div>
       </div>
+
+      <hr>
 
       <h3>Grid Reel</h3>
 
@@ -119,6 +122,8 @@
         <div style="--bg: var(--primary)">item 6</div>
       </div>
 
+      <hr>
+
       <h3>Flex Row</h3>
 
       <p>A ordinary flex row with no styling by default.(There's a gap just for demonstrative purposes).</p>
@@ -132,6 +137,8 @@
         <div style="--bg: var(--primary)">item 6</div>
       </div>
 
+      <hr>
+
       <h3>Flex Col</h3>
 
       <p>A ordinary flex column with no styling by default.(There's a gap just for demonstrative purposes).</p>
@@ -144,6 +151,8 @@
         <div style="--bg: var(--primary)">item 5</div>
         <div style="--bg: var(--primary)">item 6</div>
       </div>
+
+      <hr>
 
       <h3>Flex Cluster</h3>
 
@@ -164,6 +173,7 @@
         <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
       </div>
 
+      <hr>
 
       <h3>Flex Col</h3>
 
@@ -224,7 +234,7 @@
 
       <h2>Typography</h2>
 
-      <p>Text Hierarquy and Text Variations</p>
+      <p>Text Hierarquy and Text Variations for all sorts of usages</p>
 
       <strong>Strong</strong>
       <b>Bold</b>
@@ -258,6 +268,8 @@
       <p>As you can see below, everything that is not ok will be red bordered and the submit button is gonna look like
         is disabled.</p>
 
+      <hr>
+
       <form action="#">
         <input type="text" name="" id="" placeholder="Text..." required />
 
@@ -266,6 +278,8 @@
         <input type="email" name="" id="" placeholder="Email..." />
 
         <input type="search" placeholder="search here..." autocomplete="url">
+
+        <hr>
 
         <h3>File</h3>
 
@@ -593,11 +607,13 @@
       <h3>Modals</h3>
 
       <dialog id="dialog_modal">
-        <header>OPA</header>
+        <header>Modal Header</header>
 
-        <p>O</p>
+        <p>The modal uses header and footer to create a hierarquy of content</p>
 
-        <footer>OMG</footer>
+        <p>You can use almost any tag between them.</p>
+
+        <footer>Modal Footer</footer>
       </dialog>
 
       <button class="secondary" onclick="dialog_modal.showModal()">

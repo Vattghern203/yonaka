@@ -839,14 +839,16 @@ select > option[selected] {
   --_gallery-height: 72rem;
   --_gallery-width: clamp(
       50%,
-      80vmin,
-      100%
+      100%,
+      80vmin
   );
   --_bg: transparent;
   background-color: var(--_bg);
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 50%;
+  padding: 0;
   width: var(--_gallery-width);
   align-self: center;
   margin: var(--spacing) auto;
@@ -1033,8 +1035,8 @@ hr {
 }
 
 ::-webkit-scrollbar {
-  width: 1.6vmax;
-  height: 1.6vmax;
+  width: 1.6vmin;
+  height: 1.6vmin;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -1681,7 +1683,7 @@ body > header.header-sticky {
   z-index: 1;
   /* display: grid;
   grid-template-columns: 10% repeat(4, 1fr) 10%; */
-  width: max(50%, 80vmin);
+  width: min(50%, 50dvw);
   height: auto;
   margin-inline: auto;
   margin-block: 0;
@@ -1727,10 +1729,10 @@ body > header.header-sticky {
   background-color: rgba(var(--_effect-color) var(--_effect-intensity));
 }
 :is(div, section).hero-blur {
-  --_effect-intensity: var(--md);
+  --_effect-intensity: var(--xs);
 }
 :is(div, section).hero-blur::before {
-  filter: blur(var(--_effect-intensity));
+  backdrop-filter: blur(var(--_effect-intensity));
 }
 :is(div, section).hero-gradient {
   --_effect-intensity: 20%;
@@ -1745,7 +1747,7 @@ body > main {
   --_height: auto;
   --_spacing-y: var(--spacing-y);
   --_bg: inherit;
-  width: clamp(20rem, var(--_width), 100dvw);
+  width: clamp(20rem, var(--_width), 80dvw);
   height: var(--_height);
   border-radius: var(--roundness);
   margin-block: var(--_spacing-y);
@@ -1772,7 +1774,7 @@ header > nav ul li {
   height: fit-content;
 }
 header > nav ul li a:not([role=button]) {
-  font-size: var(--font-size);
+  font-size: clamp(1rem, 0.7rem + 0.96vw, 1.6rem);
   font-weight: 600;
 }
 header > nav ul li:is(:hover, :focus) a {
@@ -1817,6 +1819,7 @@ nav[role=navigation].floating-nav li {
 }
 section {
   height: auto;
+  padding-block: var(--hg);
 }
 section section {
   margin-block: var(--spacing-block);
@@ -1912,7 +1915,7 @@ section section {
 :is(.big-bento, .small-bento, .bento) > * {
   margin: 0;
   align-self: stretch;
-  background-color: var(--background);
+  background-color: var(--foreground-background);
 }
 :is(.big-bento, .small-bento, .bento) > img {
   object-position: center;

@@ -13,7 +13,9 @@ Akatsuki CSS is a flexible and highly customizable CSS framework with a wide ran
 
 To get started with Akatsuki-CSS, follow these steps:
 
-### JsDelivr
+### Installation
+
+#### JsDelivr
 
 1. Go to the [JsDelivr](https://www.jsdelivr.com/package/npm/yonaka) website
 2. Copy the HTML tag or just the URL
@@ -42,7 +44,7 @@ To get started with Akatsuki-CSS, follow these steps:
   }
   ```
 
-### NPM
+#### NPM
 
 1.Run this in your terminal ```npm i -D yonaka```
 * If you want to see what you will download go to [NPM](https://www.npmjs.com/package/yonaka)
@@ -75,11 +77,70 @@ To get started with Akatsuki-CSS, follow these steps:
 
 **Note:** remember to follow the cascade if you want to rewrite some styling.
 
+### Requirements
+
+Your HTML only need to follow this structure:
+
+```html
+<body>
+  <header>
+    <nav></nav>
+  </header>
+
+  <!--If you want to have a hero section, put it between the header and the main tag-->
+
+  <section class="hero"></section>
+
+  <main></main>
+
+  <footer></footer>
+</body>
+```
+
+### Default Usage
+
+You can use the framework as a normal HTML, but it enforces semantic usage, some examples:
+
+1. Use sections inside the main tag to create blocks of content.
+
+```html
+<body>
+  <header></header>
+
+  <section class="hero"></section>
+
+  <main>
+    <section>
+      <h2>Title</h2>
+
+      <p>Lorem</p>
+    </section>
+
+    <section>
+      <h2>Title 2</h2>
+
+      <p>Lorem 2</p>
+    </section>
+  </main>
+
+  <footer></footer>
+</body>
+```
+
+2. Use displays to hold content when needed.
+  - `.wrapper` for no styling
+  - `.row` for a flex row
+  - `.col` for a flex column
+
+[Editable Template](https://codepen.io/Vattghern203/pen/abXxQzV)
+
 ## Customizing
 
 Since it's designed to be flexible and accessible by any level of knowlodge, there's several ways to make the framework looks as you please.
 
 ### Design System Variables
+
+Basically all the styles are dependent of each other. Ex: the base variable, creates the measurements, that creates the spacings and etc... So one change in this flow, changes everything else.
 
 #### Global Scoped
 

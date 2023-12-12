@@ -43,7 +43,7 @@ $hero-variations: ".hero-shade, .hero-blur, .hero-fade, .hero-gradient";
         /* display: grid;
         grid-template-columns: 10% repeat(4, 1fr) 10%; */
 
-        width: max(50%, 80vmin);
+        width: min(50%, 50dvw);
         height: auto;
         margin-inline: auto;
         margin-block: 0;
@@ -111,11 +111,12 @@ $hero-variations: ".hero-shade, .hero-blur, .hero-fade, .hero-gradient";
 
     &-blur {
 
-        --_effect-intensity: var(--md); 
+        --_effect-intensity: var(--xs); 
 
         
         &::before {
-            filter: blur(var(--_effect-intensity));
+            //filter: blur(var(--_effect-intensity));
+            backdrop-filter: blur(var(--_effect-intensity));
         }
     }
 

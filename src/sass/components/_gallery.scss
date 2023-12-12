@@ -5,8 +5,8 @@
     --_gallery-height: 72rem;
     --_gallery-width: clamp(
         50%,
-        80vmin,
-        100%
+        100%,
+        80vmin
     );
     --_bg: transparent;
 
@@ -15,6 +15,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    height: 50%;
+    padding: 0;
 
     width: var(--_gallery-width);
     align-self: center;

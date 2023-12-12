@@ -2,6 +2,8 @@ section {
 
     height: auto;
 
+    padding-block: var(--hg);
+
     & section {
 
         margin-block: var(--spacing-block);
