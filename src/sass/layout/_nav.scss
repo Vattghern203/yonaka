@@ -48,8 +48,8 @@ label[role="navigation"] {
 
     border: red 1px solid;
 
-    height: max-content;
-    width: max-content;
+    height: fit-content;
+    width: fit-content;
 
     --_hamburguer-width: 6rem;
     --_hamburguer-height: .8rem;
@@ -61,21 +61,18 @@ label[role="navigation"] {
     gap: var(--_hamburguer-spacing, var(--sm));
     cursor: pointer;
 
-    transform-origin: left center;
+    //transform-origin: center;
 
     // Check Behavior
 
     &:has( > input[type="checkbox"]:checked) {
 
         &::after {
-
-            rotate: -45deg;
-            transform: translate(25%, -50%);
+            transform: translateY(-225%) rotate(-40deg);
         }
 
         &::before {
-
-            rotate: 45deg;
+            transform: translateY(225%) rotate(40deg);
         }
 
         & + aside {
@@ -98,7 +95,7 @@ label[role="navigation"] {
 
         all: unset;
 
-        --_hamburguer-roundness: inherit;
+        --_hamburguer-roundness: var(--roundness);
 
         content: "";
         display: block;
@@ -107,6 +104,10 @@ label[role="navigation"] {
         border-radius: var(--_hamburguer-roundness);
 
         background-color: var(--primary);
+
+        transform-origin: center;
+
+        transition: opacity .2s ease-in-out, rotate .4s var(--transition-middle-break), transform .4s var(--transition-out-circle);
 
     }
 

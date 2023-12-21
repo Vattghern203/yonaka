@@ -1803,8 +1803,8 @@ header > nav ul li:active a {
 label[role=navigation] {
   all: unset;
   border: red 1px solid;
-  height: max-content;
-  width: max-content;
+  height: fit-content;
+  width: fit-content;
   --_hamburguer-width: 6rem;
   --_hamburguer-height: .8rem;
   --_hamburguer-spacing: 1rem;
@@ -1813,14 +1813,12 @@ label[role=navigation] {
   flex-direction: column;
   gap: var(--_hamburguer-spacing, var(--sm));
   cursor: pointer;
-  transform-origin: left center;
 }
 label[role=navigation]:has(> input[type=checkbox]:checked)::after {
-  rotate: -45deg;
-  transform: translate(25%, -50%);
+  transform: translateY(-225%) rotate(-40deg);
 }
 label[role=navigation]:has(> input[type=checkbox]:checked)::before {
-  rotate: 45deg;
+  transform: translateY(225%) rotate(40deg);
 }
 label[role=navigation]:has(> input[type=checkbox]:checked) + aside {
   --_navigation-display: flex;
@@ -1830,13 +1828,15 @@ label[role=navigation]:has(> input[type=checkbox]:not(:checked)) + aside {
 }
 label[role=navigation]::after, label[role=navigation]::before, label[role=navigation] > input[type=checkbox] {
   all: unset;
-  --_hamburguer-roundness: inherit;
+  --_hamburguer-roundness: var(--roundness);
   content: "";
   display: block;
   width: var(--_hamburguer-width, 6rem);
   height: var(--_hamburguer-height, 0.8rem);
   border-radius: var(--_hamburguer-roundness);
   background-color: var(--primary);
+  transform-origin: center;
+  transition: opacity 0.2s ease-in-out, rotate 0.4s var(--transition-middle-break), transform 0.4s var(--transition-out-circle);
 }
 label[role=navigation] > input[type=checkbox]:checked {
   opacity: 0;
