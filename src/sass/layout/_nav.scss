@@ -40,6 +40,105 @@ header > nav {
     }
 }
 
+// SIDE NAVIGATION (w/ hamburguer icon) --------------------------------------------
+
+label[role="navigation"] {
+
+    all: unset;
+
+    border: red 1px solid;
+
+    height: max-content;
+    width: max-content;
+
+    --_hamburguer-width: 6rem;
+    --_hamburguer-height: .8rem;
+    --_hamburguer-spacing: 1rem;
+    --_hamburguer-roundness: var(--roudness);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--_hamburguer-spacing, var(--sm));
+    cursor: pointer;
+
+    transform-origin: left center;
+
+    // Check Behavior
+
+    &:has( > input[type="checkbox"]:checked) {
+
+        &::after {
+
+            rotate: -45deg;
+            transform: translate(25%, -50%);
+        }
+
+        &::before {
+
+            rotate: 45deg;
+        }
+
+        & + aside {
+
+            --_navigation-display: flex;
+        }
+
+    }
+
+    &:has( > input[type="checkbox"]:not(:checked)) + aside {
+
+        --_navigation-display: none;
+    }
+
+    // Hamburguer Styling
+
+    &::after, 
+    &::before, 
+    & > input[type="checkbox"] {
+
+        all: unset;
+
+        --_hamburguer-roundness: inherit;
+
+        content: "";
+        display: block;
+        width: var(--_hamburguer-width, 6rem);
+        height: var(--_hamburguer-height, .8rem);
+        border-radius: var(--_hamburguer-roundness);
+
+        background-color: var(--primary);
+
+    }
+
+
+    // Style for the input, label's child
+
+    & > input[type="checkbox"] {
+
+        // Reseting default behavior
+
+        &:checked {
+
+            opacity: 0;
+        }
+
+        &::after {
+
+            all: unset;
+        }
+
+    }
+
+    // Sibling Aside
+
+    & + aside {
+
+        --_navigation-display: none;
+
+        display: var(--_navigation-display, none);
+    }
+}
+
 nav[role="navigation"].floating-nav {
 
     --_spacing-x: var(--sm);

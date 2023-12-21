@@ -70,7 +70,10 @@ textarea {
 // Label -----------------------------------------------
 
 label,
-label:not([role="button"]) {
+label:not(:is(
+    [role="button"], 
+    [role="navigation"]
+)) {
 
     --spacing-y: var(--sm);
     --spacing-x: var(--md);
@@ -191,7 +194,13 @@ select {
     // Removing Style from Selected Types
     // PRESET
 
-    &:is([type="color"], [type="date"], [type="radio"], [type="checkbox"], [type="range"] ) {
+    &:is(
+        [type="checkbox"],
+        [type="color"],
+        [type="date"],
+        [type="radio"],
+        [type="range"] 
+    ) {
         -moz-appearance: none;
         -webkit-appearance: none;
         appearance: none;
@@ -227,7 +236,10 @@ select {
     }
 
     // A radio and checkbox common style
-    &:is([type="checkbox"], [type="radio"]) {
+    &:is(
+        [type="checkbox"],
+        [type="radio"]
+    ) {
         --_spacing-x: var(--sm);
         --_spacing-y: var(--sm);
     }

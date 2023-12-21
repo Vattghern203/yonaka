@@ -1101,7 +1101,8 @@ textarea:focus-visible {
 }
 
 label,
-label:not([role=button]) {
+label:not(:is([role=button],
+[role=navigation])) {
   --spacing-y: var(--sm);
   --spacing-x: var(--md);
   --width: 100%;
@@ -1110,7 +1111,8 @@ label:not([role=button]) {
   padding-block: var(--spacing-y);
 }
 label:has(> input[type=file]),
-label:not([role=button]):has(> input[type=file]) {
+label:not(:is([role=button],
+[role=navigation])):has(> input[type=file]) {
   --_width: var(--w-full, 100%);
   --_font-weight: 600;
   --_border-color: var(--content-text);
@@ -1131,22 +1133,26 @@ label:not([role=button]):has(> input[type=file]) {
   --_effect-level: 125%;
 }
 label:has(> input[type=file]):hover,
-label:not([role=button]):has(> input[type=file]):hover {
+label:not(:is([role=button],
+[role=navigation])):has(> input[type=file]):hover {
   --_bg: var(--muted-accent);
   --_border-color: var(--text);
 }
 label:has(> input[type=file]):active,
-label:not([role=button]):has(> input[type=file]):active {
+label:not(:is([role=button],
+[role=navigation])):has(> input[type=file]):active {
   filter: var(--effect-bright);
 }
 label:has(> input[type=file]:focus-visible),
-label:not([role=button]):has(> input[type=file]:focus-visible) {
+label:not(:is([role=button],
+[role=navigation])):has(> input[type=file]:focus-visible) {
   --outline: var(--outline-md);
   outline-offset: var(--outline-offset);
   outline: var(--outline);
 }
 label:has(> input[type=color]),
-label:not([role=button]):has(> input[type=color]) {
+label:not(:is([role=button],
+[role=navigation])):has(> input[type=color]) {
   display: flex;
   align-items: center;
 }
@@ -1178,8 +1184,16 @@ input:focus,
 select:focus {
   --_border-color: var(--accent);
 }
-input:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range]),
-select:is([type=color], [type=date], [type=radio], [type=checkbox], [type=range]) {
+input:is([type=checkbox],
+[type=color],
+[type=date],
+[type=radio],
+[type=range]),
+select:is([type=checkbox],
+[type=color],
+[type=date],
+[type=radio],
+[type=range]) {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -1210,8 +1224,10 @@ input[type=radio]:checked::after,
 select[type=radio]:checked::after {
   scale: 1;
 }
-input:is([type=checkbox], [type=radio]),
-select:is([type=checkbox], [type=radio]) {
+input:is([type=checkbox],
+[type=radio]),
+select:is([type=checkbox],
+[type=radio]) {
   --_spacing-x: var(--sm);
   --_spacing-y: var(--sm);
 }
@@ -1784,6 +1800,55 @@ header > nav ul li:active a {
   opacity: 0.6;
 }
 
+label[role=navigation] {
+  all: unset;
+  border: red 1px solid;
+  height: max-content;
+  width: max-content;
+  --_hamburguer-width: 6rem;
+  --_hamburguer-height: .8rem;
+  --_hamburguer-spacing: 1rem;
+  --_hamburguer-roundness: var(--roudness);
+  display: flex;
+  flex-direction: column;
+  gap: var(--_hamburguer-spacing, var(--sm));
+  cursor: pointer;
+  transform-origin: left center;
+}
+label[role=navigation]:has(> input[type=checkbox]:checked)::after {
+  rotate: -45deg;
+  transform: translate(25%, -50%);
+}
+label[role=navigation]:has(> input[type=checkbox]:checked)::before {
+  rotate: 45deg;
+}
+label[role=navigation]:has(> input[type=checkbox]:checked) + aside {
+  --_navigation-display: flex;
+}
+label[role=navigation]:has(> input[type=checkbox]:not(:checked)) + aside {
+  --_navigation-display: none;
+}
+label[role=navigation]::after, label[role=navigation]::before, label[role=navigation] > input[type=checkbox] {
+  all: unset;
+  --_hamburguer-roundness: inherit;
+  content: "";
+  display: block;
+  width: var(--_hamburguer-width, 6rem);
+  height: var(--_hamburguer-height, 0.8rem);
+  border-radius: var(--_hamburguer-roundness);
+  background-color: var(--primary);
+}
+label[role=navigation] > input[type=checkbox]:checked {
+  opacity: 0;
+}
+label[role=navigation] > input[type=checkbox]::after {
+  all: unset;
+}
+label[role=navigation] + aside {
+  --_navigation-display: none;
+  display: var(--_navigation-display, none);
+}
+
 nav[role=navigation].floating-nav {
   --_spacing-x: var(--sm);
   --_spacing-y: var(--md);
@@ -1915,7 +1980,7 @@ section section {
 :is(.big-bento, .small-bento, .bento) > * {
   margin: 0;
   align-self: stretch;
-  background-color: var(--foreground-background);
+  background-color: var(--primary);
 }
 :is(.big-bento, .small-bento, .bento) > img {
   object-position: center;
