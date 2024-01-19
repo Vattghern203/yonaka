@@ -46,14 +46,14 @@ label[role="navigation"] {
 
     all: unset;
 
-    border: red 1px solid;
+    //border: red 1px solid;
 
     height: fit-content;
     width: fit-content;
 
-    --_hamburguer-width: 6rem;
-    --_hamburguer-height: .8rem;
-    --_hamburguer-spacing: 1rem;
+    --_hamburguer-width: 3em;
+    --_hamburguer-height: .3em;
+    --_hamburguer-spacing: .4em;
     --_hamburguer-roundness: var(--roudness);
 
     display: flex;
@@ -68,11 +68,11 @@ label[role="navigation"] {
     &:has( > input[type="checkbox"]:checked) {
 
         &::after {
-            transform: translateY(-225%) rotate(-40deg);
+            transform: translateY(-250%) rotate(-40deg);
         }
 
         &::before {
-            transform: translateY(225%) rotate(40deg);
+            transform: translateY(250%) rotate(40deg);
         }
 
         & + aside {
@@ -85,6 +85,19 @@ label[role="navigation"] {
     &:has( > input[type="checkbox"]:not(:checked)) + aside {
 
         --_navigation-display: none;
+    }
+
+    // Hover Behavior
+
+    &:hover {
+
+        --_hamburguer-spacing: .8em;
+
+        &::after, &::before, & > input[type="checkbox"] {
+
+            background-color: red;
+        }
+
     }
 
     // Hamburguer Styling
@@ -108,7 +121,6 @@ label[role="navigation"] {
         transform-origin: center;
 
         transition: opacity .2s ease-in-out, rotate .4s var(--transition-middle-break), transform .4s var(--transition-out-circle);
-
     }
 
 

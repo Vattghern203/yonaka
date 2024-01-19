@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   color-scheme: dark light;
 }
@@ -1060,6 +1061,56 @@ hr {
   margin-block: 1vmin;
 }
 
+span.chip {
+  --_spacing: var(--sm);
+  --_height: 4.5ch;
+  --_bg: var(--primary);
+  height: fit-content;
+  width: max-content;
+  border-radius: var(--round-peal);
+  background-color: var(--_bg);
+  padding-inline-end: var(--md);
+  padding-inline-start: var(--md);
+  padding-block: var(--xs);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--_spacing);
+  height: var(--_height);
+  transition: background-color var(--transition-time-md) var(--transition-out-circle);
+}
+span.chip[data-excludable=true] {
+  padding-inline-end: var(--sm);
+}
+span.chip[data-excludable=true]::after {
+  content: "✕";
+  background-color: var(--muted-primary);
+  border-radius: inherit;
+  height: 80%;
+  aspect-ratio: 1;
+  padding: 0;
+  display: grid;
+  text-align: center;
+  place-content: center;
+  padding: 0.1rem;
+  cursor: pointer;
+  transition: color 0.2s var(--transition-out-circle);
+}
+span.chip[data-excludable=true]:active::after {
+  color: var(--foreground-destructive);
+}
+span.chip:hover {
+  --_bg: var(--foreground-primary);
+}
+span.chip:has(> :is(img, i, svg)) {
+  padding-inline-start: var(--xs);
+}
+span.chip:first-child :is(img, i, svg) {
+  border-radius: inherit;
+  aspect-ratio: 1;
+  width: 2em;
+}
+
 form:-moz-submit-invalid input:invalid {
   border: 0.2rem var(--destructive) solid;
   transition: border-color var(--transition);
@@ -1802,12 +1853,11 @@ header > nav ul li:active a {
 
 label[role=navigation] {
   all: unset;
-  border: red 1px solid;
   height: fit-content;
   width: fit-content;
-  --_hamburguer-width: 6rem;
-  --_hamburguer-height: .8rem;
-  --_hamburguer-spacing: 1rem;
+  --_hamburguer-width: 3em;
+  --_hamburguer-height: .3em;
+  --_hamburguer-spacing: .4em;
   --_hamburguer-roundness: var(--roudness);
   display: flex;
   flex-direction: column;
@@ -1815,16 +1865,22 @@ label[role=navigation] {
   cursor: pointer;
 }
 label[role=navigation]:has(> input[type=checkbox]:checked)::after {
-  transform: translateY(-225%) rotate(-40deg);
+  transform: translateY(-250%) rotate(-40deg);
 }
 label[role=navigation]:has(> input[type=checkbox]:checked)::before {
-  transform: translateY(225%) rotate(40deg);
+  transform: translateY(250%) rotate(40deg);
 }
 label[role=navigation]:has(> input[type=checkbox]:checked) + aside {
   --_navigation-display: flex;
 }
 label[role=navigation]:has(> input[type=checkbox]:not(:checked)) + aside {
   --_navigation-display: none;
+}
+label[role=navigation]:hover {
+  --_hamburguer-spacing: .8em;
+}
+label[role=navigation]:hover::after, label[role=navigation]:hover::before, label[role=navigation]:hover > input[type=checkbox] {
+  background-color: red;
 }
 label[role=navigation]::after, label[role=navigation]::before, label[role=navigation] > input[type=checkbox] {
   all: unset;

@@ -210,3 +210,72 @@ hr {
     border-radius: var(--round-peal);
     margin-block: 1vmin;
 }
+
+// CHIPS -------------------------------------------------------------
+span.chip {
+    --_spacing: var(--sm);
+    --_height: 4.5ch;
+    --_bg: var(--primary);
+    height: fit-content;
+    width: max-content;
+    border-radius: var(--round-peal);
+    background-color: var(--_bg);
+    padding-inline-end: var(--md);
+    padding-inline-start: var(--md);
+    padding-block: var(--xs);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--_spacing);
+
+    height: var(--_height);
+
+    transition: background-color var(--transition-time-md) var(--transition-out-circle);
+
+    &[data-excludable="true"] {
+
+        padding-inline-end: var(--sm);
+
+        &::after {
+            content: "\2715";
+            background-color: var(--muted-primary);
+            border-radius: inherit;
+            //width: ;
+            height: 80%;
+            aspect-ratio: 1;
+            padding: 0;
+
+            display: grid;
+            text-align: center;
+            place-content: center;
+            padding: .1rem;
+
+            cursor: pointer;
+
+            transition: color .2s var(--transition-out-circle);
+
+        }
+        &:active::after {
+            color: var(--foreground-destructive);
+        }
+    }
+
+    &:hover {
+        --_bg: var(--foreground-primary);
+    }
+
+    &:has( > :is(img, i, svg)) {
+
+        padding-inline-start: var(--xs);
+    }
+
+    &:first-child :is(img, i, svg) {
+
+        border-radius: inherit;
+        aspect-ratio: 1;
+        width: 2em;
+    }
+
+    // Excludable Chip
+}
