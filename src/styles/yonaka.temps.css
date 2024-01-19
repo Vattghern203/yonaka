@@ -1089,10 +1089,10 @@ span.chip[data-excludable=true]::after {
   height: 80%;
   aspect-ratio: 1;
   padding: 0;
+  margin: 0;
   display: grid;
   text-align: center;
   place-content: center;
-  padding: 0.1rem;
   cursor: pointer;
   transition: color 0.2s var(--transition-out-circle);
 }

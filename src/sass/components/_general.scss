@@ -212,6 +212,8 @@ hr {
 }
 
 // CHIPS -------------------------------------------------------------
+
+// https://m2.material.io/components/chips#types
 span.chip {
     --_spacing: var(--sm);
     --_height: 4.5ch;
@@ -245,11 +247,12 @@ span.chip {
             height: 80%;
             aspect-ratio: 1;
             padding: 0;
+            margin: 0;
 
             display: grid;
             text-align: center;
             place-content: center;
-            padding: .1rem;
+            //padding: .1rem;
 
             cursor: pointer;
 
