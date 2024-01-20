@@ -1109,6 +1109,8 @@ span.chip:first-child :is(img, i, svg) {
   border-radius: inherit;
   aspect-ratio: 1;
   width: 2em;
+  object-fit: cover;
+  object-position: center;
 }
 
 form:-moz-submit-invalid input:invalid {

@@ -278,6 +278,8 @@ span.chip {
         border-radius: inherit;
         aspect-ratio: 1;
         width: 2em;
+        object-fit: cover;
+        object-position: center;
     }
 
     // Excludable Chip
