@@ -1,4 +1,7 @@
+// GENERAL MIXINS -------------------------------------------------------------------------
+
 @mixin icon($icon-url) {
+
     &::after {
       content: "";
       display: block;
@@ -11,9 +14,52 @@
     }
 }
 
+// Icons using background-image
 @mixin icon-background($icon-url) {
 
-  background-image: $icon-url;
+  background-image: $icon-url; // Remember to use the url() function in the icon variables, some bugs could appear otherwise.
   background-position: calc(100% - var(--spacing));
   background-repeat: no-repeat;
+}
+
+// 
+@mixin centered-background-img($bg-url) {
+
+  background-image: url($bg-url);
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin centered-img($img-url) {
+
+  object-fit: cover;
+  object-position: center;
+}
+
+// Force a style reset in some elements that got cutted out from the base reset. (Generally because a problem inheriting from body)
+@mixin force-reset {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+// HELPERS MIXINS aka SHORTCUTS -------------------------------------------------------------------------
+
+@mixin centered-grid {
+
+  display: grid;
+  place-content: center;
+}
+
+@mixin centered-flex {
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin centered-block {
+
+  display: block;
+  margin: 0 auto;
 }

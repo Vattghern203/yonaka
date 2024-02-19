@@ -211,6 +211,11 @@ a > p, h1, h2, h3, h4, h5, h6, span, a, li {
 }
 
 :where(:root, html, *, *::after, *::before) {
+  --ar-video-landscape: 16 / 9;
+  --ar-video-portrait: 16 / 9;
+  --ar-portrait: 4 / 3;
+  --ar-square: 1 / 1;
+  --ar-landscape: 1.59 / 1;
   --offset-min: 0rem;
   --offset-sm: 1rem;
   --offset-md: 1.25rem;
@@ -390,6 +395,11 @@ a > p, h1, h2, h3, h4, h5, h6, span, a, li {
   --transition--props: all;
   --expand-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(162, 175, 185)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   --search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+  --x-icon-code: "✕";
+  --plus-icon-code: "+";
+  --copy-icon-code: "©";
+  --registered-icon-code: "®";
+  --trademark-icon-code: "™";
 }
 
 body, .app, #root {
@@ -1083,13 +1093,11 @@ span.chip[data-excludable=true] {
   padding-inline-end: var(--sm);
 }
 span.chip[data-excludable=true]::after {
-  content: "✕";
+  content: var(--x-icon-code);
   background-color: var(--muted-primary);
   border-radius: inherit;
   height: 80%;
   aspect-ratio: 1;
-  padding: 0;
-  margin: 0;
   display: grid;
   text-align: center;
   place-content: center;

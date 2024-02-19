@@ -1,5 +1,9 @@
+// In this file will likely have personal preferences from the user and how to handle them
+
+// THEME
+
 html {
-    color-scheme: dark light;
+    color-scheme: dark light; // allow automatic dark and light switch via browser, it takes the preference from the user's OS.
 }
 
 @media (prefers-color-scheme: light) {
@@ -14,13 +18,17 @@ html {
     }
 }
 
-@media (prefers-reduced-motion) {
-
-    
-}
-
 [data-theme="light"] {
     --blend-text-color: #FFF;
     --blend-back-color: #000;
     --blend-highlight-color: #000;
+}
+
+
+// MOTION
+
+@media (prefers-reduced-motion) {
+
+    // Working in progress.
+    // This section will handle more complex animation, wich some user may prefer to avoid seeing them.
 }

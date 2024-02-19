@@ -4,6 +4,17 @@
 
 :where(:root, html, *, *::after, *::before) {
 
+    // ASPECT RATIO ----------------------------------------------
+
+    --ar-video-landscape: 16 / 9;
+    --ar-video-portrait: 16 / 9;
+
+    --ar-portrait: 4 / 3;
+    --ar-square: 1 / 1;
+
+    --ar-landscape: 1.59 / 1;
+
+
     // OUTLINE ---------------------------------------------------
 
     --offset-min: 0rem; // Minimal value possible
