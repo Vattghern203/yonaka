@@ -1,0 +1,50 @@
+---
+name: create-component
+description: Create or modify a Yonaka component or utility - accessible markup patterns (ARIA, native elements), CSS-only behavior, and modern Sass (@use modules). Use when adding or changing anything under src/sass/components, layout or utils.
+---
+
+# Creating components in Yonaka
+
+Yonaka is a dependency-free, CSS-only framework. A component is a Sass partial plus a demo in `index.html`. No JavaScript, ever.
+
+## 1. Pick the markup first (semantics and ARIA)
+
+Style native elements and ARIA attributes, not invented classes. Existing components target `details`, `dialog`, `input[type="checkbox"][role="switch"]`, `label[role="button"]`, `select` and so on.
+
+- Prefer a native element that already has the behavior: `<details>`/`<summary>` (accordion), `<dialog>` (modal), `<input type=checkbox role=switch>` (switch), `<progress>`, `<select>`.
+- Add `role` and `aria-*` only where HTML doesn't already express it, and select on them (`[role="switch"]`, `[aria-busy="true"]`, `[aria-expanded="true"]`, `[aria-current="page"]`, `[aria-invalid="true"]`, `[aria-disabled="true"]`).
+- Keep state in attributes and pseudo-classes, so styling and accessibility stay in sync: `:checked`, `[open]`, `:disabled`, `:focus-visible`, `:user-invalid`, `[aria-*]`.
+- If the markup needs a hidden control for a CSS-only toggle (checkbox hack, `label[role="button"]:has(> input:checked)`), hide it with a visually-hidden technique that keeps it focusable, not `display: none`, and keep a visible `:focus-visible` style on the label.
+- Honor `prefers-reduced-motion` for any transition or animation, and never convey state by color alone.
+
+## 2. CSS-only behavior
+
+Use the platform: `:has()`, `:is()`/`:where()`, `:checked`, `:target`, `details[open]`, `dialog::backdrop`, `::marker`, `@starting-style`, `popover`/anchor positioning where support is acceptable. Prefer `:where()` for low-specificity defaults so users can override with plain CSS, which is how the README tells people to customize.
+
+## 3. Tokens, not literals
+
+Customization happens at runtime through CSS custom properties.
+
+- Read the global tokens: colors (`--text`, `--background`, `--primary`, `--secondary`, `--accent`), the scale (`--xs`, `--sm`, `--md`, `--lg`, ... generated from `--base` in `abstracts/_variables.scss`), `--spacing`, `--roundness`, `--outline-*`, `--transition-*`.
+- Expose component knobs as private custom properties declared at the top of the component with a leading underscore, then consume them: `--_switch-w`, `--_switch-color`. Give them defaults from global tokens (`var(--md)`), not hard-coded values.
+- Don't add a Sass variable for something users may want to change; add a `--token`. Sass variables are only for selector lists and mixin arguments.
+- Colors come from the palette tokens so light and dark themes (`prefers-color-scheme` and `[data-theme]`) work automatically. Avoid raw hex/rgb unless it's theme-independent.
+- Prefer logical properties (`padding-inline`, `margin-block`, `inset-inline-start`) and relative units (`rem`/`em`; the root is 62.5%).
+
+## 4. Modern Sass (module system only)
+
+- Never use `@import`. Every partial starts with `@use` for what it needs, e.g. `@use "../abstracts/mixins";`, and calls members with the namespace: `@include mixins.icon(var(--expand-icon));`, `selectors.$text-elements`.
+- Built-ins live in modules: `@use "sass:math"`, `sass:list`, `sass:map`, `sass:color`. No global `append`, `map-get`, `darken`, `invert`, or `rgba($color, $alpha)`; use plain CSS (`rgb(0 0 0 / .6)`, `color-mix()`, relative colors) when possible.
+- Use `math.div()`, not `/`, for division.
+- `@use` rules must come first in a file (before any rule, `@charset` aside).
+- Nest with `&` for states and pseudo-elements, but keep nesting shallow (about 3 levels) to avoid specificity creep.
+- Reuse the mixins in `abstracts/_mixins.scss` (`icon`, `icon-background`, `centered-flex`, ...) before writing new ones.
+
+## 5. Wire it up and verify
+
+1. Create `src/sass/components/_name.scss` (or `layout/`, `utils/`).
+2. Add `@use "components/name";` to `src/sass/main.scss` in the matching section, alphabetically; otherwise it is never compiled.
+3. Add a demo to `index.html` using the exact markup from step 1, including its ARIA attributes.
+4. Check: `pnpm exec sass --verbose src/sass/main.scss > /dev/null` must print no warnings.
+5. Rebuild the committed outputs: `pnpm run build:css`, and `pnpm exec sass src/sass/main.scss src/styles/yonaka.temps.css`.
+6. Open `index.html` and check keyboard operation (Tab, Space/Enter, Esc for dialogs), the visible focus ring, and both light and dark schemes.
