@@ -4,599 +4,472 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Component showcase for Yonaka, a dependency-free, easily customizable CSS framework." />
+  <title>Yonaka — Component Showcase</title>
   <link rel="stylesheet" href="src/styles/yonaka.temps.css" />
-  <title>Akatsuki V2</title>
+  <style>
+    /* Showcase-only helpers */
+    #theme-toggle { --width: auto; text-transform: none; padding: var(--xs) var(--md); }
+    .demo > * { --bg: var(--primary); }
+    .demo-gap { gap: 1rem; }
+    .swatch-text { color: var(--background); }
+    .skip-link { position: absolute; left: -999px; top: 0; z-index: 100; padding: .5rem 1rem; background: var(--background); color: var(--text); }
+    .skip-link:focus { left: 0; }
+  </style>
+  <script>
+    try {
+      const saved = localStorage.getItem("yonaka-theme");
+      if (saved) document.documentElement.dataset.theme = saved;
+    } catch (_) { /* storage unavailable: follow the OS preference */ }
+  </script>
 </head>
 
-<body>
+<body id="top">
+  <a href="#main" class="skip-link">Skip to content</a>
+
   <header class="header-sticky">
-    <a href="#" role="img" aria-label="Brand Logo">
-      <img 
-        class="logo" 
-        src="https://i.pinimg.com/474x/a5/66/b8/a566b87e4bcc24b33eda8bd41513f1a8.jpg" 
-        alt="logo"
-        loading="eager" 
-      />
+    <a href="./" aria-label="Yonaka home">
+      <img class="logo" src="src/aseets/img/yonaka.jpg" alt="Yonaka logo" loading="eager" />
     </a>
 
     <label for="hamburguer__icon" role="navigation">
-      <input type="checkbox" id="hamburguer__icon">
+      <input type="checkbox" id="hamburguer__icon" aria-label="Toggle menu">
     </label>
 
     <aside>
-      <nav>
+      <nav aria-label="Mobile">
         <ul>
-          <li>
-            <a href="#components__section">components</a>
-          </li>
-          <li>
-            <a href="src/pages/family.html">examples</a>
-          </li>
-          <li>
-            <a href="src/pages/playground.html">playground</a>
-          </li>
-          <li>
-            <a href="#about">about</a>
-          </li>
+          <li><a href="#components">components</a></li>
+          <li><a href="src/pages/family.html">examples</a></li>
+          <li><a href="src/pages/playground.html">playground</a></li>
+          <li><a href="#about">about</a></li>
         </ul>
       </nav>
     </aside>
 
-    <nav role="navigation">
+    <nav role="navigation" aria-label="Primary">
       <ul>
-        <li>
-          <a href="#components__section">components</a>
-        </li>
-        <li>
-          <a href="src/pages/family.html">examples</a>
-        </li>
-        <li>
-          <a href="src/pages/playground.html">playground</a>
-        </li>
-        <li>
-          <a href="#about">about</a>
-        </li>
+        <li><a href="#components">components</a></li>
+        <li><a href="src/pages/family.html">examples</a></li>
+        <li><a href="src/pages/playground.html">playground</a></li>
+        <li><a href="#about">about</a></li>
       </ul>
     </nav>
+
+    <button type="button" class="ghost" id="theme-toggle">◐ Auto</button>
   </header>
 
-  <!--Hero Section-->
-
   <section class="hero-gradient">
-    
     <section>
       <h1>Yonaka</h1>
-      <h2>the best framework in the world</h2>
+      <h2>An easily customizable CSS framework</h2>
 
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi atque, totam aliquam, quasi molestias ex dolores magnam neque id voluptas doloremque omnis repellat quae velit aut magni laborum ducimus. Officiis?</p>
+      <p>Semantic HTML, ARIA and CSS variables. No dependencies and no JavaScript required.</p>
 
-      <button class="cta">Get Started</button>
-      <button class="ghost">See More</button>
+      <a href="#components" role="button" class="cta">Get Started</a>
+      <a href="https://github.com/Vattghern203/yonaka" role="button" class="ghost">GitHub</a>
     </section>
   </section>
 
-  <main>
-    <h1>Welcome to Yonaka</h1>
-
-    <hr>
-
-    <section>
+  <main id="main">
+    <section id="intro">
       <h2>What is it?</h2>
 
-      <p>It's a mix of several other ideas combined in one, trying to retain the best of each one</p>
+      <p>A mix of several ideas combined in one, trying to keep the best of each.</p>
 
-      <p>The usage of the framework consists of 3 keys points: <strong>Sematinc HTML, ARIA Usage</strong> and <strong>CSS variables.</strong></p>
+      <p>Usage rests on 3 key points: <strong>semantic HTML</strong>, <strong>ARIA usage</strong> and
+        <strong>CSS variables</strong>.</p>
 
-
+      <nav aria-label="On this page">
+        <ul>
+          <li><a href="#colors">Colors</a></li>
+          <li><a href="#typography">Typography</a></li>
+          <li><a href="#layout">Layout</a></li>
+          <li><a href="#components">Components</a></li>
+          <li><a href="#utilities">Family utilities</a></li>
+          <li><a href="#bentos">Bentos</a></li>
+        </ul>
+      </nav>
     </section>
 
-    <section>
+    <section id="colors">
+      <h2>Colors</h2>
+      <div class="wrapper grid-dynamic">
+        <!--BASIC-->
+        <article style="--bg: var(--primary)">primary</article>
+        <article style="--bg: var(--secondary); border: 0.2rem var(--accent) solid">secondary</article>
+        <article style="--bg: var(--accent)">accent</article>
+        <article class="swatch-text" style="--bg: var(--text)">text</article>
+        <article style="--bg: var(--background)">background</article>
+        <article style="--bg: var(--destructive)">destructive</article>
+        <!--FOREGROUND-->
+        <article style="--bg: var(--foreground-primary); color: var(--text);">foreground primary</article>
+        <article style="--bg: var(--foreground-secondary)">foreground secondary</article>
+        <article style="--bg: var(--foreground-accent)">foreground accent</article>
+        <article class="swatch-text" style="--bg: var(--foreground-text)">foreground text</article>
+        <article style="--bg: var(--foreground-background)">foreground background</article>
+        <article style="--bg: var(--foreground-destructive); color: var(--text);">foreground destructive</article>
+        <!--MUTED-->
+        <article style="--bg: var(--muted-primary); color: var(--text);">muted primary</article>
+        <article style="--bg: var(--muted-secondary); color: var(--text); border: var(--border);">muted secondary</article>
+        <article style="--bg: var(--muted-accent); color: var(--text);">muted accent</article>
+        <article style="--bg: var(--muted-text)">muted text</article>
+        <article style="--bg: var(--muted-background); color: var(--text); border: var(--border);">muted background</article>
+        <article style="--bg: var(--muted-destructive); color: var(--text);">muted destructive</article>
+        <!--VARIATIONS-->
+        <article class="swatch-text" style="--bg: var(--content-text)">content text</article>
+        <!--GRADIENTS-->
+        <article style="background-image: var(--gradient-primary-secondary); color: var(--text); border: var(--border);">
+          gradient primary → secondary
+        </article>
+      </div>
+    </section>
 
-      <h2>Displays</h2>
+    <section id="typography" class="col" style="gap: var(--md);">
+      <h2>Typography</h2>
+      <p>Text hierarchy and text variations for all sorts of usages.</p>
+      <strong>Strong</strong>
+      <b>Bold</b>
+      <i>Italic</i>
+      <em>Emphasized</em>
+      <small>Small</small>
+      <sub>Subscript</sub>
+      <sup>Superscript</sup>
+      <del>Deleted</del>
+      <ins>Inserted</ins>
+      <kbd>Keyboard Input</kbd>
+    </section>
 
-      <p>There's a bunch of displays to use going to the most simple and dynamic to real occasional use cases.</p>
+    <section id="layout">
+      <h2>Layout</h2>
+
+      <p>A set of displays, from the simplest to dynamic, real-world use cases.</p>
 
       <hr>
 
       <h3>Fixed Grid</h3>
-
-      <p>It's a grid display but with fixed columns.</p>
-
-      <div class="grid-fixed">
-        <div style="--bg: var(--primary)">item 1</div>
-        <div style="--bg: var(--primary)">item 2</div>
-        <div style="--bg: var(--primary)">item 3</div>
-        <div style="--bg: var(--primary)">item 4</div>
-        <div style="--bg: var(--primary)">item 5</div>
-        <div style="--bg: var(--primary)">item 6</div>
-        <div style="--bg: var(--primary)">item 7</div>
-        <div style="--bg: var(--primary)">item 8</div>
-        <div style="--bg: var(--primary)">item 9</div>
-        <div style="--bg: var(--primary)">item 10</div>
+      <p>A grid display with fixed columns.</p>
+      <div class="grid-fixed demo">
+        <div>item 1</div>
+        <div>item 2</div>
+        <div>item 3</div>
+        <div>item 4</div>
+        <div>item 5</div>
+        <div>item 6</div>
+        <div>item 7</div>
+        <div>item 8</div>
+        <div>item 9</div>
+        <div>item 10</div>
       </div>
 
       <hr>
 
       <h3>Grid Dynamic</h3>
-
-      <p>It's a grid with undefined columns, that can be any value(It depends in the child size).</p>
-
-      <div class="grid-dynamic">
-        <div style="--bg: var(--primary)">item 1</div>
-        <div style="--bg: var(--primary)">item 2</div>
-        <div style="--bg: var(--primary)">item 3</div>
-        <div style="--bg: var(--primary)">item 4</div>
-        <div style="--bg: var(--primary)">item 5</div>
-        <div style="--bg: var(--primary)">item 6</div>
+      <p>A grid with undefined columns, which depend on the child size.</p>
+      <div class="grid-dynamic demo">
+        <div>item 1</div>
+        <div>item 2</div>
+        <div>item 3</div>
+        <div>item 4</div>
+        <div>item 5</div>
+        <div>item 6</div>
       </div>
 
       <hr>
 
       <h3>Grid Reel</h3>
-
-      <p>Works as content "carousel". Hiding some content to be scrolled.</p>
-
-      <div class="reel">
-        <div style="--bg: var(--primary)">item 1</div>
-        <div style="--bg: var(--primary)">item 2</div>
-        <div style="--bg: var(--primary)">item 3</div>
-        <div style="--bg: var(--primary)">item 4</div>
-        <div style="--bg: var(--primary)">item 5</div>
-        <div style="--bg: var(--primary)">item 6</div>
+      <p>Works as a content "carousel", hiding some content to be scrolled.</p>
+      <div class="reel demo">
+        <div>item 1</div>
+        <div>item 2</div>
+        <div>item 3</div>
+        <div>item 4</div>
+        <div>item 5</div>
+        <div>item 6</div>
       </div>
 
       <hr>
 
       <h3>Flex Row</h3>
-
-      <p>A ordinary flex row with no styling by default.(There's a gap just for demonstrative purposes).</p>
-
-      <div class="row" style="--spacing: var(--md); gap: 1rem;">
-        <div style="--bg: var(--primary)">item 1</div>
-        <div style="--bg: var(--primary)">item 2</div>
-        <div style="--bg: var(--primary)">item 3</div>
-        <div style="--bg: var(--primary)">item 4</div>
-        <div style="--bg: var(--primary)">item 5</div>
-        <div style="--bg: var(--primary)">item 6</div>
+      <p>A plain flex row with no styling by default. The gap is set only for demonstration.</p>
+      <div class="row demo demo-gap" style="--spacing: var(--md);">
+        <div>item 1</div>
+        <div>item 2</div>
+        <div>item 3</div>
+        <div>item 4</div>
+        <div>item 5</div>
+        <div>item 6</div>
       </div>
 
       <hr>
 
-      <h3>Flex Col</h3>
-
-      <p>A ordinary flex column with no styling by default.(There's a gap just for demonstrative purposes).</p>
-
-      <div class="col" style="gap: 1rem;">
-        <div style="--bg: var(--primary)">item 1</div>
-        <div style="--bg: var(--primary)">item 2</div>
-        <div style="--bg: var(--primary)">item 3</div>
-        <div style="--bg: var(--primary)">item 4</div>
-        <div style="--bg: var(--primary)">item 5</div>
-        <div style="--bg: var(--primary)">item 6</div>
+      <h3>Flex Column</h3>
+      <p>A plain flex column with no styling by default. The gap is set only for demonstration.</p>
+      <div class="col demo demo-gap">
+        <div>item 1</div>
+        <div>item 2</div>
+        <div>item 3</div>
+        <div>item 4</div>
+        <div>item 5</div>
+        <div>item 6</div>
       </div>
 
       <hr>
 
       <h3>Flex Cluster</h3>
-
-      <p>A flex container that wraps it's children as it fits on the row.</p>
-
-      <p><strong>The Children don't grow. It keeps the same size not matter what.</strong></p>
-
-      <div class="flex-cluster">
-        <div style="--bg: var(--primary)">
-          Lorem ipsum dolor sit amet.
-        </div>
-
-        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet.</div>
-        <div style="--bg: var(--primary)">Lorem.</div>
-        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur.</div>
-        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque, distinctio?
-        </div>
-        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+      <p>A flex container that wraps its children as they fit on the row.</p>
+      <p><strong>The children don't grow; they keep the same size.</strong></p>
+      <div class="flex-cluster demo">
+        <div>Short text.</div>
+        <div>A slightly longer piece of text.</div>
+        <div>Tiny.</div>
+        <div>Something a bit wider than the others.</div>
+        <div>A much longer item, to show how the cluster wraps onto the next row.</div>
+        <div>Medium sized item here.</div>
       </div>
 
       <hr>
 
-      <h3>Flex Col</h3>
-
-      <p>Same as the <code>.flex-cluster</code> but with <code>flex: 1</code> on its children(They're able to take all
-        available space).</p>
-
-      <div class="flex-cluster-grow">
-        <div style="--bg: var(--primary)">
-          Lorem ipsum dolor sit amet.
-        </div>
-      
-        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet.</div>
-        <div style="--bg: var(--primary)">Lorem.</div>
-        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur.</div>
-        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque, distinctio?
-        </div>
-        <div style="--bg: var(--primary)">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+      <h3>Flex Cluster Grow</h3>
+      <p>Same as <code>.flex-cluster</code> but with <code>flex: 1</code> on its children, so they take all
+        available space.</p>
+      <div class="flex-cluster-grow demo">
+        <div>Short text.</div>
+        <div>A slightly longer piece of text.</div>
+        <div>Tiny.</div>
+        <div>Something a bit wider than the others.</div>
+        <div>A much longer item, to show how the cluster wraps onto the next row.</div>
+        <div>Medium sized item here.</div>
       </div>
-      </section>
+    </section>
 
-    <section id="components__section">
+    <section id="components">
       <h2>Components</h2>
+      <p>Components use semantic tags, ARIA and a few classes for styling. Follow the structures shown below.</p>
 
-      <p>I've built some components, the structure must follow as you can see below. They use semantic tags, ARIA and
-        some classes to stylinhg</p>
-
-      <details open>
-        <summary>Accordion</summary>
-
-        <p>Accordion Text</p>
-      </details>
-
-      <details role="listbox">
-        <summary>Dropdown</summary>
-
-        <ul>
-          <li><a href="#">item 1</a></li>
-          <li><a href="#">item 2</a></li>
-          <li><a href="#">item 3</a></li>
-          <li><a href="#">item 4</a></li>
-        </ul>
-      </details>
-
-      <select>
-        <option value="" selected>Select</option>
-        <option value="">option 1</option>
-        <option value="">option 2</option>
-        <option value="">option 3</option>
-        <option value="">option 4</option>
-      </select>
-    </section>
-
-    <section 
-      id="typography" 
-      class="col"
-      style="gap: var(--md);"
-    >
-
-      <h2>Typography</h2>
-
-      <p>Text Hierarquy and Text Variations for all sorts of usages</p>
-
-      <strong>Strong</strong>
-      <b>Bold</b>
-      
-      <i>Italic</i>
-      <em>Emphasized</em>
-      
-      <small>Small</small>
-
-      <sub>Subscript</sub>
-      <sup>Superscript</sup>
-
-      <del>Deleted</del>
-      <ins>Inserted</ins>
-
-
-      <kbd>Keyboard Input</kbd>
-
-    </section>
-
-    <section class="" id="forms">
-      <h2>Forms</h2>
-
-      <p>In the forms section, the form has 2 states: valid or invalid. With that in mind, I developed a "return to
-        user" with the colors, being the destructive a signal of something is wrong.</p>
-
-      <p>To achieve this, you only need to create a input inside the <code>form</code> tag and put some
-        <code>required</code> or any demand on it.
-      </p>
-
-      <p>As you can see below, everything that is not ok will be red bordered and the submit button is gonna look like
-        is disabled.</p>
-
-      <hr>
-
-      <form action="#">
-        <input type="text" name="" id="" placeholder="Text..." required />
-
-        <input type="number" placeholder="Number..." />
-
-        <input type="email" name="" id="" placeholder="Email..." />
-
-        <input type="search" placeholder="search here..." autocomplete="url">
-
-        <hr>
-
-        <h3>File</h3>
-
-        <label role="button" for="input__file">
-          Drag & Drop a file here
-          <input type="file" id="input__file" />
-        </label>
-
-        <h3>Color</h3>
-
-        <label for="input__color">
-          Select a color
-          <input type="color" name="" id="input__color" value="white" />
-        </label>
-
-        <h3>Date</h3>
-
-        <label for="input__date">
-          Select a date
-          <input type="date" name="" id="input__date" />
-        </label>
-
-        <label for="input__time">
-          Select a time
-          <input type="time" name="" id="input__time" />
-        </label>
-
-        <label for="input__datetime-local">
-          Select a datetime-local
-          <input type="datetime-local" name="" id="input__datetime-local" />
-        </label>
-
-        <textarea cols="30" rows="10" placeholder="this a text area..."></textarea>
-
-        <h3>Radio</h3>
-
-        <label for="input__radio">
-          Pão?
-          <input type="radio" id="input__radio" />
-        </label>
-
-        <h3>Checkbox</h3>
-
-        <label for="input__checkbox">
-          Checkbox
-          <input type="checkbox" name="" id="input__checkbox">
-        </label>
-
-        <h3>Switches</h3>
-
-        <label for="input__switch">
-
-          Default Switch
-
-          <input type="checkbox" id="input__switch" role="switch" aria-checked="false" />
-        </label>
-
-        <label for="input__switch--squished">
-
-          Squished
-
-          <input id="input__switch--squished" class="squished" type="checkbox" role="switch" aria-checked="false" />
-        </label>
-
-        <label for="input__switch--squared">
-
-          Squared/Sharp
-
-          <input id="input__switch--squared" class="squared" type="checkbox" role="switch" aria-checked="false" />
-        </label>
-
-        <label for="input__range">
-          <input type="range" name="" id="input__range">
-        </label>
-
-        <button type="submit">Submit</button>
-
-      </form>
-
-      <label for="progress-bar">Progress</label>
-
-      <progress
-        id="progress-bar" 
-        max="100" 
-        value="69%"
-        aria-busy="true"
-        aria-valuemin="0" 
-        aria-valuemax="100" 
-        aria-valuenow="69%"
-        data-progress="69%"
-      >
-        69%
-      </progress>
-    </section>
-
-    <section id="buttons">
-      <h2>Buttons</h2>
-
+      <h3 id="buttons">Buttons</h3>
       <div class="col" style="--flex-spacing: var(--spacing)">
         <button class="cta">Call to Action</button>
         <button class="secondary">Secondary</button>
         <button class="ghost">Ghost</button>
-        <button class="disabled">Disabled</button>
+        <button class="disabled" disabled>Disabled</button>
         <button class="destructive">Destructive</button>
       </div>
-    </section>
 
-    <section id="cards">
-      <h2>Cards</h2>
+      <h3 id="accordion">Accordion &amp; Dropdown</h3>
+      <details open>
+        <summary>Accordion</summary>
+        <p>Accordion text</p>
+      </details>
+      <details role="list">
+        <summary>Dropdown</summary>
+        <ul>
+          <li><a href="#accordion">item 1</a></li>
+          <li><a href="#accordion">item 2</a></li>
+          <li><a href="#accordion">item 3</a></li>
+          <li><a href="#accordion">item 4</a></li>
+        </ul>
+      </details>
+      <select aria-label="Select demo">
+        <option value="" selected>Select</option>
+        <option value="1">option 1</option>
+        <option value="2">option 2</option>
+        <option value="3">option 3</option>
+        <option value="4">option 4</option>
+      </select>
 
-      <p>With the palette provided, I've created these colors to complement the basic needs in a website.</p>
+      <h3 id="forms">Forms</h3>
+      <p>Forms have 2 states: valid or invalid. Everything that is not valid gets a red border and the submit
+        button looks disabled.</p>
+      <p>Put an input inside a <code>form</code> and add <code>required</code> (or any other constraint) to see it.</p>
+      <hr>
+      <form action="#">
+        <input type="text" name="text" id="input__text" aria-label="Text" placeholder="Text..." required />
+        <input type="number" name="number" id="input__number" aria-label="Number" placeholder="Number..." />
+        <input type="email" name="email" id="input__email" aria-label="Email" placeholder="Email..." />
+        <input type="search" name="search" id="input__search" aria-label="Search" placeholder="Search here..." autocomplete="off">
+        <hr>
+        <h4>File</h4>
+        <label role="button" for="input__file">
+          Drag &amp; Drop a file here
+          <input type="file" id="input__file" />
+        </label>
+        <h4>Color</h4>
+        <label for="input__color">
+          Select a color
+          <input type="color" name="color" id="input__color" value="#ffffff" />
+        </label>
+        <h4>Date and time</h4>
+        <label for="input__date">
+          Select a date
+          <input type="date" name="date" id="input__date" />
+        </label>
+        <label for="input__time">
+          Select a time
+          <input type="time" name="time" id="input__time" />
+        </label>
+        <label for="input__datetime-local">
+          Select a datetime-local
+          <input type="datetime-local" name="datetime-local" id="input__datetime-local" />
+        </label>
+        <textarea name="message" aria-label="Message" cols="30" rows="10" placeholder="This is a text area..."></textarea>
+        <h4>Radio</h4>
+        <label for="input__radio">
+          Option
+          <input type="radio" name="demo-radio" id="input__radio" />
+        </label>
+        <h4>Checkbox</h4>
+        <label for="input__checkbox">
+          Checkbox
+          <input type="checkbox" name="checkbox" id="input__checkbox">
+        </label>
+        <h4>Switches</h4>
+        <label for="input__switch">
+          Default Switch
+          <input type="checkbox" id="input__switch" role="switch" />
+        </label>
+        <label for="input__switch--squished">
+          Squished
+          <input id="input__switch--squished" class="squished" type="checkbox" role="switch" />
+        </label>
+        <label for="input__switch--squared">
+          Squared/Sharp
+          <input id="input__switch--squared" class="squared" type="checkbox" role="switch" />
+        </label>
+        <label for="input__range">
+          Range
+          <input type="range" name="range" id="input__range">
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+      <label for="progress-bar">Progress</label>
+      <progress id="progress-bar" max="100" value="69" data-progress="69%">69%</progress>
 
-      <p>It's just the "beta" for now, but you can achieve a pretty standard result.</p>
-
-      <p>Obs: It might not look so good in Light Themes... working on it.</p>
-
+      <h3 id="cards">Cards</h3>
+      <p>Built with the provided palette to cover the basic needs of a website. Still in beta; results are best in
+        the dark theme.</p>
       <article>
         <img
-          src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="a japanese landscape" loading="lazy">
-        <h3>image card</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quas blanditiis.</p>
+          src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1170&auto=format&fit=crop"
+          alt="A Japanese landscape" loading="lazy">
+        <h4>Image card</h4>
+        <p>A card with an image, a heading and a short description.</p>
       </article>
-
       <article class="hero-card">
-        <h3>Hero Card</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, enim?</p>
+        <h4>Hero card</h4>
+        <p>A card that stands out from the page.</p>
       </article>
-    </section>
 
-    </section>
+      <h3 id="modals">Modals</h3>
+      <p>A native <code>dialog</code> opened with <code>showModal()</code>, and a CSS-only modal built from a checkbox
+        inside a <code>role="button"</code> label.</p>
+      <dialog id="dialog_modal">
+        <header>Modal Header</header>
+        <p>The modal uses header and footer to create a hierarchy of content.</p>
+        <p>You can use almost any tag between them.</p>
+        <footer>Modal Footer</footer>
+      </dialog>
+      <button class="secondary" onclick="dialog_modal.showModal()">Open dialog</button>
 
-    <section id="colors">
+      <label for="modal__open" role="button" class="cta">
+        Open CSS-only modal
+        <input type="checkbox" id="modal__open">
+      </label>
+      <article role="dialog">
+        <label for="modal__open" class="modal-close" aria-label="Close">&times;</label>
+        <header>CSS-only modal</header>
+        <p>Modals can be nested by placing another label and dialog inside.</p>
+        <footer>Modal Footer</footer>
+      </article>
 
-      <h2>Colors</h2>
+      <h3 id="carousel">Carousel</h3>
+      <div class="carousel">
+        <figure>
+          <img id="slide-1"
+            src="https://images.unsplash.com/photo-1656464868371-602be27fd4c2?auto=format&fit=crop&w=1200&q=80"
+            alt="3D rendering of an imaginary orange planet in space" />
+          <img id="slide-2"
+            src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?auto=format&fit=crop&w=1200&q=80"
+            alt="3D rendering of an imaginary green planet in space" />
+          <img id="slide-3"
+            src="https://images.unsplash.com/photo-1656077217715-bdaeb06bd01f?auto=format&fit=crop&w=1200&q=80"
+            alt="3D rendering of an imaginary blue planet in space" />
+        </figure>
+        <nav aria-label="Carousel slides">
+          <a href="#slide-1" aria-label="Slide 1"></a>
+          <a href="#slide-2" aria-label="Slide 2"></a>
+          <a href="#slide-3" aria-label="Slide 3"></a>
+        </nav>
+      </div>
 
-      <div class="wrapper grid-dynamic">
+      <h3 id="galleries">Image galleries</h3>
+      <h4>Accordion Gallery</h4>
+      <div class="gallery">
+        <figure>
+          <img loading="lazy" src="https://picsum.photos/seed/yonaka-1/600/800" alt="Sample photo 1">
+          <figcaption>One</figcaption>
+        </figure>
+        <figure>
+          <img loading="lazy" src="https://picsum.photos/seed/yonaka-2/600/800" alt="Sample photo 2">
+          <figcaption>Two</figcaption>
+        </figure>
+        <figure>
+          <img loading="lazy" src="https://picsum.photos/seed/yonaka-3/600/800" alt="Sample photo 3">
+          <figcaption>Three</figcaption>
+        </figure>
+        <figure>
+          <img loading="lazy" src="https://picsum.photos/seed/yonaka-4/600/800" alt="Sample photo 4">
+          <figcaption>Four</figcaption>
+        </figure>
+      </div>
+      <h4>Scroll Gallery</h4>
+      <div class="scroll-gallery">
+        <img loading="lazy" src="https://picsum.photos/seed/yonaka-5/600/400" alt="Sample photo 5">
+        <img loading="lazy" src="https://picsum.photos/seed/yonaka-6/600/400" alt="Sample photo 6">
+        <img loading="lazy" src="https://picsum.photos/seed/yonaka-7/600/400" alt="Sample photo 7">
+        <img loading="lazy" src="https://picsum.photos/seed/yonaka-8/600/400" alt="Sample photo 8">
+        <img loading="lazy" src="https://picsum.photos/seed/yonaka-9/600/400" alt="Sample photo 9">
+        <img loading="lazy" src="https://picsum.photos/seed/yonaka-10/600/400" alt="Sample photo 10">
+        <img loading="lazy" src="https://picsum.photos/seed/yonaka-11/600/400" alt="Sample photo 11">
+        <img loading="lazy" src="https://picsum.photos/seed/yonaka-12/600/400" alt="Sample photo 12">
+      </div>
 
-        <!--BASIC-->
-
-        <article style="--bg: var(--primary)">
-          primary
-        </article>
-
-        <article style="--bg: var(--secondary); border: 0.2rem var(--accent) solid">
-          secondary
-        </article>
-
-        <article style="--bg: var(--accent)">
-          accent
-        </article>
-
-        <article style="--bg: var(--text); color: black">
-          text
-        </article>
-        
-        <article style="--bg: var(--background)">
-          background
-        </article>
-
-        <article style="--bg: var(--destructive)">
-          destructive
-        </article>
-
-        <!--FOREGROUND-->
-        
-        <article style="--bg: var(--foreground-primary); color: var(--text);">
-          foreground primary
-        </article>
-
-        <article style="--bg: var(--foreground-secondary)">
-          foreground secondary
-        </article>
-
-        <article style="--bg: var(--foreground-accent)">
-          foreground accent
-        </article>
-
-        <article style="--bg: var(--foreground-text); color: black">
-          foreground text
-        </article>
-
-        <article style="--bg: var(--foreground-background)">
-          foreground background
-        </article>
-
-        <article style="--bg: var(--foreground-destructive); color: var(--text);">
-          foreground destructive
-        </article>
-
-        <!--MUTED-->
-        <article style="--bg: var(--muted-primary); color: var(--text);">
-          muted primary
-        </article>
-        
-        <article style="--bg: var(--muted-secondary); color: var(--text); border: var(--border);">
-          muted secondary
-        </article>
-        
-        <article style="--bg: var(--muted-accent); color: var(--text);">
-          muted accent
-        </article>
-
-        <article style="--bg: var(--muted-text)">
-          muted text
-        </article>
-        
-        <article style="--bg: var(--muted-background); color: var(--text); border: var(--border);">
-          muted background
-        </article>
-
-        <article style="--bg: var(--muted-destructive); color: var(--text);">
-          muted destructive
-        </article>
-        
-        <!--VARIATIONS-->
-
-        <article style="--bg: var(--content-text); color: black;">
-          content text
-        </article>
-
-        <!--GRADIENTS-->
-
-        <article style="background-image: var(--gradient-primary-secondary); color: var(--text); border: var(--border);">
-          content text
-        </article>
-
+      <h3 id="chips">Chips</h3>
+      <div class="reel">
+        <span class="chip">
+          <img src="src/aseets/img/yonaka.jpg" alt="">
+          With image
+        </span>
+        <span class="chip" data-excludable="true">
+          Plain chip
+        </span>
       </div>
     </section>
 
     <section id="utilities">
-      <h2>Family Hierarquy</h2>
-
-      <p>Its a abstract way to think about CSS inheritance. You have several types of relations that you're problably
-        used to, like first child, last child and etc...</p>
-
-      <p>However, I think this way is easier to understand and apply, you just need to apply the <code>.parent</code>
-        class in the tag that is really the parent.</p>
-
-      <p>After this, you just need to pass the <strong>Heritage</strong> that the children will inherit in fact. Like:
-        colors, spacing and font related stuff.</p>
-
-      <p>If you don't want a specific tag to inherit from the parent, just do like in Game of Thrones, call it a
-        <code>.bastard</code> and the job is done.
-      </p>
-
+      <h2>Family Hierarchy</h2>
+      <p>An abstract way to think about CSS inheritance, covering relations such as first child and last child.</p>
+      <p>Add the <code>.parent</code> class to the tag that is really the parent.</p>
+      <p>Then pass the <strong>heritage</strong> the children inherit: colors, spacing and font-related values.</p>
+      <p>To stop a specific tag from inheriting from the parent, give it the <code>.bastard</code> class.</p>
       <div class="parent first-child-only" style="--bg: var(--primary)">
         <h3>Parent</h3>
-
         <div>
           <h4>First Son</h4>
-
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-            quaerat, blanditiis quis officiis rem maiores itaque temporibus
-            totam quisquam veritatis distinctio alias quod, laborum numquam
-            deserunt harum eum tenetur hic!
-          </p>
-
+          <p>This element is the first child, so it inherits from the parent.</p>
           <div class="bastard">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium architecto dolorum dolores animi amet quae adipisci
-              perferendis exercitationem quia, vel quam, iure expedita libero
-              velit esse nam laudantium, minus repudiandae!
-            </p>
+            <p>This one opted out of inheriting with <code>.bastard</code>.</p>
           </div>
           <div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium architecto dolorum dolores animi amet quae adipisci
-              perferendis exercitationem quia, vel quam, iure expedita libero
-              velit esse nam laudantium, minus repudiandae!
-            </p>
+            <p>A sibling that inherits as usual.</p>
           </div>
           <div>
             <div>
               <h5>Grand Son</h5>
-
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Tenetur eos, quam sapiente temporibus excepturi nemo
-                architecto! Repellat vitae deserunt consectetur quisquam ea
-                voluptate beatae doloribus amet sit recusandae, debitis
-                voluptates!
-              </p>
-
+              <p>A nested descendant.</p>
               <div>
                 <h6>Grand Grand Son</h6>
-
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Veniam repudiandae ut magnam officiis eum dolore quo dolor
-                tenetur eos praesentium omnis, assumenda hic debitis modi
-                quas. Aperiam voluptatibus voluptates tempora.
+                A deeper level of nesting.
               </div>
             </div>
           </div>
@@ -604,182 +477,16 @@
       </div>
     </section>
 
-    <section>
-      <div class="carousel">
-        <figure>
-          <img id="slide-1"
-            src="https://images.unsplash.com/photo-1656464868371-602be27fd4c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
-            alt="3D rendering of an imaginary orange planet in space" />
-          <img id="slide-2"
-            src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
-            alt="3D rendering of an imaginary green planet in space" />
-          <img id="slide-3"
-            src="https://images.unsplash.com/photo-1656077217715-bdaeb06bd01f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
-            alt="3D rendering of an imaginary blue planet in space" />
-        </figure>
-
-        <nav>
-          <a href="#slide-1" target="_self"></a>
-          <a href="#slide-2" target="_self"></a>
-          <a href="#slide-3" target="_self"></a>
-        </nav>
-      </div>
-    </section>
-
-    <section>
-      <h3>Modals</h3>
-
-      <dialog id="dialog_modal">
-        <header>Modal Header</header>
-
-        <p>The modal uses header and footer to create a hierarquy of content</p>
-
-        <p>You can use almost any tag between them.</p>
-
-        <footer>Modal Footer</footer>
-      </dialog>
-
-      <button class="secondary" onclick="dialog_modal.showModal()">
-        Modal Here
-      </button>
-
-      <!--First Modal-->
-
-      <label for="modal__open" role="button" class="cta">
-
-        Teste
-
-        <input type="checkbox" id="modal__open">
-      </label>
-
-      <article role="dialog">
-        TESTE
-
-        <label for="modal__open" class="modal-close">&times;</label>
-
-        <!--Second Modal-->
-
-        <label for="modal__open--2" role="button" class="cta">
-
-          Teste2
-
-          <input type="checkbox" id="modal__open--2">
-        </label>
-
-        <article role="dialog">
-          <label for="modal__open--2" class="modal-close">&times;</label>
-
-          <header>Text top</header>
-
-
-          TESTE2
-
-          <footer>footer</footer>
-
-          <!--Third Modal-->
-
-          <label for="modal__open--3" role="button" class="cta">
-
-            Teste3
-
-            <input type="checkbox" id="modal__open--3">
-          </label>
-
-          <article role="dialog">
-            TESTE3
-
-            <label for="modal__open--3" class="modal-close">&times;</label>
-          </article>
-
-        </article>
-    </section>
-
-    <section id="image-related">
-
-      <h3>There's some extras with image related</h3>
-
-      <p>Like this one, a image gallery with a cool design</p>
-
-      <h4>Accordion Gallery</h4>
-
-      <div class="gallery">
-
-        <figure>
-          <img loading="lazy" src="https://source.unsplash.com/random/?japan" alt="Japan">
-          <figcaption>Japan</figcaption>
-
-        </figure>
-        <figure>
-          <img loading="lazy" src="https://source.unsplash.com/random/?china" alt="China">
-          <figcaption>China</figcaption>
-        </figure>
-
-        <figure>
-          <img loading="lazy" src="https://source.unsplash.com/random/?korea" alt="Korea">
-          <figcaption>Korea</figcaption>
-        </figure>
-
-        <figure>
-          <img loading="lazy" src="https://source.unsplash.com/random/?taiwan" alt="Taiwan">
-          <figcaption>Taiwan</figcaption>
-        </figure>
-        
-      </div>
-
-      <h4>Scroll Gallery</h4>
-
-      <div class="scroll-gallery">
-        <!-- Existing cities -->
-        <img loading="lazy" src="https://source.unsplash.com/random/?tokyo,japan" alt="Tokyo">
-        <img loading="lazy" src="https://source.unsplash.com/random/?kyoto,japan" alt="Kyoto">
-        <img loading="lazy" src="https://source.unsplash.com/random/?osaka,japan" alt="Osaka">
-        <img loading="lazy" src="https://source.unsplash.com/random/?nara,japan" alt="Nara">
-        <img loading="lazy" src="https://source.unsplash.com/random/?sapporo,japan" alt="Sapporo">
-        <img loading="lazy" src="https://source.unsplash.com/random/?hiroshima,japan" alt="Hiroshima">
-        <img loading="lazy" src="https://source.unsplash.com/random/?yokohama,japan" alt="Yokohama">
-        <img loading="lazy" src="https://source.unsplash.com/random/?fukuoka,japan" alt="Fukuoka">
-        <img loading="lazy" src="https://source.unsplash.com/random/?nagoya,japan" alt="Nagoya">
-        <img loading="lazy" src="https://source.unsplash.com/random/?kobe,japan" alt="Kobe">
-        <img loading="lazy" src="https://source.unsplash.com/random/?sendai,japan" alt="Sendai">
-        <img loading="lazy" src="https://source.unsplash.com/random/?kawasaki,japan" alt="Kawasaki">
-        <img loading="lazy" src="https://source.unsplash.com/random/?saitama,japan" alt="Saitama">
-        <img loading="lazy" src="https://source.unsplash.com/random/?okayama,japan" alt="Okayama">
-      
-        <!-- Additional cities -->
-        <img loading="lazy" src="https://source.unsplash.com/random/?nagasaki,japan" alt="Nagasaki">
-        <img loading="lazy" src="https://source.unsplash.com/random/?hakodate,japan" alt="Hakodate">
-        <img loading="lazy" src="https://source.unsplash.com/random/?kumamoto,japan" alt="Kumamoto">
-        <img loading="lazy" src="https://source.unsplash.com/random/?yokosuka,japan" alt="Yokosuka">
-        <img loading="lazy" src="https://source.unsplash.com/random/?naha,japan" alt="Naha">
-        <img loading="lazy" src="https://source.unsplash.com/random/?kanazawa,japan" alt="Kanazawa">
-        <img loading="lazy" src="https://source.unsplash.com/random/?matsumoto,japan" alt="Matsumoto">
-        <img loading="lazy" src="https://source.unsplash.com/random/?kochi,japan" alt="Kochi">
-        <img loading="lazy" src="https://source.unsplash.com/random/?toyama,japan" alt="Toyama">
-        <img loading="lazy" src="https://source.unsplash.com/random/?akita,japan" alt="Akita">
-        <img loading="lazy" src="https://source.unsplash.com/random/?kawagoe,japan" alt="Kawagoe">
-        <img loading="lazy" src="https://source.unsplash.com/random/?himeji,japan" alt="Himeji">
-        <img loading="lazy" src="https://source.unsplash.com/random/?shizuoka,japan" alt="Shizuoka">
-        <img loading="lazy" src="https://source.unsplash.com/random/?matsue,japan" alt="Matsue">
-    </div>    
-      
-    </section>
-
-    <section>
-      <h3>Bentos</h3>
-
-      <p>A new trend at the time LOL</p>
-
-      <h4>Normal Bento(6)</h4>
-
+    <section id="bentos">
+      <h2>Bentos</h2>
+      <h3>Small Bento (4)</h3>
       <section class="small-bento">
         <div>1</div>
         <div>2</div>
         <div>3</div>
         <div>4</div>
       </section>
-
-      <h4>Normal Bento(6)</h4>
-
+      <h3>Normal Bento (6)</h3>
       <section class="bento">
         <div>1</div>
         <div>2</div>
@@ -788,9 +495,7 @@
         <div>5</div>
         <div>6</div>
       </section>
-
-      <h4>Big Bento(10)</h4>
-
+      <h3>Big Bento (10)</h3>
       <section class="big-bento">
         <div>1</div>
         <div>2</div>
@@ -803,38 +508,47 @@
         <div>9</div>
         <div>10</div>
       </section>
-
-    </section>
-
-    <section class="reel">
-      <span class="chip">
-        <img src="https://qph.cf2.quoracdn.net/main-qimg-30b86414f1f25d99cef58d21dbdb4bc3-lq" alt="">
-        I'm a chip
-      </span>
-
-      <span class="chip" data-excludable="true">
-        Lorem ipsum dolor sit.
-      </span>
     </section>
 
   </main>
 
   <footer id="about">
-    <nav>
+    <nav aria-label="Footer">
       <ul>
-        <li>
-          <p class="limited-text">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt officiis nesciunt consectetur in fuga et
-            iusto excepturi, rem, laboriosam veritatis non reiciendis quam sint mollitia voluptatem ipsam recusandae
-            tenetur possimus?
-          </p>
-        </li>
-        <li>
-          <a href="https://github.com/Vattghern203/yonaka">github</a>
-        </li>
+        <li><a href="https://github.com/Vattghern203/yonaka">GitHub</a></li>
+        <li><a href="https://www.npmjs.com/package/yonaka">npm</a></li>
+        <li><a href="https://cdn.jsdelivr.net/npm/yonaka/dist/yonaka.css">jsDelivr</a></li>
+        <li><a href="https://github.com/Vattghern203/yonaka/blob/main/LICENSE.md">MIT License</a></li>
       </ul>
     </nav>
   </footer>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById("theme-toggle");
+    const modes = ["auto", "light", "dark"];
+    let mode = root.dataset.theme || "auto";
+
+    const labels = { auto: "◐ Auto", light: "☀ Light", dark: "☾ Dark" };
+
+    const render = () => {
+      toggle.textContent = labels[mode];
+      toggle.setAttribute("aria-label", `Color theme: ${mode}. Click to change`);
+      if (mode === "auto") delete root.dataset.theme;
+      else root.dataset.theme = mode;
+    };
+
+    toggle.addEventListener("click", () => {
+      mode = modes[(modes.indexOf(mode) + 1) % modes.length];
+      render();
+      try {
+        if (mode === "auto") localStorage.removeItem("yonaka-theme");
+        else localStorage.setItem("yonaka-theme", mode);
+      } catch (_) { /* storage unavailable: theme just won't persist */ }
+    });
+
+    render();
+  </script>
 </body>
 
 </html>
