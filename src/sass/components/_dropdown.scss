@@ -52,7 +52,7 @@ details[role="list"] {
             --text-color: var(--content-text);
             --font-weight: 500;
             --bg: inherit;
-            --_roudness: 0;
+            --_roundness: 0;
 
             display: flex;
             align-items: center; /* Align items vertically if needed */
@@ -61,7 +61,7 @@ details[role="list"] {
             font-weight: var(--font-weight);
             color: var(--text-color);
             background-color: var(--bg);
-            border-radius: var(--_roudness);
+            border-radius: var(--_roundness);
             padding: var(--spacing);
             
             transition: 

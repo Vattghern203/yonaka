@@ -1,22 +1,30 @@
+@mixin light-palette {
+    --text: #081426;
+    --background: #f3f6fc;
+    --primary: #8cb1e8;
+    --secondary: #d9e5f7;
+    --accent: #2e71d6;
+}
+
+@mixin dark-palette {
+    --text: #d9e5f7;
+    --background: #03070d;
+    --primary: #173c73;
+    --secondary: #081426;
+    --accent: #296cd1;
+}
+
 @media (prefers-color-scheme: light) {
-    :where(:root, html, [data-theme=light]) {
-      --text: #081426;
-      --background: #f3f6fc;
-      --primary: #8cb1e8;
-      --secondary: #d9e5f7;
-      --accent: #2e71d6;
-    }
+    :where(:root, html) { @include light-palette; }
 }
 
 @media (prefers-color-scheme: dark) {
-    :where(:root, html, [data-theme=dark]) {
-        --text: #d9e5f7;
-        --background: #03070d;
-        --primary: #173c73;
-        --secondary: #081426;
-        --accent: #296cd1;
-    }
+    :where(:root, html) { @include dark-palette; }
 }
+
+// Declared after the media queries (same zero specificity) so data-theme wins over the OS preference
+:where([data-theme=light]) { @include light-palette; }
+:where([data-theme=dark]) { @include dark-palette; }
 
 .custom-gradient {
     --_gradient-from: var(--secondary);

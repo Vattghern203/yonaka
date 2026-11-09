@@ -1,6 +1,6 @@
 {
   "name": "yonaka",
-  "description": "A easily customizable css framework",
+  "description": "An easily customizable CSS framework",
   "version": "1.1.27",
   "packageManager": "pnpm@12.4.1",
   "main": "dist/yonaka.css",
@@ -33,7 +33,7 @@
     "version:patch": "pnpm version patch",
     "version:minor": "pnpm version minor",
     "version:major": "pnpm version major",
-    "publish:patch": "pnpm run version:patch && publish"
+    "publish:patch": "pnpm run version:patch && pnpm publish"
   },
   "repository": {
     "type": "git",
