@@ -20,12 +20,6 @@ dialog {
         background-color: rgb(0 0 0 / 0.6);
         backdrop-filter: blur(.8rem);
     }
-
-    &:focus {
-
-        //border: none;
-        outline: unset;
-    }
 }
 
 // CUSTOM MODAL --------------------------------------------
@@ -42,8 +36,6 @@ label[role="button"]:has( > input[type="checkbox"]) {
 // Changing State -> Checked
 
 label[role="button"]:has( > input[type="checkbox"]:checked) {
-
-    background-color: red; // Just a debug sign
 
     // Styling the Article with role dialog when the input is checked
 

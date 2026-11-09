@@ -1455,17 +1455,11 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(0.8rem);
 }
-dialog:focus {
-  outline: unset;
-}
 
 label[role=button]:has(> input[type=checkbox]) input[type=checkbox] {
   display: none;
 }
 
-label[role=button]:has(> input[type=checkbox]:checked) {
-  background-color: red;
-}
 label[role=button]:has(> input[type=checkbox]:checked) + [role=dialog] {
   display: grid;
 }
@@ -1759,7 +1753,7 @@ body > header.header-sticky {
   z-index: 1;
   /* display: grid;
   grid-template-columns: 10% repeat(4, 1fr) 10%; */
-  width: min(50%, 50dvw);
+  width: min(90%, 48rem);
   height: auto;
   margin-inline: auto;
   margin-block: 0;
@@ -1785,9 +1779,11 @@ body > header.header-sticky {
   font-size: clamp(0.8rem, 0.3rem + 1.6vw, 1.2rem);
   margin-block-end: var(--lg);
 }
-:is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) section button {
+:is(div, section):is(.hero, .hero-shade, .hero-blur, .hero-fade, .hero-gradient) section :is(button, a[role=button]) {
   --_spacing-y: var(--xs);
+  display: inline-block;
   margin-block-start: var(--_spacing-y);
+  margin-inline: var(--xs);
 }
 
 :is(:is(div, section).hero-shade, :is(div, section).hero-gradient, :is(div, section).hero-blur)::before {
@@ -1844,6 +1840,7 @@ header > nav ul {
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
+  gap: var(--sm) var(--md);
 }
 header > nav ul li {
   width: fit-content;
@@ -1889,7 +1886,7 @@ label[role=navigation]:hover {
   --_hamburguer-spacing: .8em;
 }
 label[role=navigation]:hover::after, label[role=navigation]:hover::before, label[role=navigation]:hover > input[type=checkbox] {
-  background-color: red;
+  background-color: var(--accent);
 }
 label[role=navigation]::after, label[role=navigation]::before, label[role=navigation] > input[type=checkbox] {
   all: unset;
@@ -1945,6 +1942,12 @@ nav[role=navigation].floating-nav li {
   header nav ul {
     display: none;
     visibility: hidden;
+  }
+}
+@media only screen and (min-width: 37.5em) {
+  label[role=navigation],
+  label[role=navigation] + aside {
+    display: none;
   }
 }
 section {

@@ -43,7 +43,7 @@ $hero-variations: ".hero-shade, .hero-blur, .hero-fade, .hero-gradient";
         /* display: grid;
         grid-template-columns: 10% repeat(4, 1fr) 10%; */
 
-        width: min(50%, 50dvw);
+        width: min(90%, 48rem);
         height: auto;
         margin-inline: auto;
         margin-block: 0;
@@ -77,11 +77,13 @@ $hero-variations: ".hero-shade, .hero-blur, .hero-fade, .hero-gradient";
             margin-block-end: var(--lg);
         }
 
-        & button {
+        & :is(button, a[role="button"]) {
 
             --_spacing-y: var(--xs);
 
+            display: inline-block;
             margin-block-start: var(--_spacing-y);
+            margin-inline: var(--xs);
         }
     }
 
