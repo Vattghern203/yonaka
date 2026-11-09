@@ -400,6 +400,6 @@ select {
         padding-inline: var(--spacing-x);
         position: relative;
 
-        @include icon-background(var(--search-icon));
+        @include mixins.icon-background(var(--search-icon));
     }
 }

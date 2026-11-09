@@ -33,8 +33,8 @@ Customization happens at runtime through CSS custom properties.
 
 ## 4. Sass conventions
 
-- The repo is mid-migration: `main.scss` uses `@import` and every partial shares the global scope. Don't write `@use` for repo partials (the mixins and `$text-elements` are global; call `@include icon(...)` without a namespace), and don't add new `@import`s inside partials.
-- Built-ins live in modules: `@use "sass:math"`, `sass:list`, `sass:map`, `sass:color`. Don't add new global `append`, `map-get`, `darken`, `invert` or `rgba($color, $alpha)` calls (legacy ones remain in `base/_reset.scss`, `components/_modal.scss` and `utils/_measurements.scss`); use plain CSS (`rgb(0 0 0 / .6)`, `color-mix()`, relative colors) when possible.
+- Never use `@import`. Every partial starts with `@use` for what it needs, e.g. `@use "../abstracts/mixins";`, and calls members with the namespace: `@include mixins.icon(var(--expand-icon));`, `selectors.$text-elements`.
+- Built-ins live in modules: `@use "sass:math"`, `sass:list`, `sass:map`, `sass:color`. No global `append`, `map-get`, `darken`, `invert`, or `rgba($color, $alpha)`; use plain CSS (`rgb(0 0 0 / .6)`, `color-mix()`, relative colors) when possible.
 - Use `math.div()`, not `/`, for division.
 - Nest with `&` for states and pseudo-elements, but keep nesting shallow (about 3 levels) to avoid specificity creep.
 - Reuse the mixins in `abstracts/_mixins.scss` (`icon`, `icon-background`, `centered-flex`, ...) before writing new ones.
@@ -44,9 +44,9 @@ Customization happens at runtime through CSS custom properties.
 A component is not done until all of these exist:
 
 1. Create `src/sass/components/_name.scss` (or `layout/`, `utils/`).
-2. Add `@import "components/name";` to `src/sass/main.scss` in the matching section, alphabetically; otherwise it is never compiled. (`@use` there fails the build.)
+2. Add `@use "components/name";` to `src/sass/main.scss` in the matching section, alphabetically; otherwise it is never compiled.
 3. **Showcase in `index.html`.** Add a demo in the relevant section (components in `#components__section`, forms in `#forms`, and so on), using the exact markup from step 1 with its ARIA attributes. Show every variant and state (default, `open`/`checked`, disabled, invalid) so the page works as the visual test.
 4. **Update the docs.** Add or update a section under `## Components` in `README.md` with the markup snippet, the variants, and the `--_private` variables users can override, following the neighboring sections' format. `README.pt-BR.md` is only an install quick-start, so touch it only if the change affects setup. A component or variable that changes the public customization API must be reflected in `README.md` in the same PR.
-5. Check: `pnpm exec sass --verbose src/sass/main.scss > /dev/null` must not print any new warnings (the 29 known ones are `@import` deprecations and the `invert()` in `base/_reset.scss`).
-6. Rebuild the committed outputs: `pnpm run build:css`, and `pnpm exec sass src/sass/main.scss src/styles/yonaka.temps.css` (or call `node_modules/.bin/sass` / `postcss` directly if `pnpm run` fails to reinstall).
+5. Check: `pnpm exec sass --verbose src/sass/main.scss > /dev/null` must print no warnings.
+6. Rebuild the committed outputs: `pnpm run build:css`, and `pnpm exec sass src/sass/main.scss src/styles/yonaka.temps.css`.
 7. Open `index.html` and check keyboard operation (Tab, Space/Enter, Esc for dialogs), the visible focus ring, and both light and dark schemes.

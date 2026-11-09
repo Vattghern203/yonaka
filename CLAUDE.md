@@ -8,18 +8,18 @@ Yonaka (formerly "Akatsuki CSS"; the old name may linger in demo pages) is a dep
 
 ## Commands
 
-Use pnpm (`pnpm-lock.yaml` is the lockfile). `package-lock.json` is stale and the `version:*` scripts still call npm; ignore both. `pnpm run` may try to reinstall and fail on an ignored build script (`@parcel/watcher`); if so, call the binaries directly (`node_modules/.bin/sass`, `node_modules/.bin/postcss`).
+Use pnpm (`pnpm-lock.yaml` is the lockfile; `packageManager` pins the version).
 
 - `pnpm install` — install dev dependencies (sass, postcss, autoprefixer).
 - `pnpm run build:css` — compile `src/sass/main.scss` to minified `dist/yonaka.css`, then run autoprefixer over it.
 - `pnpm run watch:sass` — compile `src/sass/main.scss` to `src/styles/yonaka.temps.css` in watch mode. This is the dev loop.
-- `pnpm exec sass --verbose src/sass/main.scss > /dev/null` — surface every Sass deprecation warning. Today it prints 29 known ones (28 `@import` deprecations plus the global `invert()` in `base/_reset.scss`); don't add new ones.
+- `pnpm exec sass --verbose src/sass/main.scss > /dev/null` — surface every Sass deprecation warning. The build is currently warning-free; keep it that way.
 
 There are no tests. Verify changes by building and opening `index.html` or `src/pages/*.html` in a browser. Serve the repo root (e.g. `python3 -m http.server`), because `family.html` links the CSS with a root-absolute path. The demos use no JS except one `showModal()` `onclick` in the modal demo.
 
 ## Architecture
 
-**Single entry point.** `src/sass/main.scss` pulls in every partial with `@import` (a migration to `@use` is pending), in a fixed order: `abstracts` → `base` → `components` → `layout` → `utils`. Output order is cascade order, so a new partial must be added to `main.scss` in the right section, or it is never compiled. Because of `@import`, everything shares one global scope: partials call `icon(...)` and use `$text-elements` without a namespace, relying on `abstracts/mixins` being imported first. Some partials still have a leftover `@use "../abstracts/mixins"` that does nothing. Adding `@use "components/name"` to `main.scss` fails (`@use` must come before other rules).
+**Single entry point.** `src/sass/main.scss` pulls in every partial with `@use`, in a fixed order: `abstracts` → `base` → `components` → `layout` → `utils`. Output order is cascade order, so a new partial must be added to `main.scss` in the right section, or it is never compiled. Partials reference each other through module namespaces (`mixins.icon(...)`, `selectors.$text-elements`), so a partial that uses a mixin or variable must `@use` its source itself.
 
 **Design tokens are CSS custom properties, not Sass variables.** The framework is customized at runtime by overriding `:root` variables (`--background`, `--primary`, `--accent`, `--base`, `--spacing`, `--roundness`, ...), as the README shows. Sass variables exist mainly for selector lists and loops (`utils/_selectors.scss`, `$hero-variations`, `$exclude-from-layout`, `$dropdown`, `$text-aligns`) and the mixins in `abstracts/_mixins.scss`. Prefer adding or reusing a `--token` over a Sass variable.
 

@@ -1,3 +1,17 @@
-node_modules
+node_modules/
 todo.txt
 src/index.js
+
+# logs
+*.log
+pnpm-debug.log*
+
+# env
+.env
+.env.*
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

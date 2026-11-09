@@ -1,6 +1,6 @@
 // Define all the fonts and text related stuff
 
-@import "../utils/selectors";
+@use "../utils/selectors";
 
 // Default
 
@@ -83,7 +83,7 @@ del {
 
 // text variants
 
-#{$text-elements} {
+#{selectors.$text-elements} {
 
     &.muted {
         color: var(--muted-text);
@@ -96,7 +96,7 @@ del {
 
 // utilities
 
-#{$text-elements} {
+#{selectors.$text-elements} {
 
     &.limited-text {
 
@@ -112,7 +112,7 @@ del {
 }
 
 // Customizing Spacing for Wrappers
-a > #{$text-elements} {
+a > #{selectors.$text-elements} {
 
     --spacing: 0;
     padding: 0;

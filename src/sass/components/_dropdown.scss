@@ -135,7 +135,7 @@ select {
         outline: var(--outline);
     }
 
-    @include icon(var(--expand-icon));
+    @include mixins.icon(var(--expand-icon));
         
     &::after {
         rotate: -90deg;

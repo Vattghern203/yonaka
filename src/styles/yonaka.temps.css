@@ -16,6 +16,31 @@ html {
   --blend-highlight-color: #000;
 }
 
+@property --base {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 1.6rem;
+}
+@property --block-spacing {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0.4rem;
+}
+@property --inline-spacing {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0.8rem;
+}
+@property --roundness {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0.4vmin;
+}
+@property --spacing {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0.8rem;
+}
 body {
   --font-size: var(--md);
   font-size: var(--font-size);
@@ -150,31 +175,6 @@ a > p, h1, h2, h3, h4, h5, h6, span, a, li {
   background-image: linear-gradient(var(--_gradient-direction), var(--_gradient-from) var(--_gradient-to));
 }
 
-@property --base {
-  syntax: "<length>";
-  inherits: false;
-  initial-value: 1.6rem;
-}
-@property --block-spacing {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 0.4rem;
-}
-@property --inline-spacing {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 0.8rem;
-}
-@property --roundness {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 0.4vmin;
-}
-@property --spacing {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 0.8rem;
-}
 :where(:root, html) {
   --roundness: unset;
   --theme: dark;
@@ -463,7 +463,7 @@ body * :where(:not(h1, p, span)), .app * :where(:not(h1, p, span)), #root * :whe
 
 ::selection {
   background-color: var(--accent);
-  color: white;
+  color: #fff;
 }
 
 html {
