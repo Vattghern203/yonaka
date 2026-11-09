@@ -40,11 +40,14 @@ Customization happens at runtime through CSS custom properties.
 - Nest with `&` for states and pseudo-elements, but keep nesting shallow (about 3 levels) to avoid specificity creep.
 - Reuse the mixins in `abstracts/_mixins.scss` (`icon`, `icon-background`, `centered-flex`, ...) before writing new ones.
 
-## 5. Wire it up and verify
+## 5. Wire it up, showcase it, document it
+
+A component is not done until all of these exist:
 
 1. Create `src/sass/components/_name.scss` (or `layout/`, `utils/`).
 2. Add `@use "components/name";` to `src/sass/main.scss` in the matching section, alphabetically; otherwise it is never compiled.
-3. Add a demo to `index.html` using the exact markup from step 1, including its ARIA attributes.
-4. Check: `pnpm exec sass --verbose src/sass/main.scss > /dev/null` must print no warnings.
-5. Rebuild the committed outputs: `pnpm run build:css`, and `pnpm exec sass src/sass/main.scss src/styles/yonaka.temps.css`.
-6. Open `index.html` and check keyboard operation (Tab, Space/Enter, Esc for dialogs), the visible focus ring, and both light and dark schemes.
+3. **Showcase in `index.html`.** Add a demo in the relevant section (components in `#components__section`, forms in `#forms`, and so on), using the exact markup from step 1 with its ARIA attributes. Show every variant and state (default, `open`/`checked`, disabled, invalid) so the page works as the visual test.
+4. **Update the docs.** Add or update a section under `## Components` in `README.md` with the markup snippet, the variants, and the `--_private` variables users can override, following the neighboring sections' format. Mirror the change in `INSTRUCOES(PT-BR).md` (Portuguese), and in `GETTINGSTARTED.md` if it affects setup or usage. A component or variable that changes the public customization API must be reflected in all docs in the same PR.
+5. Check: `pnpm exec sass --verbose src/sass/main.scss > /dev/null` must print no warnings.
+6. Rebuild the committed outputs: `pnpm run build:css`, and `pnpm exec sass src/sass/main.scss src/styles/yonaka.temps.css`.
+7. Open `index.html` and check keyboard operation (Tab, Space/Enter, Esc for dialogs), the visible focus ring, and both light and dark schemes.
