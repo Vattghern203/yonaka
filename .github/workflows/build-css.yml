@@ -1,0 +1,51 @@
+name: Build CSS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/sass/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/build-css.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-css
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build dist/yonaka.css
+        run: pnpm run build:css
+
+      - name: Build src/styles/yonaka.temps.css
+        run: pnpm exec sass src/sass/main.scss src/styles/yonaka.temps.css
+
+      - name: Commit compiled CSS
+        run: |
+          if [ -n "$(git status --porcelain dist src/styles)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add dist src/styles
+            git commit -m "chore(build): rebuild compiled css [skip ci]"
+            git push
+          else
+            echo "Compiled CSS is up to date."
+          fi

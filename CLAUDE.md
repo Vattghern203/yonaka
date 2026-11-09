@@ -29,7 +29,7 @@ Token layers, from foundation to consumer:
 - `abstracts/_color-palette.scss` defines the five theme colors for `prefers-color-scheme: light` and `dark`, then again under `:where([data-theme=light|dark])` declared after the media queries, so a manual attribute overrides the OS preference.
 - `abstracts/_preferences.scss` sets `color-scheme: dark light` and light-theme overrides for the blend and effect variables (there is no dark block; dark uses the defaults in `_variables.scss`). Its reduced-motion block is empty.
 
-**Compiled CSS is committed.** `dist/yonaka.css(.map)` (published) and `src/styles/yonaka.temps.css(.map)` (linked by `index.html` and `src/pages/*.html`) are tracked. Rebuild both after changing Sass (`build:css` and `watch:sass` or a one-off `sass src/sass/main.scss src/styles/yonaka.temps.css`) so the committed output matches the source.
+**Compiled CSS is committed.** `dist/yonaka.css(.map)` (published) and `src/styles/yonaka.temps.css(.map)` (linked by `index.html` and `src/pages/*.html`) are tracked. Rebuild both after changing Sass (`build:css` and `watch:sass` or a one-off `sass src/sass/main.scss src/styles/yonaka.temps.css`) so the committed output matches the source. The `build-css` workflow (`.github/workflows/build-css.yml`) also rebuilds both on pushes to `main` and commits any difference, so a local rebuild is only needed to preview changes.
 
 **Demo pages.** `index.html` is the full component showcase, with `src/pages/family.html` and `playground.html` for specific utilities. They are the only visual check available.
 
