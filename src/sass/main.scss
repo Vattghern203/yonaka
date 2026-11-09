@@ -1,43 +1,43 @@
-@import "abstracts/mixins";
-@import "abstracts/preferences";
-@import "abstracts/props";
-@import "abstracts/typography";
-@import "abstracts/variables";
+@use "abstracts/mixins";
+@use "abstracts/preferences";
+@use "abstracts/props";
+@use "abstracts/typography";
+@use "abstracts/variables";
 
 // BASE
 
-@import "base/base";
-@import "base/reset";
+@use "base/base";
+@use "base/reset";
 
 // COMPONENTS
 
-@import "components/accordion";
-@import "components/btn";
-@import "components/card";
-@import "components/dropdown";
-@import "components/gallery";
-@import "components/general";
-@import "components/input";
-@import "components/media";
-@import "components/modal";
-@import "components/switch";
+@use "components/accordion";
+@use "components/btn";
+@use "components/card";
+@use "components/dropdown";
+@use "components/gallery";
+@use "components/general";
+@use "components/input";
+@use "components/media";
+@use "components/modal";
+@use "components/switch";
 
 // LAYOUT
 
-@import "layout/footer";
-@import "layout/header";
-@import "layout/hero";
-@import "layout/main";
-@import "layout/nav";
-@import "layout/section";
-@import "layout/table";
+@use "layout/footer";
+@use "layout/header";
+@use "layout/hero";
+@use "layout/main";
+@use "layout/nav";
+@use "layout/section";
+@use "layout/table";
 
 // UTILS
 
-@import "utils//color-scheme";
-@import "utils/display";
-@import "utils/family";
-@import "utils/text";
+@use "utils/color-scheme";
+@use "utils/display";
+@use "utils/family";
+@use "utils/text";
 //@import "utils/vars";
 
 
