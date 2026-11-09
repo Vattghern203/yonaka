@@ -35,6 +35,8 @@ Token layers, from foundation to consumer:
 
 ## Gotchas
 
+Known dead code and cleanup work is tracked in `TECH_DEBT.md`.
+
 - `src/sass/_user/` (`index.scss`, `_spacing.scss`, `_colors..scss`) is not imported by `main.scss` and is effectively unused. `_colors..scss` has a double dot in its name.
 - `utils/_measurements.scss` and `utils/_vars.scss` are not imported from `main.scss` either (`utils/vars` is commented out there; `_vars` still reaches the build through `abstracts/_variables.scss`).
 - Utility vars (`utils/_vars.scss`: borders, outlines, shadows, z-index, transitions, aspect ratios) are declared on `:where(:root, html, *, ...)`, so overriding them on `:root` doesn't reach descendants.
