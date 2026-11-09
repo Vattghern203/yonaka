@@ -8,7 +8,7 @@
     // CONTROL VARS ---------------------------------
 
     --main-container-size: 80dvw;
-    --min-layou-size: 20rem;
+    --min-layout-size: 20rem;
 
     --spacing-between-sections: var(--lg);
     
@@ -21,8 +21,8 @@
 
     // SPACING VARS
 
-    --spacing-y: calc(--spacing / 2);
-    --spacing-x: calc(--spacing * 2);
+    --spacing-y: calc(var(--spacing) / 2);
+    --spacing-x: calc(var(--spacing) * 2);
 
     // COLOR SPECIFIC
 

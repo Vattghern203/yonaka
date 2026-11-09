@@ -1,30 +1,30 @@
 @property --base {
-    syntax: "<lenght";
+    syntax: "<length>";
     inherits: false;
     initial-value: 1.6rem;
 }
 
 @property --block-spacing {
-    syntax: "<lenght>";
+    syntax: "<length>";
     inherits: true;
     initial-value: .4rem;
 }
 
 @property --inline-spacing {
-    syntax: "<lenght>";
+    syntax: "<length>";
     inherits: true;
     initial-value: .8rem;
 }
 
 @property --roundness {
-    syntax: "<lenght>";
+    syntax: "<length>";
     inherits: true;
     initial-value: .4vmin;
 }
 
 @property --spacing {
 
-    syntax: "<lenght>";
+    syntax: "<length>";
     inherits: true;
-    initial-vaue: .8rem;
+    initial-value: .8rem;
 }

@@ -46,11 +46,11 @@ input:focus {
 div[role="separator"] {
 
     --_separator-h: 100%;
-    --_separotor-w: .1rem;
+    --_separator-w: .1rem;
     --bg: var(--secondary);
 
     height: var(--_separator-h);
-    width: var(--_separotor-w);
+    width: var(--_separator-w);
     background-color: var(--bg, var(--secondary));
 }
 

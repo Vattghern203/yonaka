@@ -33,7 +33,7 @@
 
     --content-text: color-mix(in oklab, var(--text), var(--blend-text-color) 20%);
 
-    --footer-text: color-mix(in oklab, var(--text), var(var(--blend-back-color) 75%));
+    --footer-text: color-mix(in oklab, var(--text), var(--blend-back-color) 75%);
 
     // Color Mix Methods ---------------------------------------------------
 
@@ -95,9 +95,9 @@
 
     // Highlight ------------------------------------------------------
 
-    --highlight-text: color-mix(in oklab, var(--text) 60%);
+    --highlight-text: color-mix(in oklab, var(--text) 60%, var(--blend-highlight-color));
 
-    --highlight-accent: color-mix(in oklab, var(--accent) 60%);
+    --highlight-accent: color-mix(in oklab, var(--accent) 60%, var(--blend-highlight-color));
 
     // BREAKPOINTS ---------------------------------
 
@@ -112,7 +112,7 @@
 
     --h-full: 100%;
     --h-half: 50%;
-    --h-third: 33.3333%
+    --h-third: 33.3333%;
     --h-quarter: 25%;
 
     --h-screen: 100dvh;
@@ -124,7 +124,7 @@
 
     --w-full: 100%;
     --w-half: 50%;
-    --w-third: 33.3333%
+    --w-third: 33.3333%;
     --w-quarter: 25%;
 
     --w-screen: 100dvw;
@@ -148,7 +148,7 @@
 
     --roundness: var(--sm);
 
-    --inner-round: calc(var(--spacing) - var(--roudness));
+    --inner-round: calc(var(--spacing) - var(--roundness));
 
     --round-sm: var(--sm);
     --round-md: var(--md);
@@ -165,7 +165,7 @@
 
     --font-mono: 'Cascadia Code', 'Roboto Mono', 'Fira Code' 'Inconsolata', 'Red Hat Mono', monospace;
 
-    --font-sans-serif: 'Inter', system-ui, 'Roboto', Poppins, Monstserrat, 'Open Sans', Lato, Nunito, sans-serif;
+    --font-sans-serif: 'Inter', system-ui, 'Roboto', Poppins, Montserrat, 'Open Sans', Lato, Nunito, sans-serif;
 
     --font-special: 'Rubik Bubbles', 'Special Elite';
 

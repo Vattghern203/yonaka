@@ -7,7 +7,7 @@ input[type="checkbox"][role="switch"]) {
     --_switch-h: 2.4em;
     --_switch-round: 100vmax;
     --_switch-default-bg: var(--muted-secondary);
-    --_switch-focus-outline: var();
+    --_switch-focus-outline: var(--outline);
     --_switch-color: var(--foreground-secondary);
     --_switch-slider-color: whitesmoke;
 

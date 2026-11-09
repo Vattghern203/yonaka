@@ -1,6 +1,5 @@
 @import "abstracts/mixins";
 @import "abstracts/preferences";
-@import "abstracts/props";
 @import "abstracts/typography";
 @import "abstracts/variables";
 
@@ -34,7 +33,7 @@
 
 // UTILS
 
-@import "utils//color-scheme";
+@import "utils/color-scheme";
 @import "utils/display";
 @import "utils/family";
 @import "utils/text";

@@ -1,6 +1,6 @@
 {
   "name": "yonaka",
-  "description": "A easily customizable css framework",
+  "description": "An easily customizable CSS framework",
   "version": "1.1.27",
   "main": "dist/yonaka.css",
   "devDependencies": {
@@ -32,7 +32,7 @@
     "version:patch": "npm version patch",
     "version:minor": "npm version minor",
     "version:major": "npm version major",
-    "publish:patch": "npm run version:patch && publish"
+    "publish:patch": "npm run version:patch && npm publish"
   },
   "repository": {
     "type": "git",

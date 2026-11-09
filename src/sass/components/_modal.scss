@@ -132,7 +132,7 @@ html:has(label[role="button"] > input[type="checkbox"]:checked) {
 
     & > :is(header, footer) {
 
-        border-radius: var(--roudness) 0;
+        border-radius: var(--roundness) 0;
     }
 
     & > header {
